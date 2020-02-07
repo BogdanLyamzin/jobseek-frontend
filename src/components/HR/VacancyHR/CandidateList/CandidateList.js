@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './CandidateList.css';
+import useStyles from './styles';
 
 const candidateListArr = [
 	{
@@ -95,19 +95,21 @@ const candidateListArr = [
 ];
 
 const CandidateList = () => {
+	const classes = useStyles();
+
 	return candidateListArr.map(elem => {
 		return (
 			<Link
-				to="/admin/oneCandidate"
+				to="/hr/oneCandidate"
 				key={elem._id}
 				id={elem._id}
-				className="candidate"
+				className={classes.candidate}
 			>
-				<div className="candidate-vacancyName">{elem.vacancyName}</div>
-				<div className="candidate-skills">{elem.skills.join(', ')}</div>
-				<div className="candidate-flex">
-					<div className="candidate-photo"></div>
-					<div className="candidate-name">
+				<div className={classes.candidateVacancyName}>{elem.vacancyName}</div>
+				<div className={classes.candidateSkills}>{elem.skills.join(', ')}</div>
+				<div className={classes.candidateFlex}>
+					<div className={classes.candidatePhoto}></div>
+					<div className={classes.candidateName}>
 						{elem.candidateName + ' ' + elem.candidateLastName}
 					</div>
 				</div>

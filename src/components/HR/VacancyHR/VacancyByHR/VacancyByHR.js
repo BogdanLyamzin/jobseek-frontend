@@ -2,17 +2,18 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
-import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
-import './VacancyByHR.css';
+import useStyles from './styles';
 import API from '../../../../services/api';
 import getDate from '../../../../utils/getDate';
 import FormControlLabel from './FormControlLabel';
 import { getAllVacancy } from '../../../../store/vacancy/actions';
+import DeleteIconWithModal from '../../../../shared/DeleteIconWithModal';
 
 const VacancyByHR = ({ vacancy, getAllVacancy }) => {
+	const classes = useStyles();
 	useEffect(() => {
-		getAllVacancy();
+		// getAllVacancy(); add this line with data base
 	}, [getAllVacancy]);
 
 	const deleteVacancy = id => {
@@ -21,14 +22,14 @@ const VacancyByHR = ({ vacancy, getAllVacancy }) => {
 	};
 
 	return (
-		<div className="vacancy-list">
+		<div className={classes.vacancyList}>
 			{vacancy && Array.isArray(vacancy.result) && (
 				<>
 					{vacancy.result.map(elem => {
 						return (
-							<div key={elem._id} id={elem._id} className="vacancy">
-								<div className="vacancy-flex">
-									<div className="vacancy-name">{elem.vacancyName}</div>
+							<div key={elem._id} id={elem._id} className={classes.vacancy}>
+								<div className={classes.vacancyFlex}>
+									<div className={classes.vacancyName}>{elem.vacancyName}</div>
 									<div>
 										<FormControlLabel
 											isActive={elem.active}
@@ -36,21 +37,21 @@ const VacancyByHR = ({ vacancy, getAllVacancy }) => {
 										/>
 									</div>
 								</div>
-								<div className="vacancy-flex">
-									<div className="vacancy-country">
+								<div className={classes.vacancyFlex}>
+									<div className={classes.vacancyCountry}>
 										{elem.city}, {elem.country}
 									</div>
-									<DeleteOutlineOutlinedIcon
-										className="vacancy-delete"
-										onClick={() => deleteVacancy(elem._id)}
+									<DeleteIconWithModal
+										text="Are you sure you want to delete?"
+										handleDelete={() => deleteVacancy(elem._id)}
 									/>
 								</div>
-								<div className="vacancy-flex">
-									<div className="vacancy-date">
+								<div className={classes.vacancyFlex}>
+									<div className={classes.vacancyDate}>
 										Опубліковано {getDate(elem.date)}
 									</div>
-									<Link to={`/admin/updateVacancy/${elem._id}`}>
-										<CreateOutlinedIcon className="vacancy-details" />
+									<Link to={`/hr/updateVacancy/${elem._id}`}>
+										<CreateOutlinedIcon className={classes.vacancyIcon} />
 									</Link>
 								</div>
 							</div>

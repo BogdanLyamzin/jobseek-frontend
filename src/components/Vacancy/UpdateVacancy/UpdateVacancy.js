@@ -4,9 +4,12 @@ import { Link, Switch, Route } from 'react-router-dom';
 
 import CommonInfo from './CommonInfo';
 import SkillsInfo from './SkillsInfo';
+import Title from '../../../shared/Title';
+import useStyles from '../AddVacancy/styles';
 import { getOneVacancy } from '../../../store/vacancy/actions';
 
 const UpdateVacancy = ({ match, getOneVacancy }) => {
+	const classes = useStyles();
 	const { id } = match.params;
 
 	useEffect(() => {
@@ -14,30 +17,36 @@ const UpdateVacancy = ({ match, getOneVacancy }) => {
 	}, [getOneVacancy, id]);
 
 	return (
-		<div className="addvacancy container">
-			<div className="vacancy-align-center">
-				<div className="hr-caption">Змінити вакансію</div>
-			</div>
-
-			<div className="addvacancy-main">
-				<div className="addvacancy-menu">
-					<Link to={`/admin/updateVacancy/${id}`} className="addvacancy-menu-link">
-						Загальна інформація
-					</Link>
-					<Link
-						to={`/updateVacancy/${id}/skills`}
-						className="addvacancy-menu-link"
-					>
-						Навички
-					</Link>
-				</div>
-				<div className="addvacancy-routes">
-					<Switch>
-						<Route exact path="/admin/updateVacancy/:id" component={CommonInfo} />
-						<Route path="/admin/updateVacancy/:id/skills">
-							<SkillsInfo id={id} />
-						</Route>
-					</Switch>
+		<div className={classes.container}>
+			<div className={classes.addvacancy}>
+				<Title text="Змінити вакансію" />
+				<div className={classes.addvacancyMain}>
+					<div className={classes.addvacancyMenu}>
+						<Link
+							to={`/hr/updateVacancy/${id}`}
+							className={classes.addvacancyMenuLink}
+						>
+							Загальна інформація
+						</Link>
+						<Link
+							to={`/hr/updateVacancy/${id}/skills`}
+							className={classes.addvacancyMenuLink}
+						>
+							Навички
+						</Link>
+					</div>
+					<div className={classes.addvacancyRoutes}>
+						<Switch>
+							<Route
+								exact
+								path="/hr/updateVacancy/:id"
+								component={CommonInfo}
+							/>
+							<Route path="/hr/updateVacancy/:id/skills">
+								<SkillsInfo id={id} />
+							</Route>
+						</Switch>
+					</div>
 				</div>
 			</div>
 		</div>

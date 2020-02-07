@@ -4,30 +4,30 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import { sphereList } from '../skillsList';
 
-const SphereList = ({ skill, setSkill, handleClickSkill }) => {
+const SphereList = ({ skill, setSkill, handleClickSkill, classes }) => {
 	return (
 		<div>
-			<div className="vacancy-skill-flex">
-				<div className="vacancy-key">Сфера діяльності*</div>
+			<div className={classes.vacancySkillFlex}>
+				<div className={classes.vacancyKey}>Сфера діяльності*</div>
 				<Autocomplete
 					options={sphereList}
 					getOptionLabel={option => option.title}
 					autoComplete
 					renderInput={params => <TextField {...params} fullWidth />}
-					value={skill.sphere}
+					defaultValue={skill.sphere}
 					onChange={(event, newValue) => {
 						setSkill({ ...skill, sphere: newValue });
 					}}
-					className="vacancy-skill-item-select"
+					className={classes.vacancySkillItemSelect}
 				/>
 			</div>
-			<div className="vacancy-skill-flex">
+			<div className={classes.vacancySkillFlex}>
 				{sphereList.map(elem => {
 					return (
-						<div className="vacancy-skill-item" key={elem.title}>
+						<div className={classes.vacancySkillItem} key={elem.title}>
 							<a
 								href="nothing"
-								className="vacancy-skill-item-link"
+								className={classes.vacancySkillItemLink}
 								onClick={e => {
 									e.preventDefault();
 									handleClickSkill('sphere', elem);

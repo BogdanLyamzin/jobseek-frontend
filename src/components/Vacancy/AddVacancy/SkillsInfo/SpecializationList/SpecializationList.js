@@ -2,31 +2,31 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
-const SpecializationList = ({ skill, setSkill, handleClickSkill }) => {
+const SpecializationList = ({ skill, setSkill, handleClickSkill, classes }) => {
 	return (
 		<div>
-			<div className="vacancy-skill-flex">
-				<div className="vacancy-key">Спеціалізація*</div>
+			<div className={classes.vacancySkillFlex}>
+				<div className={classes.vacancyKey}>Спеціалізація*</div>
 				<Autocomplete
 					options={skill.sphere ? skill.sphere.specialization : []}
 					getOptionLabel={option => option}
 					autoComplete
 					renderInput={params => <TextField {...params} fullWidth />}
-					value={skill.specialization}
+					defaultValue={skill.specialization}
 					onChange={(event, newValue) => {
 						setSkill({ ...skill, specialization: newValue });
 					}}
-					className="vacancy-skill-item-select"
+					className={classes.vacancySkillItemSelect}
 				/>
 			</div>
-			<div className="vacancy-skill-flex">
+			<div className={classes.vacancySkillFlex}>
 				{skill.sphere
 					? skill.sphere.specialization.map(elem => {
 							return (
-								<div className="vacancy-skill-item" key={elem}>
+								<div className={classes.vacancySkillItem} key={elem}>
 									<a
 										href="nothing"
-										className="vacancy-skill-item-link"
+										className={classes.vacancySkillItemLink}
 										onClick={e => {
 											e.preventDefault();
 											handleClickSkill('specialization', elem);

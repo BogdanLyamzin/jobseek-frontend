@@ -2,91 +2,100 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
+import Input from '../../../../shared/Input';
+import Button from '../../../../shared/Button';
 import { getOneHR } from '../../../../store/hr/actions';
 
-const FormHR = ({ values, hidden, getOneHR, updateHRinfo, handleChange }) => {
+const FormHR = ({
+	values,
+	hidden,
+	classes,
+	getOneHR,
+	submitForm,
+	updateHRinfo,
+	handleChange,
+}) => {
 	useEffect(() => {
-		getOneHR('5dfba763a638d31fcc1921de');
+		// getOneHR('5dfba763a638d31fcc1921de'); add this line with data base
 	}, [getOneHR]);
 
 	return (
-		<div className="hr-form">
-			<div className="hr-flex" style={{ marginBottom: '50px' }}>
+		<div className={classes.hrForm}>
+			<div className={classes.hrFlex} style={{ marginBottom: '50px' }}>
 				<div>
 					{hidden && (
 						<>
-							<input
+							<Input
 								onChange={handleChange}
 								type="text"
-								className="hr-form-input"
 								name="name"
-								defaultValue={values ? values.name : ''}
+								value={values ? values.name : ''}
+								className={classes.hrFormInput}
 							/>
-							<input
+							<Input
 								onChange={handleChange}
 								type="text"
-								className="hr-form-input"
 								name="lastName"
-								defaultValue={values ? values.lastName : ''}
+								value={values ? values.lastName : ''}
+								className={classes.hrFormInput}
 							/>
 						</>
 					)}
 					{!hidden && (
-						<div className="hr-name">
+						<div className={classes.hrName}>
 							{values ? values.name : ''} {values ? values.lastName : ''}
 						</div>
 					)}
 				</div>
-				<a href="nothing" onClick={updateHRinfo}>
-					<CreateOutlinedIcon className="icon-pen" />
-				</a>
+				<CreateOutlinedIcon
+					className={classes.iconPen}
+					onClick={updateHRinfo}
+				/>
 			</div>
 
-			<div className="hr-flex" style={{ marginBottom: '135px' }}>
+			<div className={classes.hrFlex} style={{ marginBottom: '135px' }}>
 				<div>
 					{hidden && (
 						<>
-							<div className="hr-key">Телефон*</div>
-							<input
+							<div className={classes.hrKey}>Телефон*</div>
+							<Input
 								onChange={handleChange}
 								type="text"
-								className="hr-form-input"
 								name="phone"
-								defaultValue={values ? values.phone : ''}
+								value={values ? values.phone : ''}
+								className={classes.hrFormInput}
 							/>
 						</>
 					)}
 					{!hidden && (
 						<>
-							<div className="hr-key">Телефон:</div>
-							<div className="hr-prop">{values ? values.phone : ''}</div>
+							<div className={classes.hrKey}>Телефон:</div>
+							<div className={classes.hrProp}>{values ? values.phone : ''}</div>
 						</>
 					)}
 				</div>
 				<div>
 					{hidden && (
 						<>
-							<div className="hr-key">Пошта*</div>
-							<input
+							<div className={classes.hrKey}>Пошта*</div>
+							<Input
 								onChange={handleChange}
 								type="email"
-								className="hr-form-input"
 								name="email"
-								defaultValue={values ? values.email : ''}
+								value={values ? values.email : ''}
+								className={classes.hrFormInput}
 							/>
 						</>
 					)}
 					{!hidden && (
 						<>
-							<div className="hr-key">Пошта:</div>
-							<div className="hr-prop">{values ? values.email : ''}</div>
+							<div className={classes.hrKey}>Пошта:</div>
+							<div className={classes.hrProp}>{values ? values.email : ''}</div>
 						</>
 					)}
 				</div>
 			</div>
-			{hidden && (
-				<input type="submit" value="Зберегти" className="hr-form-btn" />
-			)}
+			{hidden && <Button text="Зберегти" click={submitForm} />}
 		</div>
 	);
 };

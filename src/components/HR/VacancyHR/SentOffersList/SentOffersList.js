@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import useStyles from '../CandidateList/styles';
+
 const SentOffersListArr = [
 	{
 		_id: '144657457',
@@ -99,31 +101,35 @@ const SentOffersListArr = [
 ];
 
 const SentOffersList = () => {
+	const classes = useStyles();
+
 	return SentOffersListArr.map(elem => {
 		return (
 			<Link
-				to="/oneCandidate"
+				to="/hr/oneCandidate"
 				key={elem._id}
 				id={elem._id}
-				className="candidate"
+				className={classes.candidate}
 			>
-				<div className="candidate-flex-between">
-					<div className="candidate-vacancyName">{elem.vacancyName}</div>
-					<div className="candidate-offer-check">
+				<div className={classes.candidateFlexBetween}>
+					<div className={classes.candidateVacancyName}>{elem.vacancyName}</div>
+					<div className={classes.candidateOfferCheck}>
 						{elem.offer ? 'Прийнято' : 'В очікуванні'}
 					</div>
 				</div>
-				<div className="candidate-skills candidate-skills-70">
+				<div className={classes.candidateSkills70}>
 					{elem.skills.join(', ')}
 				</div>
-				<div className="candidate-flex candidate-flex-between">
-					<div className="candidate-flex">
-						<div className="candidate-photo"></div>
-						<div className="candidate-name">
+				<div className={classes.candidateFlexBetween}>
+					<div className={classes.candidateFlex}>
+						<div className={classes.candidatePhoto}></div>
+						<div className={classes.candidateName}>
 							{elem.candidateName + ' ' + elem.candidateLastName}
 						</div>
 					</div>
-					<div className="candidate-offer-date">Запрошено {elem.date}</div>
+					<div className={classes.candidateOfferDate}>
+						Запрошено {elem.date}
+					</div>
 				</div>
 			</Link>
 		);

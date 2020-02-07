@@ -22,6 +22,10 @@ const errorAxios = payload => {
 	};
 };
 
+export const saveInfo = data => {
+	return dispatch => dispatch(addInfo(data));
+};
+
 export const updateVacancy = (id, body) => {
 	return dispatch => {
 		API.putVacancy(id, body)
