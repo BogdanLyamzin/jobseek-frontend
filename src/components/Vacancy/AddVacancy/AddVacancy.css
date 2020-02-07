@@ -1,0 +1,277 @@
+.addvacancy {
+    padding: 56px 0 40px 0;
+}
+
+.addvacancy-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addvacancy-isActive {
+    font-family: "Open Sans", sans-serif;
+    font-size: 10px;
+    line-height: 14px;
+    color: #3D3B69;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.addvacancy-main {
+    background-color: #ffffff;
+    box-shadow: 0px 10px 15px rgba(230, 235, 255, 0.5);
+    border-radius: 0px 0px 8px 8px;
+}
+
+.addvacancy-menu {
+    display: flex;
+}
+
+.addvacancy-menu-link {
+    display: inline-block;
+    text-decoration: none;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #3D3B69;
+    padding: 17px;
+    flex-basis: 50%;
+    text-align: center;
+    border-bottom: 1px solid #E6EBFF;
+}
+
+.addvacancy-menu-link:hover {
+    color: #6D64FF;
+    border-bottom: 1px solid #6D64FF;
+}
+
+.addvacancy-routes {
+    padding: 50px 65px;
+}
+
+.vacancy-line {
+    width: 100%;
+    height: 2px;
+    background-color: #E6EBFF;
+}
+
+.vacancy-location {
+    padding: 0 70px 35px 120px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.vacancy-location-item {
+    flex-basis: 45%;
+}
+
+.vacancy-key {
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    line-height: 19px;
+    color: #00B395;
+    margin-left: 8px;
+}
+
+.vacancy-property {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #757575;
+}
+
+.vacancy-input {
+    border: 1px solid #E6EBFF;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 19px;
+    color: #3D3B69;
+    padding: 8px 15px;
+    outline: 0;
+    margin-bottom: 40px;
+    width: 70%;
+}
+
+.vacancy-employmenttype {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #757575;
+    display: block;
+    margin: 10px 0 10px 7px;
+}
+
+.vacancy-salary {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 30px;
+    letter-spacing: 0.15px;
+    color: #757575;
+}
+
+.vacancy-salary-inp {
+    margin: 10px 0 0 15px;
+    padding: 5px;
+    border: 0;
+    border-bottom: 1px solid #E6EBFF;
+    outline: 0;
+    width: 55%;
+}
+
+.vacancy-save {
+    background: linear-gradient(0.03deg, #00F2C9 0%, #FDFDFD 226.41%);
+    box-shadow: 0px 4px 10px rgba(0, 242, 201, 0.5);
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    color: #3D3B69;
+    border-radius: 28px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    padding: 13px 45px;
+    margin: 0 auto;
+}
+
+.vacancy-description {
+    margin: 0 auto;
+    padding-top: 55px;
+    width: 70%;
+}
+
+.vacancy-description-area {
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    color: #3D3B69;
+    padding: 12px 15px;
+    width: 100%;
+    height: 200px;
+    border: 1px solid #E6EBFF;
+    border-radius: 8px;
+    outline: 0;
+    margin: 30px 0;
+    resize: none;
+}
+
+.vacancy-align-center {
+    text-align: center;
+}
+
+/* skills */
+.vacancy-skill-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.vacancy-skill-item-select {
+    width: 80%;
+    font-family: "Open Sans", sans-serif;
+    font-size: 17px;
+    color: rgb(48, 46, 80);
+}
+
+.vacancy-skill-item {
+    flex-basis: 30%;
+}
+
+.vacancy-skill-item-link {
+    padding: 10px;
+    display: inline-block;
+    font-family: "Open Sans", sans-serif;
+    line-height: 19px;
+    color: #3D3B69;
+    text-decoration: none;
+}
+
+.vacancy-skill-item-link:hover {
+    color: #6D64FF;
+}
+
+.vacancy-skill-item-input {
+    width: 80%;
+    border: 0;
+    outline: 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 17px;
+    line-height: 25px;
+    color: rgb(48, 46, 80);
+    border-bottom: 2px solid rgb(177, 174, 174);
+}
+
+.vacancy-skill-item-input:hover {
+    border-bottom: 2px solid rgb(56, 55, 55);
+}
+
+.vacancy-skill-item-input:focus {
+    border-bottom: 2px solid rgb(78, 97, 190);
+}
+
+.vacancy-skill-item-slider {
+    flex-basis: 60%;
+}
+
+.vacancy-skill-english {
+    width: 15%;
+    text-align: right;
+    font-family: "Roboto", sans-serif;
+    color: #ADADAD;
+}
+
+.vacancy-skill-list-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px 0 90px 0;
+}
+
+.vacancy-skill-list {
+    flex-basis: 60%;
+    padding: 5px 0 0 25px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.vacancy-skill-time {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 38%;
+    padding: 5px 0 0 50px;
+    border-left: 2px solid #E6EBFF;
+}
+
+.vacancy-skill-list-item {
+    margin-bottom: 35px;
+    display: flex;
+    align-items: center;
+    flex-basis: 45%;
+    font-size: 14px;
+}
+
+.vacancy-skill-item-text {
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    line-height: 19px;
+    color: #3D3B69;
+}
+
+.vacancy-slider-item {
+    margin-bottom: 25px;
+}
+
+.margin-bottom-40 {
+    margin-bottom: 40px;
+}
+
+.vacancy-slider-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vacancy-slider-skills {
+    flex-basis: 90%;
+}

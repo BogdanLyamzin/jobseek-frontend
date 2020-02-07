@@ -1,0 +1,6 @@
+{
+  "name": "Vacancies",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Vacancies.js"
+}

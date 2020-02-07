@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+.app {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #F6F9FF !important;
+    padding: 20px 0;
+}
+
+nav {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+nav > a {
+    margin: 10px 20px;
+}
+
+hr {
+    border: 1px solid #fff;
+}

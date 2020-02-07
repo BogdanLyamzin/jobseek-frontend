@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    background-color: azure;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 16px;
+    font-family: Open Sans, sans-serif;
+    color: #3D3B69;
+}
+
+.app {
+    width: 100%;
+    margin: 0 auto;
+    background-color: rgb(151, 225, 235);
+    padding: 20px 0;
+}
+
+.companyReviews {
+    margin: 10px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid grey;
+}

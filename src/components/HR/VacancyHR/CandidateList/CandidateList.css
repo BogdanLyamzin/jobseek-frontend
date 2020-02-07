@@ -1,0 +1,70 @@
+.candidate {
+    border-bottom: 2px solid #E6EBFF;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.candidate:hover {
+    border-bottom: 2px solid #6D64FF;
+}
+
+.candidate-vacancyName {
+    font-weight: bold;
+    font-size: 14px;
+    color: #3D3B69;
+    margin-bottom: 15px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.candidate-skills {
+    font-size: 14px;
+    line-height: 21px;
+    color: #3D3B69;
+    margin-bottom: 18px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.candidate-flex {
+    display: flex;
+    align-items: center;
+}
+
+.candidate-flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.candidate-photo {
+    height: 24px;
+    width: 24px;
+    background-color: rgb(243, 8, 8);
+    border-radius: 100%;
+}
+
+.candidate-name {
+    font-size: 12px;
+    line-height: 16px;
+    color: #3D3B69;
+    margin-left: 10px;
+    font-family: "Open Sans", sans-serif;
+}
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+.candidate-skills-70 {
+    width: 70%;
+}
+
+.candidate-offer-check {
+    font-family: "Open Sans", sans-serif;
+    font-size: 10px;
+    color: #00B395;
+}
+
+.candidate-offer-date {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #696969;
+}

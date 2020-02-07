@@ -1,0 +1,114 @@
+.hr {
+    padding: 56px 0 180px 0;
+}
+
+.hr-caption {
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    color: #3D3B69;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.hr-info {
+    padding: 110px 95px 55px 95px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 15px rgba(230, 235, 255, 0.5);
+    border-radius: 8px;
+}
+
+.hr-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hr-form {
+    width: 65%;
+}
+
+.hr-name {
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3D3B69;
+}
+
+.hr-prop {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3D3B69;
+    margin-top: 10px;
+}
+
+.hr-form-btn {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    color: #3D3B69;
+    padding: 13px 45px;
+    background: linear-gradient(0.03deg, #00F2C9 0%, #FDFDFD 226.41%);
+    box-shadow: 0px 4px 10px rgba(0, 242, 201, 0.5);
+    border-radius: 28px;
+    border: 0;
+    cursor: pointer;
+}
+
+.hr-form-input {
+    border: 1px solid #E6EBFF;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    line-height: 19px;
+    color: #3D3B69;
+    margin-right: 20px;
+    padding: 5px 10px;
+}
+
+.hr-key {
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    line-height: 19px;
+    color: #00B395;
+}
+
+.icon-pen {
+    color: rgb(82, 80, 119);
+    font-size: 18px;
+}
+
+.hr-img {
+    min-width: 190px;
+    max-width:200px;
+    min-height: 190px;
+    max-height: 200px;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: 0;
+}
+
+.hr-notimg {
+    width: 195px;
+    height: 200px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, rgb(245, 247, 252) 0%, #E6EBFF 100%);
+    position: relative;
+    cursor: pointer;
+    outline: 0;
+}
+
+.hr-addphoto-container {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.hr-addphoto {
+    margin-left: 8px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    color: #3D3B69;
+}

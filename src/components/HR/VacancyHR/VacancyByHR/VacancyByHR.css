@@ -1,0 +1,54 @@
+.vacancy-list {
+    flex-basis: 25%;
+    padding: 24px 0;
+}
+
+.vacancy {
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.vacancy:hover {
+    background-color: rgb(238, 241, 248);
+}
+
+.vacancy-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.vacancy-delete {
+    color: #3D3B69;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.vacancy-details {
+    color: #3D3B69;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.vacancy-name {
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    color: #3D3B69;
+}
+
+.vacancy-country {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    color: #3D3B69;    
+}
+
+.vacancy-date {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    color: #3D3B69;     
+}
