@@ -1,30 +1,35 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import './vacancyHR.css';
+import useStyles from './styles';
 import VacancyByHR from './VacancyByHR';
+import Title from '../../../shared/Title';
 import HRVacancyMenu from './MenuHRVacancy';
 import CandidateList from './CandidateList';
 import SentOffersList from './SentOffersList';
 import ReceivedOffersList from './ReceivedOffersList';
 
 const VacancyHR = () => {
+	const classes = useStyles();
+
 	return (
-		<div className="container hr">
-			<h2 className="hr-caption">Мoї вакансії (HR)</h2>
-			<div className="hr-vacancy">
-				<HRVacancyMenu />
-				<div className="hr-vacancy-flex">
-					<VacancyByHR />
-					<div className="hr-vacancy-routes">
-						<Switch>
-							<Route exact path="/admin/hr/vacancy" component={CandidateList} />
-							<Route path="/admin/hr/vacancy/sent" component={SentOffersList} />
-							<Route
-								path="/admin/hr/vacancy/received"
-								component={ReceivedOffersList}
-							/>
-						</Switch>
+		<div className={classes.container}>
+			<div className={classes.hr}>
+				<Title text="Мoї вакансії (HR)" />
+				<div className={classes.hrVacancy}>
+					<HRVacancyMenu classes={classes} />
+					<div className={classes.hrVacancyFlex}>
+						<VacancyByHR />
+						<div className={classes.hrVacancyRoutes}>
+							<Switch>
+								<Route exact path="/hr/vacancy" component={CandidateList} />
+								<Route path="/hr/vacancy/sent" component={SentOffersList} />
+								<Route
+									path="/hr/vacancy/received"
+									component={ReceivedOffersList}
+								/>
+							</Switch>
+						</div>
 					</div>
 				</div>
 			</div>

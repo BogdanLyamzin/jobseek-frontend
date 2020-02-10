@@ -1,30 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import SphereList from './SphereList';
 import ChackboxList from './CheckboxList';
 import { englishLevel } from './skillsList';
-import LanguageVacancy from './LanguageVacancy';
-import SpecializationList from './SpecializationList';
+import Button from '../../../../shared/Button';
+import useStyles from '../../AddVacancy/SkillsInfo/styles';
+import SphereList from '../../AddVacancy/SkillsInfo/SphereList';
 import { updateVacancy } from '../../../../store/vacancy/actions';
 import { objToArr, arrToObj } from '../../../../utils/transformArr-Obj';
+import LanguageVacancy from '../../AddVacancy/SkillsInfo/LanguageVacancy';
+import SpecializationList from '../../AddVacancy/SkillsInfo/SpecializationList';
 
 const SkillsInfo = ({ id, info, oneVacancy, updateVacancy }) => {
+	const classes = useStyles();
 	const [skill, setSkill] = useState({
 		sphere: null,
 		specialization: null,
-		vacancyName: null,
+		vacancyName: '',
 		englishLevel: null,
-		programmLanguage: null,
+		programmLanguage: '',
 	});
 	const [checkbox, setCheckbox] = useState(null);
 	const [checkboxArr, setCheckboxArr] = useState(null);
 
 	useEffect(() => {
 		setSkill({
-			vacancyName: oneVacancy ? oneVacancy.result.vacancyName : null,
-			englishLevel: oneVacancy ? oneVacancy.result.englishLevel : null,
-			programmLanguage: oneVacancy ? oneVacancy.result.programmLanguage : null,
+			vacancyName: oneVacancy ? oneVacancy.result.vacancyName : '',
+			englishLevel: oneVacancy ? oneVacancy.result.englishLevel : '',
+			programmLanguage: oneVacancy ? oneVacancy.result.programmLanguage : '',
 		});
 		setCheckbox(oneVacancy ? arrToObj(oneVacancy.result.skills) : null);
 	}, [oneVacancy]);
@@ -45,6 +48,7 @@ const SkillsInfo = ({ id, info, oneVacancy, updateVacancy }) => {
 		setCheckbox({
 			...checkbox,
 			[name]: {
+				name,
 				id,
 				experience: newValue,
 			},
@@ -78,30 +82,34 @@ const SkillsInfo = ({ id, info, oneVacancy, updateVacancy }) => {
 		<>
 			<SphereList
 				skill={skill}
+				classes={classes}
 				setSkill={setSkill}
 				handleClickSkill={handleClickSkill}
 			/>
 			<SpecializationList
 				skill={skill}
+				classes={classes}
 				setSkill={setSkill}
 				handleClickSkill={handleClickSkill}
 			/>
 			<LanguageVacancy
 				skill={skill}
+				classes={classes}
 				setSkill={setSkill}
 				handleChange={handleChangeEnglish}
 			/>
 			<ChackboxList
+				skill={skill}
+				classes={classes}
 				checkbox={checkbox}
 				checkboxArr={checkboxArr}
 				setCheckbox={setCheckbox}
+				handleChangeEng={handleChangeEnglish}
 				handleChange={handleChangeSkillSlider}
 				checkboxHandleChange={checkboxHandleChange}
 			/>
-			<div className="vacancy-align-center">
-				<button onClick={() => update()} className="vacancy-save">
-					Опублікувати
-				</button>
+			<div className={classes.alignCenter}>
+				<Button text="Оновити" click={() => update()} />
 			</div>
 		</>
 	);

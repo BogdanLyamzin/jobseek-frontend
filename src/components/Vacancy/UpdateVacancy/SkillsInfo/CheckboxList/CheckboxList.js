@@ -1,15 +1,18 @@
 import React from 'react';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
-import Checkbox from './Checkbox';
-import { skillsList } from '../skillsList';
-import Slider from '../LanguageVacancy/SliderWithStyles';
+import Slider from '../../../../../shared/Slider';
+import Checkbox from '../../../../../shared/Checkbox';
+import { skillsList, englishLevel } from '../skillsList';
 
 const CheckboxList = ({
+	skill,
+	classes,
 	checkbox,
 	checkboxArr,
 	setCheckbox,
 	handleChange,
+	handleChangeEng,
 	checkboxHandleChange,
 }) => {
 	const valueLabelFormat = value => {
@@ -18,37 +21,67 @@ const CheckboxList = ({
 		else return value + '-' + (value + 1);
 	};
 
+	const valueLabelFormatEng = value => {
+		return englishLevel[value];
+	};
+
 	return (
 		<>
-			<div className="vacancy-key vacancy-align-center">Навички*</div>
-			<hr className="vacancy-line" />
-			<div className="vacancy-skill-list-flex">
-				<div className="vacancy-skill-list">
+			<div className={`${classes.vacancyKey} ${classes.alignCenter}`}>
+				Навички*
+			</div>
+			<hr className={classes.line} />
+			<div className={classes.vacancySkillListFlex}>
+				<div className={classes.vacancySkillList}>
 					{skillsList.map(elem => {
 						return (
-							<div className="vacancy-skill-list-item" key={elem.name}>
+							<div className={classes.vacancySkillListItem} key={elem.name}>
 								<Checkbox
 									onChange={checkboxHandleChange(elem.name)}
 									value={elem.id}
 									name={elem.name}
 									checked={checkbox && checkbox[elem.name] ? true : false}
 								/>
-								<div className="vacancy-skill-list-item-text">{elem.name}</div>
+								<div className={classes.vacancySkillItemText}>{elem.name}</div>
 							</div>
 						);
 					})}
 				</div>
-				<div className="vacancy-skill-time">
+				<div className={classes.vacancySkillTime}>
+					<div className={classes.vacancySliderItem}>
+						<div
+							className={`${classes.vacancySliderFlex} ${classes.marginBottom40}`}
+						>
+							<div className={classes.vacancySkillItemText}>English level</div>
+							<div className={classes.vacancySkillItemText}>
+								{skill.englishLevel}
+							</div>
+						</div>
+						<div className={classes.vacancySliderFlex}>
+							<Slider
+								className={classes.vacancySliderSkills}
+								valueLabelFormat={valueLabelFormatEng}
+								onChange={handleChangeEng}
+								valueLabelDisplay="on"
+								defaultValue={0}
+								step={1}
+								max={6}
+							/>
+						</div>
+					</div>
 					{checkboxArr
 						? checkboxArr.map(elem => {
 								return (
-									<div className="vacancy-slider-item" key={elem.id}>
-										<div className="vacancy-skill-item-text margin-bottom-40">
+									<div className={classes.vacancySliderItem} key={elem.id}>
+										<div
+											style={{ marginBottom: '40px' }}
+											className={classes.vacancySkillItemText}
+										>
 											{elem.name}
 										</div>
-										<div className="vacancy-slider-flex">
+										<div className={classes.vacancySliderFlex}>
 											<Slider
-												className="vacancy-slider-skills"
+												className={classes.vacancySliderSkills}
 												defaultValue={elem.experience}
 												step={1}
 												max={5}
@@ -57,7 +90,7 @@ const CheckboxList = ({
 												onChange={handleChange(elem.name, elem.id)}
 											/>
 											<DeleteOutlineOutlinedIcon
-												className="vacancy-delete"
+												className={classes.vacancyIcon}
 												onClick={() =>
 													setCheckbox({ ...checkbox, [elem.name]: null })
 												}

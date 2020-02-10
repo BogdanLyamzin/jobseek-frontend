@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import API from '../../../../services/api';
+import useStyles from './styles';
 import SphereList from './SphereList';
 import ChackboxList from './CheckboxList';
+import API from '../../../../services/api';
 import { englishLevel } from './skillsList';
+import Button from '../../../../shared/Button';
 import LanguageVacancy from './LanguageVacancy';
 import SpecializationList from './SpecializationList';
 
 const SkillsInfo = ({ isActive, firstForm }) => {
+	const classes = useStyles();
 	const [skill, setSkill] = useState({
 		sphere: null,
+		vacancyName: '',
 		englishLevel: null,
 		specialization: null,
 		programmLanguage: null,
@@ -34,6 +38,7 @@ const SkillsInfo = ({ isActive, firstForm }) => {
 		setCheckbox({
 			...checkbox,
 			[name]: {
+				name,
 				id,
 				experience: newValue,
 			},
@@ -70,30 +75,29 @@ const SkillsInfo = ({ isActive, firstForm }) => {
 		<>
 			<SphereList
 				skill={skill}
+				classes={classes}
 				setSkill={setSkill}
 				handleClickSkill={handleClickSkill}
 			/>
 			<SpecializationList
 				skill={skill}
+				classes={classes}
 				setSkill={setSkill}
 				handleClickSkill={handleClickSkill}
 			/>
-			<LanguageVacancy
-				skill={skill}
-				setSkill={setSkill}
-				handleChange={handleChangeEnglish}
-			/>
+			<LanguageVacancy skill={skill} classes={classes} setSkill={setSkill} />
 			<ChackboxList
+				skill={skill}
+				classes={classes}
 				checkbox={checkbox}
 				checkboxArr={checkboxArr}
 				setCheckbox={setCheckbox}
+				handleChangeEng={handleChangeEnglish}
 				handleChange={handleChangeSkillSlider}
 				checkboxHandleChange={checkboxHandleChange}
 			/>
-			<div className="vacancy-align-center">
-				<button onClick={() => addVacancy()} className="vacancy-save">
-					Опублікувати
-				</button>
+			<div className={classes.alignCenter}>
+				<Button text="Опублікувати" click={() => addVacancy()} />
 			</div>
 		</>
 	);

@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-import Radio from './Radio';
-import { addInfo } from '../../../../store/vacancy/actions';
+import useStyles from './styles';
+import Button from '../../../../shared/Button';
+import FormCommonInfo from '../FormCommonInfo';
+import { saveInfo } from '../../../../store/vacancy/actions';
 
-const CommonInfo = ({ info, addInfo }) => {
+const CommonInfo = ({ info, saveInfo }) => {
+	const classes = useStyles();
 	const [values, setValues] = useState({
-		city: info ? info.city : null,
-		salary: info ? info.salary : null,
-		country: info ? info.country : null,
-		description: info ? info.description : null,
+		city: info ? info.city : '',
+		salary: info ? info.salary : '',
+		country: info ? info.country : '',
+		description: info ? info.description : '',
 		employmentType: info ? info.employmentType : 'fullDay',
 	});
 
 	useEffect(() => {
 		return () => {
-			addInfo({ ...values });
+			saveInfo({ ...values });
 		};
-	}, [values, addInfo]);
+	}, [values, saveInfo]);
 
 	const handleChange = event => {
 		setValues({ ...values, [event.target.name]: event.target.value });
@@ -25,111 +28,24 @@ const CommonInfo = ({ info, addInfo }) => {
 
 	return (
 		<div>
-			<div className="vacancy-location">
-				<div className="vacancy-location-item">
-					<div className="vacancy-key">Країна*</div>
-					<input
-						type="text"
-						name="country"
-						className="vacancy-input"
-						onChange={handleChange}
-						defaultValue={values.country}
-					/>
-				</div>
-				<div className="vacancy-location-item">
-					<div className="vacancy-key">Місто*</div>
-					<input
-						type="text"
-						name="city"
-						className="vacancy-input"
-						onChange={handleChange}
-						defaultValue={values.city}
-					/>
-				</div>
-			</div>
-			<div className="vacancy-location">
-				<div className="vacancy-location-item">
-					<div className="vacancy-key">Форма зайнятості*</div>
-					<label className="vacancy-employmenttype">
-						<Radio
-							name="employmentType"
-							value="fullDay"
-							onChange={handleChange}
-							checked={values.employmentType === 'fullDay'}
-						/>
-						Робота в офісі на повний день
-					</label>
-					<label className="vacancy-employmenttype">
-						<Radio
-							name="employmentType"
-							value="non-fullDay"
-							onChange={handleChange}
-							checked={values.employmentType === 'non-fullDay'}
-						/>
-						Робота в офісі на неповний день
-					</label>
-					<label className="vacancy-employmenttype">
-						<Radio
-							name="employmentType"
-							value="freelance"
-							onChange={handleChange}
-							checked={values.employmentType === 'freelance'}
-						/>
-						Фріланс (разові проекти)
-					</label>
-					<label className="vacancy-employmenttype">
-						<Radio
-							name="employmentType"
-							value="distantWork"
-							onChange={handleChange}
-							checked={values.employmentType === 'distantWork'}
-						/>
-						Віддалена робота
-					</label>
-					<label className="vacancy-employmenttype">
-						<Radio
-							name="employmentType"
-							value="any"
-							onChange={handleChange}
-							checked={values.employmentType === 'any'}
-						/>
-						Будь-яка
-					</label>
-				</div>
-				<div className="vacancy-location-item">
-					<div className="vacancy-key">Зарплата*</div>
-					<label className="vacancy-salary">
-						USD
-						<input
-							step="50"
-							min="100"
-							type="number"
-							name="salary"
-							className="vacancy-salary-inp"
-							onChange={handleChange}
-							defaultValue={values.salary}
-						/>
-					</label>
-				</div>
-			</div>
+			<FormCommonInfo
+				classes={classes}
+				handleChange={handleChange}
+				values={values}
+			/>
 
-			<hr className="vacancy-line" />
+			<hr className={classes.line} />
 
-			<div className="vacancy-description">
-				<div className="vacancy-key">Описання вакансії*</div>
+			<div className={classes.vacancyDescription}>
+				<div className={classes.vacancyKey}>Описання вакансії*</div>
 				<textarea
 					name="description"
-					className="vacancy-description-area"
+					className={classes.vacancyDescriptionArea}
 					onChange={handleChange}
-					defaultValue={values.description}
+					value={values.description}
 				/>
-				<div className="vacancy-align-center">
-					<button
-						onClick={() => addInfo({ ...values })}
-						className="vacancy-save"
-					>
-						Зберегти
-					</button>
+				<div className={classes.alignCenter}>
+					<Button click={() => saveInfo({ ...values })} text="Зберегти" />
 				</div>
 			</div>
 		</div>
@@ -137,7 +53,7 @@ const CommonInfo = ({ info, addInfo }) => {
 };
 
 const mapDispatchToProps = {
-	addInfo,
+	saveInfo,
 };
 
 const mapStateToProps = ({ vacancy }) => {

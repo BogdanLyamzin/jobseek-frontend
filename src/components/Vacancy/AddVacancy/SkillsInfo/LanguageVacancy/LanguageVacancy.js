@@ -2,30 +2,27 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
-import Slider from './SliderWithStyles';
-import { programmLanguageList, englishLevel } from '../skillsList';
+import Input from '../../../../../shared/Input';
+import { programmLanguageList } from '../skillsList';
 
-const LanguageVacancy = ({ skill, setSkill, handleChange }) => {
-	const valueLabelFormat = value => {
-		return englishLevel[value];
-	};
-
+const LanguageVacancy = ({ skill, setSkill, classes }) => {
 	return (
 		<>
-			<div className="vacancy-skill-flex">
-				<div className="vacancy-key">Посада*</div>
-				<input
+			<div className={classes.vacancySkillFlex}>
+				<div className={classes.vacancyKey}>Посада*</div>
+				<Input
 					type="text"
 					name="vacancyName"
-					className="vacancy-skill-item-input"
+					className={classes.vacancySkillItemInput}
 					onChange={e =>
 						setSkill({ ...skill, [e.target.name]: e.target.value })
 					}
+					value={skill.vacancyName}
 				/>
 			</div>
 
-			<div className="vacancy-skill-flex">
-				<div className="vacancy-key">Мова програмування*</div>
+			<div className={classes.vacancySkillFlex}>
+				<div className={classes.vacancyKey}>Мова програмування*</div>
 				<Autocomplete
 					options={programmLanguageList}
 					getOptionLabel={option => option}
@@ -35,22 +32,8 @@ const LanguageVacancy = ({ skill, setSkill, handleChange }) => {
 					onChange={(event, newValue) => {
 						setSkill({ ...skill, programmLanguage: newValue });
 					}}
-					className="vacancy-skill-item-select"
+					className={classes.vacancySkillItemSelect}
 				/>
-			</div>
-
-			<div className="vacancy-skill-flex">
-				<div className="vacancy-key">Рівень Англійської мови*</div>
-				<Slider
-					className="vacancy-skill-item-slider"
-					valueLabelFormat={valueLabelFormat}
-					onChange={handleChange}
-					valueLabelDisplay="auto"
-					defaultValue={0}
-					step={1}
-					max={6}
-				/>
-				<div className="vacancy-skill-english">{skill.englishLevel}</div>
 			</div>
 		</>
 	);

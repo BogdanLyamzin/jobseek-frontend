@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import './hr.css';
 import FormHR from './FormHR';
+import useStyles from './styles';
 import UpdatePhoto from './UpdatePhoto';
+import Title from '../../../shared/Title';
 import { updateHR } from '../../../store/hr/actions';
 
 const HR = ({ user, updateHR }) => {
+	const classes = useStyles();
 	const [hiddenForm, setHiddenForm] = useState(false);
 	const [values, setValues] = useState(null);
 
@@ -35,18 +37,22 @@ const HR = ({ user, updateHR }) => {
 	};
 
 	return (
-		<div className="container hr">
-			<h2 className="hr-caption">Мій профіль (HR)</h2>
-			<div className="hr-info">
-				<form className="hr-flex" onSubmit={submitForm}>
-					<UpdatePhoto selectFile={selectedFile} />
-					<FormHR
-						values={values}
-						updateHRinfo={updateHRinfo}
-						hidden={hiddenForm}
-						handleChange={handleChange}
-					/>
-				</form>
+		<div className={classes.container}>
+			<div className={classes.hr}>
+				<Title text="Мій профіль (HR)" />
+				<div className={classes.hrInfo}>
+					<form className={classes.hrFlex}>
+						<UpdatePhoto uploadPhoto={selectedFile} classes={classes} />
+						<FormHR
+							values={values}
+							classes={classes}
+							submitForm={submitForm}
+							updateHRinfo={updateHRinfo}
+							hidden={hiddenForm}
+							handleChange={handleChange}
+						/>
+					</form>
+				</div>
 			</div>
 		</div>
 	);
