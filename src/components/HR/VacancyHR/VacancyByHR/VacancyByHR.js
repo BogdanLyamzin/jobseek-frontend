@@ -13,7 +13,7 @@ import DeleteIconWithModal from '../../../../shared/DeleteIconWithModal';
 const VacancyByHR = ({ vacancy, getAllVacancy }) => {
 	const classes = useStyles();
 	useEffect(() => {
-		// getAllVacancy(); add this line with data base
+		getAllVacancy();
 	}, [getAllVacancy]);
 
 	const deleteVacancy = id => {

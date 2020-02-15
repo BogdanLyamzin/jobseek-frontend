@@ -7,6 +7,10 @@ export default {
 		return axios.get(`${baseUrl}/vacancies`);
 	},
 
+	getVacancyByFilter(filter) {
+		return axios.get(`${baseUrl}/vacancies?${filter}`);
+	},
+
 	getOneVacancy(id) {
 		return axios.get(`${baseUrl}/vacancies/${id}`);
 	},
@@ -25,6 +29,10 @@ export default {
 
 	getAllHR() {
 		return axios.get(`${baseUrl}/hr`);
+	},
+
+	getHrByFilter(filter) {
+		return axios.get(`${baseUrl}/hr?${filter}`);
 	},
 
 	getOneHR(id) {

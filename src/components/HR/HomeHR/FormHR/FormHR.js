@@ -16,15 +16,15 @@ const FormHR = ({
 	handleChange,
 }) => {
 	useEffect(() => {
-		// getOneHR('5dfba763a638d31fcc1921de'); add this line with data base
+		getOneHR('5dfba763a638d31fcc1921de');
 	}, [getOneHR]);
 
 	return (
 		<div className={classes.hrForm}>
-			<div className={classes.hrFlex} style={{ marginBottom: '50px' }}>
+			<div className={`${classes.hrFlex} ${classes.hrValue}`}>
 				<div>
 					{hidden && (
-						<>
+						<div className={classes.formItem}>
 							<Input
 								onChange={handleChange}
 								type="text"
@@ -39,7 +39,7 @@ const FormHR = ({
 								value={values ? values.lastName : ''}
 								className={classes.hrFormInput}
 							/>
-						</>
+						</div>
 					)}
 					{!hidden && (
 						<div className={classes.hrName}>
@@ -48,24 +48,36 @@ const FormHR = ({
 					)}
 				</div>
 				<CreateOutlinedIcon
-					className={classes.iconPen}
+					className={`${classes.iconPenLrg} ${classes.iconPen}`}
 					onClick={updateHRinfo}
 				/>
 			</div>
 
-			<div className={classes.hrFlex} style={{ marginBottom: '135px' }}>
+			<div className={`${classes.hrFlex} ${classes.hrValue}`}>
 				<div>
 					{hidden && (
-						<>
-							<div className={classes.hrKey}>Телефон*</div>
-							<Input
-								onChange={handleChange}
-								type="text"
-								name="phone"
-								value={values ? values.phone : ''}
-								className={classes.hrFormInput}
-							/>
-						</>
+						<div className={classes.formItem}>
+							<div>
+								<div className={classes.hrKey}>Телефон*</div>
+								<Input
+									onChange={handleChange}
+									type="text"
+									name="phone"
+									value={values ? values.phone : ''}
+									className={classes.hrFormInput}
+								/>
+							</div>
+							<div>
+								<div className={classes.hrKey}>Пошта*</div>
+								<Input
+									onChange={handleChange}
+									type="email"
+									name="email"
+									value={values ? values.email : ''}
+									className={classes.hrFormInput}
+								/>
+							</div>
+						</div>
 					)}
 					{!hidden && (
 						<>
@@ -75,18 +87,6 @@ const FormHR = ({
 					)}
 				</div>
 				<div>
-					{hidden && (
-						<>
-							<div className={classes.hrKey}>Пошта*</div>
-							<Input
-								onChange={handleChange}
-								type="email"
-								name="email"
-								value={values ? values.email : ''}
-								className={classes.hrFormInput}
-							/>
-						</>
-					)}
 					{!hidden && (
 						<>
 							<div className={classes.hrKey}>Пошта:</div>

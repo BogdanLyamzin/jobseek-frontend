@@ -2,8 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
-const useStyles = makeStyles(() => ({
-	hrImg: {
+const useStyles = makeStyles(theme => ({
+	img: {
 		minHeight: '190px',
 		maxHeight: '200px',
 		borderRadius: '8px',
@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
 		outline: '0',
 	},
 
-	hrNotimg: {
+	notimg: {
 		width: '195px',
 		height: '200px',
 		borderRadius: '8px',
@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
 		outline: '0',
 	},
 
-	hrAddphotoContainer: {
+	addphotoContainer: {
 		position: 'absolute',
 		left: '10px',
 		bottom: '10px',
@@ -29,7 +29,7 @@ const useStyles = makeStyles(() => ({
 		alignItems: 'center',
 	},
 
-	hrAddphoto: {
+	addphoto: {
 		marginLeft: '8px',
 		fontFamily: '"Open Sans", sans-serif',
 		fontSize: '14px',
@@ -43,17 +43,17 @@ const UploadPhoto = ({ user, getRootProps, getInputProps }) => {
 		<>
 			{user && user.result.avatar && (
 				<img
-					className={classes.hrImg}
+					className={classes.img}
 					src={user.result.avatar}
 					{...getRootProps()}
 					alt="avatar"
 				/>
 			)}
 			{((user && !user.result.avatar) || !user) && (
-				<div className={classes.hrNotimg} {...getRootProps()}>
-					<div className={classes.hrAddphotoContainer}>
+				<div className={classes.notimg} {...getRootProps()}>
+					<div className={classes.addphotoContainer}>
 						<AddCircleOutlineIcon />
-						<span className={classes.hrAddphoto}>Додати фото</span>
+						<span className={classes.addphoto}>Додати фото</span>
 					</div>
 				</div>
 			)}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
 	btn: {
 		fontFamily: '"Open Sans", sans-serif',
 		fontSize: '16px',
@@ -12,6 +12,9 @@ const useStyles = makeStyles(() => ({
 		borderRadius: '28px',
 		border: '0',
 		cursor: 'pointer',
+		[theme.breakpoints.down(600)]: {
+			padding: '10px 35px',
+		},
 	},
 }));
 
