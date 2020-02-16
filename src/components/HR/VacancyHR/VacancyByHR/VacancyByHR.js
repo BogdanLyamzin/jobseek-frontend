@@ -7,14 +7,14 @@ import useStyles from './styles';
 import API from '../../../../services/api';
 import getDate from '../../../../utils/getDate';
 import FormControlLabel from './FormControlLabel';
-import { getAllVacancy } from '../../../../store/vacancy/actions';
+import { getVacancyByFilter } from '../../../../store/vacancy/actions';
 import DeleteIconWithModal from '../../../../shared/DeleteIconWithModal';
 
-const VacancyByHR = ({ vacancy, getAllVacancy }) => {
+const VacancyByHR = ({ vacancy, getVacancyByFilter }) => {
 	const classes = useStyles();
 	useEffect(() => {
-		getAllVacancy();
-	}, [getAllVacancy]);
+		getVacancyByFilter('hrId=5e3c361c657e122a841e88e4');
+	}, [getVacancyByFilter]);
 
 	const deleteVacancy = id => {
 		API.deleteVacancy(id);
@@ -70,7 +70,7 @@ const mapStateToProps = ({ vacancy }) => {
 };
 
 const mapDispatchToProps = {
-	getAllVacancy,
+	getVacancyByFilter,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(VacancyByHR);

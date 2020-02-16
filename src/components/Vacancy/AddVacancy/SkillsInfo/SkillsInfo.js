@@ -10,7 +10,7 @@ import Button from '../../../../shared/Button';
 import LanguageVacancy from './LanguageVacancy';
 import SpecializationList from './SpecializationList';
 
-const SkillsInfo = ({ isActive, firstForm }) => {
+const SkillsInfo = ({ isActive, firstForm, user }) => {
 	const classes = useStyles();
 	const [skill, setSkill] = useState({
 		sphere: null,
@@ -51,8 +51,8 @@ const SkillsInfo = ({ isActive, firstForm }) => {
 			...firstForm,
 			...skill,
 			skills: [...checkboxArr],
-			companyId: '34823852',
-			hrId: '841385880780',
+			companyId: user.result.companyId,
+			hrId: user.result._id,
 		};
 		API.addVacancy(body);
 	};
@@ -113,8 +113,9 @@ const objToArr = obj => {
 	return arr;
 };
 
-const mapStateToProps = ({ vacancy }) => {
+const mapStateToProps = ({ hr, vacancy }) => {
 	return {
+		user: hr.user,
 		firstForm: vacancy.addVacancy,
 	};
 };

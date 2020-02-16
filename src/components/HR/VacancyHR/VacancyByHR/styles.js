@@ -24,7 +24,9 @@ const useStyles = makeStyles(theme => ({
 	vacancy: {
 		padding: '20px',
 		marginBottom: '10px',
+		borderRight: '1px solid transparent',
 		'&:hover': {
+			borderRight: '1px solid #00F2C9',
 			backgroundColor: 'rgb(238, 241, 248)',
 		},
 	},
