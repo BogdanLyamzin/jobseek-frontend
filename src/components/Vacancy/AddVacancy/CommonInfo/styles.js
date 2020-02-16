@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const font = '"Open Sans", sans-serif';
 const colorDark = '#E6EBFF';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
 	line: {
 		width: '100%',
 		height: '2px',
@@ -11,13 +11,19 @@ const useStyles = makeStyles(() => ({
 	},
 
 	vacancyLocation: {
-		padding: '0 70px 35px 120px',
 		display: 'flex',
 		justifyContent: 'space-around',
+		[theme.breakpoints.down(600)]: {
+			flexDirection: 'column',
+			alignItems: 'center',
+		},
 	},
 
 	vacancyLocationItem: {
 		flexBasis: '45%',
+		[theme.breakpoints.down(600)]: {
+			flexBasis: '100%',
+		},
 	},
 
 	vacancyKey: {
@@ -46,6 +52,10 @@ const useStyles = makeStyles(() => ({
 		outline: 0,
 		marginBottom: '40px',
 		width: '70%',
+		[theme.breakpoints.down(600)]: {
+			width: '100%',
+			marginBottom: '20px',
+		},
 	},
 
 	vacancyEmploymenttype: {
@@ -71,13 +81,27 @@ const useStyles = makeStyles(() => ({
 		border: 0,
 		borderBottom: `1px solid ${colorDark}`,
 		outline: 0,
-		width: '55%',
+		width: '65%',
+		[theme.breakpoints.down(850)]: {
+			width: '70%',
+		},
+		[theme.breakpoints.down(550)]: {
+			width: '80%',
+		},
 	},
 
 	vacancyDescription: {
 		margin: '0 auto',
 		paddingTop: '55px',
 		width: '70%',
+		[theme.breakpoints.down(850)]: {
+			width: '90%',
+			paddingTop: '35px',
+		},
+		[theme.breakpoints.down(550)]: {
+			width: '100%',
+			paddingTop: '20px',
+		},
 	},
 
 	vacancyDescriptionArea: {

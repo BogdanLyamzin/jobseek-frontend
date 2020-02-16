@@ -3,19 +3,33 @@ import { makeStyles } from '@material-ui/core/styles';
 const font = '"Open Sans", sans-serif';
 const colorDark = '#3D3B69';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
 	container: {
 		width: '1140px',
 		margin: '0 auto',
+		[theme.breakpoints.down(1180)]: {
+			width: '100%',
+			padding: '0 20px',
+		},
 	},
 
 	addvacancy: {
 		padding: '56px 0 40px 0',
+		[theme.breakpoints.down(850)]: {
+			padding: '30px 0',
+		},
+		[theme.breakpoints.down(550)]: {
+			padding: '20px 0',
+		},
 	},
 
 	addvacancyHead: {
 		display: 'flex',
 		justifyContent: 'space-between',
+		[theme.breakpoints.down(550)]: {
+			flexDirection: 'column',
+			alignItems: 'center',
+		},
 	},
 
 	addvacancyIsActive: {
@@ -36,6 +50,9 @@ const useStyles = makeStyles(() => ({
 
 	addvacancyMenu: {
 		display: 'flex',
+		[theme.breakpoints.down(550)]: {
+			flexDirection: 'column',
+		},
 	},
 
 	addvacancyMenuLink: {
@@ -54,10 +71,19 @@ const useStyles = makeStyles(() => ({
 			borderBottom: '1px solid #6D64FF',
 			textDecoration: 'none',
 		},
+		[theme.breakpoints.down(550)]: {
+			flexBasis: '100%',
+		},
 	},
 
 	addvacancyRoutes: {
 		padding: '50px 65px',
+		[theme.breakpoints.down(850)]: {
+			padding: '20px 15px',
+		},
+		[theme.breakpoints.down(550)]: {
+			padding: '15px 10px',
+		},
 	},
 }));
 

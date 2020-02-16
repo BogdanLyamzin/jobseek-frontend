@@ -50,6 +50,18 @@ export const getOneVacancy = id => {
 	};
 };
 
+export const getVacancyByFilter = filter => {
+	return dispatch => {
+		API.getVacancyByFilter(filter)
+			.then(data => {
+				dispatch(successAxios(data.data));
+			})
+			.catch(error => {
+				dispatch(errorAxios(error));
+			});
+	};
+};
+
 export const getAllVacancy = () => {
 	return dispatch => {
 		API.getAllVacancy()

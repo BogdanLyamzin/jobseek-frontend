@@ -11,14 +11,24 @@ const flexBetweenEnd = {
 	alignItems: 'flex-end',
 };
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
 	container: {
 		width: '1140px',
 		margin: '0 auto',
+		[theme.breakpoints.down(1180)]: {
+			width: '100%',
+			padding: '0 20px',
+		},
 	},
 
 	candidate: {
 		padding: '50px 0 40px 0',
+		[theme.breakpoints.down(850)]: {
+			padding: '30px 0',
+		},
+		[theme.breakpoints.down(550)]: {
+			padding: '20px 0',
+		},
 	},
 
 	candidateVacancyNames: {
@@ -26,15 +36,24 @@ const useStyles = makeStyles(() => ({
 		fontSize: '16px',
 		color: colorDark,
 		fontFamily: font,
+		[theme.breakpoints.down(450)]: {
+			fontSize: '14px',
+		},
 	},
 
 	candidateHead: {
 		...flexBetweenEnd,
 		marginBottom: '20px',
+		[theme.breakpoints.down(720)]: {
+			alignItems: 'center',
+		},
 	},
 
 	candidateDates: {
 		...flexBetweenEnd,
+		[theme.breakpoints.down(720)]: {
+			flexDirection: 'column-reverse',
+		},
 	},
 
 	candidateDate: {
@@ -52,6 +71,9 @@ const useStyles = makeStyles(() => ({
 				color: '#00B395',
 			},
 		},
+		[theme.breakpoints.down(720)]: {
+			margin: '0 0 5px 0',
+		},
 	},
 
 	bold: {
@@ -64,6 +86,12 @@ const useStyles = makeStyles(() => ({
 		borderRadius: '8px',
 		padding: '40px 60px',
 		marginBottom: '30px',
+		[theme.breakpoints.down(850)]: {
+			padding: '30px',
+		},
+		[theme.breakpoints.down(550)]: {
+			padding: '20px 15px',
+		},
 	},
 
 	candidateImgFlex: {
@@ -96,6 +124,9 @@ const useStyles = makeStyles(() => ({
 
 	candidateBackgroundFlex: {
 		...flexBetween,
+		[theme.breakpoints.down(750)]: {
+			flexDirection: 'column',
+		},
 	},
 
 	candidateBackgroundItem: {
@@ -105,6 +136,9 @@ const useStyles = makeStyles(() => ({
 	candidateInfoFlex: {
 		...flexBetween,
 		alignItems: 'center',
+		[theme.breakpoints.down(550)]: {
+			flexDirection: 'column',
+		},
 	},
 
 	candidateInfoItem: {
@@ -143,10 +177,13 @@ const useStyles = makeStyles(() => ({
 	candidateBackgroundFlexSkill: {
 		...flexBetween,
 		flexWrap: 'wrap',
+		[theme.breakpoints.down(550)]: {
+			flexDirection: 'column',
+		},
 	},
 
 	candidateBackgroundFooter: {
-		flexBasis: '37%',
+		flexBasis: '45%',
 	},
 
 	candidateBtnFlex: {
@@ -163,6 +200,9 @@ const useStyles = makeStyles(() => ({
 		outline: 0,
 		cursor: 'pointer',
 		padding: '15px 40px',
+		[theme.breakpoints.down(500)]: {
+			padding: '8px 25px',
+		},
 	},
 
 	candidateBtnRed: {

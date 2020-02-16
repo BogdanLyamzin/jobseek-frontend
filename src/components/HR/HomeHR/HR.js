@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
 import FormHR from './FormHR';
 import useStyles from './styles';
@@ -39,9 +40,13 @@ const HR = ({ user, updateHR }) => {
 	return (
 		<div className={classes.container}>
 			<div className={classes.hr}>
-				<Title text="Мій профіль (HR)" />
+				<Title text="Мій профіль" />
 				<div className={classes.hrInfo}>
 					<form className={classes.hrFlex}>
+						<CreateOutlinedIcon
+							className={`${classes.iconPenSm} ${classes.iconPen}`}
+							onClick={updateHRinfo}
+						/>
 						<UpdatePhoto uploadPhoto={selectedFile} classes={classes} />
 						<FormHR
 							values={values}

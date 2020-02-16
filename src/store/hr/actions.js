@@ -39,6 +39,18 @@ export const getOneHR = id => {
 	};
 };
 
+export const getHrByFilter = filter => {
+	return dispatch => {
+		API.getHrByFilter(filter)
+			.then(data => {
+				dispatch(successAxios(data.data));
+			})
+			.catch(error => {
+				dispatch(errorAxios(error));
+			});
+	};
+};
+
 export const getAllHR = () => {
 	return dispatch => {
 		API.getAllHR()

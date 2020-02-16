@@ -7,7 +7,7 @@ const flexBetween = {
 	justifyContent: 'space-between',
 };
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
 	alignCenter: {
 		textAlign: 'center',
 	},
@@ -18,6 +18,9 @@ const useStyles = makeStyles(() => ({
 		lineHeight: '19px',
 		color: '#00B395',
 		marginLeft: '8px',
+		[theme.breakpoints.down(450)]: {
+			fontSize: '12px',
+		},
 	},
 
 	line: {
@@ -31,6 +34,9 @@ const useStyles = makeStyles(() => ({
 		alignItems: 'center',
 		marginBottom: '30px',
 		flexWrap: 'wrap',
+		[theme.breakpoints.down(700)]: {
+			marginBottom: '20px',
+		},
 	},
 
 	vacancySkillItemSelect: {
@@ -38,10 +44,26 @@ const useStyles = makeStyles(() => ({
 		fontFamily: font,
 		fontSize: '17px',
 		color: 'rgb(48, 46, 80)',
+		[theme.breakpoints.down(830)]: {
+			width: '70%',
+		},
+		[theme.breakpoints.down(590)]: {
+			width: '60%',
+		},
+		[theme.breakpoints.down(450)]: {
+			width: '50%',
+		},
 	},
 
 	vacancySkillItem: {
 		flexBasis: '30%',
+		[theme.breakpoints.down(800)]: {
+			flexBasis: '48%',
+		},
+		[theme.breakpoints.down(550)]: {
+			flexBasis: '100%',
+			textAlign: 'center',
+		},
 	},
 
 	vacancySkillItemLink: {
@@ -64,30 +86,35 @@ const useStyles = makeStyles(() => ({
 		fontSize: '17px',
 		lineHeight: '25px',
 		color: 'rgb(48, 46, 80)',
-		borderBottom: '2px solid rgb(177, 174, 174)',
+		borderBottom: '1px solid rgb(177, 174, 174)',
 		'&:hover': {
-			borderBottom: '2px solid rgb(56, 55, 55)',
+			borderBottom: '1px solid rgb(56, 55, 55)',
 		},
 		'&:focus': {
-			borderBottom: '2px solid rgb(78, 97, 190)',
+			borderBottom: '1px solid rgb(78, 97, 190)',
 		},
-	},
-
-	vacancySkillItemSlider: {
-		flexBasis: '60%',
-	},
-
-	vacancySkillEnglish: {
-		width: '15%',
-		textAlign: 'right',
-		fontFamily: '"Roboto", sans-serif',
-		color: '#ADADAD',
+		[theme.breakpoints.down(830)]: {
+			width: '70%',
+		},
+		[theme.breakpoints.down(590)]: {
+			width: '60%',
+		},
+		[theme.breakpoints.down(450)]: {
+			width: '50%',
+		},
 	},
 
 	vacancySkillListFlex: {
 		...flexBetween,
 		alignItems: 'flex-start',
 		padding: '30px 0 90px 0',
+		[theme.breakpoints.down(800)]: {
+			padding: '20px 0 50px 0',
+		},
+		[theme.breakpoints.down(720)]: {
+			flexDirection: 'column',
+			alignItems: 'center',
+		},
 	},
 
 	vacancySkillList: {
@@ -103,6 +130,20 @@ const useStyles = makeStyles(() => ({
 		flexBasis: '38%',
 		padding: '5px 0 0 50px',
 		bordeLleft: '2px solid #E6EBFF',
+		[theme.breakpoints.down(720)]: {
+			flexDirection: 'row',
+			justifyContent: 'space-between',
+			flexWrap: 'wrap',
+			padding: '5px 20px 0 30px',
+			width: '100%',
+			border: 0,
+		},
+		[theme.breakpoints.down(550)]: {
+			flexDirection: 'column',
+			padding: '5px 20px 0 30px',
+			width: '100%',
+			border: 0,
+		},
 	},
 
 	vacancySkillListItem: {
@@ -122,6 +163,9 @@ const useStyles = makeStyles(() => ({
 
 	vacancySliderItem: {
 		marginBottom: '25px',
+		[theme.breakpoints.down(720)]: {
+			flexBasis: '40%',
+		},
 	},
 
 	marginBottom40: {
