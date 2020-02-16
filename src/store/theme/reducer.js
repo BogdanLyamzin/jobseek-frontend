@@ -1,4 +1,4 @@
-import { CHANGE_TO_DARK, CHANGE_TO_LIGHT } from '../actions/theme/types';
+import { CHANGE_TO_DARK, CHANGE_TO_LIGHT } from './types';
 
 const initialState = {
 	theme: 'light',
