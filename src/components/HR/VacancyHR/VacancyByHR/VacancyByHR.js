@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
+import { Translation } from 'react-i18next';
+import CreateOutlined from '@material-ui/icons/CreateOutlined';
 
 import useStyles from './styles';
 import API from '../../../../services/api';
@@ -22,44 +23,50 @@ const VacancyByHR = ({ vacancy, getVacancyByFilter }) => {
 	};
 
 	return (
-		<div className={classes.vacancyList}>
-			{vacancy && Array.isArray(vacancy.result) && (
-				<>
-					{vacancy.result.map(elem => {
-						return (
-							<div key={elem._id} id={elem._id} className={classes.vacancy}>
-								<div className={classes.vacancyFlex}>
-									<div className={classes.vacancyName}>{elem.vacancyName}</div>
-									<div>
-										<FormControlLabel
-											isActive={elem.active}
-											vacancy={elem._id}
-										/>
+		<Translation>
+			{t => (
+				<div className={classes.vacancyList}>
+					{vacancy && Array.isArray(vacancy.result) && (
+						<>
+							{vacancy.result.map(elem => {
+								return (
+									<div key={elem._id} id={elem._id} className={classes.vacancy}>
+										<div className={classes.vacancyFlex}>
+											<div className={classes.vacancyName}>
+												{elem.vacancyName}
+											</div>
+											<div>
+												<FormControlLabel
+													isActive={elem.active}
+													vacancy={elem._id}
+												/>
+											</div>
+										</div>
+										<div className={classes.vacancyFlex}>
+											<div className={classes.vacancyCountry}>
+												{elem.city}, {elem.country}
+											</div>
+											<DeleteIconWithModal
+												text="Are you sure you want to delete?"
+												handleDelete={() => deleteVacancy(elem._id)}
+											/>
+										</div>
+										<div className={classes.vacancyFlex}>
+											<div className={classes.vacancyDate}>
+												{t('POSTED')} {getDate(elem.date)}
+											</div>
+											<Link to={`/hr/updateVacancy/${elem._id}`}>
+												<CreateOutlined className={classes.vacancyIcon} />
+											</Link>
+										</div>
 									</div>
-								</div>
-								<div className={classes.vacancyFlex}>
-									<div className={classes.vacancyCountry}>
-										{elem.city}, {elem.country}
-									</div>
-									<DeleteIconWithModal
-										text="Are you sure you want to delete?"
-										handleDelete={() => deleteVacancy(elem._id)}
-									/>
-								</div>
-								<div className={classes.vacancyFlex}>
-									<div className={classes.vacancyDate}>
-										Опубліковано {getDate(elem.date)}
-									</div>
-									<Link to={`/hr/updateVacancy/${elem._id}`}>
-										<CreateOutlinedIcon className={classes.vacancyIcon} />
-									</Link>
-								</div>
-							</div>
-						);
-					})}
-				</>
+								);
+							})}
+						</>
+					)}
+				</div>
 			)}
-		</div>
+		</Translation>
 	);
 };
 

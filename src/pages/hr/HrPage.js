@@ -1,6 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { Translation } from 'react-i18next';
 import { Switch, Route } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -22,23 +23,27 @@ const HrPage = () => {
 	const classes = useStyles();
 
 	return (
-		<div className={classes.root}>
-			<Header
-				linkList={[
-					{ link: '/hr', text: 'Мій профіль' },
-					{ link: '/hr/vacancy', text: 'Мої вакансії' },
-					{ link: '/hr/vacancyAdd', text: 'Нова вакансія' },
-				]}
-			/>
-			<Switch>
-				<Route path="/hr/vacancy" component={VacancyHR} />
-				<Route path="/hr/vacancyAdd" component={AddVacancy} />
-				<Route path="/hr/oneCandidate" component={OneCandidate} />
-				<Route path="/hr/updateVacancy/:id" component={UpdateVacancy} />
-				<Route path="/hr" component={HomeHR} />
-			</Switch>
-			<Footer />
-		</div>
+		<Translation>
+			{t => (
+				<div className={classes.root}>
+					<Header
+						linkList={[
+							{ link: '/hr', text: `${t('MY_PROFILE')}` },
+							{ link: '/hr/vacancy', text: `${t('MY_VACANCIES')}` },
+							{ link: '/hr/vacancyAdd', text: `${t('ADD_VACANCY')}` },
+						]}
+					/>
+					<Switch>
+						<Route path="/hr/vacancy" component={VacancyHR} />
+						<Route path="/hr/vacancyAdd" component={AddVacancy} />
+						<Route path="/hr/oneCandidate" component={OneCandidate} />
+						<Route path="/hr/updateVacancy/:id" component={UpdateVacancy} />
+						<Route path="/hr" component={HomeHR} />
+					</Switch>
+					<Footer />
+				</div>
+			)}
+		</Translation>
 	);
 };
 

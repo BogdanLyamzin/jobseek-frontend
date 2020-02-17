@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Translation } from 'react-i18next';
 
 import Button from '../../../../shared/Button';
 import useStyles from '../../AddVacancy/CommonInfo/styles';
@@ -38,28 +39,34 @@ const CommonInfo = ({ info, saveInfo, oneVacancy }) => {
 	};
 
 	return (
-		<div>
-			<FormCommonInfo
-				classes={classes}
-				handleChange={handleChange}
-				values={values}
-			/>
+		<Translation>
+			{t => (
+				<div>
+					<FormCommonInfo
+						classes={classes}
+						handleChange={handleChange}
+						values={values}
+					/>
 
-			<hr className={classes.vacancyLine} />
+					<hr className={classes.vacancyLine} />
 
-			<div className={classes.vacancyDescription}>
-				<div className={classes.vacancyKey}>Описання вакансії*</div>
-				<textarea
-					name="description"
-					className={classes.vacancyDescriptionArea}
-					onChange={handleChange}
-					value={values.description}
-				/>
-				<div className={classes.alignCenter}>
-					<Button click={saveInfo({ ...values })} text="Зберегти" />
+					<div className={classes.vacancyDescription}>
+						<div className={classes.vacancyKey}>
+							{t('VACANCY_DESCRIPTION')}*
+						</div>
+						<textarea
+							name="description"
+							className={classes.vacancyDescriptionArea}
+							onChange={handleChange}
+							value={values.description}
+						/>
+						<div className={classes.alignCenter}>
+							<Button click={() => saveInfo({ ...values })} text={t('SAVE')} />
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
+			)}
+		</Translation>
 	);
 };
 
