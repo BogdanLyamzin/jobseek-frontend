@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Translation } from 'react-i18next';
 
 import useStyles from './styles';
 import SphereList from './SphereList';
@@ -9,6 +10,7 @@ import { englishLevel } from './skillsList';
 import Button from '../../../../shared/Button';
 import LanguageVacancy from './LanguageVacancy';
 import SpecializationList from './SpecializationList';
+import { objToArr } from '../../../../utils/transformArr-Obj';
 
 const SkillsInfo = ({ isActive, firstForm, user }) => {
 	const classes = useStyles();
@@ -72,45 +74,43 @@ const SkillsInfo = ({ isActive, firstForm, user }) => {
 	};
 
 	return (
-		<>
-			<SphereList
-				skill={skill}
-				classes={classes}
-				setSkill={setSkill}
-				handleClickSkill={handleClickSkill}
-			/>
-			<SpecializationList
-				skill={skill}
-				classes={classes}
-				setSkill={setSkill}
-				handleClickSkill={handleClickSkill}
-			/>
-			<LanguageVacancy skill={skill} classes={classes} setSkill={setSkill} />
-			<ChackboxList
-				skill={skill}
-				classes={classes}
-				checkbox={checkbox}
-				checkboxArr={checkboxArr}
-				setCheckbox={setCheckbox}
-				handleChangeEng={handleChangeEnglish}
-				handleChange={handleChangeSkillSlider}
-				checkboxHandleChange={checkboxHandleChange}
-			/>
-			<div className={classes.alignCenter}>
-				<Button text="Опублікувати" click={() => addVacancy()} />
-			</div>
-		</>
+		<Translation>
+			{t => (
+				<>
+					<SphereList
+						skill={skill}
+						classes={classes}
+						setSkill={setSkill}
+						handleClickSkill={handleClickSkill}
+					/>
+					<SpecializationList
+						skill={skill}
+						classes={classes}
+						setSkill={setSkill}
+						handleClickSkill={handleClickSkill}
+					/>
+					<LanguageVacancy
+						skill={skill}
+						classes={classes}
+						setSkill={setSkill}
+					/>
+					<ChackboxList
+						skill={skill}
+						classes={classes}
+						checkbox={checkbox}
+						checkboxArr={checkboxArr}
+						setCheckbox={setCheckbox}
+						handleChangeEng={handleChangeEnglish}
+						handleChange={handleChangeSkillSlider}
+						checkboxHandleChange={checkboxHandleChange}
+					/>
+					<div className={classes.alignCenter}>
+						<Button text={t('POST')} click={() => addVacancy()} />
+					</div>
+				</>
+			)}
+		</Translation>
 	);
-};
-
-const objToArr = obj => {
-	let arr = [];
-	for (let key in obj) {
-		if (obj[key]) {
-			arr.push({ name: key, id: obj[key].id, experience: obj[key].experience });
-		}
-	}
-	return arr;
 };
 
 const mapStateToProps = ({ hr, vacancy }) => {

@@ -3,7 +3,7 @@ import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 
 import hrReducer from './hr/reducer';
 import adminReducer from './admin/reducer';
-import themeReducer from './theme/reducer';
+import themeReducer from './main/reducers/themeReducer';
 import vacancyReducer from './vacancy/reducer';
 
 const rootReducer = combineReducers({

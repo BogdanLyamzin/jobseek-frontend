@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Translation } from 'react-i18next';
 
 import ChackboxList from './CheckboxList';
 import { englishLevel } from './skillsList';
@@ -79,39 +80,43 @@ const SkillsInfo = ({ id, info, oneVacancy, updateVacancy }) => {
 	};
 
 	return (
-		<>
-			<SphereList
-				skill={skill}
-				classes={classes}
-				setSkill={setSkill}
-				handleClickSkill={handleClickSkill}
-			/>
-			<SpecializationList
-				skill={skill}
-				classes={classes}
-				setSkill={setSkill}
-				handleClickSkill={handleClickSkill}
-			/>
-			<LanguageVacancy
-				skill={skill}
-				classes={classes}
-				setSkill={setSkill}
-				handleChange={handleChangeEnglish}
-			/>
-			<ChackboxList
-				skill={skill}
-				classes={classes}
-				checkbox={checkbox}
-				checkboxArr={checkboxArr}
-				setCheckbox={setCheckbox}
-				handleChangeEng={handleChangeEnglish}
-				handleChange={handleChangeSkillSlider}
-				checkboxHandleChange={checkboxHandleChange}
-			/>
-			<div className={classes.alignCenter}>
-				<Button text="Оновити" click={() => update()} />
-			</div>
-		</>
+		<Translation>
+			{t => (
+				<>
+					<SphereList
+						skill={skill}
+						classes={classes}
+						setSkill={setSkill}
+						handleClickSkill={handleClickSkill}
+					/>
+					<SpecializationList
+						skill={skill}
+						classes={classes}
+						setSkill={setSkill}
+						handleClickSkill={handleClickSkill}
+					/>
+					<LanguageVacancy
+						skill={skill}
+						classes={classes}
+						setSkill={setSkill}
+						handleChange={handleChangeEnglish}
+					/>
+					<ChackboxList
+						skill={skill}
+						classes={classes}
+						checkbox={checkbox}
+						checkboxArr={checkboxArr}
+						setCheckbox={setCheckbox}
+						handleChangeEng={handleChangeEnglish}
+						handleChange={handleChangeSkillSlider}
+						checkboxHandleChange={checkboxHandleChange}
+					/>
+					<div className={classes.alignCenter}>
+						<Button text={t('UPDATE')} click={() => update()} />
+					</div>
+				</>
+			)}
+		</Translation>
 	);
 };
 

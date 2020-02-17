@@ -1,4 +1,5 @@
 import React from 'react';
+import { Translation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
@@ -40,25 +41,29 @@ const useStyles = makeStyles(theme => ({
 const UploadPhoto = ({ user, getRootProps, getInputProps }) => {
 	const classes = useStyles();
 	return (
-		<>
-			{user && user.result.avatar && (
-				<img
-					className={classes.img}
-					src={user.result.avatar}
-					{...getRootProps()}
-					alt="avatar"
-				/>
+		<Translation>
+			{t => (
+				<>
+					{user && user.result.avatar && (
+						<img
+							className={classes.img}
+							src={user.result.avatar}
+							{...getRootProps()}
+							alt="avatar"
+						/>
+					)}
+					{((user && !user.result.avatar) || !user) && (
+						<div className={classes.notimg} {...getRootProps()}>
+							<div className={classes.addphotoContainer}>
+								<AddCircleOutlineIcon />
+								<span className={classes.addphoto}>{t('ADD_FOTO')}</span>
+							</div>
+						</div>
+					)}
+					<input {...getInputProps()} />
+				</>
 			)}
-			{((user && !user.result.avatar) || !user) && (
-				<div className={classes.notimg} {...getRootProps()}>
-					<div className={classes.addphotoContainer}>
-						<AddCircleOutlineIcon />
-						<span className={classes.addphoto}>Додати фото</span>
-					</div>
-				</div>
-			)}
-			<input {...getInputProps()} />
-		</>
+		</Translation>
 	);
 };
 

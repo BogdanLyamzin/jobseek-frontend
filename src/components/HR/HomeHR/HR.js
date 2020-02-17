@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Translation } from 'react-i18next';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
 import FormHR from './FormHR';
@@ -23,13 +24,13 @@ const HR = ({ user, updateHR }) => {
 
 	const submitForm = e => {
 		e.preventDefault();
-		updateHR('5dfba763a638d31fcc1921de', values);
+		updateHR(user.result._id, values);
 	};
 
 	const selectedFile = photo => {
 		const fd = new FormData();
 		fd.append('avatar', photo[0]);
-		updateHR('5dfba763a638d31fcc1921de', fd);
+		updateHR(user.result._id, fd);
 	};
 
 	const updateHRinfo = e => {
@@ -38,28 +39,32 @@ const HR = ({ user, updateHR }) => {
 	};
 
 	return (
-		<div className={classes.container}>
-			<div className={classes.hr}>
-				<Title text="Мій профіль" />
-				<div className={classes.hrInfo}>
-					<form className={classes.hrFlex}>
-						<CreateOutlinedIcon
-							className={`${classes.iconPenSm} ${classes.iconPen}`}
-							onClick={updateHRinfo}
-						/>
-						<UpdatePhoto uploadPhoto={selectedFile} classes={classes} />
-						<FormHR
-							values={values}
-							classes={classes}
-							submitForm={submitForm}
-							updateHRinfo={updateHRinfo}
-							hidden={hiddenForm}
-							handleChange={handleChange}
-						/>
-					</form>
+		<Translation>
+			{t => (
+				<div className={classes.container}>
+					<div className={classes.hr}>
+						<Title text={t('MY_PROFILE')} />
+						<div className={classes.hrInfo}>
+							<form className={classes.hrFlex}>
+								<CreateOutlinedIcon
+									className={`${classes.iconPenSm} ${classes.iconPen}`}
+									onClick={updateHRinfo}
+								/>
+								<UpdatePhoto uploadPhoto={selectedFile} classes={classes} />
+								<FormHR
+									values={values}
+									classes={classes}
+									submitForm={submitForm}
+									updateHRinfo={updateHRinfo}
+									hidden={hiddenForm}
+									handleChange={handleChange}
+								/>
+							</form>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
+			)}
+		</Translation>
 	);
 };
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Translation } from 'react-i18next';
 import { Link, Switch, Route } from 'react-router-dom';
 
 import useStyles from './styles';
@@ -12,42 +13,49 @@ const AddVacancy = () => {
 	const [isActive, setIsActive] = useState(true);
 
 	return (
-		<div className={classes.container}>
-			<div className={classes.addvacancy}>
-				<div className={classes.addvacancyHead}>
-					<div></div>
-					<Title text="Створити вакансію" />
-					<div className={classes.addvacancyIsActive}>
-						<div>Активність вакансії</div>
-						<SwitchControl setIsActive={setIsActive} isActive={isActive} />
-					</div>
-				</div>
+		<Translation>
+			{t => (
+				<div className={classes.container}>
+					<div className={classes.addvacancy}>
+						<div className={classes.addvacancyHead}>
+							<div></div>
+							<Title text={t('CREATE_VACANCY')} />
+							<div className={classes.addvacancyIsActive}>
+								<div>{t('ACTIVITY_VACANCIES')}</div>
+								<SwitchControl setIsActive={setIsActive} isActive={isActive} />
+							</div>
+						</div>
 
-				<div className={classes.addvacancyMain}>
-					<div className={classes.addvacancyMenu}>
-						<Link to="/hr/vacancyAdd" className={classes.addvacancyMenuLink}>
-							Загальна інформація
-						</Link>
-						<Link
-							to="/hr/vacancyAdd/skills"
-							className={classes.addvacancyMenuLink}
-						>
-							Навички
-						</Link>
-					</div>
-					<div className={classes.addvacancyRoutes}>
-						<Switch>
-							<Route exact path="/hr/vacancyAdd">
-								<CommonInfo />
-							</Route>
-							<Route path="/hr/vacancyAdd/skills">
-								<SkillsInfo isActive={isActive} />
-							</Route>
-						</Switch>
+						<div className={classes.addvacancyMain}>
+							<div className={classes.addvacancyMenu}>
+								<Link
+									to="/hr/vacancyAdd"
+									className={classes.addvacancyMenuLink}
+								>
+									{t('COMMON_INFO')}
+								</Link>
+								<Link
+									to="/hr/vacancyAdd/skills"
+									className={classes.addvacancyMenuLink}
+								>
+									{t('SKILLS')}
+								</Link>
+							</div>
+							<div className={classes.addvacancyRoutes}>
+								<Switch>
+									<Route exact path="/hr/vacancyAdd">
+										<CommonInfo />
+									</Route>
+									<Route path="/hr/vacancyAdd/skills">
+										<SkillsInfo isActive={isActive} />
+									</Route>
+								</Switch>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+			)}
+		</Translation>
 	);
 };
 

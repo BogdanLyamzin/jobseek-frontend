@@ -1,4 +1,5 @@
 import React from 'react';
+import { Translation } from 'react-i18next';
 import { Switch, Route } from 'react-router-dom';
 
 import useStyles from './styles';
@@ -14,28 +15,32 @@ const VacancyHR = () => {
 	const classes = useStyles();
 
 	return (
-		<div className={classes.container}>
-			<div className={classes.hr}>
-				<Title text="Мoї вакансії" />
-				<div className={classes.hrVacancy}>
-					<HRVacancyMenu classes={classes} />
-					<div className={classes.hrVacancyFlex}>
-						<VacancyByHR />
-						<div className={classes.hrVacancyRoutes}>
-							<HrMenuSm classes={classes} />
-							<Switch>
-								<Route exact path="/hr/vacancy" component={CandidateList} />
-								<Route path="/hr/vacancy/sent" component={SentOffersList} />
-								<Route
-									path="/hr/vacancy/received"
-									component={ReceivedOffersList}
-								/>
-							</Switch>
+		<Translation>
+			{t => (
+				<div className={classes.container}>
+					<div className={classes.hr}>
+						<Title text={t('MY_VACANCIES')} />
+						<div className={classes.hrVacancy}>
+							<HRVacancyMenu classes={classes} />
+							<div className={classes.hrVacancyFlex}>
+								<VacancyByHR />
+								<div className={classes.hrVacancyRoutes}>
+									<HrMenuSm classes={classes} />
+									<Switch>
+										<Route exact path="/hr/vacancy" component={CandidateList} />
+										<Route path="/hr/vacancy/sent" component={SentOffersList} />
+										<Route
+											path="/hr/vacancy/received"
+											component={ReceivedOffersList}
+										/>
+									</Switch>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+			)}
+		</Translation>
 	);
 };
 
