@@ -4,8 +4,8 @@ import * as router from 'react-router-dom';
 import { Container } from 'reactstrap';
 
 import {
-  // AppAside,
-  AppFooter,
+  // AppAside, видалити компонент
+  // AppFooter, видалити компонент
   AppHeader,
   AppSidebar,
   AppSidebarFooter,
@@ -21,12 +21,12 @@ import navigation from '../../_nav';
 import routes from '../../routes';
 
 // const DefaultAside = React.lazy(() => import('./DefaultAside'));
-const DefaultFooter = React.lazy(() => import('./DefaultFooter'));
+// const DefaultFooter = React.lazy(() => import('./DefaultFooter'));
 const DefaultHeader = React.lazy(() => import('./DefaultHeader'));
 
 class DefaultLayout extends Component {
 
-  loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
+  loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>;
 
   signOut(e) {
     e.preventDefault();
@@ -79,11 +79,11 @@ class DefaultLayout extends Component {
           {/*  </Suspense>*/}
           {/*</AppAside>*/}
         </div>
-        <AppFooter>
-          <Suspense fallback={this.loading()}>
-            <DefaultFooter />
-          </Suspense>
-        </AppFooter>
+        {/*<AppFooter>*/}
+        {/*  <Suspense fallback={this.loading()}>*/}
+        {/*    <DefaultFooter />*/}
+        {/*  </Suspense>*/}
+        {/*</AppFooter>*/}
       </div>
     );
   }

@@ -1,40 +1,40 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Card, CardBody, CardHeader, Col, Row, } from 'reactstrap';
+import {  Card, CardBody, CardHeader, Col, Row, } from 'reactstrap';
 // import { connect } from 'react-redux';
-// import { getAllSpheres } from '../../../../../store/admin/actions/sphereActions';
+import SelectProf from "../Select/SelectProf";
+// import { getAllVacancies } from '../../../../../store/admin/actions/vacancyActions';
 import ReactPaginate from 'react-paginate';
 import _ from 'lodash';
+import VacanciesList from "./VacanciesList";
 import Search from "../Search/Search";
-import SphereList from "./SphereList";
 
-class Spheres extends Component {
+class VacancyTemplate extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isShowForm: false,
-      sphereName: '',
+      options: [],
       currentPage: 0,
       search: '',
     };
   }
   componentDidMount() {
-    axios.get(`http://localhost:5000/spheres`).then(data => this.setState({sphere: data.data.result}));
+    axios.get("http://localhost:5000/vacancytemplate").then( res =>
+      this.setState({ vacancy: res.data.result})).catch( err => console.log(err));
+
+    axios.get("http://localhost:5000/professions")
+      .then((data) =>  {
+        this.setState({ options: data.data.result});
+      })
+      .catch( err => console.log(err));
   }
 
   showFormForAdd = () => {
     let val = !this.state.isShowForm;
     this.setState( {isShowForm: val});
   };
-  addSphere (state) {
-    axios.post(`http://localhost:5000/spheres`, { sphereName: state.sphereName})
-      .then( data => axios.get(`http://localhost:5000/spheres`).then(data1 => this.setState({sphere: data1.data.result})))
-      .catch( err => console.log(err));
-  }
-  onChangeInput = (event) => {
-    const {name} = event.target;
-    this.setState( { [name]: event.target.value } );
-  };
+
   pageChangeHandler = ({selected}) => (
     this.setState({currentPage: selected})
   );
@@ -42,26 +42,25 @@ class Spheres extends Component {
     this.setState({search, currentPage: 0});
   };
   getFilteredData(){
-    const { search, sphere } = this.state;
+    const { search, vacancy} = this.state;
+
 
     if (!search) {
-      return sphere;
+      return vacancy;
     }
-
-    let result = sphere.filter(item => item['sphereName'].toLowerCase().includes(search.toLowerCase()));
-
+    let result = vacancy.filter(item => item['vacancyName'].toLowerCase().includes(search.toLowerCase()));
     if(!result.length){
-      result = this.state.sphere;
+      result = this.state.vacancy;
     }
     return result;
   }
   render() {
     let pageSize = 5;
-    let { isShowForm } = this.state;
-    const { sphere } = this.state;
+    let { isShowForm, options } = this.state;
+    const { vacancy } = this.state;
     let pageCount = 0;
-    if (sphere) {
-      pageCount =  Math.ceil(sphere.length / pageSize);
+    if (vacancy) {
+      pageCount =  Math.ceil(vacancy.length / pageSize);
     }
     const filteredData = this.getFilteredData();
     const displayData = _.chunk(filteredData, pageSize)[this.state.currentPage];
@@ -69,33 +68,30 @@ class Spheres extends Component {
       <div className="animated fadeIn">
         <Row>
           <Col sm="12" >
-            { (sphere && Array.isArray(sphere)) && (
+            { (vacancy && Array.isArray(vacancy)) && (
               <Search onSearch={this.searchHandler}/>
             )}
             <Card>
               <CardHeader className='d-flex justify-content-between'>
-                <strong>Список професійних сфер: </strong>
-                <button className='btn btn-pill btn-success' onClick={this.showFormForAdd}>Додати професійну сферу</button>
+                <strong>Список вакансій: </strong>
+                <button className='btn btn-pill btn-success' onClick={this.showFormForAdd}>Додати вакансію</button>
               </CardHeader>
-                <CardBody>
-                <div id="accordionSphere">
-                  {(!sphere || !Array.isArray(sphere)) && (
-                    <>Список сфер пустий! Додайте сферу.</>
+              <CardBody>
+                <div id="accordionProf">
+                  {(!vacancy || !Array.isArray(vacancy) || vacancy.length === 0) && (
+                    <>Список вакансій пустий! Додайте вакансію.</>
                   )}
                   {isShowForm && (
-                    <div className='col-12 col-md-6 p-2'>
-                      <input type='text' name='sphereName' className='w-100 border border-light rounded p-2'
-                             value={this.state.sphereName} onChange={this.onChangeInput} placeholder='Назва сфери'></input>
-                      <input type="submit" value="Зберегти" className='btn btn-pill btn-success text-right m-2'
-                             onClick={ ()=> {(this.addSphere(this.state));} }
-                        />
-                    </div>
-                    )}
-                  { (sphere && Array.isArray(sphere)) && (
-                    <SphereList sphere={displayData} />
+                    <SelectProf options={options}></SelectProf>
                   )}
-                  { sphere &&
-                  (sphere.length > pageSize
+                  { (vacancy && Array.isArray(vacancy) && vacancy.length !== 0) && (
+                    <div className='pb-4'>
+                      <VacanciesList vacancy={displayData} options={options}/>
+                    </div>
+                  )
+                  }
+                  { vacancy &&
+                  (vacancy.length > pageSize
                       ? <ReactPaginate
                         previousLabel={'<'}
                         nextLabel={'>'}
@@ -116,7 +112,9 @@ class Spheres extends Component {
                         forcePage={this.state.currentPage}
                       /> : null
                   )}
+
                 </div>
+
               </CardBody>
             </Card>
           </Col>
@@ -126,4 +124,5 @@ class Spheres extends Component {
   }
 }
 
-export default Spheres;
+
+export default VacancyTemplate;

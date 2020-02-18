@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {  Card, CardBody, CardHeader, Col, Row, } from 'reactstrap';
-import SelectCategory from "../Select/SelectCategory";
+// import { connect } from 'react-redux';
+import SelectSphere from "../Select/SelectSphere";
+// import { getAllProfessions } from '../../../../../store/admin/actions/professionActions';
 import ReactPaginate from 'react-paginate';
 import _ from 'lodash';
-import SkillsList from "./SkillsList";
+import ProfessionList from "./ProfessionList";
 import Search from "../Search/Search";
 
-class Skills extends Component {
+class Professions extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,19 +20,18 @@ class Skills extends Component {
     };
   }
   componentDidMount() {
-    axios.get("http://localhost:5000/skills").then( res =>
-      // eslint-disable-next-line no-console
-      this.setState({ skill: res.data.result})).catch( err => console.log(err));
-
-    axios.get("http://localhost:5000/categories")
+    axios.get("http://localhost:5000/professions").then( res => {
+      this.setState({ profession: res.data.result});
+      })
+      .catch( err => console.log(err));
+    axios.get("http://localhost:5000/spheres")
       .then((data) =>  {
         this.setState({ options: data.data.result});
       })
-      // eslint-disable-next-line no-console
       .catch( err => console.log(err));
   }
 
-  showFormForAddSkill = () => {
+  showFormForAdd = () => {
     let val = !this.state.isShowForm;
     this.setState( {isShowForm: val});
   };
@@ -42,23 +43,23 @@ class Skills extends Component {
     this.setState({search, currentPage: 0});
   };
   getFilteredData(){
-    const { search, skill} = this.state;
+    const { search, profession} = this.state;
 
     if (!search) {
-      return skill;
+      return profession;
     }
-    let result = skill.filter(item => item['skillName'].toLowerCase().includes(search.toLowerCase()));
+    let result = profession.filter(item => item['professionName'].toLowerCase().includes(search.toLowerCase()));
     if(!result.length){
-      result = this.state.skill;
+      result = this.state.profession;
     }
     return result;
   }
   render() {
-    let pageSize = 5;
-    let { isShowForm, options, skill } = this.state;
+    const pageSize = 5;
+    let { isShowForm, options, profession } = this.state;
     let pageCount = 0;
-    if (skill) {
-      pageCount =  Math.ceil(skill.length / pageSize);
+    if (profession) {
+      pageCount =  Math.ceil(profession.length / pageSize);
     }
     const filteredData = this.getFilteredData();
     const displayData = _.chunk(filteredData, pageSize)[this.state.currentPage];
@@ -66,30 +67,30 @@ class Skills extends Component {
       <div className="animated fadeIn">
         <Row>
           <Col sm="12" >
-            { (skill && Array.isArray(skill)) && (
+            { (profession && Array.isArray(profession)) && (
               <Search onSearch={this.searchHandler}/>
             )}
             <Card>
               <CardHeader className='d-flex justify-content-between'>
-                <strong>Список навичок: </strong>
-                <button className='btn btn-pill btn-success' onClick={this.showFormForAddSkill}>Додати навичку</button>
+                <strong>Список професій: </strong>
+                <button className='btn btn-pill btn-success' onClick={this.showFormForAdd}>Додати професію</button>
               </CardHeader>
                 <CardBody>
-                <div id="accordionSkill">
-                  {(!skill || !Array.isArray(skill) ) && (
-                    <>Список навичок пустий! Додайте навичку.</>
+                <div id="accordionProf">
+                  {(!profession || !Array.isArray(profession)) && (
+                    <>Список професій пустий! Додайте професію.</>
                   )}
                   {isShowForm && (
-                     <SelectCategory options={options}></SelectCategory>
+                     <SelectSphere options={options}></SelectSphere>
                     )}
-                  { (skill && Array.isArray(skill) ) && (
+                  { (profession && Array.isArray(profession)) && (
                     <div className='pb-4'>
-                    <SkillsList skill={displayData} options={options}/>
+                    <ProfessionList profession={displayData} options={options}/>
                     </div>
                   )
                   }
-                    { skill &&
-                    (skill.length > pageSize
+                    { profession &&
+                    (profession.length > pageSize
                         ? <ReactPaginate
                           previousLabel={'<'}
                           nextLabel={'>'}
@@ -111,6 +112,7 @@ class Skills extends Component {
                         /> : null
                     )}
                 </div>
+
               </CardBody>
             </Card>
           </Col>
@@ -120,4 +122,4 @@ class Skills extends Component {
   }
 }
 
-export default Skills;
+export default Professions;

@@ -1,0 +1,6 @@
+{
+  "name": "VacancyTemplate",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./VacancyTemplate.js"
+}
