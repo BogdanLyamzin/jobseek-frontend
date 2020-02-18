@@ -14,9 +14,11 @@ function CardHR({ user, companyId, getAllHR }) {
 		});
 	}, [companyId, getAllHR]);
 
-	cardList = user.map((elem, index) => {
-		return <CardHRItem {...elem} key={index} />;
-	});
+	cardList = user
+		? user.map((elem, index) => {
+				return <CardHRItem {...elem} key={elem._id} />;
+		  })
+		: null;
 	return <Container>{cardList}</Container>;
 }
 

@@ -3,7 +3,10 @@ import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import EditIcon from '@material-ui/core/SvgIcon/SvgIcon';
-import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+
+// import API from '../../../services/hrApi';
+import getDate from '../../../utils/getDate';
+import DeleteIconWithModal from '../../../shared/DeleteIconWithModal';
 
 const useStyles = makeStyles(theme => ({
 	root: {},
@@ -53,16 +56,12 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-const CardHRItems = ({
-	name,
-	lastName,
-	phone,
-	email,
-	avatar,
-	companyId,
-	date,
-}) => {
+const CardHRItems = ({ _id, name, lastName, phone, email, avatar, date }) => {
 	const classes = useStyles();
+
+	const deleteHR = id => {
+		// API.deleteHR(id);
+	};
 
 	return (
 		<Card className={classes.card}>
@@ -76,9 +75,11 @@ const CardHRItems = ({
 						</p>
 					</div>
 					<div className={classes.edit}>
-						<div>ID: {companyId}</div>
 						<EditIcon className={classes.icon} />
-						<DeleteOutlineIcon />
+						<DeleteIconWithModal
+							text="Are you sure?"
+							handleDelete={() => deleteHR(_id)}
+						/>
 					</div>
 				</div>
 				<div className={classes.info}>
@@ -97,7 +98,7 @@ const CardHRItems = ({
 						<div>1</div>
 					</div>
 					<div className={classes.registered}>
-						<div>{date}</div>
+						<div>{getDate(date)}</div>
 					</div>
 				</div>
 			</CardContent>

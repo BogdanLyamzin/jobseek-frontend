@@ -3,7 +3,7 @@ import Switch from '@material-ui/core/Switch';
 import FormGroup from '@material-ui/core/FormGroup';
 import { withStyles } from '@material-ui/core/styles';
 
-import API from '../../../../services/api';
+import API from '../../../../services/hrApi';
 
 const AntSwitch = withStyles(() => ({
 	root: {
