@@ -5,7 +5,7 @@ import { Translation } from 'react-i18next';
 import useStyles from './styles';
 import SphereList from './SphereList';
 import ChackboxList from './CheckboxList';
-import API from '../../../../services/api';
+import API from '../../../../services/hrApi';
 import { englishLevel } from './skillsList';
 import Button from '../../../../shared/Button';
 import LanguageVacancy from './LanguageVacancy';

@@ -1,10 +1,5 @@
-import API from '../../services/hrApi';
-import {
-	SUCCESS_AXIOS,
-	ERROR,
-	ADD_INFO,
-	SUCCESS_AXIOS_LIST,
-} from './actionNames';
+import API from '../../services/serviceApi/api';
+import { SUCCESS_AXIOS, ERROR, ADD_INFO } from './actionNames';
 
 const successAxios = payload => {
 	return {
@@ -12,14 +7,6 @@ const successAxios = payload => {
 		payload,
 	};
 };
-
-const successAxiosList = payload => {
-	return {
-		type: SUCCESS_AXIOS_LIST,
-		payload,
-	};
-};
-
 export const addInfo = payload => {
 	return {
 		type: ADD_INFO,
@@ -38,9 +25,9 @@ export const saveInfo = data => {
 	return dispatch => dispatch(addInfo(data));
 };
 
-export const updateVacancy = (id, body) => {
+export const addCompany = body => {
 	return dispatch => {
-		API.putVacancy(id, body)
+		API.addCompany({ ...body })
 			.then(({ data }) => {
 				dispatch(successAxios(data));
 			})
@@ -50,23 +37,11 @@ export const updateVacancy = (id, body) => {
 	};
 };
 
-export const getOneVacancy = id => {
+export const updateCompany = (id, body) => {
 	return dispatch => {
-		API.getOneVacancy(id)
-			.then(({ data }) => {
-				dispatch(successAxios(data));
-			})
-			.catch(error => {
-				dispatch(errorAxios(error));
-			});
-	};
-};
-
-export const getVacancyByFilter = filter => {
-	return dispatch => {
-		API.getVacancyByFilter(filter)
+		API.updateCompany(id, body)
 			.then(data => {
-				dispatch(successAxiosList(data.data));
+				dispatch(successAxios(data.data));
 			})
 			.catch(error => {
 				dispatch(errorAxios(error));
@@ -74,11 +49,35 @@ export const getVacancyByFilter = filter => {
 	};
 };
 
-export const getAllVacancy = () => {
+export const getOneCompany = id => {
 	return dispatch => {
-		API.getAllVacancy()
-			.then(({ data }) => {
-				dispatch(successAxiosList(data));
+		API.getOneCompany(id) // need to check!!!!
+			.then(data => {
+				dispatch(successAxios(data.body));
+			})
+			.catch(error => {
+				dispatch(errorAxios(error));
+			});
+	};
+};
+
+export const getAllCompanies = () => {
+	return dispatch => {
+		API.getAllCompanies()
+			.then(data => {
+				dispatch(successAxios(data.data));
+			})
+			.catch(error => {
+				dispatch(errorAxios(error));
+			});
+	};
+};
+
+export const deleteCompany = id => {
+	return dispatch => {
+		API.deleteCompany(id)
+			.then(data => {
+				dispatch(successAxios(data.data));
 			})
 			.catch(error => {
 				dispatch(errorAxios(error));

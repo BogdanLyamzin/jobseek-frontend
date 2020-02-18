@@ -5,7 +5,7 @@ import { Translation } from 'react-i18next';
 import CreateOutlined from '@material-ui/icons/CreateOutlined';
 
 import useStyles from './styles';
-import API from '../../../../services/api';
+import API from '../../../../services/hrApi';
 import getDate from '../../../../utils/getDate';
 import FormControlLabel from './FormControlLabel';
 import { getVacancyByFilter } from '../../../../store/vacancy/actions';
@@ -73,7 +73,7 @@ const VacancyByHR = ({ vacancy, getVacancyByFilter, user }) => {
 const mapStateToProps = ({ vacancy, hr }) => {
 	return {
 		user: hr.user,
-		vacancy: vacancy.vacancy,
+		vacancy: vacancy.vacancyList,
 	};
 };
 

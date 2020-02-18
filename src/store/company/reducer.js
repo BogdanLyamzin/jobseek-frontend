@@ -1,31 +1,19 @@
-import {
-	SUCCESS_AXIOS,
-	FAILURE_AXIOS,
-	ERROR,
-	ADD_INFO,
-	SUCCESS_AXIOS_LIST,
-} from './actionNames';
+import { SUCCESS_AXIOS, FAILURE_AXIOS, ERROR } from './actionNames';
+import { ADD_INFO } from '../company/actionNames';
 
 const initialState = {
-	vacancy: null,
-	vacancyList: null,
-	addVacancy: null,
+	company: null,
+	addCompany: null,
 	error: null,
 	isError: false,
+	companyId: '5e47faf3a4ad0d09e435df70',
 };
 
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case SUCCESS_AXIOS:
 			return {
-				...state,
-				vacancy: action.payload,
-			};
-
-		case SUCCESS_AXIOS_LIST:
-			return {
-				...state,
-				vacancyList: action.payload,
+				company: action.payload,
 			};
 
 		case FAILURE_AXIOS:
@@ -34,11 +22,10 @@ export default (state = initialState, action) => {
 				isError: true,
 				error: action.payload,
 			};
-
 		case ADD_INFO:
 			return {
 				...state,
-				addVacancy: action.payload,
+				addCompany: action.payload,
 			};
 
 		case ERROR:

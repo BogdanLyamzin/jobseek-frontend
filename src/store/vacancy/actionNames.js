@@ -1,4 +1,5 @@
 export const SUCCESS_AXIOS = 'SUCCESS_AXIOS_VACANCY';
-export const ADD_INFO = 'ADD_INFO';
+export const SUCCESS_AXIOS_LIST = 'SUCCESS_AXIOS_VACANCY_LIST';
+export const ADD_INFO = 'ADD_INFO_VACANCY';
 export const FAILURE_AXIOS = 'FAILURE_AXIOS_VACANCY';
 export const ERROR = 'ERROR';

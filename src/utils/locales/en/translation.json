@@ -67,5 +67,6 @@
   "CHANGE_VACANCY": "Change vacancy",
   "UPDATE": "Update",
   "ADD_FOTO": "Add foto",
-  "DELETE_MESSAGE": "Are you sure you want to delete"
+  "DELETE_MESSAGE": "Are you sure you want to delete",
+  "ADD_LOGO": "Add logo"
 }
