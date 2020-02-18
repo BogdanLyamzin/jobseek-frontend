@@ -1,7 +1,14 @@
-import { SUCCESS_AXIOS, FAILURE_AXIOS, ERROR } from './actionNames';
+import {
+	SUCCESS_AXIOS,
+	FAILURE_AXIOS,
+	ERROR,
+	ADD_USER,
+	SUCCESS_AXIOS_LIST,
+} from './actionNames';
 
 const initialState = {
 	user: null,
+	hrList: [],
 	error: null,
 	isError: false,
 };
@@ -18,6 +25,16 @@ export default (state = initialState, action) => {
 				...state,
 				isError: true,
 				error: action.payload,
+			};
+
+		case SUCCESS_AXIOS_LIST:
+			return {
+				hrList: action.payload,
+			};
+
+		case ADD_USER:
+			return {
+				hrList: [...state.hr.hrList, action.payload],
 			};
 
 		case ERROR:

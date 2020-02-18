@@ -1,1 +1,1 @@
-export {default} from './RegisterHR';
+export { default } from './RegisterHR';

@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Container from '@material-ui/core/Container';
-// import avatar from '../../components/nav/img/Group 395.png';
 
 const useStyles = makeStyles(theme => ({
 	root: {},
@@ -87,7 +86,6 @@ export default function Vacancy2() {
 						</div>
 					</div>
 					<div className={classes.name}>
-						{/*<img src={avatar} className={classes.avatar} />*/}
 						<p className={classes.title} color="textSecondary">
 							Irina Vasyluk
 						</p>

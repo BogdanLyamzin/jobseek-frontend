@@ -15,7 +15,7 @@ const App = () => {
 				<BrowserRouter>
 					<nav>
 						<Link to="/hr">HR</Link>
-						<Link to="/kostya/hrs">Company</Link>
+						<Link to="/kostya/company">Company</Link>
 						<Link to="/nelya">Admin</Link>
 						<Link to="/zmen">Comments</Link>
 					</nav>
