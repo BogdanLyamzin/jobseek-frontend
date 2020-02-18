@@ -6,149 +6,118 @@ export default {
       icon: 'icon-home',
     },
     {
+      name: 'HR',
+      url: '/hrs',
+      icon: 'icon-user',
+    },
+    {
       name: 'Навички',
       url: '/skills',
       icon: 'icon-puzzle',
     },
     {
-      name: 'Мови програмування',
-      url: '/languages',
-      icon: 'cui-code',
+      name: 'Категорії',
+      url: '/categories',
+      icon: 'icon-tag',
     },
     {
-      name: 'Шаблони вакансій',
-      url: '/vacancies',
+      name: 'Вакансії',
+      url: '/vacancyTemplate',
       icon: 'icon-note',
+    },
+    {
+      name: 'Професії',
+      url: '/professions',
+      icon: 'icon-graduation',
     },
     {
       name: 'Професійні сфери',
       url: '/spheres',
       icon: 'icon-globe',
     },
+    {
+      name: 'Адміністратори',
+      url: '/administrators',
+      icon: 'icon-user',
+    },
     // {
-    //   name: 'Breadcrumbs',
-    //   url: '/breadcrumbs',
+    //   name: 'Collapses',
+    //   url: '/collapses',
     //   icon: 'icon-puzzle',
     // },
-    {
-      name: 'Collapses',
-      url: '/collapses',
-      icon: 'icon-puzzle',
-    },
-    {
-      name: 'Dropdowns',
-      url: '/dropdowns',
-      icon: 'icon-puzzle',
-    },
-    {
-      name: 'Forms',
-      url: '/forms',
-      icon: 'icon-puzzle',
-    },
-    {
-      name: 'List groups',
-      url: '/list-groups',
-      icon: 'icon-puzzle',
-    },
-    {
-      name: 'Navs',
-      url: '/navs',
-      icon: 'icon-puzzle',
-    },
-    {
-      name: 'Paginations',
-      url: '/paginations',
-      icon: 'icon-puzzle',
-    },
-    {
-      name: 'Popovers',
-      url: '/popovers',
-      icon: 'icon-puzzle',
-    },
-    {
-      name: 'Switches',
-      url: '/switches',
-      icon: 'icon-puzzle',
-    },
-    {
-      name: 'Tabs',
-      url: '/tabs',
-      icon: 'icon-puzzle',
-    },
-    {
-      name: 'Tooltips',
-      url: '/tooltips',
-      icon: 'icon-puzzle',
-    },
-    {
-      name: 'Buttons',
-      url: '/buttons',
-      icon: 'icon-cursor',
-      children: [
-        {
-          name: 'Buttons',
-          url: '/buttons/buttons',
-          icon: 'icon-cursor',
-        },
-        {
-          name: 'Button dropdowns',
-          url: '/buttons/button-dropdowns',
-          icon: 'icon-cursor',
-        },
-        {
-          name: 'Button groups',
-          url: '/buttons/button-groups',
-          icon: 'icon-cursor',
-        },
-      ],
-    },
-    {
-      name: 'Icons',
-      url: '/icons',
-      icon: 'icon-star',
-      children: [
-        {
-          name: 'CoreUI Icons',
-          url: '/icons/coreui-icons',
-          icon: 'icon-star',
-        },
-        {
-          name: 'Font Awesome',
-          url: '/icons/font-awesome',
-          icon: 'icon-star',
-          badge: {
-            variant: 'secondary',
-            text: '4.7',
-          },
-        },
-        {
-          name: 'Simple Line Icons',
-          url: '/icons/simple-line-icons',
-          icon: 'icon-star',
-        },
-      ],
-    },
-    {
-      name: 'Notifications',
-      url: '/notifications',
-      icon: 'icon-bell',
-      children: [
-        {
-          name: 'Alerts',
-          url: '/notifications/alerts',
-          icon: 'icon-bell',
-        },
 
-        {
-          name: 'Modals',
-          url: '/notifications/modals',
-          icon: 'icon-bell',
-        },
-      ],
-    },
-    {
-      divider: true,
-    },
+    // {
+    //   name: 'List groups',
+    //   url: '/list-groups',
+    //   icon: 'icon-puzzle',
+    // },
+    // {
+    //   name: 'Navs',
+    //   url: '/navs',
+    //   icon: 'icon-puzzle',
+    // },
+    // {
+    //   name: 'Popovers',
+    //   url: '/popovers',
+    //   icon: 'icon-puzzle',
+    // },
+    // {
+    //   name: 'Tabs',
+    //   url: '/tabs',
+    //   icon: 'icon-puzzle',
+    // },
+    // {
+    //   name: 'Tooltips',
+    //   url: '/tooltips',
+    //   icon: 'icon-puzzle',
+    // },
+    // {
+    //   name: 'Icons',
+    //   url: '/icons',
+    //   icon: 'icon-star',
+    //   children: [
+    //     {
+    //       name: 'CoreUI Icons',
+    //       url: '/icons/coreui-icons',
+    //       icon: 'icon-star',
+    //     },
+    //     {
+    //       name: 'Font Awesome',
+    //       url: '/icons/font-awesome',
+    //       icon: 'icon-star',
+    //       badge: {
+    //         variant: 'secondary',
+    //         text: '4.7',
+    //       },
+    //     },
+    //     {
+    //       name: 'Simple Line Icons',
+    //       url: '/icons/simple-line-icons',
+    //       icon: 'icon-star',
+    //     },
+    //   ],
+    // },
+    // {
+    //   name: 'Notifications',
+    //   url: '/notifications',
+    //   icon: 'icon-bell',
+    //   children: [
+    //     {
+    //       name: 'Alerts',
+    //       url: '/notifications/alerts',
+    //       icon: 'icon-bell',
+    //     },
+    //
+    //     {
+    //       name: 'Modals',
+    //       url: '/notifications/modals',
+    //       icon: 'icon-bell',
+    //     },
+    //   ],
+    // },
+    // {
+    //   divider: true,
+    // },
     {
       name: 'Авторизація',
       url: '/authorization',

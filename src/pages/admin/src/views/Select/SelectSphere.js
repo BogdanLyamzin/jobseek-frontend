@@ -7,18 +7,18 @@ class SelectSpheres extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      vacancyName: '',
+      professionName: '',
       sphereId: '',
     };
   }
   handleInputChange(input) {
     // console.log("value", input)
   }
-  changeVacancies (state, id) {
-    axios.put(`http://localhost:4000/vacancies/${id}`, { vacancyName: state.vacancyName, sphereId: state.sphereId });
+  changeProfession (state, id) {
+    axios.put(`http://localhost:5000/professions/${id}`, { professionName: state.professionName, sphereId: state.sphereId });
   }
-  addVacancies (state) {
-    axios.post(`http://localhost:4000/vacancies`, { vacancyName: state.vacancyName, sphereId: state.sphereId })
+  addProfession (state) {
+    axios.post(`http://localhost:5000/professions`, { professionName: state.professionName, sphereId: state.sphereId })
       .then( data => console.log(data))
       .catch( err => console.log(err));
   }
@@ -31,19 +31,17 @@ class SelectSpheres extends React.Component {
     }
   };
   onChangeInput = (event) => {
-    const name = event.target.name;
+    const {name} = event.target;
     this.setState( { [name]: event.target.value } );
   };
 
   render() {
-    let {options, myVacancyId} = this.props;
-    console.log(myVacancyId);
-    // console.log(this.state);
+    let {options, profId} = this.props;
     return (
       <>
         <div className='col-12 col-md-6 p-2'>
-          <input type='text' name='vacancyName' className='w-100 border border-light rounded p-2'
-                 value={this.state.vacancyName} onChange={this.onChangeInput} placeholder='Назва вакансії'></input>
+          <input type='text' name='professionName' className='w-100 border border-light rounded p-2'
+                 value={this.state.professionName} onChange={this.onChangeInput} placeholder='Назва професії'></input>
         </div>
         <div className='col-12 col-md-6 p-2'>
           <Typeahead
@@ -56,7 +54,7 @@ class SelectSpheres extends React.Component {
           />
         </div>
         <input type="submit" value="Зберегти" className='btn btn-pill btn-success text-right m-2' onClick={ ()=>
-        {(!myVacancyId && (this.addVacancies(this.state))) || (myVacancyId && this.changeVacancies(this.state, myVacancyId))}
+        {(!profId && (this.addProfession(this.state))) || (profId && this.changeProfession(this.state, profId))}
         }/>
       </>
     );
@@ -64,8 +62,8 @@ class SelectSpheres extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    vacancyName: state.vacancyName,
-    languageId: state.languageId,
+    professionName: state.professionName,
+    sphereId: state.sphereId,
   };
 };
 export default (connect(mapStateToProps)(SelectSpheres));

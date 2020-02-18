@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import axios from "axios";
 import {Button, Card, CardBody, CardHeader,  Collapse} from "reactstrap";
-import SelectLang from "../Select/SelectLang";
-import SkillLangName from "./SkillLangName";
+import SelectCategory from "../Select/SelectCategory";
+import SkillCategName from "./SkillCategName";
 
 class SkillsList extends Component {
   constructor(props) {
@@ -13,13 +13,6 @@ class SkillsList extends Component {
       isChange: false,
     };
   }
-  componentDidMount() {
-    axios.get("http://localhost:4000/languages")
-      .then((data) =>  {
-        this.setState({ options: data.data.result})
-      })
-      .catch( err => console.log(err));
-  }
 
   toggleAccordion(tab) {
     const prevState = this.state.accordion;
@@ -29,18 +22,17 @@ class SkillsList extends Component {
     });
   }
   deleteSkill = (id) => {
-    axios.delete(`http://localhost:4000/skills/${id}`).then(data => {
-      alert('Навичка успішно видалена');
-      this.componentDidMount();
+    axios.delete(`http://localhost:5000/skills/${id}`).then(data => {
+      console.log('Навичка успішно видалена');
     });
   };
   changeSkill = () => {
     let val = !this.state.isChange;
-    this.setState( {isChange: val} )
+    this.setState( {isChange: val} );
   };
   render() {
-    const {skill, options} = this.props;
-    let {  accordion, isChange} = this.state;
+    const { skill, options} = this.props;
+    let { accordion, isChange} = this.state;
     return ( skill.map( (elem, index) => {
           accordion.push(false);
           return (
@@ -55,12 +47,11 @@ class SkillsList extends Component {
                   <CardBody className='row'>
                     <>
                       <div className='col-6 col-lg-9'>
-                        <SkillLangName langId={elem.languageId} />
-                        <p>Категорія: </p>
+                        <SkillCategName categoryId={elem.categoryId} />
                         { isChange && (
                           <>
                             <p>Нові значення:</p>
-                            <SelectLang options={options} skillId={elem._id}/>
+                            <SelectCategory options={options} skillId={elem._id}/>
                           </>
                         )}
                       </div>
@@ -79,7 +70,7 @@ class SkillsList extends Component {
                 </Collapse>
               </Card>
             </div>
-          )}
+          );}
         )
       );
   }

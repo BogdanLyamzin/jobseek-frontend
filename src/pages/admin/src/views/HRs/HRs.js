@@ -6,29 +6,23 @@ import {
 } from 'reactstrap';
 
 
-class Companies extends Component {
+class HRs extends Component {
 
   constructor(props) {
     super(props);
     this.toggleAccordion = this.toggleAccordion.bind(this);
-
     this.state = {
       accordion: [false],
-
     };
   }
 
   toggleAccordion(tab) {
-
     const prevState = this.state.accordion;
     const state = prevState.map((x, index) => tab === index ? !x : false);
-
     this.setState({
       accordion: state,
     });
   }
-
-  // loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
 
   render() {
 
@@ -38,17 +32,17 @@ class Companies extends Component {
           <Col sm="12" >
             <Card>
               <CardHeader>
-                <strong>Перелік компаній: </strong>
+                <strong>Список HR-ів: </strong>
               </CardHeader>
               <CardBody>
-                <div id="accordion">
+                <div id="accordionHR">
                   <Card className="mb-0">
                     <CardHeader id="headingOne">
                       <Button block color="link" className="text-left m-0 p-0" onClick={() => this.toggleAccordion(0)} aria-expanded={this.state.accordion[0]} aria-controls="collapseOne">
-                        <h5 className="m-0 p-0">Компанія 1</h5>
+                        <h5 className="m-0 p-0">HR 1</h5>
                       </Button>
                     </CardHeader>
-                    <Collapse isOpen={this.state.accordion[0]} data-parent="#accordion" id="collapseOne" aria-labelledby="headingOne">
+                    <Collapse isOpen={this.state.accordion[0]} data-parent="#accordionHR" id="collapseOne" aria-labelledby="headingOne">
                       <CardBody className='row'>
                         <div className='col-6 col-lg-8'>
 
@@ -80,4 +74,4 @@ class Companies extends Component {
   }
 }
 
-export default Companies;
+export default HRs;

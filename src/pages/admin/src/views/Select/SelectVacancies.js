@@ -7,56 +7,55 @@ class SelectVacancies extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      languageName: '',
-      vacancyId: '',
+      categoryName: '',
+      parentId: '',
     };
   }
   handleInputChange(input) {
       // console.log("value", input)
   }
-  changeLang (state, id) {
-    axios.put(`http://localhost:4000/languages/${id}`, { languageName: state.languageName, vacancyId: state.vacancyId });
+  changeCategory (state, id) {
+    axios.put(`http://localhost:5000/categories/${id}`, { categoryName: state.categoryName, parentId: state.parentId });
   }
-  addLang (state) {
-    axios.post(`http://localhost:4000/languages`, { languageName: state.languageName, vacancyId: state.vacancyId })
+  addCategory (state) {
+    axios.post(`http://localhost:5000/categories`, { categoryName: state.categoryName, parentId: state.parentId })
       .then( data => console.log(data))
       .catch( err => console.log(err));
   }
   handleChange = (selectedOptions) => {
-    let { vacancyId } = this.state;
+    let { parentId } = this.state;
     let {options} = this.props;
-    let vac = options.map( item1 => item1.vacancyName);
-    if( (vacancyId === '') || (vac.find(item => item === selectedOptions)) ) {
-      this.setState( {vacancyId: selectedOptions[0]._id});
+    let categ = options.map( item1 => item1.vacancyName || item1.categoryName);
+    if( (parentId === '') || (categ.find(item => item === selectedOptions)) ) {
+      this.setState( {parentId: selectedOptions[0]._id});
     }
   };
   onChangeInput = (event) => {
-    const name = event.target.name;
+    const {name} = event.target;
     this.setState( { [name]: event.target.value } );
   };
 
   render() {
-    let {options, vacId} = this.props;
+    let {options, catId} = this.props;
     // console.log(this.state);
     return (
       <>
         <div className='col-12 col-md-6 p-2'>
-          <input type='text' name='languageName' className='w-100 border border-light rounded p-2'
-                 value={this.state.languageName} onChange={this.onChangeInput} placeholder='Назва мови'></input>
+          <input type='text' name='categoryName' className='w-100 border border-light rounded p-2'
+                 value={this.state.categoryName} onChange={this.onChangeInput} placeholder='Назва категорії'></input>
         </div>
         <div className='col-12 col-md-6 p-2'>
           <Typeahead
-            // className="border border-light rounded"
             id="typeahead"
-            labelKey={(option) => `${option.vacancyName}`}
+            labelKey={(option) => `${option.vacancyName || option.categoryName}`}
             options={options}
             onInputChange={this.handleInputChange}
             onChange={this.handleChange}
-            placeholder="Назва вакансії"
+            placeholder="Назва вакансії чи батьківської категорії"
           />
         </div>
         <input type="submit" value="Зберегти" className='btn btn-pill btn-success text-right m-2' onClick={ ()=>
-        {(!vacId && (this.addLang(this.state))) || (vacId && this.changeLang(this.state, vacId))}
+        {(!catId && (this.addCategory(this.state))) || (catId && this.changeCategory(this.state, catId))}
         }/>
       </>
     );
@@ -64,8 +63,8 @@ class SelectVacancies extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    languageName: state.languageName,
-    vacancyId: state.vacancyId,
+    categoryName: state.categoryName,
+    parentId: state.parentId,
   };
 };
 export default (connect(mapStateToProps)(SelectVacancies));
