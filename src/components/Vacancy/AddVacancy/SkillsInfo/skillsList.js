@@ -2,19 +2,22 @@ export const sphereList = [
 	{
 		title: 'ІТ',
 		specialization: [
-			'Game Development',
-			'Веб-розробка',
-			'Mobile development',
+			'Програміст',
+			'Дизайнер',
+			'Тестувальник',
 			'Project Manager',
-			'С/С++ development',
-			'.NET development',
-			'Дизайн (Web, UI, Flash, 3D)',
-			'Java development',
-			'PHP development',
-			'Pyton development',
+			'Маркетолог',
 		],
 	},
-	{ title: 'HR спеціалісти', specialization: [] },
+	{
+		title: 'HR спеціалісти',
+		specialization: [
+			'Рекрутер',
+			'HR-аналітик',
+			'HR-спеціаліст',
+			'Talent-менеджер',
+		],
+	},
 	{ title: 'Готелі - Ресторани - Кафе', specialization: [] },
 	{ title: 'Дизайн - Графіка - Фото', specialization: [] },
 	{ title: 'Маркетинг - Реклама - PR', specialization: [] },
@@ -22,6 +25,17 @@ export const sphereList = [
 	{ title: 'Торгівля', specialization: [] },
 	{ title: 'Туризм - Подорожі', specialization: [] },
 	{ title: 'Юристи - Адвокати - Нотаріуси', specialization: [] },
+];
+
+export const vacancyList = [
+	'Frontend Developer',
+	'Backend Developer',
+	'Fullstack Developer',
+	'PHP Developer',
+	'Java Developer',
+	'Pyton Developer',
+	'C++ Developer',
+	'C# Developer',
 ];
 
 export const programmLanguageList = [

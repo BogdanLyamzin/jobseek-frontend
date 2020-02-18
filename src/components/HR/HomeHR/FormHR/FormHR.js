@@ -1,25 +1,18 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { Translation } from 'react-i18next';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
 import Input from '../../../../shared/Input';
 import Button from '../../../../shared/Button';
-import { getOneHR } from '../../../../store/hr/actions';
 
 const FormHR = ({
 	values,
 	hidden,
 	classes,
-	getOneHR,
 	submitForm,
 	updateHRinfo,
 	handleChange,
 }) => {
-	useEffect(() => {
-		getOneHR('5e3c361c657e122a841e88e4');
-	}, [getOneHR]);
-
 	return (
 		<Translation>
 			{t => (
@@ -109,8 +102,4 @@ const FormHR = ({
 	);
 };
 
-const mapDispatchToProps = {
-	getOneHR,
-};
-
-export default connect(null, mapDispatchToProps)(FormHR);
+export default FormHR;

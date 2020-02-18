@@ -20,9 +20,9 @@ const App = () => {
 						<Link to="/zmen">Comments</Link>
 					</nav>
 					<Switch>
-						<Route path="/hr" component={HrPage} />
 						<Route path="/zmen" component={Comments} />
 						<Route path="/kostya" component={CompanyPage} />
+						<PrivateRouter path="/hr" component={HrPage} />
 						<PrivateRouter exact path="/nelya" component={AdminPage} />
 					</Switch>
 				</BrowserRouter>

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Translation } from 'react-i18next';
 import { Switch, Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
+import { getOneHR } from '../../store/hr/actions';
 import HomeHR from '../../components/HR/HomeHR/HR';
 import VacancyHR from '../../components/HR/VacancyHR';
 import OneCandidate from '../../components/OneCandidate';
@@ -19,8 +21,12 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const HrPage = () => {
+const HrPage = ({ getOneHR }) => {
 	const classes = useStyles();
+
+	useEffect(() => {
+		getOneHR('5e3c361c657e122a841e88e4');
+	}, [getOneHR]);
 
 	return (
 		<Translation>
@@ -47,4 +53,8 @@ const HrPage = () => {
 	);
 };
 
-export default HrPage;
+const mapDispatchToProps = {
+	getOneHR,
+};
+
+export default connect(null, mapDispatchToProps)(HrPage);

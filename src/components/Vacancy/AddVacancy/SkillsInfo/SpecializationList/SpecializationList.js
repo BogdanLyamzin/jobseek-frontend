@@ -6,13 +6,13 @@ const SpecializationList = ({ skill, setSkill, handleClickSkill, classes }) => {
 	return (
 		<div>
 			<div className={classes.vacancySkillFlex}>
-				<div className={classes.vacancyKey}>Спеціалізація*</div>
+				<div className={classes.vacancyKey}>Професія*</div>
 				<Autocomplete
 					options={skill.sphere ? skill.sphere.specialization : []}
 					getOptionLabel={option => option}
 					autoComplete
 					renderInput={params => <TextField {...params} fullWidth />}
-					defaultValue={skill.specialization}
+					value={skill.specialization}
 					onChange={(event, newValue) => {
 						setSkill({ ...skill, specialization: newValue });
 					}}

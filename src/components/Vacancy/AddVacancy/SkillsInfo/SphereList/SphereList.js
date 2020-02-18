@@ -14,7 +14,7 @@ const SphereList = ({ skill, setSkill, handleClickSkill, classes }) => {
 					getOptionLabel={option => option.title}
 					autoComplete
 					renderInput={params => <TextField {...params} fullWidth />}
-					defaultValue={skill.sphere}
+					value={skill.sphere}
 					onChange={(event, newValue) => {
 						setSkill({ ...skill, sphere: newValue });
 					}}

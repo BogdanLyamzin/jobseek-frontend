@@ -11,11 +11,11 @@ import FormControlLabel from './FormControlLabel';
 import { getVacancyByFilter } from '../../../../store/vacancy/actions';
 import DeleteIconWithModal from '../../../../shared/DeleteIconWithModal';
 
-const VacancyByHR = ({ vacancy, getVacancyByFilter }) => {
+const VacancyByHR = ({ vacancy, getVacancyByFilter, user }) => {
 	const classes = useStyles();
 	useEffect(() => {
-		getVacancyByFilter('hrId=5e3c361c657e122a841e88e4');
-	}, [getVacancyByFilter]);
+		if (user && user._id) getVacancyByFilter(`hrId=${user._id}`);
+	}, [getVacancyByFilter, user]);
 
 	const deleteVacancy = id => {
 		API.deleteVacancy(id);
@@ -47,7 +47,7 @@ const VacancyByHR = ({ vacancy, getVacancyByFilter }) => {
 												{elem.city}, {elem.country}
 											</div>
 											<DeleteIconWithModal
-												text="Are you sure you want to delete?"
+												text={`${t('DELETE_MESSAGE')}?`}
 												handleDelete={() => deleteVacancy(elem._id)}
 											/>
 										</div>
@@ -70,8 +70,9 @@ const VacancyByHR = ({ vacancy, getVacancyByFilter }) => {
 	);
 };
 
-const mapStateToProps = ({ vacancy }) => {
+const mapStateToProps = ({ vacancy, hr }) => {
 	return {
+		user: hr.user,
 		vacancy: vacancy.vacancy,
 	};
 };
