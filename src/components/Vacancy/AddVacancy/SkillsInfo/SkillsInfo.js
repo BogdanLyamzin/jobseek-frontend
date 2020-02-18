@@ -16,7 +16,7 @@ const SkillsInfo = ({ isActive, firstForm, user }) => {
 	const classes = useStyles();
 	const [skill, setSkill] = useState({
 		sphere: null,
-		vacancyName: '',
+		vacancyName: null,
 		englishLevel: null,
 		specialization: null,
 		programmLanguage: null,
@@ -53,8 +53,8 @@ const SkillsInfo = ({ isActive, firstForm, user }) => {
 			...firstForm,
 			...skill,
 			skills: [...checkboxArr],
-			companyId: user.result.companyId,
-			hrId: user.result._id,
+			companyId: user.companyId,
+			hrId: user._id,
 		};
 		API.addVacancy(body);
 	};
@@ -104,9 +104,11 @@ const SkillsInfo = ({ isActive, firstForm, user }) => {
 						handleChange={handleChangeSkillSlider}
 						checkboxHandleChange={checkboxHandleChange}
 					/>
-					<div className={classes.alignCenter}>
-						<Button text={t('POST')} click={() => addVacancy()} />
-					</div>
+					{skill.programmLanguage && (
+						<div className={classes.alignCenter}>
+							<Button text={t('POST')} click={() => addVacancy()} />
+						</div>
+					)}
 				</>
 			)}
 		</Translation>

@@ -3,7 +3,7 @@ import { Translation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
 	img: {
 		minHeight: '190px',
 		maxHeight: '200px',
@@ -44,15 +44,15 @@ const UploadPhoto = ({ user, getRootProps, getInputProps }) => {
 		<Translation>
 			{t => (
 				<>
-					{user && user.result.avatar && (
+					{user && user.avatar && (
 						<img
 							className={classes.img}
-							src={user.result.avatar}
+							src={user.avatar}
 							{...getRootProps()}
 							alt="avatar"
 						/>
 					)}
-					{((user && !user.result.avatar) || !user) && (
+					{((user && !user.avatar) || !user) && (
 						<div className={classes.notimg} {...getRootProps()}>
 							<div className={classes.addphotoContainer}>
 								<AddCircleOutlineIcon />

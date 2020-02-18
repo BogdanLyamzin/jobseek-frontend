@@ -111,9 +111,11 @@ const SkillsInfo = ({ id, info, oneVacancy, updateVacancy }) => {
 						handleChange={handleChangeSkillSlider}
 						checkboxHandleChange={checkboxHandleChange}
 					/>
-					<div className={classes.alignCenter}>
-						<Button text={t('UPDATE')} click={() => update()} />
-					</div>
+					{skill.programmLanguage && (
+						<div className={classes.alignCenter}>
+							<Button text={t('UPDATE')} click={() => update()} />
+						</div>
+					)}
 				</>
 			)}
 		</Translation>

@@ -15,7 +15,7 @@ const HR = ({ user, updateHR }) => {
 	const [values, setValues] = useState(null);
 
 	useEffect(() => {
-		if (user) setValues({ ...user.result });
+		if (user) setValues({ ...user });
 	}, [user]);
 
 	const handleChange = event => {
@@ -24,13 +24,13 @@ const HR = ({ user, updateHR }) => {
 
 	const submitForm = e => {
 		e.preventDefault();
-		updateHR(user.result._id, values);
+		updateHR(user._id, values);
 	};
 
 	const selectedFile = photo => {
 		const fd = new FormData();
 		fd.append('avatar', photo[0]);
-		updateHR(user.result._id, fd);
+		updateHR(user._id, fd);
 	};
 
 	const updateHRinfo = e => {

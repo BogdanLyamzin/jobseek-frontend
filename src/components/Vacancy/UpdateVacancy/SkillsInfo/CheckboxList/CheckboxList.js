@@ -31,77 +31,84 @@ const CheckboxList = ({
 				Навички*
 			</div>
 			<hr className={classes.line} />
-			<div className={classes.vacancySkillListFlex}>
-				<div className={classes.vacancySkillList}>
-					{skillsList.map(elem => {
-						return (
-							<div className={classes.vacancySkillListItem} key={elem.name}>
-								<Checkbox
-									onChange={checkboxHandleChange(elem.name)}
-									value={elem.id}
-									name={elem.name}
-									checked={checkbox && checkbox[elem.name] ? true : false}
-								/>
-								<div className={classes.vacancySkillItemText}>{elem.name}</div>
-							</div>
-						);
-					})}
-				</div>
-				<div className={classes.vacancySkillTime}>
-					<div className={classes.vacancySliderItem}>
-						<div
-							className={`${classes.vacancySliderFlex} ${classes.marginBottom40}`}
-						>
-							<div className={classes.vacancySkillItemText}>English level</div>
-							<div className={classes.vacancySkillItemText}>
-								{skill.englishLevel}
-							</div>
-						</div>
-						<div className={classes.vacancySliderFlex}>
-							<Slider
-								className={classes.vacancySliderSkills}
-								valueLabelFormat={valueLabelFormatEng}
-								onChange={handleChangeEng}
-								valueLabelDisplay="on"
-								defaultValue={0}
-								step={1}
-								max={6}
-							/>
-						</div>
-					</div>
-					{checkboxArr
-						? checkboxArr.map(elem => {
-								return (
-									<div className={classes.vacancySliderItem} key={elem.id}>
-										<div
-											style={{ marginBottom: '40px' }}
-											className={classes.vacancySkillItemText}
-										>
-											{elem.name}
-										</div>
-										<div className={classes.vacancySliderFlex}>
-											<Slider
-												className={classes.vacancySliderSkills}
-												defaultValue={elem.experience}
-												step={1}
-												max={5}
-												valueLabelDisplay="on"
-												valueLabelFormat={valueLabelFormat}
-												onChange={handleChange(elem.name, elem.id)}
-											/>
-											<DeleteOutlineOutlinedIcon
-												className={classes.vacancyIcon}
-												onClick={() =>
-													setCheckbox({ ...checkbox, [elem.name]: null })
-												}
-											/>
-										</div>
+			{skill.programmLanguage && (
+				<div className={classes.vacancySkillListFlex}>
+					<div className={classes.vacancySkillList}>
+						{skillsList.map(elem => {
+							return (
+								<div className={classes.vacancySkillListItem} key={elem.name}>
+									<Checkbox
+										onChange={checkboxHandleChange(elem.name)}
+										value={elem.id}
+										name={elem.name}
+										checked={checkbox && checkbox[elem.name] ? true : false}
+									/>
+									<div className={classes.vacancySkillItemText}>
+										{elem.name}
 									</div>
-								);
-						  })
-						: null}
+								</div>
+							);
+						})}
+					</div>
+					<div className={classes.vacancySkillTime}>
+						<div className={classes.vacancySliderItem}>
+							<div
+								className={`${classes.vacancySliderFlex} ${classes.marginBottom40}`}
+							>
+								<div className={classes.vacancySkillItemText}>
+									English level
+								</div>
+								<div className={classes.vacancySkillItemText}>
+									{skill.englishLevel}
+								</div>
+							</div>
+							<div className={classes.vacancySliderFlex}>
+								<Slider
+									className={classes.vacancySliderSkills}
+									valueLabelFormat={valueLabelFormatEng}
+									onChange={handleChangeEng}
+									valueLabelDisplay="on"
+									defaultValue={0}
+									step={1}
+									max={6}
+								/>
+							</div>
+						</div>
+						{checkboxArr
+							? checkboxArr.map(elem => {
+									return (
+										<div className={classes.vacancySliderItem} key={elem.id}>
+											<div
+												style={{ marginBottom: '40px' }}
+												className={classes.vacancySkillItemText}
+											>
+												{elem.name}
+											</div>
+											<div className={classes.vacancySliderFlex}>
+												<Slider
+													className={classes.vacancySliderSkills}
+													defaultValue={elem.experience}
+													step={1}
+													max={5}
+													valueLabelDisplay="on"
+													valueLabelFormat={valueLabelFormat}
+													onChange={handleChange(elem.name, elem.id)}
+												/>
+												<DeleteOutlineOutlinedIcon
+													className={classes.vacancyIcon}
+													onClick={() =>
+														// eslint-disable-next-line max-len
+														setCheckbox({ ...checkbox, [elem.name]: null })
+													}
+												/>
+											</div>
+										</div>
+									);
+							  })
+							: null}
+					</div>
 				</div>
-			</div>
+			)}
 		</>
 	);
 };
