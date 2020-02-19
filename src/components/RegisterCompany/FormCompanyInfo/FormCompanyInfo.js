@@ -1,16 +1,22 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { Translation } from 'react-i18next';
-
+import { connect } from 'react-redux';
 import Input from '../../../shared/Input/Input';
 import { updateCompany } from '../../../store/company/actions';
 import UpdatePhotoDropzone from '../UpdatePhotoDropzone/UpdatePhotoDropzone';
 
-const FormCompanyInfo = ({ classes, handleChange, values }) => {
+const FormCompanyInfo = ({
+	user,
+	updateCompany,
+	classes,
+	handleChange,
+	values,
+}) => {
 	const selectedFile = photo => {
 		const fd = new FormData();
 		fd.append('avatar', photo[0]);
-		updateCompany('5e3c343c6f90fc2d0467aef8', fd);
+		updateCompany(user._id, fd);
 	};
 
 	return (
@@ -96,5 +102,14 @@ const FormCompanyInfo = ({ classes, handleChange, values }) => {
 		</Translation>
 	);
 };
+const mapStateToProps = ({ company }) => {
+	return {
+		user: company.user,
+	};
+};
 
-export default FormCompanyInfo;
+const mapDispatchToProps = {
+	updateCompany,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormCompanyInfo);

@@ -4,9 +4,10 @@ import { ADD_INFO } from '../company/actionNames';
 const initialState = {
 	company: null,
 	addCompany: null,
+	// companyList: [],
 	error: null,
 	isError: false,
-	companyId: '5e47faf3a4ad0d09e435df70',
+	companyId: '5e4bc4f04228ff35f40e1f68',
 };
 
 export default (state = initialState, action) => {

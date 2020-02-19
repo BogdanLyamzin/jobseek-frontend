@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Translation } from 'react-i18next';
 import Paper from '@material-ui/core/Paper';
@@ -7,20 +7,31 @@ import Container from '@material-ui/core/Container';
 import useStyles from './styles';
 import Title from '../../../shared/Title';
 import Button from '../../../shared/Button';
-import { addCompany } from '../../../store/company/actions';
+import { updateCompany } from '../../../store/company/actions';
 import FormCompanyInfo from '../FormCompanyInfo/FormCompanyInfo';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutlined';
+import CardCompany from '../../RegisterCompany/CardCompany/CardCompany';
 
-const FormRegisterCompany = ({ info, addCompany }) => {
+const FormRegisterCompany = ({ user, info, updateCompany }) => {
 	const classes = useStyles();
+	const [hidden, setHidden] = useState(false);
+	const hideCompanyInfo = e => {
+		e.preventDefault();
+		setHidden(!hidden);
+	};
 	const [values, setValues] = useState({
-		companyName: info ? info.companyName : '',
-		email: info ? info.email : '',
-		country: info ? info.country : '',
-		city: info ? info.city : '',
-		socialNet: info ? info.socialNet : '',
-		website: info ? info.webdriver : '',
-		description: info ? info.description : '',
+		companyName: '',
+		email: '',
+		country: '',
+		city: '',
+		socialNet: '',
+		website: '',
+		description: '',
 	});
+
+	useEffect(() => {
+		if (user) setValues({ ...user });
+	}, [user]);
 
 	const handleChange = event => {
 		setValues({ ...values, [event.target.name]: event.target.value });
@@ -32,36 +43,46 @@ const FormRegisterCompany = ({ info, addCompany }) => {
 				<Container>
 					<Title text={t('COMPANY_PROFILE')} />
 					<Paper className={classes.root}>
-						<form>
-							<FormCompanyInfo
-								classes={classes}
-								handleChange={handleChange}
-								values={values}
-							/>
-
-							<hr className={classes.line} />
-
-							<div className={classes.vacancyDescription}>
-								<div className={classes.vacancyKey}>
-									{t('COMPANY_DESCRIPTION')}
-								</div>
-								<textarea
-									name="description"
-									className={classes.vacancyDescriptionArea}
-									onChange={handleChange}
-									value={values.description}
-								/>
-								<div className={classes.alignCenter}>
-									<Button
-										click={event => {
-											event.preventDefault();
-											addCompany({ ...values });
-										}}
-										text={t('REGISTER')}
+						<div className={classes.add} onClick={hideCompanyInfo}>
+							{t('UPDATE_COMPANY')}
+							<AddCircleOutlineIcon fontSize="large" />
+						</div>
+						{hidden && (
+							<>
+								<form>
+									<FormCompanyInfo
+										classes={classes}
+										handleChange={handleChange}
+										values={values}
 									/>
-								</div>
-							</div>
-						</form>
+
+									<hr className={classes.line} />
+
+									<div className={classes.vacancyDescription}>
+										<div className={classes.vacancyKey}>
+											{t('COMPANY_DESCRIPTION')}
+										</div>
+										<textarea
+											name="description"
+											className={classes.vacancyDescriptionArea}
+											onChange={handleChange}
+											value={values.description}
+										/>
+										<div className={classes.alignCenter}>
+											<Button
+												click={event => {
+													event.preventDefault();
+													updateCompany(user._id, { ...values });
+												}}
+												text={t('REGISTER')}
+											/>
+										</div>
+									</div>
+								</form>
+								<hr className={classes.line} />
+							</>
+						)}
+						<CardCompany />
 					</Paper>
 				</Container>
 			)}
@@ -70,11 +91,12 @@ const FormRegisterCompany = ({ info, addCompany }) => {
 };
 
 const mapDispatchToProps = {
-	addCompany,
+	updateCompany,
 };
 
 const mapStateToProps = ({ company }) => {
 	return {
+		user: company.company,
 		info: company.addCompany,
 	};
 };

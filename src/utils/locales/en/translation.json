@@ -1,5 +1,6 @@
 {
   "ADD_SOCIAL_NET": "Add social net ",
+  "ADD_COMPANY": "Add company",
   "ADD_HR": "Add HR",
   "COMPANY_VACANCIES": "Company vacancies",
   "HR_MANAGERS": "HR managers",
@@ -68,5 +69,6 @@
   "UPDATE": "Update",
   "ADD_FOTO": "Add foto",
   "DELETE_MESSAGE": "Are you sure you want to delete",
-  "ADD_LOGO": "Add logo"
+  "ADD_LOGO": "Add logo",
+  "UPDATE_COMPANY": "Update profile"
 }
