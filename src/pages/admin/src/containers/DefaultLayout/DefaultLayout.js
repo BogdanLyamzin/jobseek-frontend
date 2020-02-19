@@ -15,7 +15,6 @@ import {
   AppBreadcrumb2 as AppBreadcrumb,
   AppSidebarNav2 as AppSidebarNav,
 } from '@coreui/react';
-// sidebar nav config
 import navigation from '../../_nav';
 // routes config
 import routes from '../../routes';
@@ -30,12 +29,12 @@ class DefaultLayout extends Component {
 
   signOut(e) {
     e.preventDefault();
-    this.props.history.push('/login')
+    this.props.history.push('/login');
   }
 
   render() {
     return (
-      <div className="app">
+      <div className="app bg-gray-100">
         <AppHeader fixed>
           <Suspense  fallback={this.loading()}>
             <DefaultHeader onLogout={e=>this.signOut(e)}/>

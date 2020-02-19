@@ -8,6 +8,7 @@ import { Login, Register } from './Authorization';
 import HRs from './HRs';
 import Administrators from "./Administrators";
 import Professions from './Professions';
+import HR from './HRs';
 
 export {
   Page404,
@@ -22,5 +23,6 @@ export {
   HRs,
   Administrators,
   Professions,
+  HR
 };
 

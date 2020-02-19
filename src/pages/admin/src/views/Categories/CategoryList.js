@@ -23,16 +23,18 @@ class CategoryList extends Component {
   }
   deleteCategory = (id) => {
     axios.delete(`http://localhost:5000/categories/${id}`).then(data => {
-      alert('Категорія успішно видалена');
+      console.log('Категорія успішно видалена');
     });
   };
   changeCategory = () => {
     let val = !this.state.isChange;
     this.setState( {isChange: val} );
   };
+
   render() {
     const {category, options} = this.props;
     let {  accordion, isChange} = this.state;
+
     return (
       (category && Array.isArray(category)) && (
         category.map((elem, index) => {
@@ -79,7 +81,8 @@ class CategoryList extends Component {
           }
         )
       )
-    );}
+    );
+  }
 }
 
 export default CategoryList;
