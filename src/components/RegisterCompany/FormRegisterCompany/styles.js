@@ -16,6 +16,11 @@ const useStyles = makeStyles(() => ({
 	dropZone: {
 		paddingTop: '30px',
 	},
+	add: {
+		marginLeft: '80%',
+		color: '#00B395',
+		cursor: 'pointer',
+	},
 
 	line: {
 		width: '90%',

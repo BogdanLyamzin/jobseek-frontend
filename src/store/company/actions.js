@@ -27,13 +27,7 @@ export const saveInfo = data => {
 
 export const addCompany = body => {
 	return dispatch => {
-		API.addCompany({ ...body })
-			.then(({ data }) => {
-				dispatch(successAxios(data));
-			})
-			.catch(error => {
-				dispatch(errorAxios(error));
-			});
+		API.addCompany({ ...body });
 	};
 };
 
@@ -41,7 +35,7 @@ export const updateCompany = (id, body) => {
 	return dispatch => {
 		API.updateCompany(id, body)
 			.then(data => {
-				dispatch(successAxios(data.data));
+				dispatch(successAxios(data.data.result));
 			})
 			.catch(error => {
 				dispatch(errorAxios(error));
@@ -51,9 +45,9 @@ export const updateCompany = (id, body) => {
 
 export const getOneCompany = id => {
 	return dispatch => {
-		API.getOneCompany(id) // need to check!!!!
+		API.getOneCompany(id)
 			.then(data => {
-				dispatch(successAxios(data.body));
+				dispatch(successAxios(data.data.result));
 			})
 			.catch(error => {
 				dispatch(errorAxios(error));

@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import EditIcon from '@material-ui/core/SvgIcon/SvgIcon';
 
-// import API from '../../../services/hrApi';
+import API from '../../../services/hrApi';
 import getDate from '../../../utils/getDate';
 import DeleteIconWithModal from '../../../shared/DeleteIconWithModal';
 
@@ -56,11 +56,11 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-const CardHRItems = ({ _id, name, lastName, phone, email, avatar, date }) => {
+const CardHRItem = ({ _id, name, lastName, phone, email, avatar, date }) => {
 	const classes = useStyles();
 
 	const deleteHR = id => {
-		// API.deleteHR(id);
+		API.deleteHR(id);
 	};
 
 	return (
@@ -105,4 +105,4 @@ const CardHRItems = ({ _id, name, lastName, phone, email, avatar, date }) => {
 		</Card>
 	);
 };
-export default CardHRItems;
+export default CardHRItem;
