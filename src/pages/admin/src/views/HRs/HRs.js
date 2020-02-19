@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {
   Button,
   Card, CardBody, CardHeader, Col, Collapse,
   Row,
 } from 'reactstrap';
-
 
 class HRs extends Component {
 
@@ -14,6 +14,11 @@ class HRs extends Component {
     this.state = {
       accordion: [false],
     };
+  }
+  componentDidMount() {
+    axios.get('http://localhost:5000/hr')
+      .then( data => this.setState({hr: data.data.result}))
+      .catch( err => console.log(err));
   }
 
   toggleAccordion(tab) {
@@ -25,7 +30,6 @@ class HRs extends Component {
   }
 
   render() {
-
     return (
       <div className="animated fadeIn">
         <Row>

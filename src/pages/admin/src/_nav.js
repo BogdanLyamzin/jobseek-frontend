@@ -7,7 +7,7 @@ export default {
     },
     {
       name: 'HR',
-      url: '/hrs',
+      url: '/hr',
       icon: 'icon-user',
     },
     {
@@ -40,11 +40,6 @@ export default {
       url: '/administrators',
       icon: 'icon-user',
     },
-    // {
-    //   name: 'Collapses',
-    //   url: '/collapses',
-    //   icon: 'icon-puzzle',
-    // },
 
     // {
     //   name: 'List groups',

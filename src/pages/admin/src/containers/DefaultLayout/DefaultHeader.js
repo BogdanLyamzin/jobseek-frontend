@@ -9,7 +9,7 @@ import {
   // AppAsideToggler,
   AppNavbarBrand,
   AppSidebarToggler } from '@coreui/react';
-import logo from '../../assets/img/brand/photo5197547483935386664.jpg'
+import logo from '../../assets/img/brand/photo5197547483935386664.jpg';
 
 const propTypes = {
   children: PropTypes.node,
@@ -20,24 +20,24 @@ const defaultProps = {};
 class DefaultHeader extends Component {
   render() {
 
-    // eslint-disable-next-line
     const { children, ...attributes } = this.props;
 
     return (
       <React.Fragment>
         <AppSidebarToggler className="d-lg-none" display="md" mobile />
         <AppNavbarBrand
-          full={{ src: logo, width: 70, height: 45, alt: 'CoreUI Logo' }}
-          minimized={{ src: logo, width: 30, height: 30, alt: 'CoreUI Logo' }}
+          className="pb-3"
+          full={{ src: logo, width: 70, height: 45, alt: 'Logo' }}
+          minimized={{ src: logo, width: 30, height: 30, alt: 'Logo' }}
         />
 
-        <Nav className="ml-auto" navbar>
+        <Nav className="ml-auto pb-3" navbar>
           <NavItem className="d-md-down-none">
             <NavLink to="#" className="nav-link"><i className="icon-bell"></i><Badge pill color="danger">5</Badge></NavLink>
           </NavItem>
           <UncontrolledDropdown nav direction="down">
             <DropdownToggle nav>
-              <img src={'../../assets/img/avatars/1.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
+              <img src={'../../assets/img/avatars/1.jpg'} className="img-avatar" alt="admin" />
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem header tag="div" className="text-center"><strong>Account</strong></DropdownItem>
