@@ -22,8 +22,7 @@ const HR = ({ user, updateHR }) => {
 		setValues({ ...values, [event.target.name]: event.target.value });
 	};
 
-	const submitForm = e => {
-		e.preventDefault();
+	const submitForm = () => {
 		updateHR(user._id, values);
 	};
 
@@ -33,8 +32,7 @@ const HR = ({ user, updateHR }) => {
 		updateHR(user._id, fd);
 	};
 
-	const updateHRinfo = e => {
-		e.preventDefault();
+	const updateHRinfo = () => {
 		setHiddenForm(!hiddenForm);
 	};
 

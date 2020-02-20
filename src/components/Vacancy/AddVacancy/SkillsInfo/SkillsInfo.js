@@ -5,14 +5,14 @@ import { Translation } from 'react-i18next';
 import useStyles from './styles';
 import SphereList from './SphereList';
 import ChackboxList from './CheckboxList';
-import API from '../../../../services/hrApi';
 import { englishLevel } from './skillsList';
 import Button from '../../../../shared/Button';
 import LanguageVacancy from './LanguageVacancy';
 import SpecializationList from './SpecializationList';
 import { objToArr } from '../../../../utils/transformArr-Obj';
+import { addVacancy } from '../../../../store/vacancy/actions';
 
-const SkillsInfo = ({ isActive, firstForm, user }) => {
+const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 	const classes = useStyles();
 	const [skill, setSkill] = useState({
 		sphere: null,
@@ -47,7 +47,7 @@ const SkillsInfo = ({ isActive, firstForm, user }) => {
 		});
 	};
 
-	const addVacancy = () => {
+	const addNewVacancy = () => {
 		const body = {
 			active: isActive,
 			...firstForm,
@@ -56,7 +56,7 @@ const SkillsInfo = ({ isActive, firstForm, user }) => {
 			companyId: user.companyId,
 			hrId: user._id,
 		};
-		API.addVacancy(body);
+		addVacancy(body);
 	};
 
 	const checkboxHandleChange = name => event => {
@@ -106,7 +106,7 @@ const SkillsInfo = ({ isActive, firstForm, user }) => {
 					/>
 					{skill.programmLanguage && (
 						<div className={classes.alignCenter}>
-							<Button text={t('POST')} click={() => addVacancy()} />
+							<Button text={t('POST')} click={() => addNewVacancy()} />
 						</div>
 					)}
 				</>
@@ -122,4 +122,4 @@ const mapStateToProps = ({ hr, vacancy }) => {
 	};
 };
 
-export default connect(mapStateToProps)(SkillsInfo);
+export default connect(mapStateToProps, { addVacancy })(SkillsInfo);

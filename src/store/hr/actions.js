@@ -1,10 +1,6 @@
-import API from '../../services/hrApi';
-import {
-	SUCCESS_AXIOS,
-	ERROR,
-	ADD_USER,
-	SUCCESS_AXIOS_LIST,
-} from './actionNames';
+import API from '../../services/api';
+import errorAxios from '../../utils/actions/errorAxios';
+import { SUCCESS_AXIOS, ADD_USER, SUCCESS_AXIOS_LIST } from './actionNames';
 
 const successAxios = payload => {
 	return {
@@ -20,13 +16,6 @@ const successAxiosHRList = payload => {
 	};
 };
 
-const errorAxios = payload => {
-	return {
-		type: ERROR,
-		payload,
-	};
-};
-
 const addHRUser = payload => {
 	return {
 		type: ADD_USER,
@@ -36,8 +25,8 @@ const addHRUser = payload => {
 
 export const addHr = body => {
 	return dispatch => {
-		API.addHR({ ...body })
-			.then(({ data }) => {
+		API.post('hr', body)
+			.then(data => {
 				dispatch(addHRUser(data.result));
 			})
 			.catch(error => {
@@ -48,9 +37,9 @@ export const addHr = body => {
 
 export const updateHR = (id, body) => {
 	return dispatch => {
-		API.putHR(id, body)
+		API.put(`hr/${id}`, body)
 			.then(data => {
-				dispatch(successAxios(data.data.result));
+				dispatch(successAxios(data.result));
 			})
 			.catch(error => {
 				dispatch(errorAxios(error));
@@ -60,9 +49,9 @@ export const updateHR = (id, body) => {
 
 export const getOneHR = id => {
 	return dispatch => {
-		API.getOneHR(id)
+		API.get(`hr/${id}`)
 			.then(data => {
-				dispatch(successAxios(data.data.result));
+				dispatch(successAxios(data.result));
 			})
 			.catch(error => {
 				dispatch(errorAxios(error));
@@ -72,9 +61,9 @@ export const getOneHR = id => {
 
 export const getHrByFilter = filter => {
 	return dispatch => {
-		API.getHrByFilter(filter)
+		API.getHrByFilter(`hr?${filter}`)
 			.then(data => {
-				dispatch(successAxiosHRList(data.data.result));
+				dispatch(successAxiosHRList(data.result));
 			})
 			.catch(error => {
 				dispatch(errorAxios(error));
@@ -84,9 +73,9 @@ export const getHrByFilter = filter => {
 
 export const getAllHR = () => {
 	return dispatch => {
-		API.getAllHR()
+		API.get('hr')
 			.then(data => {
-				dispatch(successAxiosHRList(data.data.result));
+				dispatch(successAxiosHRList(data.result));
 			})
 			.catch(error => {
 				dispatch(errorAxios(error));

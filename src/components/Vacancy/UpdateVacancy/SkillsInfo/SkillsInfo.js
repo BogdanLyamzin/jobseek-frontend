@@ -26,11 +26,11 @@ const SkillsInfo = ({ id, info, oneVacancy, updateVacancy }) => {
 
 	useEffect(() => {
 		setSkill({
-			vacancyName: oneVacancy ? oneVacancy.result.vacancyName : '',
-			englishLevel: oneVacancy ? oneVacancy.result.englishLevel : '',
-			programmLanguage: oneVacancy ? oneVacancy.result.programmLanguage : '',
+			vacancyName: oneVacancy ? oneVacancy.vacancyName : '',
+			englishLevel: oneVacancy ? oneVacancy.englishLevel : '',
+			programmLanguage: oneVacancy ? oneVacancy.programmLanguage : '',
 		});
-		setCheckbox(oneVacancy ? arrToObj(oneVacancy.result.skills) : null);
+		setCheckbox(oneVacancy ? arrToObj(oneVacancy.skills) : null);
 	}, [oneVacancy]);
 
 	useEffect(() => {

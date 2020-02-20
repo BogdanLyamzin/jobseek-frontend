@@ -1,8 +1,9 @@
-import API from '../../services/hrApi';
+import API from '../../services/api';
+import errorAxios from '../../utils/actions/errorAxios';
 import {
 	SUCCESS_AXIOS,
-	ERROR,
 	ADD_INFO,
+	ADD_VACANCY,
 	SUCCESS_AXIOS_LIST,
 } from './actionNames';
 
@@ -20,16 +21,16 @@ const successAxiosList = payload => {
 	};
 };
 
-export const addInfo = payload => {
+const addNewVacancy = payload => {
 	return {
-		type: ADD_INFO,
+		type: ADD_VACANCY,
 		payload,
 	};
 };
 
-const errorAxios = payload => {
+const addInfo = payload => {
 	return {
-		type: ERROR,
+		type: ADD_INFO,
 		payload,
 	};
 };
@@ -40,8 +41,8 @@ export const saveInfo = data => {
 
 export const updateVacancy = (id, body) => {
 	return dispatch => {
-		API.putVacancy(id, body)
-			.then(({ data }) => {
+		API.put(`vacancies/${id}`, body)
+			.then(data => {
 				dispatch(successAxios(data));
 			})
 			.catch(error => {
@@ -52,9 +53,21 @@ export const updateVacancy = (id, body) => {
 
 export const getOneVacancy = id => {
 	return dispatch => {
-		API.getOneVacancy(id)
-			.then(({ data }) => {
-				dispatch(successAxios(data));
+		API.get(`vacancies/${id}`)
+			.then(data => {
+				dispatch(successAxios(data.result));
+			})
+			.catch(error => {
+				dispatch(errorAxios(error));
+			});
+	};
+};
+
+export const addVacancy = body => {
+	return dispatch => {
+		API.post('vacancies', body)
+			.then(data => {
+				dispatch(addNewVacancy(data.result));
 			})
 			.catch(error => {
 				dispatch(errorAxios(error));
@@ -64,9 +77,9 @@ export const getOneVacancy = id => {
 
 export const getVacancyByFilter = filter => {
 	return dispatch => {
-		API.getVacancyByFilter(filter)
+		API.get(`vacancies?${filter}`)
 			.then(data => {
-				dispatch(successAxiosList(data.data));
+				dispatch(successAxiosList(data.result));
 			})
 			.catch(error => {
 				dispatch(errorAxios(error));
@@ -76,9 +89,9 @@ export const getVacancyByFilter = filter => {
 
 export const getAllVacancy = () => {
 	return dispatch => {
-		API.getAllVacancy()
+		API.get('vacancies')
 			.then(({ data }) => {
-				dispatch(successAxiosList(data));
+				dispatch(successAxiosList(data.result));
 			})
 			.catch(error => {
 				dispatch(errorAxios(error));

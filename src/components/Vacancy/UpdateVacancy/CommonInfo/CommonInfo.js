@@ -20,11 +20,11 @@ const CommonInfo = ({ info, saveInfo, oneVacancy }) => {
 	useEffect(() => {
 		if (oneVacancy)
 			setValues({
-				city: oneVacancy.result.city,
-				salary: oneVacancy.result.salary,
-				country: oneVacancy.result.country,
-				description: oneVacancy.result.description,
-				employmentType: oneVacancy.result.employmentType,
+				city: oneVacancy.city,
+				salary: oneVacancy.salary,
+				country: oneVacancy.country,
+				description: oneVacancy.description,
+				employmentType: oneVacancy.employmentType,
 			});
 	}, [oneVacancy]);
 

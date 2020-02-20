@@ -12,13 +12,10 @@ import FormCompanyInfo from '../FormCompanyInfo/FormCompanyInfo';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutlined';
 import CardCompany from '../../RegisterCompany/CardCompany/CardCompany';
 
-const FormRegisterCompany = ({ user, info, updateCompany }) => {
+const FormRegisterCompany = ({ user, updateCompany }) => {
 	const classes = useStyles();
 	const [hidden, setHidden] = useState(false);
-	const hideCompanyInfo = e => {
-		e.preventDefault();
-		setHidden(!hidden);
-	};
+
 	const [values, setValues] = useState({
 		companyName: '',
 		email: '',
@@ -43,7 +40,7 @@ const FormRegisterCompany = ({ user, info, updateCompany }) => {
 				<Container>
 					<Title text={t('COMPANY_PROFILE')} />
 					<Paper className={classes.root}>
-						<div className={classes.add} onClick={hideCompanyInfo}>
+						<div className={classes.add} onClick={() => setHidden(!hidden)}>
 							{t('UPDATE_COMPANY')}
 							<AddCircleOutlineIcon fontSize="large" />
 						</div>
@@ -70,8 +67,9 @@ const FormRegisterCompany = ({ user, info, updateCompany }) => {
 										/>
 										<div className={classes.alignCenter}>
 											<Button
-												click={event => {
-													event.preventDefault();
+												click={e => {
+													e.preventDefault();
+													setHidden(!hidden);
 													updateCompany(user._id, { ...values });
 												}}
 												text={t('REGISTER')}

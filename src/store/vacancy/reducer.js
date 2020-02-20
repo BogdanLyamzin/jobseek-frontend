@@ -1,8 +1,8 @@
 import {
 	SUCCESS_AXIOS,
-	FAILURE_AXIOS,
 	ERROR,
 	ADD_INFO,
+	ADD_VACANCY,
 	SUCCESS_AXIOS_LIST,
 } from './actionNames';
 
@@ -28,17 +28,16 @@ export default (state = initialState, action) => {
 				vacancyList: action.payload,
 			};
 
-		case FAILURE_AXIOS:
-			return {
-				...state,
-				isError: true,
-				error: action.payload,
-			};
-
 		case ADD_INFO:
 			return {
 				...state,
 				addVacancy: action.payload,
+			};
+
+		case ADD_VACANCY:
+			return {
+				...state,
+				vacancyList: [...state.vacancy.vacancyList, action.payload],
 			};
 
 		case ERROR:
