@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
@@ -10,6 +9,7 @@ import useStyles from './styles';
 import dark from './img/dark.png';
 import logo from './img/Frame.png';
 import light from './img/light.png';
+import Link from '../../shared/Link';
 import avatar from './img/Group 395.png';
 import darkLogo from './img/logo-dark.png';
 import {

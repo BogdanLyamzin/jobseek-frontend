@@ -18,7 +18,7 @@ const AddVacancy = () => {
 				<div className={classes.container}>
 					<div className={classes.addvacancy}>
 						<div className={classes.addvacancyHead}>
-							<div></div>
+							<div style={{ width: '10%' }}></div>
 							<Title text={t('CREATE_VACANCY')} />
 							<div className={classes.addvacancyIsActive}>
 								<div>{t('ACTIVITY_VACANCIES')}</div>

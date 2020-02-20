@@ -4,11 +4,11 @@ import { Switch, Route } from 'react-router-dom';
 
 import useStyles from './styles';
 import HrMenuSm from './HrMenuSm';
-import VacancyByHR from './VacancyByHR';
 import Title from '../../../shared/Title';
 import HRVacancyMenu from './MenuHRVacancy';
 import CandidateList from './CandidateList';
 import SentOffersList from './SentOffersList';
+import VacancyByHR from '../../Vacancy/VacancyByHR';
 import ReceivedOffersList from './ReceivedOffersList';
 
 const VacancyHR = () => {

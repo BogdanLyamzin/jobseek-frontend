@@ -16,7 +16,7 @@ function CardHR({ user, companyId, getAllHR }) {
 
 	cardList = user
 		? user.map((elem, index) => {
-				return <CardHRItem {...elem} key={elem._id} />;
+				return <CardHRItem elem={elem} key={elem._id} index={index} />;
 		  })
 		: null;
 	return <Container>{cardList}</Container>;

@@ -1,5 +1,6 @@
-import API from '../../services/serviceApi/api';
-import { SUCCESS_AXIOS, ERROR, ADD_INFO } from './actionNames';
+import API from '../../services/api';
+import errorAxios from '../../utils/actions/errorAxios';
+import { SUCCESS_AXIOS } from './actionNames';
 
 const successAxios = payload => {
 	return {
@@ -7,35 +8,18 @@ const successAxios = payload => {
 		payload,
 	};
 };
-export const addInfo = payload => {
-	return {
-		type: ADD_INFO,
-		payload,
-	};
-};
-
-const errorAxios = payload => {
-	return {
-		type: ERROR,
-		payload,
-	};
-};
-
-export const saveInfo = data => {
-	return dispatch => dispatch(addInfo(data));
-};
 
 export const addCompany = body => {
-	return dispatch => {
-		API.addCompany({ ...body });
+	return () => {
+		API.post('companies', body);
 	};
 };
 
 export const updateCompany = (id, body) => {
 	return dispatch => {
-		API.updateCompany(id, body)
+		API.put(`companies/${id}`, body)
 			.then(data => {
-				dispatch(successAxios(data.data.result));
+				dispatch(successAxios(data.result));
 			})
 			.catch(error => {
 				dispatch(errorAxios(error));
@@ -45,9 +29,9 @@ export const updateCompany = (id, body) => {
 
 export const getOneCompany = id => {
 	return dispatch => {
-		API.getOneCompany(id)
+		API.get(`companies/${id}`)
 			.then(data => {
-				dispatch(successAxios(data.data.result));
+				dispatch(successAxios(data.result));
 			})
 			.catch(error => {
 				dispatch(errorAxios(error));
@@ -57,7 +41,7 @@ export const getOneCompany = id => {
 
 export const getAllCompanies = () => {
 	return dispatch => {
-		API.getAllCompanies()
+		API.get('companies')
 			.then(data => {
 				dispatch(successAxios(data.data));
 			})
@@ -68,13 +52,7 @@ export const getAllCompanies = () => {
 };
 
 export const deleteCompany = id => {
-	return dispatch => {
-		API.deleteCompany(id)
-			.then(data => {
-				dispatch(successAxios(data.data));
-			})
-			.catch(error => {
-				dispatch(errorAxios(error));
-			});
+	return () => {
+		API.delete(`companies/${id}`);
 	};
 };

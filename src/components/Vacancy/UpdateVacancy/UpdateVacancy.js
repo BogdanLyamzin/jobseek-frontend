@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Translation } from 'react-i18next';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import CommonInfo from './CommonInfo';
 import SkillsInfo from './SkillsInfo';
+import Link from '../../../shared/Link';
 import Title from '../../../shared/Title';
 import useStyles from '../AddVacancy/styles';
 import { getOneVacancy } from '../../../store/vacancy/actions';

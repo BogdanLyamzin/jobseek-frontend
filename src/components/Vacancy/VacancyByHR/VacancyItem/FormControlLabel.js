@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import Switch from '@material-ui/core/Switch';
 import FormGroup from '@material-ui/core/FormGroup';
 import { withStyles } from '@material-ui/core/styles';
 
-import API from '../../../../services/hrApi';
+import { updateVacancy } from '../../../../store/vacancy/actions';
 
 const AntSwitch = withStyles(() => ({
 	root: {
@@ -35,13 +36,13 @@ const AntSwitch = withStyles(() => ({
 	checked: {},
 }))(Switch);
 
-export default ({ vacancy, isActive }) => {
+const FormControlLabel = ({ id, isActive, updateVacancy }) => {
 	const [active, setActive] = useState({
 		switch: isActive,
 	});
 
 	const handleChange = name => event => {
-		API.putVacancy(vacancy, { active: event.target.checked });
+		updateVacancy(id, { active: event.target.checked });
 		setActive({ ...active, [name]: event.target.checked });
 	};
 
@@ -55,3 +56,9 @@ export default ({ vacancy, isActive }) => {
 		</FormGroup>
 	);
 };
+
+const mapDispatchToProps = {
+	updateVacancy,
+};
+
+export default connect(null, mapDispatchToProps)(FormControlLabel);

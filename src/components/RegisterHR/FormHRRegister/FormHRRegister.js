@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import useStyles from './styles';
@@ -22,6 +22,10 @@ const FormHRRegister = ({ info, hidden, addHr, getAllHR, updateHRInfo }) => {
 	const handleChange = event => {
 		setValues({ ...values, [event.target.name]: event.target.value });
 	};
+
+	useEffect(() => {
+		getAllHR(values.companyId);
+	}, [getAllHR, values.companyId]);
 
 	return (
 		<Translation>
