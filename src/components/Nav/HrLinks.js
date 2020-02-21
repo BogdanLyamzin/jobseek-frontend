@@ -1,7 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(theme => ({
 	link: {
@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
 		marginRight: '10px',
 		textDecoration: 'none',
 		fontWeight: 'bold',
-		fontSize: '16px' ,
+		fontSize: '16px',
 		color: theme.palette.color,
 		fontFamily: '"Open Sans", sans-serif',
 		border: '1px solid #6d6d6e',
@@ -27,15 +27,20 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-
 export default function HrLinks() {
-	const classes = useStyles()
-	const {t} = useTranslation()
-    return(
-        <div>
-            <Link className={classes.link} to='/hr'>{t('MY_PROFILE')}</Link>
-            <Link className={classes.link} to='/hr/vacancy'>{t('MY_VACANCIES')}</Link>
-            <Link className={classes.link} to='/hr/vacancyAdd'>{t('ADD_VACANCY')}</Link>
-        </div>
-    )
+	const classes = useStyles();
+	const { t } = useTranslation();
+	return (
+		<div>
+			<Link className={classes.link} to="/hr">
+				{t('MY_PROFILE')}
+			</Link>
+			<Link className={classes.link} to="/hr/vacancy">
+				{t('MY_VACANCIES')}
+			</Link>
+			<Link className={classes.link} to="/hr/vacancyAdd">
+				{t('ADD_VACANCY')}
+			</Link>
+		</div>
+	);
 }

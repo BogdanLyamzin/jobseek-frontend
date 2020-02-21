@@ -1,7 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(theme => ({
 	link: {
@@ -27,14 +27,17 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-
 export default function CompanyLinks() {
-	const classes = useStyles()
-	const {t} = useTranslation()
-    return(
-        <div>
-            <Link className={classes.link} to='/kostya/company'>{t('MY_PROFILE')}</Link>
-            <Link className={classes.link} to='/kostya/hrs'>HRs</Link>
-        </div>
-    )
+	const classes = useStyles();
+	const { t } = useTranslation();
+	return (
+		<div>
+			<Link className={classes.link} to="/kostya/company">
+				{t('MY_PROFILE')}
+			</Link>
+			<Link className={classes.link} to="/kostya/hrs">
+				HRs
+			</Link>
+		</div>
+	);
 }
