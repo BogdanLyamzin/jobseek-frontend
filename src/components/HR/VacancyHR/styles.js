@@ -22,6 +22,14 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 
+	root: {
+		backgroundColor: theme.palette.paper,
+    padding: "15px",
+    margin: "20px auto",
+    marginBottom: "40px",
+    maxWidth: "980px"
+	},
+
 	hrVacancy: {
 		padding: '40px 65px',
 		background: '#FFFFFF',
@@ -98,7 +106,7 @@ const useStyles = makeStyles(theme => ({
 		fontWeight: 'bold',
 		fontSize: '14px',
 		fontFamily: font,
-		color: '#3D3B69',
+		color: theme.palette.color,
 		display: 'inline-block',
 		width: '100%',
 		padding: '10px 0',
@@ -125,7 +133,7 @@ const useStyles = makeStyles(theme => ({
 		fontWeight: 'bold',
 		fontSize: '14px',
 		fontFamily: font,
-		color: '#3D3B69',
+		color: theme.palette.color,
 		display: 'inline-block',
 		width: '100%',
 		padding: '10px 0',
@@ -153,7 +161,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	linkAddVacancyDark: {
-		color: '#3D3B69',
+		color: theme.palette.textColor,
 	},
 }));
 

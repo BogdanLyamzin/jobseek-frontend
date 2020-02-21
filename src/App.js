@@ -1,34 +1,64 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import PrivateRouter from './components/PrivateRouter';
+import { BrowserRouter } from 'react-router-dom';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
 
-import store from './store';
-import HrPage from './pages/hr';
-import CompanyPage from './pages/company';
-import AdminPage from './pages/admin/src';
-import Comments from './pages/comments/Comments';
-const App = () => {
+import MainPage from './components/MainPage';
+
+const light = createMuiTheme({
+	palette: {
+		// This is the default, so only included for comparison.
+		type: 'light',
+		color: '#3D3B69',
+		textColor: '#3D3B69',
+		backgroundColor: '#F6F9FF',
+		paper: '#ffffff',
+	},
+	breakpoints: {
+		values: {
+			xs: 0,
+			sm: 768,
+			md: 1024,
+			lg: 1280,
+			xl: 1980,
+		},
+	},
+});
+
+const dark = createMuiTheme({
+	palette: {
+		// Switching the dark mode on is a single property value change.
+		type: 'dark',
+		backgroundColor: '#424242',
+		textColor: '#c9ced9',
+		color: '#26a69a',
+		bgLogo: '#22c1c3',
+		paper: '#192c55',
+	},
+	breakpoints: {
+		values: {
+			xs: 0,
+			sm: 768,
+			md: 1024,
+			lg: 1280,
+			xl: 1980,
+		},
+	},
+});
+
+function App(props) {
+	const theme = props.theme === 'light' ? light : dark;
 	return (
-		<Provider store={store}>
-			<div>
-				<BrowserRouter>
-					<nav>
-						<Link to="/hr">HR</Link>
-						<Link to="/kostya/company">Company</Link>
-						<Link to="/nelya">Admin</Link>
-						<Link to="/zmen">Comments</Link>
-					</nav>
-					<Switch>
-						<Route path="/zmen" component={Comments} />
-						<Route path="/kostya" component={CompanyPage} />
-						<PrivateRouter path="/hr" component={HrPage} />
-						<PrivateRouter exact path="/nelya" component={AdminPage} />
-					</Switch>
-				</BrowserRouter>
-			</div>
-		</Provider>
+		<BrowserRouter>
+			<ThemeProvider theme={theme}>
+				<MainPage />
+			</ThemeProvider>
+		</BrowserRouter>
 	);
-};
+}
 
-export default App;
+const mapStateToPtops = state => ({
+	theme: state.theme.theme,
+});
+
+export default connect(mapStateToPtops)(App);

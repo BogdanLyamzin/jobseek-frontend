@@ -1,4 +1,5 @@
 import React from 'react';
+import Container from '@material-ui/core/Container';
 
 import useStyles from './styles';
 import Skills from './CandidateSkills';
@@ -15,7 +16,7 @@ const OneCandidate = () => {
 	const classes = useStyles();
 
 	return (
-		<div className={classes.container}>
+		<Container>
 			<div className={classes.candidate}>
 				<Header classes={classes} />
 				<Summary classes={classes} />
@@ -56,7 +57,7 @@ const OneCandidate = () => {
 					)}
 				</div>
 			</div>
-		</div>
+			</Container>
 	);
 };
 

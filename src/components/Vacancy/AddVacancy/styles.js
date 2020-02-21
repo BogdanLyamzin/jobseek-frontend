@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const font = '"Open Sans", sans-serif';
-const colorDark = '#3D3B69';
+
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -11,6 +11,14 @@ const useStyles = makeStyles(theme => ({
 			width: '100%',
 			padding: '0 20px',
 		},
+	},
+
+	root: {
+		backgroundColor: theme.palette.paper,
+    padding: "15px",
+    margin: "20px auto",
+    marginBottom: "40px",
+    maxWidth: "980px"
 	},
 
 	addvacancy: {
@@ -36,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 		fontFamily: font,
 		fontSize: '10px',
 		lineHeight: '14px',
-		color: colorDark,
+		color: theme.palette.color,
 		display: 'flex',
 		alignItems: 'center',
 		marginBottom: '15px',
@@ -61,7 +69,7 @@ const useStyles = makeStyles(theme => ({
 		fontFamily: font,
 		fontWeight: 'bold',
 		fontSize: '14px',
-		color: colorDark,
+		color: theme.palette.color,
 		padding: '17px',
 		flexBasis: '50%',
 		textAlign: 'center',

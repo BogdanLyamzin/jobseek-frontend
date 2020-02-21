@@ -11,6 +11,13 @@ const useStyles = makeStyles(theme => ({
 			padding: '0 20px',
 		},
 	},
+	root: {
+		backgroundColor: theme.palette.paper,
+    padding: "15px",
+    margin: "20px auto",
+    marginBottom: "40px",
+    maxWidth: "980px"
+	},
 
 	hr: {
 		padding: '56px 0 180px 0',

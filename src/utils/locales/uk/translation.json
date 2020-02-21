@@ -1,7 +1,6 @@
 {
   "ADD_SOCIAL_NET": "Додати соцмережи",
   "ADD_HR": "Додати HR",
-  "ADD_COMPANY": "Додати компанію",
   "COMPANY_VACANCIES": "Вакансіі компанії",
   "HR_MANAGERS": "HR менеджери",
   "FIRST_NAME": "Ім'я",
@@ -68,6 +67,5 @@
   "UPDATE": "Оновити",
   "ADD_FOTO": "Додати фото",
   "DELETE_MESSAGE": "Видалити дану вакансію",
-  "ADD_LOGO": "Додати лого",
-  "UPDATE_COMPANY": "Обновити профіль"
+  "ADD_LOGO": "Додати лого"
 }

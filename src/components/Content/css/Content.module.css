@@ -1,0 +1,33 @@
+
+
+.textJbs {
+    background: -webkit-linear-gradient(45deg, #3D3B69 40%, #4f52f9 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 60px;
+}
+
+.darkTextJbs {
+    background: -webkit-linear-gradient(45deg, #0dd663 40%, #06f9b3 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 60px;
+}
+
+@media screen and (min-width: 768px) {
+    .bg1 {
+        display: none
+    }
+
+    .textJbs {
+        text-align: left !important;
+    }
+
+    .header-text {
+        text-align: left !important;
+        max-width: 654px;
+    }
+
+
+}
+

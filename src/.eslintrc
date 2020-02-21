@@ -1,0 +1,41 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "react-app",
+        "prettier",
+        "plugin:react/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "prettier"
+    ],
+    "rules": {
+        "jsx-quotes": [1, "prefer-double"],
+        "semi":"error",
+        "indent":"off",
+        "no-tabs":"off",
+        "no-alert":"error",
+        "eol-last":"error",
+        "no-console":"error",
+        "no-plusplus":"error",
+        "react/prop-types": "off",
+        "object-shorthand":"warn",
+        "consistent-return":"off",
+        "max-len": ["warn", 130],
+        "no-array-constructor":"error",
+        "prefer-destructuring":"error"
+    }
+}
