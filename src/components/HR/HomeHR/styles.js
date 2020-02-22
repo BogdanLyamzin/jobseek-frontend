@@ -3,37 +3,16 @@ import { makeStyles } from '@material-ui/core/styles';
 const font = '"Open Sans", sans-serif';
 
 const useStyles = makeStyles(theme => ({
-	container: {
-		width: '1140px',
-		margin: '0 auto',
-		[theme.breakpoints.down(1180)]: {
-			width: '100%',
-			padding: '0 20px',
-		},
-	},
 	root: {
 		backgroundColor: theme.palette.paper,
-    padding: "15px",
-    margin: "20px auto",
-    marginBottom: "40px",
-    maxWidth: "980px"
-	},
-
-	hr: {
-		padding: '56px 0 180px 0',
-		[theme.breakpoints.down(850)]: {
-			padding: '20px 0 220px 0',
-		},
-		[theme.breakpoints.down(550)]: {
-			padding: '20px 0',
-		},
+		padding: '15px',
+		margin: '20px auto',
+		marginBottom: '40px',
+		maxWidth: '980px',
 	},
 
 	hrInfo: {
 		padding: '110px 95px 55px 95px',
-		background: '#FFFFFF',
-		boxShadow: '0px 10px 15px rgba(230, 235, 255, 0.5)',
-		borderRadius: '8px',
 		[theme.breakpoints.down(850)]: {
 			padding: '30px',
 		},
@@ -45,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 	hrFlex: {
 		display: 'flex',
 		justifyContent: 'space-between',
-		[theme.breakpoints.down(550)]: {
+		[theme.breakpoints.down(600)]: {
 			flexDirection: 'column',
 			alignItems: 'center',
 		},
@@ -54,9 +33,9 @@ const useStyles = makeStyles(theme => ({
 	hrForm: {
 		flexBasis: '65%',
 		[theme.breakpoints.down(850)]: {
-			flexBasis: '55%',
+			flexBasis: '60%',
 		},
-		[theme.breakpoints.down(550)]: {
+		[theme.breakpoints.down(600)]: {
 			textAlign: 'center',
 		},
 	},
@@ -66,7 +45,7 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.down(940)]: {
 			marginBottom: '40px',
 		},
-		[theme.breakpoints.down(550)]: {
+		[theme.breakpoints.down(600)]: {
 			margin: '15px 0 20px 0',
 		},
 	},
@@ -77,7 +56,7 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '16px',
 		lineHeight: '19px',
 		color: '#3D3B69',
-		[theme.breakpoints.down(550)]: {
+		[theme.breakpoints.down(600)]: {
 			marginTop: '15px',
 			fontSize: '14px',
 		},
@@ -89,7 +68,7 @@ const useStyles = makeStyles(theme => ({
 		lineHeight: '19px',
 		color: '#3D3B69',
 		marginTop: '10px',
-		[theme.breakpoints.down(550)]: {
+		[theme.breakpoints.down(600)]: {
 			fontSize: '14px',
 			margin: '5px 0',
 		},
@@ -114,7 +93,7 @@ const useStyles = makeStyles(theme => ({
 		color: '#3D3B69',
 		margin: '0 20px 15px 0',
 		padding: '5px 10px',
-		[theme.breakpoints.down(550)]: {
+		[theme.breakpoints.down(600)]: {
 			margin: '0 0 15px 0',
 		},
 	},
@@ -133,7 +112,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	iconPenLrg: {
-		[theme.breakpoints.down(550)]: {
+		[theme.breakpoints.down(600)]: {
 			display: 'none',
 		},
 	},
@@ -141,7 +120,7 @@ const useStyles = makeStyles(theme => ({
 	iconPenSm: {
 		marginBottom: '15px',
 		display: 'none',
-		[theme.breakpoints.down(550)]: {
+		[theme.breakpoints.down(600)]: {
 			display: 'block',
 		},
 	},

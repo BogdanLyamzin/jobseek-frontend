@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Translation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
 import Button from '../../../../shared/Button';
@@ -9,6 +9,7 @@ import { saveInfo } from '../../../../store/vacancy/actions';
 
 const CommonInfo = ({ info, saveInfo }) => {
 	const classes = useStyles();
+	const { t } = useTranslation();
 	const [values, setValues] = useState({
 		city: info ? info.city : '',
 		salary: info ? info.salary : '',
@@ -28,34 +29,28 @@ const CommonInfo = ({ info, saveInfo }) => {
 	};
 
 	return (
-		<Translation>
-			{t => (
-				<div>
-					<FormCommonInfo
-						classes={classes}
-						handleChange={handleChange}
-						values={values}
-					/>
+		<div>
+			<FormCommonInfo
+				classes={classes}
+				handleChange={handleChange}
+				values={values}
+			/>
 
-					<hr className={classes.line} />
+			<hr className={classes.line} />
 
-					<div className={classes.vacancyDescription}>
-						<div className={classes.vacancyKey}>
-							{t('VACANCY_DESCRIPTION')}*
-						</div>
-						<textarea
-							name="description"
-							className={classes.vacancyDescriptionArea}
-							onChange={handleChange}
-							value={values.description}
-						/>
-						<div className={classes.alignCenter}>
-							<Button click={() => saveInfo({ ...values })} text={t('SAVE')} />
-						</div>
-					</div>
+			<div className={classes.vacancyDescription}>
+				<div className={classes.vacancyKey}>{t('VACANCY_DESCRIPTION')}*</div>
+				<textarea
+					name="description"
+					className={classes.vacancyDescriptionArea}
+					onChange={handleChange}
+					value={values.description}
+				/>
+				<div className={classes.alignCenter}>
+					<Button click={() => saveInfo({ ...values })} text={t('SAVE')} />
 				</div>
-			)}
-		</Translation>
+			</div>
+		</div>
 	);
 };
 

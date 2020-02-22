@@ -2,23 +2,13 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const font = '"Open Sans", sans-serif';
 
-
 const useStyles = makeStyles(theme => ({
-	container: {
-		width: '1140px',
-		margin: '0 auto',
-		[theme.breakpoints.down(1180)]: {
-			width: '100%',
-			padding: '0 20px',
-		},
-	},
-
 	root: {
 		backgroundColor: theme.palette.paper,
-    padding: "15px",
-    margin: "20px auto",
-    marginBottom: "40px",
-    maxWidth: "980px"
+		padding: '15px',
+		margin: '20px auto',
+		marginBottom: '40px',
+		maxWidth: '980px',
 	},
 
 	addvacancy: {
@@ -33,11 +23,7 @@ const useStyles = makeStyles(theme => ({
 
 	addvacancyHead: {
 		display: 'flex',
-		justifyContent: 'space-between',
-		[theme.breakpoints.down(550)]: {
-			flexDirection: 'column',
-			alignItems: 'center',
-		},
+		justifyContent: 'flex-end',
 	},
 
 	addvacancyIsActive: {

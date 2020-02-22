@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Translation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
 import SphereList from './SphereList';
@@ -14,6 +14,7 @@ import { addVacancy } from '../../../../store/vacancy/actions';
 
 const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 	const classes = useStyles();
+	const { t } = useTranslation();
 	const [skill, setSkill] = useState({
 		sphere: null,
 		vacancyName: null,
@@ -74,44 +75,36 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 	};
 
 	return (
-		<Translation>
-			{t => (
-				<>
-					<SphereList
-						skill={skill}
-						classes={classes}
-						setSkill={setSkill}
-						handleClickSkill={handleClickSkill}
-					/>
-					<SpecializationList
-						skill={skill}
-						classes={classes}
-						setSkill={setSkill}
-						handleClickSkill={handleClickSkill}
-					/>
-					<LanguageVacancy
-						skill={skill}
-						classes={classes}
-						setSkill={setSkill}
-					/>
-					<ChackboxList
-						skill={skill}
-						classes={classes}
-						checkbox={checkbox}
-						checkboxArr={checkboxArr}
-						setCheckbox={setCheckbox}
-						handleChangeEng={handleChangeEnglish}
-						handleChange={handleChangeSkillSlider}
-						checkboxHandleChange={checkboxHandleChange}
-					/>
-					{skill.programmLanguage && (
-						<div className={classes.alignCenter}>
-							<Button text={t('POST')} click={() => addNewVacancy()} />
-						</div>
-					)}
-				</>
+		<>
+			<SphereList
+				skill={skill}
+				classes={classes}
+				setSkill={setSkill}
+				handleClickSkill={handleClickSkill}
+			/>
+			<SpecializationList
+				skill={skill}
+				classes={classes}
+				setSkill={setSkill}
+				handleClickSkill={handleClickSkill}
+			/>
+			<LanguageVacancy skill={skill} classes={classes} setSkill={setSkill} />
+			<ChackboxList
+				skill={skill}
+				classes={classes}
+				checkbox={checkbox}
+				checkboxArr={checkboxArr}
+				setCheckbox={setCheckbox}
+				handleChangeEng={handleChangeEnglish}
+				handleChange={handleChangeSkillSlider}
+				checkboxHandleChange={checkboxHandleChange}
+			/>
+			{skill.programmLanguage && (
+				<div className={classes.alignCenter}>
+					<Button text={t('POST')} click={() => addNewVacancy()} />
+				</div>
 			)}
-		</Translation>
+		</>
 	);
 };
 

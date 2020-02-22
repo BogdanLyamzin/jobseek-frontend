@@ -16,6 +16,7 @@ import ReceivedOffersList from './ReceivedOffersList';
 const VacancyHR = () => {
 	const classes = useStyles();
 	const { t } = useTranslation();
+
 	return (
 		<Container>
 			<Title text={t('MY_VACANCIES')} />
