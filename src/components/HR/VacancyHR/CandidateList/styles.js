@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const font = '"Open Sans", sans-serif';
 const colorDark = '#3D3B69';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
 	candidate: {
 		borderBottom: '2px solid #E6EBFF',
 		paddingBottom: '20px',
@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
 	candidateVacancyName: {
 		fontWeight: 'bold',
 		fontSize: '14px',
-		color: colorDark,
+		color: theme.palette.textColor,
 		marginBottom: '15px',
 		fontFamily: font,
 	},
@@ -27,7 +27,7 @@ const useStyles = makeStyles(() => ({
 	candidateSkills: {
 		fontSize: '14px',
 		lineHeight: '21px',
-		color: colorDark,
+		color: theme.palette.textColor,
 		marginBottom: '18px',
 		fontFamily: font,
 	},
@@ -53,7 +53,7 @@ const useStyles = makeStyles(() => ({
 	candidateName: {
 		fontSize: '12px',
 		lineHeight: '16px',
-		color: colorDark,
+		color: theme.palette.color,
 		marginLeft: '10px',
 		fontFamily: font,
 	},

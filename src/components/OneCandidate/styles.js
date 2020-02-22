@@ -31,10 +31,18 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 
+	root: {
+		backgroundColor: theme.palette.paper,
+    padding: "15px",
+    margin: "20px auto",
+    marginBottom: "40px",
+    maxWidth: "980px"
+	},
+
 	candidateVacancyNames: {
 		fontWeight: 'bold',
 		fontSize: '16px',
-		color: colorDark,
+		color: theme.palette.textColor,
 		fontFamily: font,
 		[theme.breakpoints.down(450)]: {
 			fontSize: '14px',
@@ -81,7 +89,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	candidateBackground: {
-		backgroundColor: '#ffffff',
+		backgroundColor: theme.palette.paper,
 		boxShadow: '0px 10px 15px rgba(230, 235, 255, 0.5)',
 		borderRadius: '8px',
 		padding: '40px 60px',
@@ -111,7 +119,7 @@ const useStyles = makeStyles(theme => ({
 	candidateName: {
 		fontSize: '16px',
 		lineHeight: '22px',
-		color: colorDark,
+		color: theme.palette.textColor,
 		fontFamily: font,
 	},
 
@@ -163,7 +171,7 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '16px',
 		lineHeight: '24px',
 		letterSpacing: '0.15px',
-		color: colorDark,
+		color: theme.palette.textColor,
 	},
 
 	candidateField: {

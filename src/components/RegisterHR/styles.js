@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const font = '"Open Sans", sans-serif';
 const colorDark = '#3D3B69';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		width: '1140px',
 		margin: '0 auto',
@@ -11,6 +11,14 @@ const useStyles = makeStyles(() => ({
 
 	addvacancy: {
 		padding: '56px 0 40px 0',
+	},
+
+	root: {
+		backgroundColor: theme.palette.paper,
+    padding: "15px",
+    margin: "20px auto",
+    marginBottom: "40px",
+    maxWidth: "980px"
 	},
 
 	addvacancyIsActive: {
@@ -39,7 +47,7 @@ const useStyles = makeStyles(() => ({
 		fontFamily: font,
 		fontWeight: 'bold',
 		fontSize: '14px',
-		color: colorDark,
+		color: theme.palette.color,
 		padding: '17px',
 		flexBasis: '50%',
 		textAlign: 'center',

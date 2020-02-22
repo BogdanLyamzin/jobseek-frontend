@@ -2,14 +2,14 @@ import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import { withStyles } from '@material-ui/core/styles';
 
-const CheckboxItem = withStyles({
+const CheckboxItem = withStyles((theme) =>( {
 	root: {
-		color: '#3D3B69',
+		color: theme.palette.textColor,
 		'&$checked': {
 			color: '#00F2C9',
 		},
 	},
 	checked: {},
-})(props => <Checkbox color="default" {...props} />);
+}))(props => <Checkbox color="default" {...props} />);
 
 export default CheckboxItem;

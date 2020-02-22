@@ -5,7 +5,10 @@ const useStyles = makeStyles(theme => ({
 	title: {
 		fontFamily: '"Open Sans", sans-serif',
 		fontSize: '24px',
-		color: '#3D3B69',
+		color: theme.palette.textColor,
+        [theme.breakpoints.up('sm')]: {
+            marginTop: "80px"
+        },
 		marginBottom: '20px',
 		textAlign: 'center',
 		[theme.breakpoints.down(600)]: {
