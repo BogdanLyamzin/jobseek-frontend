@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Translation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import ChackboxList from './CheckboxList';
 import { englishLevel } from './skillsList';
@@ -14,6 +14,7 @@ import SpecializationList from '../../AddVacancy/SkillsInfo/SpecializationList';
 
 const SkillsInfo = ({ id, info, oneVacancy, updateVacancy }) => {
 	const classes = useStyles();
+	const { t } = useTranslation();
 	const [skill, setSkill] = useState({
 		sphere: null,
 		specialization: null,
@@ -80,45 +81,41 @@ const SkillsInfo = ({ id, info, oneVacancy, updateVacancy }) => {
 	};
 
 	return (
-		<Translation>
-			{t => (
-				<>
-					<SphereList
-						skill={skill}
-						classes={classes}
-						setSkill={setSkill}
-						handleClickSkill={handleClickSkill}
-					/>
-					<SpecializationList
-						skill={skill}
-						classes={classes}
-						setSkill={setSkill}
-						handleClickSkill={handleClickSkill}
-					/>
-					<LanguageVacancy
-						skill={skill}
-						classes={classes}
-						setSkill={setSkill}
-						handleChange={handleChangeEnglish}
-					/>
-					<ChackboxList
-						skill={skill}
-						classes={classes}
-						checkbox={checkbox}
-						checkboxArr={checkboxArr}
-						setCheckbox={setCheckbox}
-						handleChangeEng={handleChangeEnglish}
-						handleChange={handleChangeSkillSlider}
-						checkboxHandleChange={checkboxHandleChange}
-					/>
-					{skill.programmLanguage && (
-						<div className={classes.alignCenter}>
-							<Button text={t('UPDATE')} click={() => update()} />
-						</div>
-					)}
-				</>
+		<>
+			<SphereList
+				skill={skill}
+				classes={classes}
+				setSkill={setSkill}
+				handleClickSkill={handleClickSkill}
+			/>
+			<SpecializationList
+				skill={skill}
+				classes={classes}
+				setSkill={setSkill}
+				handleClickSkill={handleClickSkill}
+			/>
+			<LanguageVacancy
+				skill={skill}
+				classes={classes}
+				setSkill={setSkill}
+				handleChange={handleChangeEnglish}
+			/>
+			<ChackboxList
+				skill={skill}
+				classes={classes}
+				checkbox={checkbox}
+				checkboxArr={checkboxArr}
+				setCheckbox={setCheckbox}
+				handleChangeEng={handleChangeEnglish}
+				handleChange={handleChangeSkillSlider}
+				checkboxHandleChange={checkboxHandleChange}
+			/>
+			{skill.programmLanguage && (
+				<div className={classes.alignCenter}>
+					<Button text={t('UPDATE')} click={() => update()} />
+				</div>
 			)}
-		</Translation>
+		</>
 	);
 };
 

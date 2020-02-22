@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Translation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 
@@ -14,6 +14,7 @@ import CardCompany from '../../RegisterCompany/CardCompany/CardCompany';
 
 const FormRegisterCompany = ({ user, updateCompany }) => {
 	const classes = useStyles();
+	const { t } = useTranslation();
 	const [hidden, setHidden] = useState(false);
 
 	const [values, setValues] = useState({
@@ -35,56 +36,52 @@ const FormRegisterCompany = ({ user, updateCompany }) => {
 	};
 
 	return (
-		<Translation>
-			{t => (
-				<Container>
-					<Title text={t('COMPANY_PROFILE')} />
-					<Paper className={classes.root}>
-						<div className={classes.add} onClick={() => setHidden(!hidden)}>
-							{t('UPDATE_COMPANY')}
-							<AddCircleOutlineIcon fontSize="large" />
-						</div>
-						{hidden && (
-							<>
-								<form>
-									<FormCompanyInfo
-										classes={classes}
-										handleChange={handleChange}
-										values={values}
+		<Container>
+			<Title text={t('COMPANY_PROFILE')} />
+			<Paper className={classes.root}>
+				<div className={classes.add} onClick={() => setHidden(!hidden)}>
+					{t('UPDATE')}
+					<AddCircleOutlineIcon fontSize="large" />
+				</div>
+				{hidden && (
+					<>
+						<form>
+							<FormCompanyInfo
+								classes={classes}
+								handleChange={handleChange}
+								values={values}
+							/>
+
+							<hr className={classes.line} />
+
+							<div className={classes.vacancyDescription}>
+								<div className={classes.vacancyKey}>
+									{t('COMPANY_DESCRIPTION')}
+								</div>
+								<textarea
+									name="description"
+									className={classes.vacancyDescriptionArea}
+									onChange={handleChange}
+									value={values.description}
+								/>
+								<div className={classes.alignCenter}>
+									<Button
+										click={e => {
+											e.preventDefault();
+											setHidden(!hidden);
+											updateCompany(user._id, { ...values });
+										}}
+										text={t('REGISTER')}
 									/>
-
-									<hr className={classes.line} />
-
-									<div className={classes.vacancyDescription}>
-										<div className={classes.vacancyKey}>
-											{t('COMPANY_DESCRIPTION')}
-										</div>
-										<textarea
-											name="description"
-											className={classes.vacancyDescriptionArea}
-											onChange={handleChange}
-											value={values.description}
-										/>
-										<div className={classes.alignCenter}>
-											<Button
-												click={e => {
-													e.preventDefault();
-													setHidden(!hidden);
-													updateCompany(user._id, { ...values });
-												}}
-												text={t('REGISTER')}
-											/>
-										</div>
-									</div>
-								</form>
-								<hr className={classes.line} />
-							</>
-						)}
-						<CardCompany />
-					</Paper>
-				</Container>
-			)}
-		</Translation>
+								</div>
+							</div>
+						</form>
+						<hr className={classes.line} />
+					</>
+				)}
+				<CardCompany />
+			</Paper>
+		</Container>
 	);
 };
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import useStyles from './styles';
-import { Translation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import Button from '../../../shared/Button/Button';
 import FormHRInfo from '../FormHRInfo/FormHRInfo';
 import CardHR from '../CardHR';
@@ -11,6 +11,7 @@ import { addHr, getAllHR } from '../../../store/hr/actions';
 
 const FormHRRegister = ({ info, hidden, addHr, getAllHR, updateHRInfo }) => {
 	const classes = useStyles();
+	const { t } = useTranslation();
 	const [values, setValues] = useState({
 		name: info ? info.name : '',
 		lastName: info ? info.lastName : '',
@@ -28,39 +29,35 @@ const FormHRRegister = ({ info, hidden, addHr, getAllHR, updateHRInfo }) => {
 	}, [getAllHR, values.companyId]);
 
 	return (
-		<Translation>
-			{t => (
-				<div>
-					<div className={classes.add} onClick={updateHRInfo}>
-						{t('ADD_HR')}
-						<AddCircleOutlineIcon fontSize="large" />
-					</div>
-					{hidden && (
-						<FormHRInfo
-							classes={classes}
-							handleChange={handleChange}
-							values={values}
-						/>
-					)}
-
-					<div className={classes.vacancyDescription}>
-						{hidden && (
-							<div className={classes.alignCenter}>
-								<Button
-									click={() => {
-										addHr({ ...values });
-										getAllHR(values.companyId);
-									}}
-									text={t('REGISTER')}
-								/>
-							</div>
-						)}
-					</div>
-					<hr className={classes.line} />
-					<CardHR />
-				</div>
+		<div>
+			<div className={classes.add} onClick={updateHRInfo}>
+				{t('ADD_HR')}
+				<AddCircleOutlineIcon fontSize="large" />
+			</div>
+			{hidden && (
+				<FormHRInfo
+					classes={classes}
+					handleChange={handleChange}
+					values={values}
+				/>
 			)}
-		</Translation>
+
+			<div className={classes.vacancyDescription}>
+				{hidden && (
+					<div className={classes.alignCenter}>
+						<Button
+							click={() => {
+								addHr({ ...values });
+								getAllHR(values.companyId);
+							}}
+							text={t('REGISTER')}
+						/>
+					</div>
+				)}
+			</div>
+			<hr className={classes.line} />
+			<CardHR />
+		</div>
 	);
 };
 

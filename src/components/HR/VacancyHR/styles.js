@@ -3,44 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 const font = '"Open Sans", sans-serif';
 
 const useStyles = makeStyles(theme => ({
-	container: {
-		width: '1140px',
-		margin: '0 auto',
-		[theme.breakpoints.down(1180)]: {
-			width: '100%',
-			padding: '0 20px',
-		},
-	},
-
-	hr: {
-		padding: '56px 0 180px 0',
-		[theme.breakpoints.down(850)]: {
-			padding: '20px 0 40px 0',
-		},
-		[theme.breakpoints.down(550)]: {
-			padding: '20px 0',
-		},
-	},
-
 	root: {
 		backgroundColor: theme.palette.paper,
-    padding: "15px",
-    margin: "20px auto",
-    marginBottom: "40px",
-    maxWidth: "980px"
-	},
-
-	hrVacancy: {
-		padding: '40px 65px',
-		background: '#FFFFFF',
-		boxShadow: '0px 10px 15px rgba(230, 235, 255, 0.5)',
-		borderRadius: '8px',
-		[theme.breakpoints.down(1000)]: {
-			padding: '30px 20px',
-		},
-		[theme.breakpoints.down(550)]: {
-			padding: '20px 15px',
-		},
+		padding: '15px',
+		margin: '20px auto',
+		marginBottom: '40px',
+		maxWidth: '980px',
 	},
 
 	hrVacancyFlex: {
