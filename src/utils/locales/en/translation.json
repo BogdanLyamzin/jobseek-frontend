@@ -8,7 +8,7 @@
   "PHONE": "Phone",
   "WELCOME": "Hello World",
   "HEADER1": "Do not waste your time looking for a job",
-  "ENTER": "Log In",
+  "ENTER": "Sign in",
   "HEADER2": "will do it for you",
   "STEP": "Step",
   "DO_SIGN_UP": "Sign up",
@@ -68,5 +68,8 @@
   "UPDATE": "Update",
   "ADD_FOTO": "Add foto",
   "DELETE_MESSAGE": "Are you sure you want to delete",
-  "ADD_LOGO": "Add logo"
+  "ADD_LOGO": "Add logo",
+  "LOOKING_JOB": "Looking for a job",
+  "LOOKING_EMPLOYMENT": "Lookind for an employee",
+  "GO_SOCIAL": "Sign in with social networks(for job search only)"
 }
