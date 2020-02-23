@@ -2,9 +2,9 @@ import React from 'react';
 import Radio from '@material-ui/core/Radio';
 import { withStyles } from '@material-ui/core/styles';
 
-const StyledRadio = withStyles( (theme) =>({
+const StyledRadio = withStyles(theme => ({
 	root: {
-		color: theme.palette.textColor,
+		color: theme.palette.color,
 		'&$checked': {
 			color: '#00F2C9',
 		},

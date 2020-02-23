@@ -8,23 +8,12 @@ import Paper from '@material-ui/core/Paper';
 import { useTranslation } from 'react-i18next';
 import TextField from '@material-ui/core/TextField';
 import Button from '../shared/Buttonn';
-import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { withStyles } from '@material-ui/core/styles';
-
 import { registerUser } from '../../store/auth/action/authActions';
-import SocLink from '../shared/SocLink/SocLink';
 import Validator from '../shared/Validator';
-
-const GreenCheckbox = withStyles(theme => ({
-	root: {
-		color: theme.palette.color,
-		'&$checked': {
-			color: theme.palette.color,
-		},
-	},
-	checked: {},
-}))(props => <Checkbox color="default" {...props} />);
+import Radio from '../../shared/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import SocLinks from '../../shared/SocLinks';
 
 const useStyle = makeStyles(theme => ({
 	root: {
@@ -34,8 +23,11 @@ const useStyle = makeStyles(theme => ({
 		margin: '0 auto',
 		marginBottom: '40px',
 		maxWidth: '980px',
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
 		[theme.breakpoints.up('sm')]: {
-			display: 'flex',
+			flexDirection: 'row',
 			justifyContent: 'space-around',
 		},
 	},
@@ -46,12 +38,6 @@ const useStyle = makeStyles(theme => ({
 	alertt: {
 		maxWidth: '980px',
 		margin: '0 auto',
-	},
-	soclink: {
-		marginTop: '10px',
-		[theme.breakpoints.up('sm')]: {
-			width: '40%',
-		},
 	},
 	error: {
 		color: 'red',
@@ -80,6 +66,7 @@ const useStyle = makeStyles(theme => ({
 	fields: {
 		[theme.breakpoints.up('sm')]: {
 			width: '40%',
+			marginRight: '25px',
 		},
 		'& label.Mui-focused': {
 			color: theme.palette.color,
@@ -95,11 +82,12 @@ const useStyle = makeStyles(theme => ({
 	},
 }));
 
-function handleSubmit(email, password, password2, props) {
+function handleSubmit(email, password, password2, type, props) {
 	const user = {
 		email,
 		password,
 		password2,
+		type,
 	};
 	props.registerUser(user, props.history);
 }
@@ -109,6 +97,7 @@ function Register(props) {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [password2, setPassword2] = useState('');
+	const [type, setType] = useState('user');
 	const { errors, isAuthenticated } = props.auth;
 	const { t } = useTranslation();
 
@@ -124,7 +113,7 @@ function Register(props) {
 					className={classes.fields}
 					onSubmit={e => {
 						e.preventDefault();
-						handleSubmit(email, password, password2, props);
+						handleSubmit(email, password, password2, type, props);
 					}}
 				>
 					<TextField
@@ -158,7 +147,6 @@ function Register(props) {
 						label={t('CONFIRM_PASSWORD')}
 						name="password2"
 						variant="outlined"
-						size="large"
 						fullWidth
 						margin="normal"
 						type="password"
@@ -169,16 +157,27 @@ function Register(props) {
 						value={password2}
 					/>
 					<Validator type={errors} field="password2" />
-					<div className={classes.flex}>
-						<FormControlLabel
-							control={<GreenCheckbox className={classes.checkbox} />}
-							label="Я кандидат"
-						/>
-						<FormControlLabel
-							control={<GreenCheckbox />}
-							label="Я роботодавець"
-						/>
-					</div>
+					<RadioGroup
+						value={type}
+						name="type"
+						onChange={e => {
+							e.preventDefault();
+							setType(e.target.value);
+						}}
+					>
+						<div className={classes.flex}>
+							<FormControlLabel
+								value="user"
+								control={<Radio />}
+								label={t('LOOKING_JOB')}
+							/>
+							<FormControlLabel
+								value="company"
+								control={<Radio />}
+								label={t('LOOKING_EMPLOYMENT')}
+							/>
+						</div>
+					</RadioGroup>
 					<Button
 						className={classes.btn}
 						size="large"
@@ -186,23 +185,7 @@ function Register(props) {
 						type="submit"
 					/>
 				</form>
-				<div className={classes.soclink}>
-					<SocLink
-						title={`${t('ENTER')} ${t('WITH')} Facebook`}
-						type="facebook"
-						link="/api/auth/facebook"
-					/>
-					<SocLink
-						title={`${t('ENTER')} ${t('WITH')} Google`}
-						type="google"
-						link="/api/auth/google"
-					/>
-					<SocLink
-						title={`${t('ENTER')} ${t('WITH')} Linkedin`}
-						type="linkedin"
-						link="/api/auth/linkedin"
-					/>
-				</div>
+				{type === 'user' && <SocLinks />}
 			</Paper>
 		</Container>
 	);

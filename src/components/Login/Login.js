@@ -10,6 +10,7 @@ import Button from '../shared/Buttonn';
 
 import { loginUser } from '../../store/auth/action/authActions';
 import Validator from '../shared/Validator';
+import SocLinks from '../../shared/SocLinks';
 
 const useStyle = makeStyles(theme => ({
 	root: {
@@ -64,9 +65,14 @@ const useStyle = makeStyles(theme => ({
 			marginTop: '80px',
 		},
 	},
+	socHeader: {
+		color: theme.palette.textColor,
+		textAlign: 'center',
+	},
 	fields: {
 		[theme.breakpoints.up('sm')]: {
 			width: '40%',
+			marginRight: '25px',
 		},
 		'& label.Mui-focused': {
 			color: theme.palette.color,
@@ -157,6 +163,10 @@ function Login(props) {
 							{t('REGISTER')}
 						</Link>
 					</form>
+					<div style={{ minWidth: '40%' }}>
+						<p className={classes.socHeader}>{t('GO_SOCIAL')}</p>
+						<SocLinks />
+					</div>
 				</div>
 			</Paper>
 		</Container>
