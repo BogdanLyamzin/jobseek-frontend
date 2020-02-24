@@ -1,9 +1,12 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 
-import MainPage from './components/MainPage';
+import Preloader from './shared/Preloader';
+
+const MainPage = lazy(() => import('./components/MainPage'));
+const AdminPage = lazy(() => import('./pages/admin/src'));
 
 const light = createMuiTheme({
 	palette: {
@@ -51,7 +54,12 @@ function App(props) {
 	return (
 		<BrowserRouter>
 			<ThemeProvider theme={theme}>
-				<MainPage />
+				<Suspense fallback={<Preloader />}>
+					<Switch>
+						<Route path="/admin" component={AdminPage} />
+						<Route path="/" component={MainPage} />
+					</Switch>
+				</Suspense>
 			</ThemeProvider>
 		</BrowserRouter>
 	);
