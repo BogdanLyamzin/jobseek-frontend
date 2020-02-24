@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 		justifyContent: 'space-around',
 	},
 	deleteIcon: {
-		color: '#3D3B69',
+		color: theme.palette.textColor,
 		fontSize: '22px',
 		cursor: 'pointer',
 		'&:hover': {

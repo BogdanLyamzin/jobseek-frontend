@@ -1,33 +1,49 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const font = '"Open Sans", sans-serif';
-const colorDark = '#3D3B69';
 
 const useStyles = makeStyles(theme => ({
 	vacancyList: {
-		minWidth: '300px',
-		padding: '24px 0',
-		[theme.breakpoints.down(700)]: {
-			minWidth: '280px',
-		},
+		width: '100%',
+		padding: '25px 0',
+		display: 'flex',
+		flexWrap: 'wrap',
 		[theme.breakpoints.down(650)]: {
-			minWidth: '260px',
-		},
-		[theme.breakpoints.down(550)]: {
-			minWidth: '320px',
-		},
-		[theme.breakpoints.down(380)]: {
-			minWidth: '300px',
+			flexDirection: 'column',
+			justifyContent: 'center',
 		},
 	},
 
+	list: {
+		justifyContent: 'space-around',
+	},
+
+	list1: {
+		justifyContent: 'space-between',
+	},
+
 	vacancy: {
-		padding: '20px',
+		padding: '10px 20px',
 		marginBottom: '10px',
-		borderRight: '1px solid transparent',
+		border: `1px solid #E6EBFF`,
+		borderRadius: 20,
+		flexBasis: '32%',
+		textAlign: 'center',
+		color: theme.palette.textColor,
 		'&:hover': {
-			borderRight: '1px solid #00F2C9',
-			backgroundColor: 'rgb(238, 241, 248)',
+			border: '1px solid #00F2C9',
+		},
+		[theme.breakpoints.down(975)]: {
+			flexBasis: '40%',
+		},
+		[theme.breakpoints.down(850)]: {
+			flexBasis: '45%',
+		},
+		[theme.breakpoints.down(650)]: {
+			flexBasis: '70%',
+		},
+		[theme.breakpoints.down(500)]: {
+			flexBasis: '90%',
 		},
 	},
 
@@ -43,30 +59,33 @@ const useStyles = makeStyles(theme => ({
 		fontWeight: 'bold',
 		fontSize: '14px',
 		lineHeight: '19px',
-		color: colorDark,
 	},
 
 	vacancyCountry: {
 		fontFamily: font,
 		fontSize: '12px',
 		lineHeight: '16px',
-		color: colorDark,
 	},
 
 	vacancyDate: {
 		fontFamily: font,
 		fontSize: '12px',
 		lineHeight: '16px',
-		color: colorDark,
 	},
 
 	vacancyIcon: {
-		color: '#3D3B69',
 		fontSize: '22px',
 		cursor: 'pointer',
 		'&:hover': {
 			color: 'black',
 		},
+	},
+
+	link: {
+		marginBottom: 10,
+		fontFamily: font,
+		fontWeight: 'bold',
+		fontSize: '16px',
 	},
 }));
 

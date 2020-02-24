@@ -4,7 +4,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import logo from './img/Frame.png';
 import { useTranslation } from 'react-i18next';
-import avatar from './img/Group 395.png';
 import { Link, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useTheme } from '@material-ui/core/styles';
@@ -14,6 +13,7 @@ import dark from './img/dark.png';
 import light from './img/light.png';
 import darkLogo from './img/logo-dark.png';
 import HrLinks from './HrLinks';
+import Avatar from '../../shared/UserImg';
 import {
 	changeToDark,
 	changeToLight,
@@ -26,6 +26,7 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: theme.palette.backgroundColor,
 		color: theme.palette.color,
 		boxShadow: 'none',
+		padding: '10px 0',
 	},
 	title: {
 		flexGrow: 1,
@@ -63,7 +64,7 @@ function ButtonAppBar({ thema, changeToLight, changeToDark, isAuthenticated }) {
 			<Container className={classes.flex}>
 				<img src={thema === 'light' ? logo : darkLogo} alt="pic" />
 				<Route path="/hr" component={HrLinks} />
-				<Route path="/kostya" component={CompanyLinks} />
+				<Route path="/company" component={CompanyLinks} />
 				<Box component="div">
 					<IconButton
 						style={{ marginRight: '10px' }}
@@ -83,7 +84,7 @@ function ButtonAppBar({ thema, changeToLight, changeToDark, isAuthenticated }) {
 					>
 						{isAuthenticated ? t('EXIT') : t('ENTER')}
 					</Link>
-					<img src={avatar} style={{ verticalAlign: 'middle' }} alt="pic" />
+					<Avatar />
 				</Box>
 			</Container>
 		</AppBar>

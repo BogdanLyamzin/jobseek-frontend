@@ -1,4 +1,5 @@
 import API from '../../services/api';
+import tostrActions from '../../utils/toastrAction';
 import errorAxios from '../../utils/actions/errorAxios';
 import {
 	SUCCESS_AXIOS,
@@ -43,7 +44,8 @@ export const updateVacancy = (id, body) => {
 	return dispatch => {
 		API.put(`vacancies/${id}`, body)
 			.then(data => {
-				dispatch(successAxios(data));
+				tostrActions(data, 'Вакансію оновлено');
+				dispatch(successAxios(data.result));
 			})
 			.catch(error => {
 				dispatch(errorAxios(error));
@@ -67,6 +69,7 @@ export const addVacancy = body => {
 	return dispatch => {
 		API.post('vacancies', body)
 			.then(data => {
+				tostrActions(data, 'Вакансію успішно створено');
 				dispatch(addNewVacancy(data.result));
 			})
 			.catch(error => {
@@ -96,5 +99,13 @@ export const getAllVacancy = () => {
 			.catch(error => {
 				dispatch(errorAxios(error));
 			});
+	};
+};
+
+export const deleteVacancy = id => {
+	return () => {
+		API.delete(`vacancies/${id}`).then(data =>
+			tostrActions(data, 'Вакансію видалено'),
+		);
 	};
 };

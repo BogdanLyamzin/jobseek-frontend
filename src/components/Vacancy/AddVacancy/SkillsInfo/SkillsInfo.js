@@ -18,7 +18,7 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 	const [skill, setSkill] = useState({
 		sphere: null,
 		vacancyName: null,
-		englishLevel: null,
+		englishLevel: 'Нет',
 		specialization: null,
 		programmLanguage: null,
 	});

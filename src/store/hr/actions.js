@@ -2,6 +2,8 @@ import API from '../../services/api';
 import errorAxios from '../../utils/actions/errorAxios';
 import { SUCCESS_AXIOS, ADD_USER, SUCCESS_AXIOS_LIST } from './actionNames';
 
+import tostrActions from '../../utils/toastrAction';
+
 const successAxios = payload => {
 	return {
 		type: SUCCESS_AXIOS,
@@ -27,6 +29,7 @@ export const addHr = body => {
 	return dispatch => {
 		API.post('hr', body)
 			.then(data => {
+				tostrActions(data, 'HR успішно створено');
 				dispatch(addHRUser(data.result));
 			})
 			.catch(error => {
@@ -39,6 +42,7 @@ export const updateHR = (id, body) => {
 	return dispatch => {
 		API.put(`hr/${id}`, body)
 			.then(data => {
+				tostrActions(data, 'Інформацію оновлено');
 				dispatch(successAxios(data.result));
 			})
 			.catch(error => {
@@ -80,5 +84,11 @@ export const getAllHR = () => {
 			.catch(error => {
 				dispatch(errorAxios(error));
 			});
+	};
+};
+
+export const deleteHR = id => {
+	return () => {
+		API.delete(`hr/${id}`).then(data => tostrActions(data, 'HR видалено'));
 	};
 };

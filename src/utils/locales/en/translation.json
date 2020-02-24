@@ -66,10 +66,7 @@
   "POST": "Post",
   "CHANGE_VACANCY": "Change vacancy",
   "UPDATE": "Update",
-  "ADD_FOTO": "Add foto",
+  "ADD_FOTO": "Add photo",
   "DELETE_MESSAGE": "Are you sure you want to delete",
-  "ADD_LOGO": "Add logo",
-  "LOOKING_JOB": "Looking for a job",
-  "LOOKING_EMPLOYMENT": "Lookind for an employee",
-  "GO_SOCIAL": "Sign in with social networks(for job search only)"
+  "ADD_LOGO": "Add logo"
 }

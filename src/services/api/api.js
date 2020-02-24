@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toastr } from 'react-redux-toastr';
 
 const METHOD_GET = 'get';
 const METHOD_POST = 'post';
@@ -7,53 +8,26 @@ const METHOD_DELETE = 'delete';
 const BASE_URL = 'http://localhost:5000/';
 
 class API {
-	get(url, requestParams, headers) {
-		return this.makeRequest(
-			`${BASE_URL + url}`,
-			METHOD_GET,
-			null,
-			requestParams,
-			headers,
-		);
+	get(url, headers) {
+		return this.makeRequest(`${BASE_URL + url}`, METHOD_GET, null, headers);
 	}
 
-	post(url, body, requestParams, headers) {
-		return this.makeRequest(
-			`${BASE_URL + url}`,
-			METHOD_POST,
-			body,
-			requestParams,
-			headers,
-		);
+	post(url, body, headers) {
+		return this.makeRequest(`${BASE_URL + url}`, METHOD_POST, body, headers);
 	}
 
-	put(url, body, requestParams, headers) {
-		return this.makeRequest(
-			`${BASE_URL + url}`,
-			METHOD_PUT,
-			body,
-			requestParams,
-			headers,
-		);
+	put(url, body, headers) {
+		return this.makeRequest(`${BASE_URL + url}`, METHOD_PUT, body, headers);
 	}
 
-	delete(url, requestParams, headers) {
-		return this.makeRequest(
-			`${BASE_URL + url}`,
-			METHOD_DELETE,
-			null,
-			requestParams,
-			headers,
-		);
+	delete(url, headers) {
+		return this.makeRequest(`${BASE_URL + url}`, METHOD_DELETE, null, headers);
 	}
 
-	makeRequest(url, method, body, reqParams, headers) {
+	makeRequest(url, method, body, headers) {
 		const requestParams = {
 			method: method || METHOD_GET,
 			data: body,
-			params: {
-				...(reqParams || {}),
-			},
 			headers: {
 				...(headers || {}),
 			},
@@ -69,9 +43,19 @@ class API {
 			axios(url, requestParams)
 				.then(result => resolve(result.data))
 				.catch(reason => {
+					this.requestFailed(reason);
 					reject(reason);
 				});
 		});
+	}
+
+	requestFailed(reason) {
+		const { response } = reason;
+		if (response && response.statusText) {
+			toastr.error(response.statusText, response.data);
+		} else {
+			toastr.error('Error', 'An error has occurred');
+		}
 	}
 }
 

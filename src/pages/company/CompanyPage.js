@@ -1,18 +1,23 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-import RegisterHR from '../../components/RegisterHR/RegisterHR';
-import RegisterCompany from '../../components/RegisterCompany/FormRegisterCompany/RegisterCompany';
-
-
+const RegisterHR = React.lazy(() =>
+	import('../../components/RegisterHR/RegisterHR'),
+);
+const RegisterCompany = React.lazy(() =>
+	import(
+		'../../components/RegisterCompany/FormRegisterCompany/RegisterCompany'
+	),
+);
 
 export default function Page() {
 	return (
-		
+		<React.Suspense fallback={<CircularProgress />}>
 			<Switch>
-				<Route path="/kostya/hrs" component={RegisterHR} />
-				<Route path="/kostya/company" component={RegisterCompany} />
+				<Route path="/company/hrs" component={RegisterHR} />
+				<Route path="/company" component={RegisterCompany} />
 			</Switch>
-			
+		</React.Suspense>
 	);
 }

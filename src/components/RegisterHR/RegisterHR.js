@@ -22,20 +22,23 @@ const RegisterHR = () => {
 			<Title text={t('COMPANY_PROFILE')} />
 			<Paper className={classes.root}>
 				<div className={classes.addvacancyMenu}>
-					<Link to="/kostya/hrs/vacancy" className={classes.addvacancyMenuLink}>
+					<Link
+						to="/company/hrs/vacancy"
+						className={classes.addvacancyMenuLink}
+					>
 						{t('COMPANY_VACANCIES')}
 					</Link>
-					<Link to="/kostya/hrs/" className={classes.addvacancyMenuLink}>
+					<Link to="/company/hrs" className={classes.addvacancyMenuLink}>
 						{t('HR_MANAGERS')}
 					</Link>
 				</div>
 
 				<div className={classes.addvacancyRoutes}>
 					<Switch>
-						<Route exact path="/kostya/hrs/">
+						<Route exact path="/company/hrs">
 							<FormHRRegister hidden={hiddenForm} updateHRInfo={updateHRInfo} />
 						</Route>
-						<Route path="/kostya/hrs/vacancy">
+						<Route path="/company/hrs/vacancy">
 							<VacancyByCompany />
 						</Route>
 					</Switch>
