@@ -58,9 +58,9 @@ function App(props) {
 					<Switch>
 						<Route path="/admin" component={AdminPage} />
 						<Route path="/" component={MainPage} />
-						<ReduxToastr />
 					</Switch>
 				</Suspense>
+				<ReduxToastr />
 			</ThemeProvider>
 		</BrowserRouter>
 	);
