@@ -8,7 +8,7 @@
   "PHONE": "Phone",
   "WELCOME": "Hello World",
   "HEADER1": "Do not waste your time looking for a job",
-  "ENTER": "Log In",
+  "ENTER": "Sign in",
   "HEADER2": "will do it for you",
   "STEP": "Step",
   "DO_SIGN_UP": "Sign up",
@@ -66,9 +66,7 @@
   "POST": "Post",
   "CHANGE_VACANCY": "Change vacancy",
   "UPDATE": "Update",
-  "ADD_FOTO": "Add photo",
+  "ADD_FOTO": "Add foto",
   "DELETE_MESSAGE": "Are you sure you want to delete",
-  "ADD_LOGO": "Add logo",
-  "NO_VACANCY": "No vacancies, add the first one",
-  "CANDIDATE": "Candidates"
+  "ADD_LOGO": "Add logo"
 }

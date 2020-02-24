@@ -1,6 +1,6 @@
 /* eslint-disable default-case */
-import React from './node_modules/react';
-import { makeStyles } from './node_modules/@material-ui/core';
+import React from 'react';
+import { makeStyles } from '@material-ui/core';
 import facebook from './img/iconfinder_facebook_1807546.svg';
 import google from './img/iconfinder_Google_1298745.svg';
 import linkedin from './img/iconfinder_linkedin_386655.svg';
