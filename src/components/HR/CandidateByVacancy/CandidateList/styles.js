@@ -1,9 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const font = '"Open Sans", sans-serif';
-const colorDark = '#3D3B69';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
 	candidate: {
 		borderBottom: '2px solid #E6EBFF',
 		paddingBottom: '20px',
@@ -59,10 +58,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 
 	candidateSkills70: {
-		width: '70%',
+		width: '80%',
 		fontSize: '14px',
 		lineHeight: '21px',
-		color: colorDark,
+		color: theme.palette.textColor,
 		marginBottom: '18px',
 		fontFamily: font,
 	},
@@ -77,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
 		fontFamily: font,
 		fontSize: '12px',
 		fontWeight: 'bold',
-		color: '#696969',
+		color: theme.palette.color,
 	},
 }));
 

@@ -20,6 +20,9 @@ const VacancyItem = ({ elem }) => {
 
 	return (
 		<div id={elem._id} className={classes.vacancy}>
+			<Link to={`/hr/vacancy/${elem._id}`} className={classes.link}>
+				{t('CANDIDATE')}
+			</Link>
 			<div className={classes.vacancyFlex}>
 				<div className={classes.vacancyName}>{elem.vacancyName}</div>
 				<div>

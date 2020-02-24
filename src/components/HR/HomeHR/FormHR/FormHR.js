@@ -26,20 +26,26 @@ const FormHR = ({
 			<div className={`${classes.hrFlex} ${classes.hrValue}`}>
 				{hidden && (
 					<div className={classes.formItem}>
-						<Input
-							onChange={handleChange}
-							type="text"
-							name="name"
-							value={values ? values.name : ''}
-							className={classes.hrFormInput}
-						/>
-						<Input
-							onChange={handleChange}
-							type="text"
-							name="lastName"
-							value={values ? values.lastName : ''}
-							className={classes.hrFormInput}
-						/>
+						<div>
+							<div className={classes.hrKey}>{t('FIRST_NAME')}*</div>
+							<Input
+								onChange={handleChange}
+								type="text"
+								name="name"
+								value={values ? values.name : ''}
+								className={classes.hrFormInput}
+							/>
+						</div>
+						<div>
+							<div className={classes.hrKey}>{t('LAST_NAME')}*</div>
+							<Input
+								onChange={handleChange}
+								type="text"
+								name="lastName"
+								value={values ? values.lastName : ''}
+								className={classes.hrFormInput}
+							/>
+						</div>
 					</div>
 				)}
 				{!hidden && (

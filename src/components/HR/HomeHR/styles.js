@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
 		fontWeight: 'bold',
 		fontSize: '16px',
 		lineHeight: '19px',
-		color: '#3D3B69',
+		color: theme.palette.textColor,
 		[theme.breakpoints.down(600)]: {
 			marginTop: '15px',
 			fontSize: '14px',
@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
 		fontFamily: font,
 		fontSize: '16px',
 		lineHeight: '19px',
-		color: '#3D3B69',
+		color: theme.palette.textColor,
 		marginTop: '10px',
 		[theme.breakpoints.down(600)]: {
 			fontSize: '14px',
@@ -106,7 +106,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	iconPen: {
-		color: 'rgb(82, 80, 119)',
+		color: theme.palette.textColor,
 		fontSize: '22px',
 		cursor: 'pointer',
 	},

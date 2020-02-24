@@ -71,7 +71,7 @@ const useStyles = makeStyles(theme => ({
 		display: 'inline-block',
 		fontFamily: font,
 		lineHeight: '19px',
-		color: '#3D3B69',
+		color: theme.palette.textColor,
 		textDecoration: 'none',
 		'&:hover': {
 			color: '#6D64FF',
@@ -158,7 +158,7 @@ const useStyles = makeStyles(theme => ({
 		fontFamily: font,
 		fontSize: '14px',
 		lineHeight: '19px',
-		color: '#3D3B69',
+		color: theme.palette.textColor,
 	},
 
 	vacancySliderItem: {
@@ -182,7 +182,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	vacancyIcon: {
-		color: '#3D3B69',
+		color: theme.palette.textColor,
 		fontSize: '22px',
 		cursor: 'pointer',
 		'&:hover': {

@@ -28,13 +28,13 @@ const useStyles = makeStyles(theme => ({
 		bottom: '10px',
 		display: 'flex',
 		alignItems: 'center',
+		color: '#3D3B69',
 	},
 
 	addphoto: {
 		marginLeft: '8px',
 		fontFamily: '"Open Sans", sans-serif',
 		fontSize: '14px',
-		color: '#3D3B69',
 	},
 }));
 
