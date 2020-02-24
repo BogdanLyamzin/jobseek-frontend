@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import useStyles from '../CandidateList/styles';
+import Avatar from '../../../../shared/UserImg';
 
 const ReceivedOffersListArr = [
 	{
@@ -106,7 +107,7 @@ const ReceivedOffersList = () => {
 	return ReceivedOffersListArr.map(elem => {
 		return (
 			<Link
-				to="/hr/oneCandidate"
+				to="/hr/candidate"
 				key={elem._id}
 				id={elem._id}
 				className={classes.candidate}
@@ -115,7 +116,7 @@ const ReceivedOffersList = () => {
 				<div className={classes.candidateSkills}>{elem.skills.join(', ')}</div>
 				<div className={classes.candidateFlexBetween}>
 					<div className={classes.candidateFlex}>
-						<div className={classes.candidatePhoto}></div>
+						<Avatar className={classes.candidatePhoto} />
 						<div className={classes.candidateName}>
 							{elem.candidateName + ' ' + elem.candidateLastName}
 						</div>

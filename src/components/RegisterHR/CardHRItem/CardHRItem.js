@@ -1,17 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import EditIcon from '@material-ui/core/SvgIcon/SvgIcon';
 
-import API from '../../../services/api';
 import getDate from '../../../utils/getDate';
+import { deleteHR } from '../../../store/hr/actions';
 import DeleteIconWithModal from '../../../shared/DeleteIconWithModal';
 
 const useStyles = makeStyles(theme => ({
 	root: {},
 	card: {
-		width: 900,
+		width: '100%',
 		margin: '0 auto',
 	},
 	title: {
@@ -59,15 +60,17 @@ const useStyles = makeStyles(theme => ({
 const CardHRItem = ({
 	elem: { _id, name, lastName, phone, email, date },
 	index,
+	deleteHR,
 }) => {
 	const classes = useStyles();
 
-	const deleteHR = id => {
-		API.delete(`hr/${id}`);
+	const hrDelete = id => {
+		deleteHR(id);
+		document.getElementById(id).remove();
 	};
 
 	return (
-		<Card className={classes.card}>
+		<Card className={classes.card} id={_id}>
 			<CardContent>
 				<div className={classes.name}>
 					<div className={classes.hr}>
@@ -80,7 +83,7 @@ const CardHRItem = ({
 						<EditIcon className={classes.icon} />
 						<DeleteIconWithModal
 							text="Are you sure?"
-							handleDelete={() => deleteHR(_id)}
+							handleDelete={() => hrDelete(_id)}
 						/>
 					</div>
 				</div>
@@ -107,4 +110,4 @@ const CardHRItem = ({
 		</Card>
 	);
 };
-export default CardHRItem;
+export default connect(null, { deleteHR })(CardHRItem);

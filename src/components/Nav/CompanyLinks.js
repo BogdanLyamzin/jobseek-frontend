@@ -32,10 +32,10 @@ export default function CompanyLinks() {
 	const { t } = useTranslation();
 	return (
 		<div>
-			<Link className={classes.link} to="/kostya/company">
+			<Link className={classes.link} to="/company">
 				{t('MY_PROFILE')}
 			</Link>
-			<Link className={classes.link} to="/kostya/hrs">
+			<Link className={classes.link} to="/company/hrs">
 				HRs
 			</Link>
 		</div>

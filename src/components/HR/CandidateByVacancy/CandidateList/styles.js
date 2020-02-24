@@ -43,9 +43,8 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	candidatePhoto: {
-		height: '24px',
-		width: '24px',
-		backgroundColor: 'rgb(243, 8, 8)',
+		height: '30px',
+		width: '30px',
 		borderRadius: '100%',
 	},
 

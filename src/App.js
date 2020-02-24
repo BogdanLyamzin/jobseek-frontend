@@ -1,13 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
 
 import MainPage from './components/MainPage';
+import ReduxToastr from './shared/ReduxToastr';
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
 const light = createMuiTheme({
 	palette: {
-		// This is the default, so only included for comparison.
 		type: 'light',
 		color: '#3D3B69',
 		textColor: '#3D3B69',
@@ -27,7 +28,6 @@ const light = createMuiTheme({
 
 const dark = createMuiTheme({
 	palette: {
-		// Switching the dark mode on is a single property value change.
 		type: 'dark',
 		backgroundColor: '#424242',
 		textColor: '#c9ced9',
@@ -52,6 +52,7 @@ function App(props) {
 		<BrowserRouter>
 			<ThemeProvider theme={theme}>
 				<MainPage />
+				<ReduxToastr />
 			</ThemeProvider>
 		</BrowserRouter>
 	);

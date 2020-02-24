@@ -1,20 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import CreateOutlined from '@material-ui/icons/CreateOutlined';
 
 import useStyles from '../styles';
-import API from '../../../../services/api';
 import Link from '../../../../shared/Link';
 import getDate from '../../../../utils/getDate';
 import FormControlLabel from './FormControlLabel';
+import { deleteVacancy } from '../../../../store/vacancy/actions';
 import DeleteIconWithModal from '../../../../shared/DeleteIconWithModal';
 
-const VacancyItem = ({ elem }) => {
+const VacancyItem = ({ elem, deleteVacancy }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
 
-	const deleteVacancy = id => {
-		API.delete(`vacancies/${id}`);
+	const deleteV = id => {
+		deleteVacancy(id);
 		document.getElementById(id).remove();
 	};
 
@@ -35,7 +36,7 @@ const VacancyItem = ({ elem }) => {
 				</div>
 				<DeleteIconWithModal
 					text={`${t('DELETE_MESSAGE')}?`}
-					handleDelete={() => deleteVacancy(elem._id)}
+					handleDelete={() => deleteV(elem._id)}
 				/>
 			</div>
 			<div className={classes.vacancyFlex}>
@@ -50,4 +51,4 @@ const VacancyItem = ({ elem }) => {
 	);
 };
 
-export default VacancyItem;
+export default connect(null, { deleteVacancy })(VacancyItem);

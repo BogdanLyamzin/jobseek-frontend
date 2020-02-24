@@ -19,12 +19,12 @@ const OneCandidate = () => {
 		<Container>
 			<div className={classes.candidate}>
 				<Header classes={classes} />
-				<Summary classes={classes} />
+				{!user && <Summary classes={classes} />}
 				<Skills classes={classes} />
 				<Experience classes={classes} />
 				<Education classes={classes} />
 				<Achievement classes={classes} />
-				<Information classes={classes} />
+				{!user && <Information classes={classes} />}
 
 				<div className={classes.candidateBtnFlex}>
 					{user && (
@@ -57,7 +57,7 @@ const OneCandidate = () => {
 					)}
 				</div>
 			</div>
-			</Container>
+		</Container>
 	);
 };
 

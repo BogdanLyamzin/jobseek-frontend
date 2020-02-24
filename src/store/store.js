@@ -1,5 +1,6 @@
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
+import { reducer as toastrReducer } from 'react-redux-toastr';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 
 import hrReducer from './hr/reducer';
 import vacancyReducer from './vacancy/reducer';
@@ -10,6 +11,7 @@ import companyReducer from './company/reducer';
 
 const rootReducer = combineReducers({
 	hr: hrReducer,
+	toastr: toastrReducer,
 	company: companyReducer,
 	vacancy: vacancyReducer,
 	admin: adminReducer,

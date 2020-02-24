@@ -1,4 +1,5 @@
 import API from '../../services/api';
+import tostrActions from '../../utils/toastrAction';
 import errorAxios from '../../utils/actions/errorAxios';
 import { SUCCESS_AXIOS } from './actionNames';
 
@@ -10,8 +11,11 @@ const successAxios = payload => {
 };
 
 export const addCompany = body => {
-	return () => {
-		API.post('companies', body);
+	return dispatch => {
+		API.post('companies', body).then(data => {
+			tostrActions(data, 'Компанію створено');
+			dispatch(successAxios(data.result));
+		});
 	};
 };
 
@@ -19,6 +23,7 @@ export const updateCompany = (id, body) => {
 	return dispatch => {
 		API.put(`companies/${id}`, body)
 			.then(data => {
+				tostrActions(data, 'Інформацію оновлено');
 				dispatch(successAxios(data.result));
 			})
 			.catch(error => {
@@ -43,7 +48,7 @@ export const getAllCompanies = () => {
 	return dispatch => {
 		API.get('companies')
 			.then(data => {
-				dispatch(successAxios(data.data));
+				dispatch(successAxios(data.result));
 			})
 			.catch(error => {
 				dispatch(errorAxios(error));
