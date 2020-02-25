@@ -3,15 +3,17 @@ import { reducer as toastrReducer } from 'react-redux-toastr';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 
 import hrReducer from './hr/reducer';
-import vacancyReducer from './vacancy/reducer';
 import adminReducer from './admin/reducer';
-import themeReducer from './theme/reducer/themeReducer';
-import authReducer from './auth/reducer/authReducer';
 import companyReducer from './company/reducer';
+import vacancyReducer from './vacancy/reducer';
+import CommentReducer from './comment/reducer';
+import authReducer from './auth/reducer/authReducer';
+import themeReducer from './theme/reducer/themeReducer';
 
 const rootReducer = combineReducers({
 	hr: hrReducer,
 	toastr: toastrReducer,
+	comment: CommentReducer,
 	company: companyReducer,
 	vacancy: vacancyReducer,
 	admin: adminReducer,

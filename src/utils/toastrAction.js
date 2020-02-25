@@ -1,7 +1,7 @@
 import { toastr } from 'react-redux-toastr';
 
-export default (requestData, msgS) => {
+export default (requestData, msg) => {
 	requestData.status.toLowerCase() === 'success'
-		? toastr.success(requestData.status, msgS)
-		: toastr.success(requestData.status, requestData.result);
+		? toastr.success(requestData.status, msg)
+		: toastr.error(requestData.status, requestData.message.message);
 };

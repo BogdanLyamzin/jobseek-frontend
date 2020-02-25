@@ -5,6 +5,7 @@ import {
 	SUCCESS_AXIOS,
 	ADD_INFO,
 	ADD_VACANCY,
+	GET_CANDIDATES,
 	SUCCESS_AXIOS_LIST,
 } from './actionNames';
 
@@ -18,6 +19,13 @@ const successAxios = payload => {
 const successAxiosList = payload => {
 	return {
 		type: SUCCESS_AXIOS_LIST,
+		payload,
+	};
+};
+
+const getCandidates = payload => {
+	return {
+		type: GET_CANDIDATES,
 		payload,
 	};
 };
@@ -107,5 +115,17 @@ export const deleteVacancy = id => {
 		API.delete(`vacancies/${id}`).then(data =>
 			tostrActions(data, 'Вакансію видалено'),
 		);
+	};
+};
+
+export const getSuitableCandidates = id => {
+	return dispatch => {
+		API.get(`suitableCandidates/${id}`)
+			.then(data => {
+				dispatch(getCandidates(data.result));
+			})
+			.catch(error => {
+				dispatch(errorAxios(error));
+			});
 	};
 };

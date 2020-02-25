@@ -1,7 +1,7 @@
 export const sphereList = [
 	{
 		title: 'ІТ',
-		specialization: [
+		profession: [
 			'Програміст',
 			'Дизайнер',
 			'Тестувальник',
@@ -11,20 +11,15 @@ export const sphereList = [
 	},
 	{
 		title: 'HR спеціалісти',
-		specialization: [
-			'Рекрутер',
-			'HR-аналітик',
-			'HR-спеціаліст',
-			'Talent-менеджер',
-		],
+		profession: ['Рекрутер', 'HR-аналітик', 'HR-спеціаліст', 'Talent-менеджер'],
 	},
-	{ title: 'Готелі - Ресторани - Кафе', specialization: [] },
-	{ title: 'Дизайн - Графіка - Фото', specialization: [] },
-	{ title: 'Маркетинг - Реклама - PR', specialization: [] },
-	{ title: 'Консалтинг - Аналітика - Аудит', specialization: [] },
-	{ title: 'Торгівля', specialization: [] },
-	{ title: 'Туризм - Подорожі', specialization: [] },
-	{ title: 'Юристи - Адвокати - Нотаріуси', specialization: [] },
+	{ title: 'Готелі - Ресторани - Кафе', profession: [] },
+	{ title: 'Дизайн - Графіка - Фото', profession: [] },
+	{ title: 'Маркетинг - Реклама - PR', profession: [] },
+	{ title: 'Консалтинг - Аналітика - Аудит', profession: [] },
+	{ title: 'Торгівля', profession: [] },
+	{ title: 'Туризм - Подорожі', profession: [] },
+	{ title: 'Юристи - Адвокати - Нотаріуси', profession: [] },
 ];
 
 export const vacancyList = [

@@ -2,23 +2,13 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
-// import Input from '../../../../../shared/Input';
 import { programmLanguageList, vacancyList } from '../skillsList';
 
-const LanguageVacancy = ({ skill, setSkill, classes }) => {
+const Category = ({ skill, setSkill, classes }) => {
 	return (
 		<>
 			<div className={classes.vacancySkillFlex}>
 				<div className={classes.vacancyKey}>Вакансія*</div>
-				{/* <Input
-					type="text"
-					name="vacancyName"
-					className={classes.vacancySkillItemInput}
-					onChange={e =>
-						setSkill({ ...skill, [e.target.name]: e.target.value })
-					}
-					value={skill.vacancyName}
-				/> */}
 				<Autocomplete
 					options={vacancyList}
 					getOptionLabel={option => option}
@@ -39,9 +29,9 @@ const LanguageVacancy = ({ skill, setSkill, classes }) => {
 					getOptionLabel={option => option}
 					autoComplete
 					renderInput={params => <TextField {...params} fullWidth />}
-					value={skill.programmLanguage}
+					value={skill.category}
 					onChange={(event, newValue) => {
-						setSkill({ ...skill, programmLanguage: newValue });
+						setSkill({ ...skill, category: newValue });
 					}}
 					className={classes.vacancySkillItemSelect}
 				/>
@@ -50,4 +40,4 @@ const LanguageVacancy = ({ skill, setSkill, classes }) => {
 	);
 };
 
-export default LanguageVacancy;
+export default Category;

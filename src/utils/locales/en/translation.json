@@ -66,6 +66,7 @@
   "POST": "Post",
   "CHANGE_VACANCY": "Change vacancy",
   "UPDATE": "Update",
+  "NO_VACANCY": "No vacancies, add the first one",
   "ADD_FOTO": "Add photo",
   "DELETE_MESSAGE": "Are you sure you want to delete",
   "ADD_LOGO": "Add logo"
