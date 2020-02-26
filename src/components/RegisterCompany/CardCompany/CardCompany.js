@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { getOneCompany } from '../../../store/company/actions';
 import CardContent from '@material-ui/core/CardContent';
 import getDate from '../../../utils/getDate';
 import Card from '@material-ui/core/Card';
@@ -54,12 +53,8 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-function CardCompany({ user, getOneCompany }) {
+function CardCompany({ user }) {
 	const classes = useStyles();
-
-	useEffect(() => {
-		getOneCompany('5e4d60f3acbbd141707dfdb3');
-	}, [getOneCompany]);
 
 	return (
 		<Card className={classes.card}>
@@ -101,14 +96,10 @@ function CardCompany({ user, getOneCompany }) {
 	);
 }
 
-const mapDispatchToProps = {
-	getOneCompany,
-};
-
 const mapStateToProps = ({ company }) => {
 	return {
 		user: company.company,
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CardCompany);
+export default connect(mapStateToProps)(CardCompany);

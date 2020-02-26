@@ -3,6 +3,7 @@ import {
 	ERROR,
 	ADD_INFO,
 	ADD_VACANCY,
+	GET_CANDIDATES,
 	SUCCESS_AXIOS_LIST,
 } from './actionNames';
 
@@ -10,6 +11,7 @@ const initialState = {
 	vacancy: null,
 	vacancyList: null,
 	addVacancy: null,
+	candidates: null,
 	error: null,
 	isError: false,
 };
@@ -32,6 +34,12 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				addVacancy: action.payload,
+			};
+
+		case GET_CANDIDATES:
+			return {
+				...state,
+				candidates: action.payload,
 			};
 
 		case ADD_VACANCY:

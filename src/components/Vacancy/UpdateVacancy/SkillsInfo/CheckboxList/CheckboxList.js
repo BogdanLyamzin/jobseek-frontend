@@ -31,7 +31,7 @@ const CheckboxList = ({
 				Навички*
 			</div>
 			<hr className={classes.line} />
-			{skill.programmLanguage && (
+			{skill.category && (
 				<div className={classes.vacancySkillListFlex}>
 					<div className={classes.vacancySkillList}>
 						{skillsList.map(elem => {
@@ -68,7 +68,7 @@ const CheckboxList = ({
 									valueLabelFormat={valueLabelFormatEng}
 									onChange={handleChangeEng}
 									valueLabelDisplay="on"
-									defaultValue={0}
+									defaultValue={englishLevel.indexOf(skill.englishLevel)}
 									step={1}
 									max={6}
 								/>

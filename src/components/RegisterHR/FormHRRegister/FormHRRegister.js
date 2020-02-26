@@ -9,15 +9,14 @@ import CardHR from '../CardHR';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutlined';
 import { addHr, getAllHR } from '../../../store/hr/actions';
 
-const FormHRRegister = ({ info, hidden, addHr, getAllHR, updateHRInfo }) => {
+const FormHRRegister = ({ user, hidden, addHr, getAllHR, updateHRInfo }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
 	const [values, setValues] = useState({
-		name: info ? info.name : '',
-		lastName: info ? info.lastName : '',
-		phone: info ? info.phone : '',
-		email: info ? info.email : '',
-		companyId: info ? info.companyId : '5e494cfe4cf8aa23746426d0',
+		name: '',
+		lastName: '',
+		phone: '',
+		email: '',
 	});
 
 	const handleChange = event => {
@@ -25,8 +24,8 @@ const FormHRRegister = ({ info, hidden, addHr, getAllHR, updateHRInfo }) => {
 	};
 
 	useEffect(() => {
-		getAllHR(values.companyId);
-	}, [getAllHR, values.companyId]);
+		getAllHR();
+	}, [getAllHR]);
 
 	return (
 		<div>
@@ -47,8 +46,8 @@ const FormHRRegister = ({ info, hidden, addHr, getAllHR, updateHRInfo }) => {
 					<div className={classes.alignCenter}>
 						<Button
 							click={() => {
-								addHr({ ...values });
-								getAllHR(values.companyId);
+								addHr({ ...values, companyId: user._id });
+								getAllHR();
 							}}
 							text={t('REGISTER')}
 						/>
@@ -68,7 +67,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = ({ company }) => {
 	return {
-		info: company.addCompany,
+		user: company.user,
 	};
 };
 

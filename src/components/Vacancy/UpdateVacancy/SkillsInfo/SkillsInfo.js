@@ -6,30 +6,34 @@ import ChackboxList from './CheckboxList';
 import { englishLevel } from './skillsList';
 import Button from '../../../../shared/Button';
 import useStyles from '../../AddVacancy/SkillsInfo/styles';
+import Category from '../../AddVacancy/SkillsInfo/Category';
 import SphereList from '../../AddVacancy/SkillsInfo/SphereList';
 import { updateVacancy } from '../../../../store/vacancy/actions';
+import ProfessionList from '../../AddVacancy/SkillsInfo/ProfessionList';
 import { objToArr, arrToObj } from '../../../../utils/transformArr-Obj';
-import LanguageVacancy from '../../AddVacancy/SkillsInfo/LanguageVacancy';
-import SpecializationList from '../../AddVacancy/SkillsInfo/SpecializationList';
 
-const SkillsInfo = ({ id, info, oneVacancy, updateVacancy }) => {
+import { sphereList } from './skillsList'; //TEST
+
+const SkillsInfo = ({ id, firstForm, oneVacancy, updateVacancy }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
 	const [skill, setSkill] = useState({
 		sphere: null,
-		specialization: null,
+		profession: null,
 		vacancyName: '',
-		englishLevel: null,
-		programmLanguage: '',
+		englishLevel: 'Нет',
+		category: '',
 	});
 	const [checkbox, setCheckbox] = useState(null);
 	const [checkboxArr, setCheckboxArr] = useState(null);
 
 	useEffect(() => {
 		setSkill({
+			sphere: oneVacancy ? sphereList[0] : '',
+			category: oneVacancy ? oneVacancy.category : '',
+			profession: oneVacancy ? oneVacancy.profession : '',
 			vacancyName: oneVacancy ? oneVacancy.vacancyName : '',
 			englishLevel: oneVacancy ? oneVacancy.englishLevel : '',
-			programmLanguage: oneVacancy ? oneVacancy.programmLanguage : '',
 		});
 		setCheckbox(oneVacancy ? arrToObj(oneVacancy.skills) : null);
 	}, [oneVacancy]);
@@ -59,8 +63,12 @@ const SkillsInfo = ({ id, info, oneVacancy, updateVacancy }) => {
 
 	const update = () => {
 		const body = {
-			...info,
-			...skill,
+			...firstForm,
+			sphere: skill.sphere.title,
+			vacancyName: skill.vacancyName,
+			englishLevel: skill.englishLevel,
+			profession: skill.profession,
+			category: skill.category,
 			skills: [...checkboxArr],
 		};
 		updateVacancy(id, body);
@@ -88,18 +96,13 @@ const SkillsInfo = ({ id, info, oneVacancy, updateVacancy }) => {
 				setSkill={setSkill}
 				handleClickSkill={handleClickSkill}
 			/>
-			<SpecializationList
+			<ProfessionList
 				skill={skill}
 				classes={classes}
 				setSkill={setSkill}
 				handleClickSkill={handleClickSkill}
 			/>
-			<LanguageVacancy
-				skill={skill}
-				classes={classes}
-				setSkill={setSkill}
-				handleChange={handleChangeEnglish}
-			/>
+			<Category skill={skill} classes={classes} setSkill={setSkill} />
 			<ChackboxList
 				skill={skill}
 				classes={classes}
@@ -110,7 +113,7 @@ const SkillsInfo = ({ id, info, oneVacancy, updateVacancy }) => {
 				handleChange={handleChangeSkillSlider}
 				checkboxHandleChange={checkboxHandleChange}
 			/>
-			{skill.programmLanguage && (
+			{skill.category && (
 				<div className={classes.alignCenter}>
 					<Button text={t('UPDATE')} click={() => update()} />
 				</div>
@@ -121,7 +124,7 @@ const SkillsInfo = ({ id, info, oneVacancy, updateVacancy }) => {
 
 const mapStateToProps = ({ vacancy }) => {
 	return {
-		info: vacancy.addVacancy,
+		firstForm: vacancy.addVacancy,
 		oneVacancy: vacancy.vacancy,
 	};
 };

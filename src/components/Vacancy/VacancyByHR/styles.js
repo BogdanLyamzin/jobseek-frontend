@@ -76,6 +76,7 @@ const useStyles = makeStyles(theme => ({
 	vacancyIcon: {
 		fontSize: '22px',
 		cursor: 'pointer',
+		color: theme.palette.textColor,
 		'&:hover': {
 			color: 'black',
 		},

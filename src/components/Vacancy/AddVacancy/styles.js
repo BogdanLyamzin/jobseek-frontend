@@ -36,12 +36,6 @@ const useStyles = makeStyles(theme => ({
 		marginBottom: '15px',
 	},
 
-	addvacancyMain: {
-		backgroundColor: '#ffffff',
-		boxShadow: '0px 10px 15px rgba(230, 235, 255, 0.5)',
-		borderRadius: '0px 0px 8px 8px',
-	},
-
 	addvacancyMenu: {
 		display: 'flex',
 		[theme.breakpoints.down(550)]: {

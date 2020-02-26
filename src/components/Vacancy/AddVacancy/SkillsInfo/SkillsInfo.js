@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
+import Category from './Category';
 import SphereList from './SphereList';
 import ChackboxList from './CheckboxList';
 import { englishLevel } from './skillsList';
+import ProfessionList from './ProfessionList';
 import Button from '../../../../shared/Button';
-import LanguageVacancy from './LanguageVacancy';
-import SpecializationList from './SpecializationList';
 import { objToArr } from '../../../../utils/transformArr-Obj';
 import { addVacancy } from '../../../../store/vacancy/actions';
 
@@ -19,8 +19,8 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 		sphere: null,
 		vacancyName: null,
 		englishLevel: 'Нет',
-		specialization: null,
-		programmLanguage: null,
+		profession: null,
+		category: null,
 	});
 	const [checkbox, setCheckbox] = useState(null);
 	const [checkboxArr, setCheckboxArr] = useState(null);
@@ -52,7 +52,11 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 		const body = {
 			active: isActive,
 			...firstForm,
-			...skill,
+			sphere: skill.sphere.title,
+			vacancyName: skill.vacancyName,
+			englishLevel: skill.englishLevel,
+			profession: skill.profession,
+			category: skill.category,
 			skills: [...checkboxArr],
 			companyId: user.companyId,
 			hrId: user._id,
@@ -82,13 +86,13 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 				setSkill={setSkill}
 				handleClickSkill={handleClickSkill}
 			/>
-			<SpecializationList
+			<ProfessionList
 				skill={skill}
 				classes={classes}
 				setSkill={setSkill}
 				handleClickSkill={handleClickSkill}
 			/>
-			<LanguageVacancy skill={skill} classes={classes} setSkill={setSkill} />
+			<Category skill={skill} classes={classes} setSkill={setSkill} />
 			<ChackboxList
 				skill={skill}
 				classes={classes}
@@ -99,7 +103,7 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 				handleChange={handleChangeSkillSlider}
 				checkboxHandleChange={checkboxHandleChange}
 			/>
-			{skill.programmLanguage && (
+			{skill.category && (
 				<div className={classes.alignCenter}>
 					<Button text={t('POST')} click={() => addNewVacancy()} />
 				</div>

@@ -2,6 +2,8 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+import { getOneCompany } from '../../store/company/actions';
+import { connect } from 'react-redux';
 const RegisterHR = React.lazy(() =>
 	import('../../components/RegisterHR/RegisterHR'),
 );
@@ -11,7 +13,11 @@ const RegisterCompany = React.lazy(() =>
 	),
 );
 
-export default function Page() {
+const Page = ({ getOneCompany }) => {
+	React.useEffect(() => {
+		getOneCompany('5e4d60f3acbbd141707dfdb3');
+	}, [getOneCompany]);
+
 	return (
 		<React.Suspense fallback={<CircularProgress />}>
 			<Switch>
@@ -20,4 +26,6 @@ export default function Page() {
 			</Switch>
 		</React.Suspense>
 	);
-}
+};
+
+export default connect(null, { getOneCompany })(Page);

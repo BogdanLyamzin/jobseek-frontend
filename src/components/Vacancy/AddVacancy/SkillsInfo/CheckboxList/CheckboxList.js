@@ -31,7 +31,7 @@ const CheckboxList = ({
 				Навички*
 			</div>
 			<hr className={classes.line} />
-			{skill.programmLanguage && (
+			{skill.category && (
 				<div className={classes.vacancySkillListFlex}>
 					<div className={classes.vacancySkillList}>
 						{skillsList.map(elem => {
