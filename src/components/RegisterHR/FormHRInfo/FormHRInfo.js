@@ -9,7 +9,7 @@ const FormHRInfo = ({ classes, handleChange, values }) => {
 	return (
 		<Grid container spacing={2}>
 			<Grid item xs={3}>
-				<div>ID 123456</div>
+				{/*<div>ID 123456</div>*/}
 			</Grid>
 			<Grid item container xs={9} spacing={2}>
 				<Grid item container xs={12} direction="row" spacing={2}>

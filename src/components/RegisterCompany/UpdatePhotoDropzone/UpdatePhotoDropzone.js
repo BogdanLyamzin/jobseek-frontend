@@ -25,7 +25,7 @@ const UpdatePhotoDropzone = ({ user, uploadPhoto }) => {
 
 const mapStateToProps = ({ company }) => {
 	return {
-		user: company.user,
+		user: company.company,
 	};
 };
 

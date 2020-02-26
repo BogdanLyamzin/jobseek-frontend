@@ -9,7 +9,7 @@ import CardHR from '../CardHR';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutlined';
 import { addHr, getAllHR } from '../../../store/hr/actions';
 
-const FormHRRegister = ({ user, hidden, addHr, getAllHR, updateHRInfo }) => {
+const FormHRRegister = ({ hidden, addHr, getAllHR, updateHRInfo }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
 	const [values, setValues] = useState({
@@ -17,6 +17,7 @@ const FormHRRegister = ({ user, hidden, addHr, getAllHR, updateHRInfo }) => {
 		lastName: '',
 		phone: '',
 		email: '',
+		companyId: '5e494cfe4cf8aa23746426d0',
 	});
 
 	const handleChange = event => {
@@ -24,13 +25,13 @@ const FormHRRegister = ({ user, hidden, addHr, getAllHR, updateHRInfo }) => {
 	};
 
 	useEffect(() => {
-		getAllHR();
-	}, [getAllHR]);
+		getAllHR(values.companyId);
+	}, [getAllHR, values.companyId]);
 
 	return (
 		<div>
 			<div className={classes.add} onClick={updateHRInfo}>
-				{t('ADD_HR')}
+				<div>{t('ADD_HR')}</div>
 				<AddCircleOutlineIcon fontSize="large" />
 			</div>
 			{hidden && (
@@ -46,15 +47,15 @@ const FormHRRegister = ({ user, hidden, addHr, getAllHR, updateHRInfo }) => {
 					<div className={classes.alignCenter}>
 						<Button
 							click={() => {
-								addHr({ ...values, companyId: user._id });
-								getAllHR();
+								addHr({ ...values });
+								getAllHR(values.companyId);
 							}}
 							text={t('REGISTER')}
 						/>
 					</div>
 				)}
 			</div>
-			<hr className={classes.line} />
+
 			<CardHR />
 		</div>
 	);
@@ -67,7 +68,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = ({ company }) => {
 	return {
-		user: company.user,
+		info: company.addCompany,
 	};
 };
 
