@@ -12,7 +12,6 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	hrVacancy: {
-		width: '100%',
 		padding: '10px 50px',
 		[theme.breakpoints.down(1200)]: {
 			padding: '10px 20px',
@@ -26,7 +25,9 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	linkAddVacancy: {
-		display: 'inline-block',
+		display: 'flex',
+		width: 180,
+		alignItems: 'center',
 		textDecoration: 'none',
 		fontWeight: 'bold',
 		fontSize: '14px',

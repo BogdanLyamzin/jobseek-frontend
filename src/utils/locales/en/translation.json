@@ -73,5 +73,10 @@
   "EXIT": "Log out",
   "REGISTERED": "Registered",
   "LINK": "Link",
-  "ENGLISH_LEVEL": "English level"
+  "ENGLISH_LEVEL": "English level",
+  "CANDIDATE": "Candidate",
+  "LOOKING_JOB": "Lookind for job",
+  "LOOKING_EMPLOYMENT": "Looking employee",
+  "GO_SOCIAL": "Sign in with social networks (job search only)",
+  "CATEGORY": "Category"
 }
