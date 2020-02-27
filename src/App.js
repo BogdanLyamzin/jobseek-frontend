@@ -2,12 +2,13 @@ import React, { Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-
-import ReduxToastr from './shared/ReduxToastr';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
-import Preloader from './shared/Preloader';
 
-const MainPage = lazy(() => import('./components/MainPage'));
+import Preloader from './shared/Preloader';
+import ReduxToastr from './shared/ReduxToastr';
+import AdminRoute from './components/Admin/AdminRoute';
+
+const MainPage = lazy(() => import('./pages/MainPage'));
 const AdminPage = lazy(() => import('./pages/admin/src'));
 
 const light = createMuiTheme({
@@ -56,7 +57,7 @@ function App(props) {
 			<ThemeProvider theme={theme}>
 				<Suspense fallback={<Preloader />}>
 					<Switch>
-						<Route path="/admin" component={AdminPage} />
+						<AdminRoute path="/admin" component={AdminPage} />
 						<Route path="/" component={MainPage} />
 					</Switch>
 				</Suspense>

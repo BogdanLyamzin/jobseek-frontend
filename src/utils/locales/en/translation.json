@@ -71,12 +71,14 @@
   "DELETE_MESSAGE": "Are you sure you want to delete",
   "ADD_LOGO": "Add logo",
   "EXIT": "Log out",
+  "LOOKING_JOB": "Looking for a job",
+  "LOOKING_EMPLOYMENT": "Looking for an employee",
+  "ADMIN": "Administartor",
+  "LOGIN": "Login",
   "REGISTERED": "Registered",
   "LINK": "Link",
   "ENGLISH_LEVEL": "English level",
   "CANDIDATE": "Candidate",
-  "LOOKING_JOB": "Lookind for job",
-  "LOOKING_EMPLOYMENT": "Looking employee",
   "GO_SOCIAL": "Sign in with social networks (job search only)",
   "CATEGORY": "Category"
 }

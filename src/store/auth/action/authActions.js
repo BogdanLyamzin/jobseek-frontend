@@ -76,8 +76,33 @@ export const loginUser = (user, history) => dispatch => {
 			}
 
 			setTimeout(() => dispatch(clearMsg()), 3000);
+		})
+		.catch(err => {
+			dispatch({
+				type: ERROR,
+				payload: err,
+			});
+		});
+};
 
-			// const decoded = jwt_decode(token);
+export const loginAdmin = (user, history) => dispatch => {
+	axios
+		.post('/admin', user)
+		.then(res => {
+			if (res.data.token) {
+				const { token } = res.data;
+				localStorage.setItem('AdminToken', token);
+				setAuthToken(token);
+				history.push('/admin');
+				return;
+			} else {
+				dispatch({
+					type: ERROR,
+					payload: res.data.errors,
+				});
+			}
+
+			setTimeout(() => dispatch(clearMsg()), 3000);
 		})
 		.catch(err => {
 			dispatch({
