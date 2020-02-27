@@ -7,12 +7,16 @@ const useStyles = makeStyles(theme => ({
 	line: {
 		width: '100%',
 		height: '2px',
+		border: 0,
 		backgroundColor: colorDark,
 	},
 
 	vacancyLocation: {
 		display: 'flex',
-		justifyContent: 'space-around',
+		justifyContent: 'space-between',
+		[theme.breakpoints.down(900)]: {
+			justifyContent: 'space-between',
+		},
 		[theme.breakpoints.down(600)]: {
 			flexDirection: 'column',
 			alignItems: 'center',
@@ -81,10 +85,7 @@ const useStyles = makeStyles(theme => ({
 		border: 0,
 		borderBottom: `1px solid ${colorDark}`,
 		outline: 0,
-		width: '65%',
-		[theme.breakpoints.down(850)]: {
-			width: '70%',
-		},
+		width: '50%',
 		[theme.breakpoints.down(550)]: {
 			width: '80%',
 		},

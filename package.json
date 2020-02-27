@@ -33,16 +33,13 @@
     "react-scripts": "^3.4.0",
     "reactstrap": "^8.4.1",
     "redux": "^4.0.4",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-form": "^8.3.0",
     "redux-thunk": "^2.3.0",
     "simple-line-icons": "^2.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"

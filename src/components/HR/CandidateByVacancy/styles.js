@@ -12,13 +12,11 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	hrVacancyRoutes: {
-		width: '100%',
 		padding: '0 50px',
 		[theme.breakpoints.down(900)]: {
 			padding: '0 10px',
 		},
 		[theme.breakpoints.down(550)]: {
-			borderLeft: 0,
 			padding: 0,
 		},
 	},
