@@ -1,30 +1,21 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { getOneCompany } from '../../store/company/actions';
 import { connect } from 'react-redux';
-const RegisterHR = React.lazy(() =>
-	import('../../components/RegisterHR/RegisterHR'),
-);
-const RegisterCompany = React.lazy(() =>
-	import(
-		'../../components/RegisterCompany/FormRegisterCompany/FormRegisterCompany'
-	),
-);
+import HRByCompany from '../../components/HR/HRByCompany/RegisterHR';
+import RegisterCompany from '../../components/RegisterCompany/FormRegisterCompany/FormRegisterCompany';
 
 const Page = ({ getOneCompany }) => {
 	React.useEffect(() => {
-		getOneCompany('5e4d60f3acbbd141707dfdb3');
+		getOneCompany('5e3c343c6f90fc2d0467aef8');
 	}, [getOneCompany]);
 
 	return (
-		<React.Suspense fallback={<CircularProgress />}>
-			<Switch>
-				<Route path="/company/hrs" component={RegisterHR} />
-				<Route path="/company" component={RegisterCompany} />
-			</Switch>
-		</React.Suspense>
+		<Switch>
+			<Route path="/company/hrs" component={HRByCompany} />
+			<Route path="/company" component={RegisterCompany} />
+		</Switch>
 	);
 };
 

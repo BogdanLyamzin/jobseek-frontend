@@ -3,13 +3,20 @@ import { connect } from 'react-redux';
 
 import useStyles from './styles';
 import { useTranslation } from 'react-i18next';
-import Button from '../../../shared/Button/Button';
+import Button from '../../../../shared/Button/Button';
 import FormHRInfo from '../FormHRInfo/FormHRInfo';
 import CardHR from '../CardHR';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutlined';
-import { addHr, getAllHR } from '../../../store/hr/actions';
+import { addHr, getHrByFilter } from '../../../../store/hr/actions';
 
-const FormHRRegister = ({ hidden, addHr, getAllHR, updateHRInfo }) => {
+const FormHRRegister = ({
+	list,
+	user,
+	hidden,
+	addHr,
+	getHrByFilter,
+	updateHRInfo,
+}) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
 	const [values, setValues] = useState({
@@ -17,7 +24,6 @@ const FormHRRegister = ({ hidden, addHr, getAllHR, updateHRInfo }) => {
 		lastName: '',
 		phone: '',
 		email: '',
-		companyId: '5e494cfe4cf8aa23746426d0',
 	});
 
 	const handleChange = event => {
@@ -25,8 +31,8 @@ const FormHRRegister = ({ hidden, addHr, getAllHR, updateHRInfo }) => {
 	};
 
 	useEffect(() => {
-		getAllHR(values.companyId);
-	}, [getAllHR, values.companyId]);
+		if (user) getHrByFilter(`companyId=${user._id}`);
+	}, [getHrByFilter, user, list]);
 
 	return (
 		<div>
@@ -46,10 +52,7 @@ const FormHRRegister = ({ hidden, addHr, getAllHR, updateHRInfo }) => {
 				{hidden && (
 					<div className={classes.alignCenter}>
 						<Button
-							click={() => {
-								addHr({ ...values });
-								getAllHR(values.companyId);
-							}}
+							click={() => addHr({ ...values, companyId: user._id })}
 							text={t('REGISTER')}
 						/>
 					</div>
@@ -63,12 +66,13 @@ const FormHRRegister = ({ hidden, addHr, getAllHR, updateHRInfo }) => {
 
 const mapDispatchToProps = {
 	addHr,
-	getAllHR,
+	getHrByFilter,
 };
 
-const mapStateToProps = ({ company }) => {
+const mapStateToProps = ({ company, hr }) => {
 	return {
-		info: company.addCompany,
+		list: hr.hrList,
+		user: company.company,
 	};
 };
 

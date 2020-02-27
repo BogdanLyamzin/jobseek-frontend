@@ -10,9 +10,9 @@ function VacancyByCompany({ vacancy, getVacancyByFilter, user }) {
 	const classes = useStyles();
 	const { t } = useTranslation();
 	useEffect(() => {
-		if (user && user._id)
-			getVacancyByFilter(`companyId=5e3c343c6f90fc2d0467aef8`);
+		if (user && user._id) getVacancyByFilter(`companyId=${user._id}`);
 	}, [getVacancyByFilter, user]);
+
 	return (
 		<div
 			className={`${classes.vacancyList} ${

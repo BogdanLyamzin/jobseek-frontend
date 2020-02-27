@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Translation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 
@@ -12,6 +12,7 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutlined';
 import CardCompany from '../../RegisterCompany/CardCompany/CardCompany';
 
 const FormRegisterCompany = ({ user, updateCompany }) => {
+	const { t } = useTranslation();
 	const classes = useStyles();
 	const [hidden, setHidden] = useState(false);
 	const hideCompanyInfo = e => {
@@ -33,7 +34,7 @@ const FormRegisterCompany = ({ user, updateCompany }) => {
 		email: '',
 		country: '',
 		city: '',
-		socialNet: '',
+		facebookLink: '',
 		website: '',
 		description: '',
 	});
@@ -47,34 +48,30 @@ const FormRegisterCompany = ({ user, updateCompany }) => {
 	};
 
 	return (
-		<Translation>
-			{t => (
-				<Container>
-					<Title text={t('COMPANY_PROFILE')} />
-					<Paper className={classes.root}>
-						<div className={classes.add} onClick={hideCompanyInfo}>
-							<div className={classes.label}>{t('UPDATE')}</div>
-							<AddCircleOutlineIcon fontSize="large" />
-						</div>
-						{hidden && (
-							<>
-								<form>
-									<FormCompanyInfo
-										classes={classes}
-										values={values}
-										handleChange={handleChange}
-										uploadPhoto={selectedFile}
-										submitForm={submitForm}
-									/>
-								</form>
-								<hr className={classes.line} />
-							</>
-						)}
-						<CardCompany />
-					</Paper>
-				</Container>
-			)}
-		</Translation>
+		<Container>
+			<Title text={t('COMPANY_PROFILE')} />
+			<Paper className={classes.root}>
+				<div className={classes.add} onClick={hideCompanyInfo}>
+					<div className={classes.label}>{t('UPDATE')}</div>
+					<AddCircleOutlineIcon fontSize="large" />
+				</div>
+				{hidden && (
+					<>
+						<form>
+							<FormCompanyInfo
+								classes={classes}
+								values={values}
+								handleChange={handleChange}
+								uploadPhoto={selectedFile}
+								submitForm={submitForm}
+							/>
+						</form>
+						<hr className={classes.line} />
+					</>
+				)}
+				<CardCompany />
+			</Paper>
+		</Container>
 	);
 };
 

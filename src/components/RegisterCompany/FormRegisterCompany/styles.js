@@ -3,10 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 const font = '"Open Sans", sans-serif';
 const colorDark = '#E6EBFF';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
 	root: {
-		margin: '0 auto',
-		padding: '50px 65px',
+		backgroundColor: theme.palette.paper,
+		padding: '15px',
+		margin: '20px auto',
+		marginBottom: '40px',
+		maxWidth: '980px',
 	},
 	container: {
 		width: '1140px',
@@ -23,6 +26,7 @@ const useStyles = makeStyles(() => ({
 		color: '#00B395',
 		cursor: 'pointer',
 		alignItems: 'center',
+		marginBottom: 20,
 	},
 
 	line: {

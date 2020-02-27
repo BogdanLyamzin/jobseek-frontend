@@ -3,8 +3,8 @@ import { Link, Switch, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import useStyles from './styles';
 import FormHRRegister from './FormHRRegister/FormHRRegister';
-import VacancyByCompany from '../Vacancy/VacancyByCompany/VacancyByCompany';
-import Title from '../../shared/Title/Title';
+import VacancyByCompany from '../../Vacancy/VacancyByCompany/VacancyByCompany';
+import Title from '../../../shared/Title/Title';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 

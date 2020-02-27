@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { Translation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { getOneCompany } from '../../../store/company/actions';
-import CardContent from '@material-ui/core/CardContent';
 import getDate from '../../../utils/getDate';
-import Card from '@material-ui/core/Card';
 
 const useStyles = makeStyles(theme => ({
 	root: {},
 	card: {
-		width: '100%',
-		margin: '0 auto',
+		padding: '0 50px',
 		marginBottom: 20,
 	},
 	title: {
@@ -24,16 +21,11 @@ const useStyles = makeStyles(theme => ({
 	},
 	name: {
 		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'center',
-	},
-	hr: {
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'center',
+		justifyContent: 'space-around',
 		alignItems: 'center',
 	},
 	avatar: {
+		height: 100,
 		marginRight: 40,
 	},
 	icon: {
@@ -47,7 +39,7 @@ const useStyles = makeStyles(theme => ({
 		alignItems: 'center',
 		fontWeight: 500,
 	},
-	contacts: {
+	description: {
 		fontSize: 16,
 		fontWeight: 500,
 		marginTop: 30,
@@ -56,64 +48,53 @@ const useStyles = makeStyles(theme => ({
 
 function CardCompany({ user, getOneCompany }) {
 	const classes = useStyles();
+	const { t } = useTranslation();
 
 	useEffect(() => {
 		getOneCompany('5e3c343c6f90fc2d0467aef8');
 	}, [getOneCompany]);
 
 	return (
-		<Translation>
-			{t => (
-				<Card className={classes.card}>
-					<CardContent>
-						{user && (
-							<>
-								<div className={classes.name}>
-									<div className={classes.hr}>
-										<img
-											src={user.avatar}
-											alt="avatar"
-											className={classes.avatar}
-										/>
-										<div className={classes.title} color="textSecondary">
-											{user.companyName}
-										</div>
-									</div>
-								</div>
-								<div className={classes.info}>
-									<div className={classes.contacts}>
-										<div>
-											{t('MAIL')}: {user.email}
-										</div>
-										<div>
-											{t('WEB_SITE')}: {user.website}
-										</div>
-										<div>
-											{t('LINK')}: {user.socialNet}
-										</div>
-									</div>
+		<>
+			{user && (
+				<div className={classes.card}>
+					<div className={classes.name}>
+						<img src={user.avatar} alt="avatar" className={classes.avatar} />
+						<div className={classes.title} color="textSecondary">
+							{user.companyName}
+						</div>
+					</div>
+					<div className={classes.info}>
+						<div className={classes.contacts}>
+							<div>
+								{t('MAIL')}: {user.email}
+							</div>
+							<div>
+								{t('WEB_SITE')}: {user.website}
+							</div>
+							<div>
+								{t('LINK')}: {user.facebookLink}
+							</div>
+						</div>
 
-									<div>
-										<div>
-											{user.city}, {user.country}{' '}
-										</div>
-										<div>
-											{t('REGISTERED')}: {getDate(user.date)}
-										</div>
-									</div>
-								</div>
-								<div>
-									<div className={classes.contacts}>
-										{t('COMPANY_DESCRIPTION')}:
-									</div>
-									{user.description}
-								</div>
-							</>
-						)}
-					</CardContent>
-				</Card>
+						<div>
+							<div>
+								{user.city}, {user.country}{' '}
+							</div>
+							<div>
+								{t('REGISTERED')}: {getDate(user.date)}
+							</div>
+						</div>
+					</div>
+					<div>
+						<div className={classes.description}>
+							{t('COMPANY_DESCRIPTION')}:
+						</div>
+						{user.description}
+					</div>
+				</div>
 			)}
-		</Translation>
+		</>
 	);
 }
 const mapDispatchToProps = {
