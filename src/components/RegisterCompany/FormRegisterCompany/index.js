@@ -1,1 +1,1 @@
-export { default } from './RegisterCompany';
+export { default } from './FormRegisterCompany';

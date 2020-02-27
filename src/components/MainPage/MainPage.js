@@ -38,7 +38,7 @@ export default function MainPage() {
 					<Route path="/resetpass/:token" component={setNewPass} />
 					<Route path="/logout" component={LogOut} />
 					<Route path="/hr" component={HrPage} />
-					<Route path="/kostya" component={CompanyPage} />
+					<Route path="/company" component={CompanyPage} />
 					<Route path="/comments" component={Comments} />
 				</Suspense>
 			</Switch>

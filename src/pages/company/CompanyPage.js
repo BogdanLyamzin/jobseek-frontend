@@ -9,7 +9,7 @@ const RegisterHR = React.lazy(() =>
 );
 const RegisterCompany = React.lazy(() =>
 	import(
-		'../../components/RegisterCompany/FormRegisterCompany/RegisterCompany'
+		'../../components/RegisterCompany/FormRegisterCompany/FormRegisterCompany'
 	),
 );
 

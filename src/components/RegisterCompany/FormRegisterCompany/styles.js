@@ -5,9 +5,8 @@ const colorDark = '#E6EBFF';
 
 const useStyles = makeStyles(() => ({
 	root: {
-		paddingLeft: '30px',
-		paddingTop: '20px',
 		margin: '0 auto',
+		padding: '50px 65px',
 	},
 	container: {
 		width: '1140px',
@@ -16,17 +15,20 @@ const useStyles = makeStyles(() => ({
 	dropZone: {
 		paddingTop: '30px',
 	},
+
 	add: {
+		display: 'flex',
+		justifyContent: 'center',
 		marginLeft: '80%',
 		color: '#00B395',
 		cursor: 'pointer',
+		alignItems: 'center',
 	},
 
 	line: {
 		width: '90%',
 		height: '2px',
 		backgroundColor: colorDark,
-		marginTop: '60px',
 	},
 
 	vacancyLocationItem: {
@@ -82,7 +84,7 @@ const useStyles = makeStyles(() => ({
 
 	alignCenter: {
 		textAlign: 'center',
-		paddingBottom: '50px',
+		paddingBottom: '30px',
 	},
 }));
 

@@ -14,16 +14,14 @@ const useStyles = makeStyles(() => ({
 		margin: '0 auto',
 	},
 	add: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
 		marginLeft: '80%',
 		color: '#00B395',
 		cursor: 'pointer',
 	},
-	line: {
-		width: '90%',
-		height: '2px',
-		backgroundColor: colorDark,
-		marginTop: '60px',
-	},
+
 	vacancyLocationItem: {
 		flexBasis: '45%',
 	},
