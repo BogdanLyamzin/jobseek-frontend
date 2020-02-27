@@ -1,10 +1,10 @@
 import React from 'react';
-import { toastr } from 'react-redux-toastr';
 import { useTranslation } from 'react-i18next';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
 import Input from '../../../../shared/Input';
 import Button from '../../../../shared/Button';
+import validation from '../../../../utils/validation/hrCompany';
 
 const FormHR = ({
 	values,
@@ -16,23 +16,18 @@ const FormHR = ({
 }) => {
 	const { t } = useTranslation();
 
-	const valid = data => {
-		if (!data.name) {
-			toastr.error('Заповніть поле імені');
-		} else if (!data.lastName) {
-			toastr.error('Заповніть поле прізвищя');
-		} else if (!data.email) {
-			toastr.error('Заповніть поле пошти');
-		} else if (!data.phone) {
-			toastr.error('Заповніть поле телефону');
-		} else {
-			return true;
-		}
+	const validationStatus = () => {
+		return (
+			validation('name', values.name) &&
+			validation('lastName', values.lastName) &&
+			validation('email', values.email) &&
+			validation('phone', values.phone)
+		);
 	};
 
 	const handleClick = event => {
 		event.preventDefault();
-		if (valid(values)) {
+		if (validationStatus()) {
 			submitForm();
 			updateHRinfo();
 		}

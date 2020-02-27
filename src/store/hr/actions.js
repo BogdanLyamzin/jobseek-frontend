@@ -1,8 +1,7 @@
 import API from '../../services/api';
 import errorAxios from '../../utils/actions/errorAxios';
+import tostrActions from '../../utils/toastr/toastrAction';
 import { SUCCESS_AXIOS, ADD_USER, SUCCESS_AXIOS_LIST } from './actionNames';
-
-import tostrActions from '../../utils/toastrAction';
 
 const successAxios = payload => {
 	return {

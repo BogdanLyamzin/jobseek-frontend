@@ -1,5 +1,5 @@
 import API from '../../services/api';
-import tostrActions from '../../utils/toastrAction';
+import tostrActions from '../../utils/toastr/toastrAction';
 import errorAxios from '../../utils/actions/errorAxios';
 import {
 	SUCCESS_AXIOS,

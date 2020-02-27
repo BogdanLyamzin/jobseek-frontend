@@ -1,8 +1,7 @@
 import API from '../../services/api';
 import errorAxios from '../../utils/actions/errorAxios';
+import tostrActions from '../../utils/toastr/toastrAction';
 import { SUCCESS_AXIOS, ADD_COMMENT } from './actionNames';
-
-import tostrActions from '../../utils/toastrAction';
 
 const successAxios = payload => {
 	return {
@@ -57,7 +56,7 @@ export const getOneComment = id => {
 
 export const getCommentByFilter = filter => {
 	return dispatch => {
-		API.getHrByFilter(`reviews?${filter}`)
+		API.get(`reviews?${filter}`)
 			.then(data => {
 				dispatch(successAxios(data.result));
 			})
