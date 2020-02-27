@@ -1,4 +1,5 @@
 import React from 'react';
+import { toastr } from 'react-redux-toastr';
 import { useTranslation } from 'react-i18next';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
@@ -15,10 +16,26 @@ const FormHR = ({
 }) => {
 	const { t } = useTranslation();
 
+	const valid = data => {
+		if (!data.name) {
+			toastr.error('Заповніть поле імені');
+		} else if (!data.lastName) {
+			toastr.error('Заповніть поле прізвищя');
+		} else if (!data.email) {
+			toastr.error('Заповніть поле пошти');
+		} else if (!data.phone) {
+			toastr.error('Заповніть поле телефону');
+		} else {
+			return true;
+		}
+	};
+
 	const handleClick = event => {
 		event.preventDefault();
-		submitForm();
-		updateHRinfo();
+		if (valid(values)) {
+			submitForm();
+			updateHRinfo();
+		}
 	};
 
 	return (
@@ -97,15 +114,7 @@ const FormHR = ({
 					</>
 				)}
 			</div>
-			{hidden && (
-				<Button
-					text={t('SAVE')}
-					click={e => {
-						handleClick(e);
-						updateHRinfo();
-					}}
-				/>
-			)}
+			{hidden && <Button text={t('SAVE')} click={e => handleClick(e)} />}
 		</div>
 	);
 };

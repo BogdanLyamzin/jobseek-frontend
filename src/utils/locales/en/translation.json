@@ -73,7 +73,12 @@
   "EXIT": "Log out",
   "LOOKING_JOB": "Looking for a job",
   "LOOKING_EMPLOYMENT": "Looking for an employee",
-  "GO_SOCIAL": "Go with social network (only for job searching)",
   "ADMIN": "Administartor",
-  "LOGIN": "Login"
+  "LOGIN": "Login",
+  "REGISTERED": "Registered",
+  "LINK": "Link",
+  "ENGLISH_LEVEL": "English level",
+  "CANDIDATE": "Candidate",
+  "GO_SOCIAL": "Sign in with social networks (job search only)",
+  "CATEGORY": "Category"
 }

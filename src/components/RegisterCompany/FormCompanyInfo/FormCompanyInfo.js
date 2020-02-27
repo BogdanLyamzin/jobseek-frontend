@@ -1,32 +1,22 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { useTranslation } from 'react-i18next';
-import { connect } from 'react-redux';
 import Input from '../../../shared/Input/Input';
-import { updateCompany } from '../../../store/company/actions';
 import UpdatePhotoDropzone from '../UpdatePhotoDropzone/UpdatePhotoDropzone';
+import Button from '../../../shared/Button';
 
 const FormCompanyInfo = ({
-	user,
-	updateCompany,
+	values,
 	classes,
 	handleChange,
-	values,
+	submitForm,
+	uploadPhoto,
 }) => {
 	const { t } = useTranslation();
-	const selectedFile = photo => {
-		const fd = new FormData();
-		fd.append('avatar', photo[0]);
-		updateCompany(user._id, fd);
-	};
-
 	return (
 		<Grid container spacing={2}>
 			<Grid item xs={4}>
-				<UpdatePhotoDropzone
-					uploadPhoto={selectedFile}
-					className={classes.dropZone}
-				/>
+				<UpdatePhotoDropzone uploadPhoto={uploadPhoto} />
 			</Grid>
 			<Grid item container xs={8} spacing={2}>
 				<Grid item container xs={12} direction="row" spacing={2}>
@@ -78,10 +68,10 @@ const FormCompanyInfo = ({
 						<div className={classes.vacancyKey}>{t('ADD_SOCIAL_NET')}</div>
 						<Input
 							type="text"
-							name="socialNet"
+							name="facebookLink"
 							className={classes.vacancyInput}
 							onChange={handleChange}
-							value={values.socialNet}
+							value={values.facebookLink}
 						/>
 					</Grid>
 					<Grid item xs={6}>
@@ -96,17 +86,21 @@ const FormCompanyInfo = ({
 					</Grid>
 				</Grid>
 			</Grid>
+			<hr className={classes.line} />
+			<div className={classes.vacancyDescription}>
+				<div className={classes.vacancyKey}>{t('COMPANY_DESCRIPTION')}</div>
+				<textarea
+					name="description"
+					className={classes.vacancyDescriptionArea}
+					onChange={handleChange}
+					value={values.description}
+				/>
+				<div className={classes.alignCenter}>
+					<Button text={t('UPDATE')} click={submitForm} />
+				</div>
+			</div>
 		</Grid>
 	);
 };
-const mapStateToProps = ({ company }) => {
-	return {
-		user: company.user,
-	};
-};
 
-const mapDispatchToProps = {
-	updateCompany,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(FormCompanyInfo);
+export default FormCompanyInfo;

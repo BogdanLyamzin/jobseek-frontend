@@ -50,9 +50,8 @@ class API {
 	}
 
 	requestFailed(reason) {
-		const { response } = reason;
-		if (response && response.statusText) {
-			toastr.error(response.statusText, response.data);
+		if (reason && reason.message) {
+			toastr.error('Error', reason.message);
 		} else {
 			toastr.error('Error', 'An error has occurred');
 		}

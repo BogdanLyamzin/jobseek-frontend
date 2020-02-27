@@ -1,84 +1,45 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
-const useStyles = makeStyles(() => ({
-	card: {
-		width: '100%',
-	},
-	title: {
-		fontSize: 20,
-		marginLeft: 20,
-	},
+import VacancyByCompanyItem from './VacancyByCompanyItem/VacancyByCompanyItem';
+import { getVacancyByFilter } from '../../../store/vacancy/actions';
+import useStyles from '../VacancyByHR/styles';
 
-	job: {
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-	},
-	name: {
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
-	hr: {
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		marginLeft: 40,
-	},
-	edit: {
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'flex-end',
-		alignItems: 'center',
-	},
-	info: {
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-	},
-	personal: {
-		fontSize: 16,
-		margin: 50,
-	},
-}));
-
-const VacancyByCompany = () => {
+function VacancyByCompany({ vacancy, getVacancyByFilter, user }) {
 	const classes = useStyles();
+	const { t } = useTranslation();
+	useEffect(() => {
+		if (user && user._id) getVacancyByFilter(`companyId=${user._id}`);
+	}, [getVacancyByFilter, user]);
 
 	return (
-		<Card className={classes.card}>
-			<CardContent>
-				<div className={classes.job}>
-					<div className={classes.hr}>
-						<p className={classes.title} color="textSecondary">
-							Front-End Developer (Javascript)
-						</p>
-					</div>
-					<div className={classes.edit}>Active</div>
-				</div>
-				<div className={classes.info}>
-					<p className={classes.personal}>
-						We work closely with our clients to plan, design and engineer
-						solutions that empower employees and customers, automate and
-						digitalize, grow margins and open new business horizons. Our
-						collaborators include leading companies in finance.
-					</p>
-					<div>
-						<div>Registered 20.12.2019</div>
-					</div>
-				</div>
-				<div className={classes.name}>
-					<p className={classes.title} color="textSecondary">
-						Irina Vasyluk
-					</p>
-				</div>
-			</CardContent>
-		</Card>
+		<div
+			className={`${classes.vacancyList} ${
+				vacancy && vacancy.length >= 2 ? classes.list : classes.list1
+			}`}
+		>
+			{vacancy && vacancy.length === 0 && (
+				<div className={classes.vacancyName}>{t('NO_VACANCY')}</div>
+			)}
+			{vacancy && vacancy.length > 0
+				? vacancy.map(elem => {
+						return <VacancyByCompanyItem {...elem} key={elem._id} />;
+				  })
+				: null}
+		</div>
 	);
+}
+
+const mapDispatchToProps = {
+	getVacancyByFilter,
 };
 
-export default VacancyByCompany;
+const mapStateToProps = ({ vacancy, company }) => {
+	return {
+		user: company.company,
+		vacancy: vacancy.vacancyList,
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(VacancyByCompany);

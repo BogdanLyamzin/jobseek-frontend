@@ -3,19 +3,17 @@ import { connect } from 'react-redux';
 import Container from '@material-ui/core/Container';
 
 import CardHRItem from '../CardHRItem/CardHRItem';
-import { getAllHR } from '../../../store/hr/actions';
+import { getHrByFilter } from '../../../../store/hr/actions';
 
-function CardHR({ user, companyId, getAllHR }) {
+function CardHR({ user, hrList, companyId, getHrByFilter }) {
 	let cardList = [];
 
 	useEffect(() => {
-		window.addEventListener('load', () => {
-			getAllHR(companyId);
-		});
-	}, [companyId, getAllHR]);
+		if (user) getHrByFilter(`companyId=${user._id}`);
+	}, [user, getHrByFilter]);
 
-	cardList = user
-		? user.map((elem, index) => {
+	cardList = hrList
+		? hrList.map((elem, index) => {
 				return <CardHRItem elem={elem} key={elem._id} index={index} />;
 		  })
 		: null;
@@ -23,13 +21,13 @@ function CardHR({ user, companyId, getAllHR }) {
 }
 
 const mapDispatchToProps = {
-	getAllHR,
+	getHrByFilter,
 };
 
 const mapStateToProps = ({ company, hr }) => {
 	return {
-		companyId: company.companyId,
-		user: hr.hrList,
+		user: company.company,
+		hrList: hr.hrList,
 	};
 };
 

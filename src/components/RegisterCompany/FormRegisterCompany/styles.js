@@ -3,11 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 const font = '"Open Sans", sans-serif';
 const colorDark = '#E6EBFF';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
 	root: {
-		paddingLeft: '30px',
-		paddingTop: '20px',
-		margin: '0 auto',
+		backgroundColor: theme.palette.paper,
+		padding: '15px',
+		margin: '20px auto',
+		marginBottom: '40px',
+		maxWidth: '980px',
 	},
 	container: {
 		width: '1140px',
@@ -16,17 +18,21 @@ const useStyles = makeStyles(() => ({
 	dropZone: {
 		paddingTop: '30px',
 	},
+
 	add: {
+		display: 'flex',
+		justifyContent: 'center',
 		marginLeft: '80%',
 		color: '#00B395',
 		cursor: 'pointer',
+		alignItems: 'center',
+		marginBottom: 20,
 	},
 
 	line: {
 		width: '90%',
 		height: '2px',
 		backgroundColor: colorDark,
-		marginTop: '60px',
 	},
 
 	vacancyLocationItem: {
@@ -82,7 +88,7 @@ const useStyles = makeStyles(() => ({
 
 	alignCenter: {
 		textAlign: 'center',
-		paddingBottom: '50px',
+		paddingBottom: '30px',
 	},
 }));
 

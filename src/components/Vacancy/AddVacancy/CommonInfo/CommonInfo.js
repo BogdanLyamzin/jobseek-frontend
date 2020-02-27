@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { toastr } from 'react-redux-toastr';
 import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
@@ -28,6 +29,20 @@ const CommonInfo = ({ info, saveInfo }) => {
 		setValues({ ...values, [event.target.name]: event.target.value });
 	};
 
+	const valid = data => {
+		if (!data.city) {
+			toastr.error('Заповніть поле міста');
+		} else if (!data.salary) {
+			toastr.error('Заповніть поле зарплати');
+		} else if (!data.country) {
+			toastr.error('Заповніть поле країни');
+		} else if (!data.description) {
+			toastr.error('Заповніть поле опису вакансії');
+		} else {
+			return true;
+		}
+	};
+
 	return (
 		<div>
 			<FormCommonInfo
@@ -47,7 +62,14 @@ const CommonInfo = ({ info, saveInfo }) => {
 					value={values.description}
 				/>
 				<div className={classes.alignCenter}>
-					<Button click={() => saveInfo({ ...values })} text={t('SAVE')} />
+					<Button
+						text={t('SAVE')}
+						click={() => {
+							if (valid(values)) {
+								saveInfo({ ...values });
+							}
+						}}
+					/>
 				</div>
 			</div>
 		</div>

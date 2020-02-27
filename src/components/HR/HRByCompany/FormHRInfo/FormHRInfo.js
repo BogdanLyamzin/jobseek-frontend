@@ -2,15 +2,13 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { useTranslation } from 'react-i18next';
 
-import Input from '../../../shared/Input/Input';
+import Input from '../../../../shared/Input/Input';
 
 const FormHRInfo = ({ classes, handleChange, values }) => {
 	const { t } = useTranslation();
 	return (
 		<Grid container spacing={2}>
-			<Grid item xs={3}>
-				<div>ID 123456</div>
-			</Grid>
+			<Grid item xs={3}></Grid>
 			<Grid item container xs={9} spacing={2}>
 				<Grid item container xs={12} direction="row" spacing={2}>
 					<Grid item xs={6}>

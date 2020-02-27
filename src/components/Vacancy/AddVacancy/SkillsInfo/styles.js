@@ -26,6 +26,7 @@ const useStyles = makeStyles(theme => ({
 	line: {
 		width: '100%',
 		height: '2px',
+		border: 0,
 		backgroundColor: colorDark,
 	},
 

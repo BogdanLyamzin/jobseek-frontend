@@ -12,6 +12,7 @@ const AntSwitch = withStyles(() => ({
 		height: 12,
 		padding: 0,
 		display: 'flex',
+		marginRight: 15,
 	},
 	switchBase: {
 		padding: 2,

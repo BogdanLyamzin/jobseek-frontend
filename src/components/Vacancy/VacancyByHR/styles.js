@@ -5,21 +5,9 @@ const font = '"Open Sans", sans-serif';
 const useStyles = makeStyles(theme => ({
 	vacancyList: {
 		width: '100%',
-		padding: '25px 0',
+		padding: '25px 5px',
 		display: 'flex',
 		flexWrap: 'wrap',
-		[theme.breakpoints.down(650)]: {
-			flexDirection: 'column',
-			justifyContent: 'center',
-		},
-	},
-
-	list: {
-		justifyContent: 'space-around',
-	},
-
-	list1: {
-		justifyContent: 'space-between',
 	},
 
 	vacancy: {
@@ -27,23 +15,10 @@ const useStyles = makeStyles(theme => ({
 		marginBottom: '10px',
 		border: `1px solid #E6EBFF`,
 		borderRadius: 20,
-		flexBasis: '32%',
-		textAlign: 'center',
+		flexBasis: '90%',
 		color: theme.palette.textColor,
 		'&:hover': {
 			border: '1px solid #00F2C9',
-		},
-		[theme.breakpoints.down(975)]: {
-			flexBasis: '40%',
-		},
-		[theme.breakpoints.down(850)]: {
-			flexBasis: '45%',
-		},
-		[theme.breakpoints.down(650)]: {
-			flexBasis: '70%',
-		},
-		[theme.breakpoints.down(500)]: {
-			flexBasis: '90%',
 		},
 	},
 
@@ -83,10 +58,18 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	link: {
-		marginBottom: 10,
 		fontFamily: font,
+		color: theme.palette.textColor,
 		fontWeight: 'bold',
 		fontSize: '16px',
+		textDecoration: 'none',
+		'&:hover': {
+			color: '#00F2C9',
+		},
+	},
+
+	marginRight: {
+		marginRight: 7,
 	},
 }));
 

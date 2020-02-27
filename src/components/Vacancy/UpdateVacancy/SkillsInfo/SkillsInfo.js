@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { toastr } from 'react-redux-toastr';
 import { useTranslation } from 'react-i18next';
 
 import ChackboxList from './CheckboxList';
@@ -71,7 +72,11 @@ const SkillsInfo = ({ id, firstForm, oneVacancy, updateVacancy }) => {
 			category: skill.category,
 			skills: [...checkboxArr],
 		};
-		updateVacancy(id, body);
+		if (checkboxArr && checkboxArr.length > 0) {
+			updateVacancy(id, body);
+		} else {
+			toastr.error('Заповніть поле навиків');
+		}
 	};
 
 	const checkboxHandleChange = name => event => {

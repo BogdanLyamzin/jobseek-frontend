@@ -6,23 +6,35 @@ import Container from '@material-ui/core/Container';
 
 import useStyles from './styles';
 import Title from '../../../shared/Title';
-import Button from '../../../shared/Button';
 import { updateCompany } from '../../../store/company/actions';
 import FormCompanyInfo from '../FormCompanyInfo/FormCompanyInfo';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutlined';
 import CardCompany from '../../RegisterCompany/CardCompany/CardCompany';
 
 const FormRegisterCompany = ({ user, updateCompany }) => {
-	const classes = useStyles();
 	const { t } = useTranslation();
+	const classes = useStyles();
 	const [hidden, setHidden] = useState(false);
+	const hideCompanyInfo = e => {
+		e.preventDefault();
+		setHidden(!hidden);
+	};
+	const submitForm = e => {
+		e.preventDefault();
+		updateCompany(user._id, { ...values });
+	};
 
+	const selectedFile = photo => {
+		const fd = new FormData();
+		fd.append('avatar', photo[0]);
+		updateCompany(user._id, fd);
+	};
 	const [values, setValues] = useState({
 		companyName: '',
 		email: '',
 		country: '',
 		city: '',
-		socialNet: '',
+		facebookLink: '',
 		website: '',
 		description: '',
 	});
@@ -39,8 +51,8 @@ const FormRegisterCompany = ({ user, updateCompany }) => {
 		<Container>
 			<Title text={t('COMPANY_PROFILE')} />
 			<Paper className={classes.root}>
-				<div className={classes.add} onClick={() => setHidden(!hidden)}>
-					{t('UPDATE')}
+				<div className={classes.add} onClick={hideCompanyInfo}>
+					<div className={classes.label}>{t('UPDATE')}</div>
 					<AddCircleOutlineIcon fontSize="large" />
 				</div>
 				{hidden && (
@@ -48,33 +60,11 @@ const FormRegisterCompany = ({ user, updateCompany }) => {
 						<form>
 							<FormCompanyInfo
 								classes={classes}
-								handleChange={handleChange}
 								values={values}
+								handleChange={handleChange}
+								uploadPhoto={selectedFile}
+								submitForm={submitForm}
 							/>
-
-							<hr className={classes.line} />
-
-							<div className={classes.vacancyDescription}>
-								<div className={classes.vacancyKey}>
-									{t('COMPANY_DESCRIPTION')}
-								</div>
-								<textarea
-									name="description"
-									className={classes.vacancyDescriptionArea}
-									onChange={handleChange}
-									value={values.description}
-								/>
-								<div className={classes.alignCenter}>
-									<Button
-										click={e => {
-											e.preventDefault();
-											setHidden(!hidden);
-											updateCompany(user._id, { ...values });
-										}}
-										text={t('REGISTER')}
-									/>
-								</div>
-							</div>
 						</form>
 						<hr className={classes.line} />
 					</>
@@ -92,7 +82,6 @@ const mapDispatchToProps = {
 const mapStateToProps = ({ company }) => {
 	return {
 		user: company.company,
-		info: company.addCompany,
 	};
 };
 

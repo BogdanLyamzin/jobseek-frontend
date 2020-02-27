@@ -4,20 +4,20 @@ import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import EditIcon from '@material-ui/core/SvgIcon/SvgIcon';
+import { useTranslation } from 'react-i18next';
 
-import getDate from '../../../utils/getDate';
-import { deleteHR } from '../../../store/hr/actions';
-import DeleteIconWithModal from '../../../shared/DeleteIconWithModal';
+import getDate from '../../../../utils/getDate';
+import { deleteHR } from '../../../../store/hr/actions';
+import DeleteIconWithModal from '../../../../shared/DeleteIconWithModal';
 
 const useStyles = makeStyles(theme => ({
 	root: {},
 	card: {
 		width: '100%',
 		margin: '0 auto',
+		marginBottom: 20,
 	},
-	title: {
-		fontSize: 20,
-	},
+
 	pos: {
 		marginBottom: 12,
 	},
@@ -30,7 +30,9 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'flex-start',
-		alignItems: 'center',
+		alignItems: 'start',
+		fontSize: 25,
+		fontWeight: 'bold',
 	},
 	avatar: {
 		marginLeft: 50,
@@ -51,9 +53,9 @@ const useStyles = makeStyles(theme => ({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-	},
-	personal: {
 		fontSize: 16,
+		fontWeight: 500,
+		marginTop: 30,
 	},
 }));
 
@@ -68,16 +70,17 @@ const CardHRItem = ({
 		deleteHR(id);
 		document.getElementById(id).remove();
 	};
+	const { t } = useTranslation();
 
 	return (
 		<Card className={classes.card} id={_id}>
 			<CardContent>
 				<div className={classes.name}>
 					<div className={classes.hr}>
-						<div>{index + 1}</div>
-						<p className={classes.title} color="textSecondary">
+						<div>{index + 1}. </div>
+						<div>
 							{name} {lastName}
-						</p>
+						</div>
 					</div>
 					<div className={classes.edit}>
 						<EditIcon className={classes.icon} />
@@ -88,22 +91,26 @@ const CardHRItem = ({
 					</div>
 				</div>
 				<div className={classes.info}>
-					<div className={classes.personal}>
-						<div className={classes.email}>Email: {email}</div>
-						<div className={classes.phone}>Phone: {phone}</div>
+					<div>
+						<div>
+							{t('MAIL')}: {email}
+						</div>
+						<div>
+							{t('PHONE')}: {phone}
+						</div>
 					</div>
-					<div className={classes.vacancies}>
-						<div>All vacancies</div>
-						<div>Active vacancies</div>
-						<div>Inactive vacancies</div>
+					<div>
+						<div>Active vacancies:</div>
+						<div>Inactive vacancies:</div>
 					</div>
-					<div className={classes.number}>
-						<div>3</div>
+					<div>
 						<div>2</div>
 						<div>1</div>
 					</div>
-					<div className={classes.registered}>
-						<div>{getDate(date)}</div>
+					<div>
+						<div>
+							{t('REGISTERED')}: {getDate(date)}
+						</div>
 					</div>
 				</div>
 			</CardContent>
