@@ -4,11 +4,11 @@ import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import EditIcon from '@material-ui/core/SvgIcon/SvgIcon';
-import { Translation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
-import getDate from '../../../utils/getDate';
-import { deleteHR } from '../../../store/hr/actions';
-import DeleteIconWithModal from '../../../shared/DeleteIconWithModal';
+import getDate from '../../../../utils/getDate';
+import { deleteHR } from '../../../../store/hr/actions';
+import DeleteIconWithModal from '../../../../shared/DeleteIconWithModal';
 
 const useStyles = makeStyles(theme => ({
 	root: {},
@@ -70,54 +70,51 @@ const CardHRItem = ({
 		deleteHR(id);
 		document.getElementById(id).remove();
 	};
+	const { t } = useTranslation();
 
 	return (
-		<Translation>
-			{t => (
-				<Card className={classes.card} id={_id}>
-					<CardContent>
-						<div className={classes.name}>
-							<div className={classes.hr}>
-								<div>{index + 1}. </div>
-								<div>
-									{name} {lastName}
-								</div>
-							</div>
-							<div className={classes.edit}>
-								<EditIcon className={classes.icon} />
-								<DeleteIconWithModal
-									text="Are you sure?"
-									handleDelete={() => hrDelete(_id)}
-								/>
-							</div>
+		<Card className={classes.card} id={_id}>
+			<CardContent>
+				<div className={classes.name}>
+					<div className={classes.hr}>
+						<div>{index + 1}. </div>
+						<div>
+							{name} {lastName}
 						</div>
-						<div className={classes.info}>
-							<div>
-								<div>
-									{t('MAIL')}: {email}
-								</div>
-								<div>
-									{t('PHONE')}: {phone}
-								</div>
-							</div>
-							<div>
-								<div>Active vacancies:</div>
-								<div>Inactive vacancies:</div>
-							</div>
-							<div>
-								<div>2</div>
-								<div>1</div>
-							</div>
-							<div>
-								<div>
-									{t('REGISTERED')}: {getDate(date)}
-								</div>
-							</div>
+					</div>
+					<div className={classes.edit}>
+						<EditIcon className={classes.icon} />
+						<DeleteIconWithModal
+							text="Are you sure?"
+							handleDelete={() => hrDelete(_id)}
+						/>
+					</div>
+				</div>
+				<div className={classes.info}>
+					<div>
+						<div>
+							{t('MAIL')}: {email}
 						</div>
-					</CardContent>
-				</Card>
-			)}
-		</Translation>
+						<div>
+							{t('PHONE')}: {phone}
+						</div>
+					</div>
+					<div>
+						<div>Active vacancies:</div>
+						<div>Inactive vacancies:</div>
+					</div>
+					<div>
+						<div>2</div>
+						<div>1</div>
+					</div>
+					<div>
+						<div>
+							{t('REGISTERED')}: {getDate(date)}
+						</div>
+					</div>
+				</div>
+			</CardContent>
+		</Card>
 	);
 };
 export default connect(null, { deleteHR })(CardHRItem);

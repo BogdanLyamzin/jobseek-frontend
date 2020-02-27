@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
-import { Translation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import getDate from '../../../../utils/getDate';
 
 const useStyles = makeStyles(theme => ({
@@ -11,31 +11,26 @@ const useStyles = makeStyles(theme => ({
 		width: '100%',
 		marginBottom: 20,
 	},
-	name: {
+	vacancyName: {
 		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
-	hr: {
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		marginLeft: 40,
-	},
-	avatar: {
-		marginLeft: 40,
-		marginRight: 20,
+		justifyContent: 'center',
+		fontSize: 25,
+		fontWeight: 'bold',
+		marginBottom: 30,
 	},
 
-	icon: {
-		marginLeft: 50,
-		marginRight: 20,
-	},
 	info: {
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
+		fontSize: 16,
+		fontWeight: 500,
+	},
+	description: {
+		fontSize: 16,
+		fontWeight: 500,
+		marginTop: 30,
 	},
 }));
 
@@ -46,6 +41,7 @@ const VacancyByCompanyItem = ({
 	city,
 	salary,
 	englishLevel,
+	skills,
 	category,
 	employmentType,
 	description,
@@ -53,56 +49,50 @@ const VacancyByCompanyItem = ({
 	date,
 }) => {
 	const classes = useStyles();
+	const { t } = useTranslation();
 
 	return (
-		<Translation>
-			{t => (
-				<Card className={classes.card} id={_id}>
-					<CardContent>
-						<div className={classes.name}>
-							<div className={classes.hr}>
-								<div>{vacancyName}</div>
-							</div>
-						</div>
-						<div className={classes.info}>
-							<div>
-								<div> {category} </div>
-								<div>
-									{t('ENGLISH_LEVEL')}: {englishLevel}
-								</div>
-								<div>
-									{t('SALARY')}: {salary}
-								</div>
-							</div>
-							<div>
-								<div>{employmentType}</div>
-								<div> {active}</div>
-							</div>
-							<div>
-								<div>
-									{t('SALARY')}: {salary}
-								</div>
-							</div>
-							<div>
-								<div>
-									{' '}
-									{country},{city}{' '}
-								</div>
-								<div>
-									{t('REGISTERED')}: {getDate(date)}
-								</div>
-							</div>
+		<Card className={classes.card} id={_id}>
+			<CardContent>
+				<div className={classes.vacancyName}>
+					<div>{vacancyName}</div>
+				</div>
+				<div className={classes.info}>
+					<div>
+						<div>
+							{t('CATEGORY')}: {category}{' '}
 						</div>
 						<div>
-							<div className={classes.contacts}>
-								{t('VACANCY_DESCRIPTION')}:
-							</div>
-							{description}
+							{t('ENGLISH_LEVEL')}: {englishLevel}
 						</div>
-					</CardContent>
-				</Card>
-			)}
-		</Translation>
+						<div>
+							{t('SKILLS')}: {skills.map(elem => elem.name).join(', ')}
+						</div>
+					</div>
+					<div>
+						<div>{employmentType}</div>
+						<div> {active}</div>
+					</div>
+					<div>
+						<div>
+							{t('SALARY')}: {salary}
+						</div>
+					</div>
+					<div>
+						<div>
+							{country}, {city}
+						</div>
+						<div>
+							{t('REGISTERED')}: {getDate(date)}
+						</div>
+					</div>
+				</div>
+				<div>
+					<div className={classes.description}>{t('VACANCY_DESCRIPTION')}:</div>
+					{description}
+				</div>
+			</CardContent>
+		</Card>
 	);
 };
 export default VacancyByCompanyItem;

@@ -65,7 +65,7 @@ export const getOneHR = id => {
 
 export const getHrByFilter = filter => {
 	return dispatch => {
-		API.getHrByFilter(`hr?${filter}`)
+		API.get(`hr?${filter}`)
 			.then(data => {
 				dispatch(successAxiosHRList(data.result));
 			})
