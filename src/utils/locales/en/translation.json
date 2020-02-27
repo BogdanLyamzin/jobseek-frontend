@@ -70,5 +70,10 @@
   "ADD_FOTO": "Add photo",
   "DELETE_MESSAGE": "Are you sure you want to delete",
   "ADD_LOGO": "Add logo",
-  "EXIT": "Log out"
+  "EXIT": "Log out",
+  "LOOKING_JOB": "Looking for a job",
+  "LOOKING_EMPLOYMENT": "Looking for an employee",
+  "GO_SOCIAL": "Go with social network (only for job searching)",
+  "ADMIN": "Administartor",
+  "LOGIN": "Login"
 }

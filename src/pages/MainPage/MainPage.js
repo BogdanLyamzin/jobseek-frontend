@@ -3,18 +3,19 @@ import { Route, Switch } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Preloader from '../../shared/Preloader';
+import PrivateRoute from '../../components/PrivateRouter';
+import Navbar from '../../components/Nav';
+import Footer from '../../components/Footer';
+import HomePage from '../../components/Content';
+import Login from '../../components/Login';
+import Register from '../../components/Register';
+import ResetPass from '../../components/Login/ResetPass';
+import SetNewPass from '../../components/setNewPass';
+import LogOut from '../../components/LogOut';
 
-const Navbar = lazy(() => import('../Nav'));
-const Footer = lazy(() => import('../Footer'));
-const HomePage = lazy(() => import('../Content'));
-const Login = lazy(() => import('../Login'));
-const Register = lazy(() => import('../Register'));
-const ResetPass = lazy(() => import('../Login/ResetPass'));
-const setNewPass = lazy(() => import('../setNewPass'));
-const LogOut = lazy(() => import('../LogOut'));
-const HrPage = lazy(() => import('../../pages/hr/'));
-const CompanyPage = lazy(() => import('../../pages/company'));
-const Comments = lazy(() => import('../../pages/comments'));
+const HrPage = lazy(() => import('../hr'));
+const CompanyPage = lazy(() => import('../company'));
+const Comments = lazy(() => import('../comments'));
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -35,11 +36,11 @@ export default function MainPage() {
 					<Route path="/login" component={Login} />
 					<Route path="/register" component={Register} />
 					<Route path="/mailconfirm" component={ResetPass} />
-					<Route path="/resetpass/:token" component={setNewPass} />
+					<Route path="/resetpass/:token" component={SetNewPass} />
 					<Route path="/logout" component={LogOut} />
-					<Route path="/hr" component={HrPage} />
-					<Route path="/kostya" component={CompanyPage} />
-					<Route path="/comments" component={Comments} />
+					<PrivateRoute path="/hr" component={HrPage} />
+					<PrivateRoute path="/kostya" component={CompanyPage} />
+					<PrivateRoute path="/comments" component={Comments} />
 				</Suspense>
 			</Switch>
 			<Footer />
