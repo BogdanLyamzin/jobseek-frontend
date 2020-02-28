@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import TextField from '@material-ui/core/TextField';
 
 import Button from '../../../shared/Buttonn';
-import Validator from '../../shared/Validator';
+import Validator from '../../../shared/Validator';
 import { loginAdmin } from '../../../store/auth/action/authActions';
 
 const useStyle = makeStyles(theme => ({
