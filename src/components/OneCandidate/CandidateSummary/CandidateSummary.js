@@ -1,13 +1,14 @@
 import React from 'react';
 
+import Avatar from '../../../shared/UserImg';
 const user = null;
 
 const CandidateSummary = ({ classes }) => {
 	return (
 		<div className={classes.candidateBackground}>
 			<div className={classes.candidateImgFlex}>
-				{user && <img className={classes.candidateImg} alt="candidate" />}
-				{!user && <div className={classes.candidateImg} />}
+				{user && <Avatar className={classes.candidateImg} />}
+				{!user && <Avatar className={classes.candidateImg} />}
 				<div>
 					<div className={classes.candidateName}>Ivan Orlov</div>
 					<div className={classes.candidateLocation}>Ukraine, Kyiv</div>

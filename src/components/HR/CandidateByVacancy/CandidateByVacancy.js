@@ -11,16 +11,24 @@ import HRVacancyMenu from './MenuHRVacancy';
 import CandidateList from './CandidateList';
 import SentOffersList from './SentOffersList';
 import ReceivedOffersList from './ReceivedOffersList';
-import { getOneVacancy } from '../../../store/vacancy/actions';
+import {
+	getOneVacancy,
+	getSuitableCandidates,
+} from '../../../store/vacancy/actions';
 
-const CandidateByVacancy = ({ getOneVacancy, vacancy }) => {
+const CandidateByVacancy = ({
+	getOneVacancy,
+	vacancy,
+	getSuitableCandidates,
+}) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
 	const { id } = useParams();
 
 	useEffect(() => {
 		getOneVacancy(id);
-	}, [getOneVacancy, id]);
+		getSuitableCandidates(id);
+	}, [getOneVacancy, getSuitableCandidates, id]);
 
 	return (
 		<Container>
@@ -58,6 +66,7 @@ const mapStateToProps = ({ vacancy }) => {
 
 const mapDispatchToProps = {
 	getOneVacancy,
+	getSuitableCandidates,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CandidateByVacancy);

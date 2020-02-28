@@ -9,6 +9,7 @@ const useStyles = makeStyles(theme => ({
 		margin: '20px auto',
 		marginBottom: '40px',
 		maxWidth: '980px',
+		boxShadow: '0px 10px 15px rgba(230, 235, 255, 0.5)',
 	},
 
 	hrVacancyRoutes: {

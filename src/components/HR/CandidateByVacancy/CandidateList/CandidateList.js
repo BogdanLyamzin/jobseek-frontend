@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import useStyles from './styles';
@@ -98,25 +99,41 @@ const candidateListArr = [
 const CandidateList = () => {
 	const classes = useStyles();
 
-	return candidateListArr.map(elem => {
-		return (
-			<Link
-				to="/hr/candidate"
-				key={elem._id}
-				id={elem._id}
-				className={classes.candidate}
-			>
-				<div className={classes.candidateVacancyName}>{elem.vacancyName}</div>
-				<div className={classes.candidateSkills}>{elem.skills.join(', ')}</div>
-				<div className={classes.candidateFlex}>
-					<Avatar className={classes.candidatePhoto} />
-					<div className={classes.candidateName}>
-						{elem.candidateName + ' ' + elem.candidateLastName}
-					</div>
-				</div>
-			</Link>
-		);
-	});
+	return (
+		<>
+			{/* {(candidates && candidates.length === 0) || !candidates ? (
+				<div>Немає кандидатів</div>
+			) : null} */}
+			{candidateListArr.map(elem => {
+				return (
+					<Link
+						to={`/hr/candidate/${elem._id}`}
+						key={elem._id}
+						className={classes.candidate}
+					>
+						<div className={classes.candidateVacancyName}>
+							{elem.vacancyName}
+						</div>
+						<div className={classes.candidateSkills}>
+							{elem.skills.join(', ')}
+						</div>
+						<div className={classes.candidateFlex}>
+							<Avatar className={classes.candidatePhoto} />
+							<div className={classes.candidateName}>
+								{elem.candidateName + ' ' + elem.candidateLastName}
+							</div>
+						</div>
+					</Link>
+				);
+			})}
+		</>
+	);
 };
 
-export default CandidateList;
+const mapStateToProps = ({ vacancy }) => {
+	return {
+		candidates: vacancy.candidates,
+	};
+};
+
+export default connect(mapStateToProps)(CandidateList);

@@ -16,14 +16,14 @@ const VacancyByHR = ({ vacancy, getVacancyByFilter, user }) => {
 
 	return (
 		<div className={classes.vacancyList}>
-			{vacancy && vacancy.length === 0 && (
+			{(vacancy && vacancy.length === 0) || !vacancy ? (
 				<div className={classes.vacancyName}>{t('NO_VACANCY')}</div>
-			)}
-			{vacancy && vacancy.length > 0
-				? vacancy.map(elem => {
-						return <VacancyItem elem={elem} key={elem._id} />;
-				  })
-				: null}
+			) : null}
+			{vacancy &&
+				vacancy.length > 0 &&
+				vacancy.map(elem => {
+					return <VacancyItem elem={elem} key={elem._id} />;
+				})}
 		</div>
 	);
 };

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { toastr } from 'react-redux-toastr';
 import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
 import Button from '../../../../shared/Button';
 import FormCommonInfo from '../FormCommonInfo';
 import { saveInfo } from '../../../../store/vacancy/actions';
+import validation from '../../../../utils/validation/hrCompany';
 
 const CommonInfo = ({ info, saveInfo }) => {
 	const classes = useStyles();
@@ -29,18 +29,13 @@ const CommonInfo = ({ info, saveInfo }) => {
 		setValues({ ...values, [event.target.name]: event.target.value });
 	};
 
-	const valid = data => {
-		if (!data.city) {
-			toastr.error('Заповніть поле міста');
-		} else if (!data.salary) {
-			toastr.error('Заповніть поле зарплати');
-		} else if (!data.country) {
-			toastr.error('Заповніть поле країни');
-		} else if (!data.description) {
-			toastr.error('Заповніть поле опису вакансії');
-		} else {
-			return true;
-		}
+	const validationStatus = () => {
+		return (
+			validation('city', values.city) &&
+			validation('country', values.country) &&
+			validation('salary', values.salary) &&
+			validation('description', values.description)
+		);
 	};
 
 	return (
@@ -65,7 +60,7 @@ const CommonInfo = ({ info, saveInfo }) => {
 					<Button
 						text={t('SAVE')}
 						click={() => {
-							if (valid(values)) {
+							if (validationStatus()) {
 								saveInfo({ ...values });
 							}
 						}}

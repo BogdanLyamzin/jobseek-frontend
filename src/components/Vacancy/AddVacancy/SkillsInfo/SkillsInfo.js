@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { toastr } from 'react-redux-toastr';
 import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
@@ -10,8 +9,9 @@ import ChackboxList from './CheckboxList';
 import { englishLevel } from './skillsList';
 import ProfessionList from './ProfessionList';
 import Button from '../../../../shared/Button';
-import { objToArr } from '../../../../utils/transformArr-Obj';
+import validation from '../../../../utils/validation/vacancy';
 import { addVacancy } from '../../../../store/vacancy/actions';
+import objToArr from '../../../../utils/transformType/objToArr';
 
 const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 	const classes = useStyles();
@@ -49,11 +49,21 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 		});
 	};
 
+	const validationStatus = () => {
+		return (
+			validation('sphere', skill.sphere) &&
+			validation('vacancyName', skill.vacancyName) &&
+			validation('profession', skill.profession) &&
+			validation('category', skill.category) &&
+			validation('skills', checkboxArr)
+		);
+	};
+
 	const addNewVacancy = () => {
 		const body = {
 			active: isActive,
 			...firstForm,
-			sphere: skill.sphere.title,
+			sphere: skill.sphere && skill.sphere.title,
 			vacancyName: skill.vacancyName,
 			englishLevel: skill.englishLevel,
 			profession: skill.profession,
@@ -62,10 +72,8 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 			companyId: user.companyId,
 			hrId: user._id,
 		};
-		if (checkboxArr && checkboxArr.length > 0) {
+		if (validationStatus()) {
 			addVacancy(body);
-		} else {
-			toastr.error('Заповніть поле навиків');
 		}
 	};
 

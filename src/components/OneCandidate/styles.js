@@ -12,15 +12,6 @@ const flexBetweenEnd = {
 };
 
 const useStyles = makeStyles(theme => ({
-	container: {
-		width: '1140px',
-		margin: '0 auto',
-		[theme.breakpoints.down(1180)]: {
-			width: '100%',
-			padding: '0 20px',
-		},
-	},
-
 	candidate: {
 		padding: '50px 0 40px 0',
 		[theme.breakpoints.down(850)]: {
@@ -29,14 +20,6 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.down(550)]: {
 			padding: '20px 0',
 		},
-	},
-
-	root: {
-		backgroundColor: theme.palette.paper,
-    padding: "15px",
-    margin: "20px auto",
-    marginBottom: "40px",
-    maxWidth: "980px"
 	},
 
 	candidateVacancyNames: {
@@ -59,6 +42,7 @@ const useStyles = makeStyles(theme => ({
 
 	candidateDates: {
 		...flexBetweenEnd,
+		color: theme.palette.textColor,
 		[theme.breakpoints.down(720)]: {
 			flexDirection: 'column-reverse',
 		},
@@ -67,7 +51,6 @@ const useStyles = makeStyles(theme => ({
 	candidateDate: {
 		marginRight: '30px',
 		fontSize: '12px',
-		color: '#696969',
 		fontFamily: font,
 		'&:last-child': {
 			marginRight: 0,
@@ -112,7 +95,6 @@ const useStyles = makeStyles(theme => ({
 		marginRight: '30px',
 		width: '98px',
 		height: '98px',
-		backgroundColor: 'rgb(235, 83, 83)',
 		borderRadius: '100%',
 	},
 
@@ -126,7 +108,7 @@ const useStyles = makeStyles(theme => ({
 	candidateLocation: {
 		fontSize: '10px',
 		lineHeight: '21px',
-		color: '#696969',
+		color: theme.palette.textColor,
 		fontFamily: font,
 	},
 

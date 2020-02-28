@@ -9,8 +9,8 @@ const Toastr = () => {
 			preventDuplicates
 			position="top-left"
 			getState={state => state.toastr}
-			transitionIn="fadeIn"
-			transitionOut="fadeOut"
+			transitionIn="bounceIn"
+			transitionOut="bounceOut"
 			progressBar
 			closeOnToastrClick
 		/>

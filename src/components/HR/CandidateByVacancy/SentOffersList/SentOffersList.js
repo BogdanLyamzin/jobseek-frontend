@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import useStyles from '../CandidateList/styles';
@@ -104,37 +105,51 @@ const SentOffersListArr = [
 const SentOffersList = () => {
 	const classes = useStyles();
 
-	return SentOffersListArr.map(elem => {
-		return (
-			<Link
-				to="/hr/candidate"
-				key={elem._id}
-				id={elem._id}
-				className={classes.candidate}
-			>
-				<div className={classes.candidateFlexBetween}>
-					<div className={classes.candidateVacancyName}>{elem.vacancyName}</div>
-					<div className={classes.candidateOfferCheck}>
-						{elem.offer ? 'Прийнято' : 'В очікуванні'}
-					</div>
-				</div>
-				<div className={classes.candidateSkills70}>
-					{elem.skills.join(', ')}
-				</div>
-				<div className={classes.candidateFlexBetween}>
-					<div className={classes.candidateFlex}>
-						<Avatar className={classes.candidatePhoto} />
-						<div className={classes.candidateName}>
-							{elem.candidateName + ' ' + elem.candidateLastName}
+	return (
+		<>
+			{/* {(candidates && candidates.length === 0) || !candidates ? (
+				<div>Немає кандидатів</div>
+			) : null} */}
+			{SentOffersListArr.map(elem => {
+				return (
+					<Link
+						to={`/hr/candidate/${elem._id}`}
+						key={elem._id}
+						className={classes.candidate}
+					>
+						<div className={classes.candidateFlexBetween}>
+							<div className={classes.candidateVacancyName}>
+								{elem.vacancyName}
+							</div>
+							<div className={classes.candidateOfferCheck}>
+								{elem.offer ? 'Прийнято' : 'В очікуванні'}
+							</div>
 						</div>
-					</div>
-					<div className={classes.candidateOfferDate}>
-						Запрошено {elem.date}
-					</div>
-				</div>
-			</Link>
-		);
-	});
+						<div className={classes.candidateSkills70}>
+							{elem.skills.join(', ')}
+						</div>
+						<div className={classes.candidateFlexBetween}>
+							<div className={classes.candidateFlex}>
+								<Avatar className={classes.candidatePhoto} />
+								<div className={classes.candidateName}>
+									{elem.candidateName + ' ' + elem.candidateLastName}
+								</div>
+							</div>
+							<div className={classes.candidateOfferDate}>
+								Запрошено {elem.date}
+							</div>
+						</div>
+					</Link>
+				);
+			})}
+		</>
+	);
 };
 
-export default SentOffersList;
+const mapStateToProps = ({ vacancy }) => {
+	return {
+		candidates: vacancy.candidates,
+	};
+};
+
+export default connect(mapStateToProps)(SentOffersList);
