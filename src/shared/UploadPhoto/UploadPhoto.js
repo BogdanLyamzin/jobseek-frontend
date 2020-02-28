@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 		width: '195px',
 		height: '200px',
 		borderRadius: '8px',
-		background: 'linear-gradient(180deg, rgb(245, 247, 252) 0%, #E6EBFF 100%)',
+		background: theme.palette.backgroundColor,
 		position: 'relative',
 		cursor: 'pointer',
 		outline: '0',
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 		bottom: '10px',
 		display: 'flex',
 		alignItems: 'center',
-		color: '#3D3B69',
+		color: theme.palette.color,
 	},
 
 	addphoto: {

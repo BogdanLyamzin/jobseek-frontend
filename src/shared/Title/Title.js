@@ -7,7 +7,7 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '24px',
 		color: theme.palette.textColor,
 		[theme.breakpoints.up('sm')]: {
-			marginTop: '80px',
+			marginTop: '50px',
 		},
 		marginBottom: '20px',
 		textAlign: 'center',

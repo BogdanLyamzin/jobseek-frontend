@@ -1,6 +1,6 @@
 import API from '../../services/api';
-import tostrActions from '../../utils/toastr/toastrAction';
 import errorAxios from '../../utils/actions/errorAxios';
+import tostrActions from '../../utils/toastr/toastrAction';
 import {
 	SUCCESS_AXIOS,
 	ADD_INFO,

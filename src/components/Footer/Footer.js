@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 	fixHeiht: {
 		height: '100px',
 		[theme.breakpoints.up('sm')]: {
-			height: '300px',
+			height: '200px',
 		},
 	},
 

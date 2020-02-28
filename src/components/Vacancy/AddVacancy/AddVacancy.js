@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link, Switch, Route } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
+import { useTranslation } from 'react-i18next';
 import Container from '@material-ui/core/Container';
+import { Link, Switch, Route } from 'react-router-dom';
 
 import useStyles from './styles';
 import CommonInfo from './CommonInfo';

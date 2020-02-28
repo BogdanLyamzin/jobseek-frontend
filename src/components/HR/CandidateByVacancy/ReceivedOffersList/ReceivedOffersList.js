@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import useStyles from '../CandidateList/styles';
@@ -104,28 +105,46 @@ const ReceivedOffersListArr = [
 const ReceivedOffersList = () => {
 	const classes = useStyles();
 
-	return ReceivedOffersListArr.map(elem => {
-		return (
-			<Link
-				to="/hr/candidate"
-				key={elem._id}
-				id={elem._id}
-				className={classes.candidate}
-			>
-				<div className={classes.candidateVacancyName}>{elem.vacancyName}</div>
-				<div className={classes.candidateSkills}>{elem.skills.join(', ')}</div>
-				<div className={classes.candidateFlexBetween}>
-					<div className={classes.candidateFlex}>
-						<Avatar className={classes.candidatePhoto} />
-						<div className={classes.candidateName}>
-							{elem.candidateName + ' ' + elem.candidateLastName}
+	return (
+		<>
+			{/* {(candidates && candidates.length === 0) || !candidates ? (
+				<div>Немає кандидатів</div>
+			) : null} */}
+			{ReceivedOffersListArr.map(elem => {
+				return (
+					<Link
+						to={`/hr/candidate/${elem._id}`}
+						key={elem._id}
+						className={classes.candidate}
+					>
+						<div className={classes.candidateVacancyName}>
+							{elem.vacancyName}
 						</div>
-					</div>
-					<div className={classes.candidateOfferDate}>Відгук {elem.date}</div>
-				</div>
-			</Link>
-		);
-	});
+						<div className={classes.candidateSkills}>
+							{elem.skills.join(', ')}
+						</div>
+						<div className={classes.candidateFlexBetween}>
+							<div className={classes.candidateFlex}>
+								<Avatar className={classes.candidatePhoto} />
+								<div className={classes.candidateName}>
+									{elem.candidateName + ' ' + elem.candidateLastName}
+								</div>
+							</div>
+							<div className={classes.candidateOfferDate}>
+								Відгук {elem.date}
+							</div>
+						</div>
+					</Link>
+				);
+			})}
+		</>
+	);
 };
 
-export default ReceivedOffersList;
+const mapStateToProps = ({ vacancy }) => {
+	return {
+		candidates: vacancy.candidates,
+	};
+};
+
+export default connect(mapStateToProps)(ReceivedOffersList);

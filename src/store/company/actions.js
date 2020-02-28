@@ -58,6 +58,8 @@ export const getAllCompanies = () => {
 
 export const deleteCompany = id => {
 	return () => {
-		API.delete(`companies/${id}`);
+		API.delete(`companies/${id}`).then(data => {
+			tostrActions(data, 'Компанію видалено');
+		});
 	};
 };

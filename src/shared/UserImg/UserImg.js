@@ -8,7 +8,7 @@ const UserImg = ({ className }) => {
 			src={avatar}
 			style={{ verticalAlign: 'middle' }}
 			className={className}
-			alt="pic"
+			alt="avatar"
 		/>
 	);
 };
