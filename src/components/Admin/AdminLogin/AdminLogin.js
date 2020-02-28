@@ -8,7 +8,7 @@ import TextField from '@material-ui/core/TextField';
 
 import Button from '../../../shared/Buttonn';
 import Validator from '../../shared/Validator';
-import adminLogin from '../../../store/auth/action/authActions';
+import { loginAdmin } from '../../../store/auth/action/authActions';
 
 const useStyle = makeStyles(theme => ({
 	root: {
@@ -81,7 +81,7 @@ function handleOnSubmit(email, password, props) {
 		email,
 		password,
 	};
-	props.adminLogin(user, props.history);
+	props.loginAdmin(user, props.history);
 }
 
 function Login(props) {
@@ -155,4 +155,4 @@ const mapStateToProps = state => ({
 	auth: state.auth,
 });
 
-export default connect(mapStateToProps, { adminLogin })(Login);
+export default connect(mapStateToProps, { loginAdmin })(Login);
