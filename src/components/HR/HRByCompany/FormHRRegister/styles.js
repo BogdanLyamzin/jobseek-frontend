@@ -13,6 +13,9 @@ const useStyles = makeStyles(() => ({
 		width: '1140px',
 		margin: '0 auto',
 	},
+	form: {
+		marginLeft: 50,
+	},
 	add: {
 		display: 'flex',
 		justifyContent: 'center',
@@ -20,25 +23,18 @@ const useStyles = makeStyles(() => ({
 		marginLeft: '80%',
 		color: '#00B395',
 		cursor: 'pointer',
+		marginBottom: 30,
 	},
 
-	vacancyLocationItem: {
-		flexBasis: '45%',
-	},
-	vacancyKey: {
+	hrKey: {
 		fontFamily: font,
 		fontSize: '14px',
 		lineHeight: '19px',
 		color: '#00B395',
 		marginLeft: '8px',
 	},
-	vacancyProperty: {
-		fontFamily: font,
-		fontSize: '16px',
-		lineHeight: '24px',
-		color: '#757575',
-	},
-	vacancyInput: {
+
+	hrInput: {
 		border: `1px solid ${colorDark}`,
 		boxSizing: 'border-box',
 		borderRadius: '8px',
@@ -54,19 +50,7 @@ const useStyles = makeStyles(() => ({
 		paddingTop: '55px',
 		width: '70%',
 	},
-	vacancyDescriptionArea: {
-		fontFamily: font,
-		fontSize: '14px',
-		color: '#3D3B69',
-		padding: '12px 15px',
-		width: '100%',
-		height: '200px',
-		border: `1px solid ${colorDark}`,
-		borderRadius: '8px',
-		outline: 0,
-		margin: '30px 0',
-		resize: 'none',
-	},
+
 	alignCenter: {
 		textAlign: 'center',
 		paddingBottom: '50px',
