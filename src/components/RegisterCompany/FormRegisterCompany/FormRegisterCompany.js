@@ -19,10 +19,6 @@ const FormRegisterCompany = ({ user, updateCompany }) => {
 		e.preventDefault();
 		setHidden(!hidden);
 	};
-	const submitForm = e => {
-		e.preventDefault();
-		updateCompany(user._id, { ...values });
-	};
 
 	const selectedFile = photo => {
 		const fd = new FormData();
@@ -47,12 +43,17 @@ const FormRegisterCompany = ({ user, updateCompany }) => {
 		setValues({ ...values, [event.target.name]: event.target.value });
 	};
 
+	const submitForm = e => {
+		e.preventDefault();
+		updateCompany(user._id, { ...values });
+	};
+
 	return (
 		<Container>
 			<Title text={t('COMPANY_PROFILE')} />
 			<Paper className={classes.root}>
 				<div className={classes.add} onClick={hideCompanyInfo}>
-					<div className={classes.label}>{t('UPDATE')}</div>
+					<div>{t('UPDATE')}</div>
 					<AddCircleOutlineIcon fontSize="large" />
 				</div>
 				{hidden && (

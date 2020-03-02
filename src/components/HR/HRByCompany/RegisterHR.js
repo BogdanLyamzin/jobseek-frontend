@@ -21,19 +21,19 @@ const RegisterHR = () => {
 		<Container>
 			<Title text={t('COMPANY_PROFILE')} />
 			<Paper className={classes.root}>
-				<div className={classes.addvacancyMenu}>
+				<div className={classes.addCompanyMenu}>
 					<Link
 						to="/company/hrs/vacancy"
-						className={classes.addvacancyMenuLink}
+						className={classes.addCompanyMenuLink}
 					>
 						{t('COMPANY_VACANCIES')}
 					</Link>
-					<Link to="/company/hrs" className={classes.addvacancyMenuLink}>
+					<Link to="/company/hrs" className={classes.addCompanyMenuLink}>
 						{t('HR_MANAGERS')}
 					</Link>
 				</div>
 
-				<div className={classes.addvacancyRoutes}>
+				<div className={classes.addCompanyRoutes}>
 					<Switch>
 						<Route exact path="/company/hrs">
 							<FormHRRegister hidden={hiddenForm} updateHRInfo={updateHRInfo} />

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Input from '../../../shared/Input/Input';
 import UpdatePhotoDropzone from '../UpdatePhotoDropzone/UpdatePhotoDropzone';
 import Button from '../../../shared/Button';
+import validation from '../../../utils/validation/hrCompany';
 
 const FormCompanyInfo = ({
 	values,
@@ -13,73 +14,86 @@ const FormCompanyInfo = ({
 	uploadPhoto,
 }) => {
 	const { t } = useTranslation();
+
+	const validationStatus = () => {
+		return (
+			validation('companyName', values.companyName) &&
+			validation('email', values.email) &&
+			validation('country', values.country) &&
+			validation('city', values.city) &&
+			validation('website', values.facebookLink) &&
+			validation('website', values.website) &&
+			validation('description', values.description)
+		);
+	};
+
 	return (
-		<Grid container spacing={2}>
-			<Grid item xs={4}>
+		<Grid container>
+			<Grid item className={classes.logo} md={4}>
 				<UpdatePhotoDropzone uploadPhoto={uploadPhoto} />
 			</Grid>
-			<Grid item container xs={8} spacing={2}>
-				<Grid item container xs={12} direction="row" spacing={2}>
-					<Grid item xs={6}>
-						<div className={classes.vacancyKey}>{t('COMPANY_NAME')}</div>
+			<Grid item container md={8}>
+				<Grid item container md={12}>
+					<Grid item md={6}>
+						<div className={classes.companyKey}>{t('COMPANY_NAME')}</div>
 						<Input
 							type="text"
 							name="companyName"
-							className={classes.vacancyInput}
+							className={classes.companyInput}
 							onChange={handleChange}
 							value={values.companyName}
 						/>
 					</Grid>
-					<Grid item xs={6}>
-						<div className={classes.vacancyKey}>{t('MAIL')}</div>
+					<Grid item md={6}>
+						<div className={classes.companyKey}>{t('MAIL')}</div>
 						<Input
 							type="email"
 							name="email"
-							className={classes.vacancyInput}
+							className={classes.companyInput}
 							onChange={handleChange}
 							value={values.email}
 						/>
 					</Grid>
 				</Grid>
-				<Grid item container xs={12} direction="row" spacing={2}>
-					<Grid item xs={6}>
-						<div className={classes.vacancyKey}>{t('COUNTRY')}</div>
+				<Grid item container md={12}>
+					<Grid item md={6}>
+						<div className={classes.companyKey}>{t('COUNTRY')}</div>
 						<Input
 							type="text"
 							name="country"
-							className={classes.vacancyInput}
+							className={classes.companyInput}
 							onChange={handleChange}
 							value={values.country}
 						/>
 					</Grid>
-					<Grid item xs={6}>
-						<div className={classes.vacancyKey}>{t('CITY')}</div>
+					<Grid item md={6}>
+						<div className={classes.companyKey}>{t('CITY')}</div>
 						<Input
 							type="text"
 							name="city"
-							className={classes.vacancyInput}
+							className={classes.companyInput}
 							onChange={handleChange}
 							value={values.city}
 						/>
 					</Grid>
 				</Grid>
-				<Grid item container xs={12} direction="row" spacing={2}>
-					<Grid item xs={6}>
-						<div className={classes.vacancyKey}>{t('ADD_SOCIAL_NET')}</div>
+				<Grid item container md={12}>
+					<Grid item md={6}>
+						<div className={classes.companyKey}>{t('ADD_SOCIAL_NET')}</div>
 						<Input
 							type="text"
 							name="facebookLink"
-							className={classes.vacancyInput}
+							className={classes.companyInput}
 							onChange={handleChange}
 							value={values.facebookLink}
 						/>
 					</Grid>
-					<Grid item xs={6}>
-						<div className={classes.vacancyKey}>{t('WEB_SITE')}</div>
+					<Grid item md={6}>
+						<div className={classes.companyKey}>{t('WEB_SITE')}</div>
 						<Input
 							type="text"
 							name="website"
-							className={classes.vacancyInput}
+							className={classes.companyInput}
 							onChange={handleChange}
 							value={values.website}
 						/>
@@ -87,16 +101,23 @@ const FormCompanyInfo = ({
 				</Grid>
 			</Grid>
 			<hr className={classes.line} />
-			<div className={classes.vacancyDescription}>
-				<div className={classes.vacancyKey}>{t('COMPANY_DESCRIPTION')}</div>
+			<div className={classes.companyDescription}>
+				<div className={classes.companyKey}>{t('COMPANY_DESCRIPTION')}</div>
 				<textarea
 					name="description"
-					className={classes.vacancyDescriptionArea}
+					className={classes.companyDescriptionArea}
 					onChange={handleChange}
 					value={values.description}
 				/>
-				<div className={classes.alignCenter}>
-					<Button text={t('UPDATE')} click={submitForm} />
+				<div className={classes.btnAlignCenter}>
+					<Button
+						text={t('UPDATE')}
+						click={() => {
+							if (validationStatus()) {
+								submitForm();
+							}
+						}}
+					/>
 				</div>
 			</div>
 		</Grid>

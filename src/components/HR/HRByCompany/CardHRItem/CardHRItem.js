@@ -25,6 +25,9 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
+		[theme.breakpoints.down(600)]: {
+			display: 'block',
+		},
 	},
 	hr: {
 		display: 'flex',
@@ -33,16 +36,21 @@ const useStyles = makeStyles(theme => ({
 		alignItems: 'start',
 		fontSize: 25,
 		fontWeight: 'bold',
+		[theme.breakpoints.down(900)]: {
+			flexDirection: 'column',
+			alignItems: 'center',
+		},
 	},
-	avatar: {
-		marginLeft: 50,
-		marginRight: 20,
-	},
+
 	edit: {
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'flex-end',
 		alignItems: 'center',
+		[theme.breakpoints.down(900)]: {
+			flexDirection: 'column',
+			alignItems: 'center',
+		},
 	},
 	icon: {
 		marginLeft: 50,
@@ -56,6 +64,10 @@ const useStyles = makeStyles(theme => ({
 		fontSize: 16,
 		fontWeight: 500,
 		marginTop: 30,
+		[theme.breakpoints.down(900)]: {
+			flexDirection: 'column',
+			alignItems: 'center',
+		},
 	},
 }));
 
@@ -100,13 +112,10 @@ const CardHRItem = ({
 						</div>
 					</div>
 					<div>
-						<div>Active vacancies:</div>
-						<div>Inactive vacancies:</div>
+						<div>Active vacancies: 2</div>
+						<div>Inactive vacancies: 1</div>
 					</div>
-					<div>
-						<div>2</div>
-						<div>1</div>
-					</div>
+
 					<div>
 						<div>
 							{t('REGISTERED')}: {getDate(date)}

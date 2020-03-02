@@ -11,12 +11,10 @@ const useStyles = makeStyles(theme => ({
 		marginBottom: '40px',
 		maxWidth: '980px',
 	},
-	container: {
-		width: '1140px',
-		margin: '0 auto',
-	},
-	dropZone: {
-		paddingTop: '30px',
+	logo: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItem: 'center',
 	},
 
 	add: {
@@ -30,16 +28,13 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	line: {
-		width: '90%',
+		width: '100%',
 		height: '2px',
+		border: 0,
 		backgroundColor: colorDark,
 	},
 
-	vacancyLocationItem: {
-		flexBasis: '45%',
-	},
-
-	vacancyKey: {
+	companyKey: {
 		fontFamily: font,
 		fontSize: '14px',
 		lineHeight: '19px',
@@ -47,14 +42,7 @@ const useStyles = makeStyles(theme => ({
 		marginLeft: '8px',
 	},
 
-	vacancyProperty: {
-		fontFamily: font,
-		fontSize: '16px',
-		lineHeight: '24px',
-		color: '#757575',
-	},
-
-	vacancyInput: {
+	companyInput: {
 		border: `1px solid ${colorDark}`,
 		boxSizing: 'border-box',
 		borderRadius: '8px',
@@ -63,16 +51,17 @@ const useStyles = makeStyles(theme => ({
 		color: '#3D3B69',
 		padding: '8px 10px',
 		outline: 0,
-		width: '70%',
+		width: '90%',
+		alignItems: 'center',
 	},
 
-	vacancyDescription: {
+	companyDescription: {
 		margin: '0 auto',
 		paddingTop: '55px',
 		width: '70%',
 	},
 
-	vacancyDescriptionArea: {
+	companyDescriptionArea: {
 		fontFamily: font,
 		fontSize: '14px',
 		color: '#3D3B69',
@@ -86,7 +75,7 @@ const useStyles = makeStyles(theme => ({
 		resize: 'none',
 	},
 
-	alignCenter: {
+	btnAlignCenter: {
 		textAlign: 'center',
 		paddingBottom: '30px',
 	},

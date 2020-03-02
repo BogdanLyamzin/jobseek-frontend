@@ -23,6 +23,10 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		justifyContent: 'space-around',
 		alignItems: 'center',
+		[theme.breakpoints.down(600)]: {
+			flexDirection: 'column',
+			alignItems: 'center',
+		},
 	},
 	avatar: {
 		height: 100,
@@ -38,6 +42,10 @@ const useStyles = makeStyles(theme => ({
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		fontWeight: 500,
+		[theme.breakpoints.down(600)]: {
+			flexDirection: 'column',
+			alignItems: 'center',
+		},
 	},
 	description: {
 		fontSize: 16,
