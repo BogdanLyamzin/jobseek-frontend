@@ -155,13 +155,6 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '14px',
 	},
 
-	vacancySkillItemText: {
-		fontFamily: font,
-		fontSize: '14px',
-		lineHeight: '19px',
-		color: theme.palette.textColor,
-	},
-
 	vacancySliderItem: {
 		marginBottom: '25px',
 		[theme.breakpoints.down(720)]: {

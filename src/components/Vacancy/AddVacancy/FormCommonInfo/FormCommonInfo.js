@@ -1,8 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Radio from '../../../../shared/Radio';
+import Text from '../../../../shared/Text';
 import Input from '../../../../shared/Input';
+import RadioGroup from '../../../../shared/RadioGroupEmpType';
 
 const FormCommonInfo = ({ classes, handleChange, values }) => {
 	const { t } = useTranslation();
@@ -10,7 +11,7 @@ const FormCommonInfo = ({ classes, handleChange, values }) => {
 		<>
 			<div className={classes.vacancyLocation}>
 				<div className={classes.vacancyLocationItem}>
-					<div className={classes.vacancyKey}>{t('COUNTRY')}*</div>
+					<Text className={classes.vacancyKey}>{t('COUNTRY')}*</Text>
 					<Input
 						type="text"
 						name="country"
@@ -20,7 +21,7 @@ const FormCommonInfo = ({ classes, handleChange, values }) => {
 					/>
 				</div>
 				<div className={classes.vacancyLocationItem}>
-					<div className={classes.vacancyKey}>{t('CITY')}*</div>
+					<Text className={classes.vacancyKey}>{t('CITY')}*</Text>
 					<Input
 						type="text"
 						name="city"
@@ -32,55 +33,11 @@ const FormCommonInfo = ({ classes, handleChange, values }) => {
 			</div>
 			<div className={classes.vacancyLocation}>
 				<div className={classes.vacancyLocationItem}>
-					<div className={classes.vacancyKey}>{t('EMPLOYMENT_TYPE')}*</div>
-					<label className={classes.vacancyEmploymenttype}>
-						<Radio
-							name="employmentType"
-							value="fullDay"
-							onChange={handleChange}
-							checked={values.employmentType === 'fullDay'}
-						/>
-						{t('FULL_DAY')}
-					</label>
-					<label className={classes.vacancyEmploymenttype}>
-						<Radio
-							name="employmentType"
-							value="non-fullDay"
-							onChange={handleChange}
-							checked={values.employmentType === 'non-fullDay'}
-						/>
-						{t('PART_TIME')}
-					</label>
-					<label className={classes.vacancyEmploymenttype}>
-						<Radio
-							name="employmentType"
-							value="freelance"
-							onChange={handleChange}
-							checked={values.employmentType === 'freelance'}
-						/>
-						{t('FREELANCE')}
-					</label>
-					<label className={classes.vacancyEmploymenttype}>
-						<Radio
-							name="employmentType"
-							value="distantWork"
-							onChange={handleChange}
-							checked={values.employmentType === 'distantWork'}
-						/>
-						{t('REMOTE')}
-					</label>
-					<label className={classes.vacancyEmploymenttype}>
-						<Radio
-							name="employmentType"
-							value="any"
-							onChange={handleChange}
-							checked={values.employmentType === 'any'}
-						/>
-						{t('ANY')}
-					</label>
+					<Text className={classes.vacancyKey}>{t('EMPLOYMENT_TYPE')}*</Text>
+					<RadioGroup onChange={handleChange} values={values.employmentType} />
 				</div>
 				<div className={classes.vacancyLocationItem}>
-					<div className={classes.vacancyKey}>{t('SALARY')}*</div>
+					<Text className={classes.vacancyKey}>{t('SALARY')}*</Text>
 					<label className={classes.vacancySalary}>
 						USD
 						<Input

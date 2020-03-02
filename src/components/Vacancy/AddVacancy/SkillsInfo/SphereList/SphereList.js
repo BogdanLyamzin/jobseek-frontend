@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import { sphereList } from '../skillsList';
+import Text from '../../../../../shared/Text';
 
 const SphereList = ({ skill, setSkill, handleClickSkill, classes }) => {
 	const { t } = useTranslation();
@@ -11,7 +12,7 @@ const SphereList = ({ skill, setSkill, handleClickSkill, classes }) => {
 	return (
 		<div>
 			<div className={classes.vacancySkillFlex}>
-				<div className={classes.vacancyKey}>{t('SPHERE')}*</div>
+				<Text className={classes.vacancyKey}>{t('SPHERE')}*</Text>
 				<Autocomplete
 					options={sphereList}
 					getOptionLabel={option => option.title}

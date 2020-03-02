@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
+import Text from '../../../../shared/Text';
 import Button from '../../../../shared/Button';
 import FormCommonInfo from '../FormCommonInfo';
 import { saveInfo } from '../../../../store/vacancy/actions';
@@ -49,7 +50,7 @@ const CommonInfo = ({ info, saveInfo }) => {
 			<hr className={classes.line} />
 
 			<div className={classes.vacancyDescription}>
-				<div className={classes.vacancyKey}>{t('VACANCY_DESCRIPTION')}*</div>
+				<Text className={classes.vacancyKey}>{t('VACANCY_DESCRIPTION')}*</Text>
 				<textarea
 					name="description"
 					className={classes.vacancyDescriptionArea}

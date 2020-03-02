@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Avatar from '../../../shared/UserImg';
+import Avatar from '../../../../shared/UserImg';
 const user = null;
 
 const CandidateSummary = ({ classes }) => {

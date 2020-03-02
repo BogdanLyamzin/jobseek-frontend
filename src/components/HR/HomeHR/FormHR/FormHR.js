@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
+import Text from '../../../../shared/Text';
 import Input from '../../../../shared/Input';
 import Button from '../../../../shared/Button';
 import validation from '../../../../utils/validation/hrCompany';
@@ -39,7 +40,7 @@ const FormHR = ({
 				{hidden && (
 					<div className={classes.formItem}>
 						<div>
-							<div className={classes.hrKey}>{t('FIRST_NAME')}*</div>
+							<Text className={classes.hrKey}>{t('FIRST_NAME')}*</Text>
 							<Input
 								onChange={handleChange}
 								type="text"
@@ -49,7 +50,7 @@ const FormHR = ({
 							/>
 						</div>
 						<div>
-							<div className={classes.hrKey}>{t('LAST_NAME')}*</div>
+							<Text className={classes.hrKey}>{t('LAST_NAME')}*</Text>
 							<Input
 								onChange={handleChange}
 								type="text"
@@ -61,9 +62,9 @@ const FormHR = ({
 					</div>
 				)}
 				{!hidden && (
-					<div className={classes.hrName}>
+					<Text className={classes.hrName}>
 						{values ? values.name : ''} {values ? values.lastName : ''}
-					</div>
+					</Text>
 				)}
 				<CreateOutlinedIcon
 					className={`${classes.iconPenLrg} ${classes.iconPen}`}
@@ -75,7 +76,7 @@ const FormHR = ({
 				{hidden && (
 					<div className={classes.formItem}>
 						<div>
-							<div className={classes.hrKey}>{t('PHONE')}*</div>
+							<Text className={classes.hrKey}>{t('PHONE')}*</Text>
 							<Input
 								onChange={handleChange}
 								type="text"
@@ -85,7 +86,7 @@ const FormHR = ({
 							/>
 						</div>
 						<div>
-							<div className={classes.hrKey}>{t('MAIL')}*</div>
+							<Text className={classes.hrKey}>{t('MAIL')}*</Text>
 							<Input
 								onChange={handleChange}
 								type="email"
@@ -99,12 +100,16 @@ const FormHR = ({
 				{!hidden && (
 					<>
 						<div>
-							<div className={classes.hrKey}>{t('PHONE')}:</div>
-							<div className={classes.hrProp}>{values ? values.phone : ''}</div>
+							<Text className={classes.hrKey}>{t('PHONE')}:</Text>
+							<Text className={classes.hrProp}>
+								{values ? values.phone : ''}
+							</Text>
 						</div>
 						<div>
-							<div className={classes.hrKey}>{t('MAIL')}:</div>
-							<div className={classes.hrProp}>{values ? values.email : ''}</div>
+							<Text className={classes.hrKey}>{t('MAIL')}:</Text>
+							<Text className={classes.hrProp}>
+								{values ? values.email : ''}
+							</Text>
 						</div>
 					</>
 				)}

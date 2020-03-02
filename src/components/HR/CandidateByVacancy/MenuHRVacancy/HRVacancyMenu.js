@@ -4,6 +4,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 import Link from '../../../../shared/Link';
+import Text from '../../../../shared/Text';
 
 const HRVacancyMenu = ({ classes, id }) => {
 	const { t } = useTranslation();
@@ -12,19 +13,19 @@ const HRVacancyMenu = ({ classes, id }) => {
 			<div className={classes.menuItem}>
 				<Link to={`/hr/vacancy/${id}`} className={classes.menuLink}>
 					<SearchIcon />
-					<div>{t('CANDIDATES_LIST')}</div>
+					<Text>{t('CANDIDATES_LIST')}</Text>
 				</Link>
 			</div>
 			<div className={classes.menuItem}>
 				<Link to={`/hr/vacancy/${id}/sent`} className={classes.menuLink}>
 					<MailOutlineIcon />
-					<div>{t('SENT_OFFERS')}</div>
+					<Text>{t('SENT_OFFERS')}</Text>
 				</Link>
 			</div>
 			<div className={classes.menuItem}>
 				<Link to={`/hr/vacancy/${id}/received`} className={classes.menuLink}>
 					<MailOutlineIcon />
-					<div>{t('RECEIVED_OFFERS')}</div>
+					<Text>{t('RECEIVED_OFFERS')}</Text>
 				</Link>
 			</div>
 		</nav>

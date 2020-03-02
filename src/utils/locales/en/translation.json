@@ -96,5 +96,6 @@
   "VALID_SYMBOL_LENGTH_DESC": "should be 200 to 3000 characters long",
   "INCORRECT": "Invalid link path",
   "VALID_SYMBOL_LENGTH_SALARY": "must be greater than 0",
-  "ONLY_NUMBER": "should only have numbers"
+  "ONLY_NUMBER": "should only have numbers",
+  "NO_CANDIDATES": "No candidates"
 }

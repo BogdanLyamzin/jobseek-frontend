@@ -8,6 +8,7 @@ const useStyles = makeStyles(theme => ({
 		paddingBottom: '20px',
 		marginBottom: '25px',
 		display: 'inline-block',
+		width: '100%',
 		textDecoration: 'none',
 		'&:hover': {
 			borderBottom: '2px solid #6D64FF',

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 
@@ -10,6 +9,7 @@ import useStyles from './styles';
 import UpdatePhoto from './UpdatePhoto';
 import Title from '../../../shared/Title';
 import { updateHR } from '../../../store/hr/actions';
+import CreateOutlinedIcon from '../../../shared/CreateOutlinedIcon';
 
 const HR = ({ user, updateHR }) => {
 	const classes = useStyles();
@@ -47,7 +47,7 @@ const HR = ({ user, updateHR }) => {
 					<form className={classes.hrFlex}>
 						<CreateOutlinedIcon
 							className={`${classes.iconPenSm} ${classes.iconPen}`}
-							onClick={updateHRinfo}
+							click={updateHRinfo}
 						/>
 						<UpdatePhoto uploadPhoto={selectedFile} classes={classes} />
 						<FormHR

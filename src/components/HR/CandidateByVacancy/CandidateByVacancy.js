@@ -6,6 +6,7 @@ import { Switch, Route, useParams } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 
 import useStyles from './styles';
+import Text from '../../../shared/Text';
 import Title from '../../../shared/Title';
 import HRVacancyMenu from './MenuHRVacancy';
 import CandidateList from './CandidateList';
@@ -35,10 +36,10 @@ const CandidateByVacancy = ({
 			<Title text={t('CANDIDATE')} />
 			{vacancy && (
 				<div>
-					<div className={classes.textCenter}>{vacancy.vacancyName}</div>
-					<div className={classes.textCenter}>
+					<Text className={classes.textCenter}>{vacancy.vacancyName}</Text>
+					<Text className={classes.textCenter}>
 						{vacancy.skills.map(e => e.name).join(', ')}
-					</div>
+					</Text>
 				</div>
 			)}
 			<Paper className={classes.root}>
