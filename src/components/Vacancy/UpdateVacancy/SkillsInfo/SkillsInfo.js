@@ -65,11 +65,11 @@ const SkillsInfo = ({ id, firstForm, oneVacancy, updateVacancy }) => {
 
 	const validationStatus = () => {
 		return (
-			validation('sphere', skill.sphere) &&
-			validation('vacancyName', skill.vacancyName) &&
-			validation('profession', skill.profession) &&
-			validation('category', skill.category) &&
-			validation('skills', checkboxArr)
+			validation('sphere', skill.sphere, t) &&
+			validation('vacancyName', skill.vacancyName, t) &&
+			validation('profession', skill.profession, t) &&
+			validation('category', skill.category, t) &&
+			validation('skills', checkboxArr, t)
 		);
 	};
 
