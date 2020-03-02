@@ -9,9 +9,7 @@ import CardHR from '../CardHR';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutlined';
 import { addHr, getHrByFilter } from '../../../../store/hr/actions';
 import validation from '../../../../utils/validation/hrCompany';
-
 const FormHRRegister = ({
-	list,
 	user,
 	hidden,
 	addHr,
@@ -33,7 +31,7 @@ const FormHRRegister = ({
 
 	useEffect(() => {
 		if (user) getHrByFilter(`companyId=${user._id}`);
-	}, [getHrByFilter, user, list]);
+	}, [getHrByFilter, user]);
 
 	const validationStatus = () => {
 		return (
@@ -83,9 +81,8 @@ const mapDispatchToProps = {
 	getHrByFilter,
 };
 
-const mapStateToProps = ({ company, hr }) => {
+const mapStateToProps = ({ company }) => {
 	return {
-		list: hr.hrList,
 		user: company.company,
 	};
 };

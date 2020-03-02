@@ -21,7 +21,7 @@ const FormCompanyInfo = ({
 			validation('email', values.email) &&
 			validation('country', values.country) &&
 			validation('city', values.city) &&
-			validation('website', values.facebookLink) &&
+			validation('facebookLink', values.facebookLink) &&
 			validation('website', values.website) &&
 			validation('description', values.description)
 		);
@@ -112,7 +112,8 @@ const FormCompanyInfo = ({
 				<div className={classes.btnAlignCenter}>
 					<Button
 						text={t('UPDATE')}
-						click={() => {
+						click={e => {
+							e.preventDefault();
 							if (validationStatus()) {
 								submitForm();
 							}

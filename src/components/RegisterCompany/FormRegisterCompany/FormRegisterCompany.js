@@ -43,8 +43,7 @@ const FormRegisterCompany = ({ user, updateCompany }) => {
 		setValues({ ...values, [event.target.name]: event.target.value });
 	};
 
-	const submitForm = e => {
-		e.preventDefault();
+	const submitForm = () => {
 		updateCompany(user._id, { ...values });
 	};
 
