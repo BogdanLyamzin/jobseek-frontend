@@ -6,10 +6,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { useTranslation } from 'react-i18next';
 import TextField from '@material-ui/core/TextField';
-import Button from '../shared/Buttonn';
+import Button from '../../shared/Buttonn';
 
 import { loginUser } from '../../store/auth/action/authActions';
-import Validator from '../shared/Validator';
+import Validator from '../../shared/Validator';
 import SocLinks from '../../shared/SocLinks';
 
 const useStyle = makeStyles(theme => ({

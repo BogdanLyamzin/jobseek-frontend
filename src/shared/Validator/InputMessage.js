@@ -1,7 +1,7 @@
-import React from './node_modules/react';
+import React from 'react';
 
-import { useTranslation } from './node_modules/react-i18next';
-import { makeStyles } from './node_modules/@material-ui/core/styles';
+import { useTranslation } from 'react-i18next';
+import { makeStyles } from '@material-ui/core/styles';
 import {
 	NO_EMAIL,
 	NOT_EMAIL,

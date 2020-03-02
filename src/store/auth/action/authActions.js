@@ -66,7 +66,7 @@ export const loginUser = (user, history) => dispatch => {
 				localStorage.setItem('token', token);
 				setAuthToken(token);
 				dispatch(setCurrentUser(token));
-				history.push('/');
+				history.push(`/${res.data.type}`);
 				return;
 			} else {
 				dispatch({

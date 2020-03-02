@@ -11,13 +11,13 @@ import { Alert } from '@material-ui/lab';
 import Paper from '@material-ui/core/Paper/Paper';
 import TextField from '@material-ui/core/TextField/TextField';
 
-import Button from '../shared/Buttonn/Button';
+import Button from '../../shared/Buttonn/Button';
 import { makeStyles } from '@material-ui/core';
 import {
 	NO_PASSWORD,
 	NOT_PASSWORD_LENGTH,
 	DO_NOT_MATCH,
-} from '../shared/Validator/messageTypes.js';
+} from '../../shared/Validator/messageTypes.js';
 
 const useStyle = makeStyles(theme => ({
 	root: {
