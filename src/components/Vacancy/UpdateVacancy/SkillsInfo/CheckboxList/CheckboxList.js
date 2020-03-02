@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
 import Slider from '../../../../../shared/Slider';
@@ -15,6 +16,7 @@ const CheckboxList = ({
 	handleChangeEng,
 	checkboxHandleChange,
 }) => {
+	const { t } = useTranslation();
 	const valueLabelFormat = value => {
 		if (value === 0) return '<' + (value + 1);
 		else if (value === 5) return '>' + (value + 1);
@@ -28,7 +30,7 @@ const CheckboxList = ({
 	return (
 		<>
 			<div className={`${classes.vacancyKey} ${classes.alignCenter}`}>
-				Навички*
+				{t('SKILLS')}*
 			</div>
 			<hr className={classes.line} />
 			{skill.category && (

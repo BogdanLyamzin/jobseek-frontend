@@ -6,14 +6,14 @@ const nameRegExp = /^[A-ZА-ЯЁЇІЄҐ]{1}[a-zа-яёїієґ]+$/u;
 const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const websiteRegExp = /(www|http:|https:)+[^\s]+[\w]/;
 
-export default (name, value) => {
+export default (name, value, t) => {
 	if (name === 'name') {
 		if (!value) {
-			toastr('Заповніть поле імені');
+			toastr(`${t('ENTER_FIELD')} ${t('FIRST_NAME')}`);
 		} else if (value.length < 2 || value.length > 30) {
-			toastr("Ім'я повинно мати від 3 до 20 символів");
+			toastr(`${t('FIRST_NAME')} ${t('VALID_SYMBOL_LENGTH')}`);
 		} else if (!nameRegExp.test(value)) {
-			toastr("Ім'я повинно складатися тільки з літер та починатися з великої");
+			toastr(`${t('FIRST_NAME')} ${t('VALID_SYMBOL')}`);
 		} else {
 			return true;
 		}
@@ -21,13 +21,11 @@ export default (name, value) => {
 
 	if (name === 'lastName') {
 		if (!value) {
-			toastr('Заповніть поле прізвища');
+			toastr(`${t('ENTER_FIELD')} ${t('LAST_NAME')}`);
 		} else if (value.length < 2 || value.length > 30) {
-			toastr('Прізвище повинно мати від 3 до 20 символів');
+			toastr(`${t('LAST_NAME')} ${t('VALID_SYMBOL_LENGTH')}`);
 		} else if (!nameRegExp.test(value)) {
-			toastr(
-				'Прізвище повинно складатися тільки з літер та починатися з великої',
-			);
+			toastr(`${t('LAST_NAME')} ${t('VALID_SYMBOL')}`);
 		} else {
 			return true;
 		}
@@ -35,11 +33,11 @@ export default (name, value) => {
 
 	if (name === 'email') {
 		if (!value) {
-			toastr('Заповніть поле пошти');
+			toastr(`${t('ENTER_FIELD')} ${t('MAIL')}`);
 		} else if (!value.includes('@')) {
-			toastr('Пошта повинна мати "@"');
+			toastr(`${t('MAIL')} ${t('HAVE')} @`);
 		} else if (!emailRegExp.test(value)) {
-			toastr('Некорректна пошта, введіть у форматі test@gmail.com');
+			toastr(`${t('MAIL')}. ${t('ENTER_FORMAT')} test@gmail.com`);
 		} else {
 			return true;
 		}
@@ -47,9 +45,9 @@ export default (name, value) => {
 
 	if (name === 'phone') {
 		if (!value) {
-			toastr('Заповніть поле телефон');
+			toastr(`${t('ENTER_FIELD')} ${t('PHONE')}`);
 		} else if (!phoneRegExp.test(value)) {
-			toastr('Введіть телефон у форматі +380671234567');
+			toastr(`${t('PHONE')}. ${t('ENTER_FORMAT')} +380671234567`);
 		} else {
 			return true;
 		}
@@ -57,13 +55,11 @@ export default (name, value) => {
 
 	if (name === 'country') {
 		if (!value) {
-			toastr('Заповніть поле країни');
+			toastr(`${t('ENTER_FIELD')} ${t('COUNTRY')}`);
 		} else if (value.length < 2 || value.length > 30) {
-			toastr('Країна повинна мати від 3 до 20 символів');
+			toastr(`${t('COUNTRY')} ${t('VALID_SYMBOL_LENGTH')}`);
 		} else if (!nameRegExp.test(value)) {
-			toastr(
-				'Країна повинна складатися тільки з літер та починатися з великої',
-			);
+			toastr(`${t('COUNTRY')} ${t('VALID_SYMBOL')}`);
 		} else {
 			return true;
 		}
@@ -71,11 +67,11 @@ export default (name, value) => {
 
 	if (name === 'city') {
 		if (!value) {
-			toastr('Заповніть поле міста');
+			toastr(`${t('ENTER_FIELD')} ${t('CITY')}`);
 		} else if (value.length < 2 || value.length > 30) {
-			toastr('Місто повинно мати від 3 до 20 символів');
+			toastr(`${t('CITY')} ${t('VALID_SYMBOL_LENGTH')}`);
 		} else if (!nameRegExp.test(value)) {
-			toastr('Місто повинно складатися тільки з літер та починатися з великої');
+			toastr(`${t('CITY')} ${t('VALID_SYMBOL')}`);
 		} else {
 			return true;
 		}
@@ -83,11 +79,11 @@ export default (name, value) => {
 
 	if (name === 'salary') {
 		if (!value) {
-			toastr('Заповніть поле зарплати');
+			toastr(`${t('ENTER_FIELD')} ${t('SALARY')}`);
 		} else if (value <= 0) {
-			toastr('Зарплата повинна бути більша за 0');
+			toastr(`${t('SALARY')} ${t('VALID_SYMBOL_LENGTH_SALARY')}`);
 		} else if (isNaN(value)) {
-			toastr('Зарплата повинна мати тільки цифри');
+			toastr(`${t('SALARY')} ${t('ONLY_NUMBER')}`);
 		} else {
 			return true;
 		}
@@ -95,9 +91,9 @@ export default (name, value) => {
 
 	if (name === 'description') {
 		if (!value) {
-			toastr('Заповніть поле опису вакансії');
+			toastr(`${t('ENTER_FIELD')} ${t('VACANCY_DESCRIPTION')}`);
 		} else if (value.length < 200 || value.length > 3000) {
-			toastr('Опис повиннен мати від 200 до 3000 символів');
+			toastr(`${t('VACANCY_DESCRIPTION')} ${t('VALID_SYMBOL_LENGTH_DESC')}`);
 		} else {
 			return true;
 		}
@@ -105,9 +101,9 @@ export default (name, value) => {
 
 	if (name === 'website') {
 		if (!value) {
-			toastr('Заповніть поле сайту компанії та соцмереж');
+			toastr(`${t('ENTER_FIELD')} ${t('SITE_SOCIAL')}`);
 		} else if (!websiteRegExp.test(value)) {
-			toastr('Некорректний шлях посилання сайту або соцмереж');
+			toastr(`${t('INCORRECT')} ${t('SITE_SOCIAL')}`);
 		} else {
 			return true;
 		}
