@@ -41,7 +41,7 @@ const HR = ({ user, updateHR }) => {
 
 	return (
 		<Container>
-			<Title text={t('MY_PROFILE')} />
+			<Title>{t('MY_PROFILE')}</Title>
 			<Paper className={classes.root}>
 				<div className={classes.hrInfo}>
 					<form className={classes.hrFlex}>

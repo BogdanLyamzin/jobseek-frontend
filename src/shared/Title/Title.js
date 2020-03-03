@@ -18,9 +18,14 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-const Title = ({ text }) => {
+const Title = ({ children }) => {
 	const classes = useStyles();
-	return <h1 className={classes.title}>{text}</h1>;
+	return <h1 className={classes.title}>{children}</h1>;
 };
+
+// const Title = ({ text }) => {
+// 	const classes = useStyles();
+// 	return <h1 className={classes.title}>{text}</h1>;
+// };
 
 export default Title;

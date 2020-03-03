@@ -33,7 +33,7 @@ const CandidateByVacancy = ({
 
 	return (
 		<Container>
-			<Title text={t('CANDIDATE')} />
+			<Title>{t('CANDIDATE')}</Title>
 			{vacancy && (
 				<div>
 					<Text className={classes.textCenter}>{vacancy.vacancyName}</Text>

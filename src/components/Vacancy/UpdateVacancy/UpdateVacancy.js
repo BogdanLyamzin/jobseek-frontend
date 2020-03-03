@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { useTranslation } from 'react-i18next';
 import Container from '@material-ui/core/Container';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import CommonInfo from './CommonInfo';
 import SkillsInfo from './SkillsInfo';
+import Link from '../../../shared/Link';
 import Title from '../../../shared/Title';
 import useStyles from '../AddVacancy/styles';
 import { getOneVacancy, deleteInfo } from '../../../store/vacancy/actions';
@@ -25,7 +26,7 @@ const UpdateVacancy = ({ match, getOneVacancy }) => {
 
 	return (
 		<Container>
-			<Title text={t('CHANGE_VACANCY')} />
+			<Title>{t('CHANGE_VACANCY')}</Title>
 			<Paper className={classes.root}>
 				<div className={classes.addvacancyMenu}>
 					<Link

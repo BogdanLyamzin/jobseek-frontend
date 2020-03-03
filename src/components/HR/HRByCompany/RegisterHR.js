@@ -19,7 +19,7 @@ const RegisterHR = () => {
 
 	return (
 		<Container>
-			<Title text={t('COMPANY_PROFILE')} />
+			<Title>{t('COMPANY_PROFILE')}</Title>
 			<Paper className={classes.root}>
 				<div className={classes.addCompanyMenu}>
 					<Link

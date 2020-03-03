@@ -49,7 +49,7 @@ const FormRegisterCompany = ({ user, updateCompany }) => {
 
 	return (
 		<Container>
-			<Title text={t('COMPANY_PROFILE')} />
+			<Title>{t('COMPANY_PROFILE')}</Title>
 			<Paper className={classes.root}>
 				<div className={classes.add} onClick={hideCompanyInfo}>
 					<div>{t('UPDATE')}</div>

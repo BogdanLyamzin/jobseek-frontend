@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { useTranslation } from 'react-i18next';
 import Container from '@material-ui/core/Container';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import useStyles from './styles';
 import CommonInfo from './CommonInfo';
 import SkillsInfo from './SkillsInfo';
+import Link from '../../../shared/Link';
 import Text from '../../../shared/Text';
 import Title from '../../../shared/Title';
 import SwitchControl from '../../../shared/Switch';
@@ -26,12 +27,15 @@ const AddVacancy = ({ deleteInfo }) => {
 
 	return (
 		<Container>
-			<Title text={t('CREATE_VACANCY')} />
+			<Title>{t('CREATE_VACANCY')}</Title>
 			<Paper className={classes.root}>
 				<div className={classes.addvacancyHead}>
 					<div className={classes.addvacancyIsActive}>
 						<Text>{t('ACTIVITY_VACANCIES')}</Text>
-						<SwitchControl setIsActive={setIsActive} isActive={isActive} />
+						<SwitchControl
+							onChange={() => setIsActive(!isActive)}
+							active={isActive}
+						/>
 					</div>
 				</div>
 

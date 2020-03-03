@@ -111,14 +111,15 @@ const FormCompanyInfo = ({
 				/>
 				<div className={classes.btnAlignCenter}>
 					<Button
-						text={t('UPDATE')}
 						click={e => {
 							e.preventDefault();
 							if (validationStatus()) {
 								submitForm();
 							}
 						}}
-					/>
+					>
+						{t('UPDATE')}
+					</Button>
 				</div>
 			</div>
 		</Grid>

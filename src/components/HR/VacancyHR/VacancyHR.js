@@ -15,7 +15,7 @@ const VacancyHR = () => {
 
 	return (
 		<Container>
-			<Title text={t('MY_VACANCIES')} />
+			<Title>{t('MY_VACANCIES')}</Title>
 			<Paper className={classes.root}>
 				<div className={classes.hrVacancy}>
 					<Link to="/hr/vacancyAdd" className={classes.linkAddVacancy}>

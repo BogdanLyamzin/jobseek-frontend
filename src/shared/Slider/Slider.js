@@ -1,35 +1,74 @@
-import Slider from '@material-ui/core/Slider';
-import { withStyles } from '@material-ui/core/styles';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
-const SliderWithStyles = withStyles({
-	thumb: {
-		height: 20,
-		width: 20,
-		backgroundColor: '#00F2C9',
-		marginTop: -10,
-		marginLeft: -10,
-	},
-	active: {},
-	valueLabel: {
-		left: 'calc(-50% + 4px)',
-		color: '#6D64FF',
-	},
-	track: {
-		backgroundColor: '#00F2C9',
-		height: 2,
-		borderRadius: 4,
-	},
-	rail: {
-		backgroundColor: '#3D3B69',
-		height: 2,
-		borderRadius: 4,
-	},
-	mark: {
-		width: 3,
-		height: 3,
-		borderRadius: 2,
-		backgroundColor: '#ffffff',
-	},
-})(Slider);
+import Text from '../Text';
+import StyledSlider from '../StyledSlider';
 
-export default SliderWithStyles;
+const useStyles = makeStyles(theme => ({
+	sliderItem: {
+		marginBottom: '25px',
+		[theme.breakpoints.down(720)]: {
+			flexBasis: '40%',
+		},
+	},
+
+	sliderFlex: {
+		display: 'flex',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+	},
+
+	sliderSkills: {
+		flexBasis: '90%',
+	},
+
+	icon: {
+		color: theme.palette.textColor,
+		fontSize: '22px',
+		cursor: 'pointer',
+		'&:hover': {
+			color: 'black',
+		},
+	},
+
+	text: {
+		fontFamily: '"Open Sans", sans-sarif',
+		fontSize: '16px',
+		lineHeight: '19px',
+		marginBottom: '40px',
+		color: theme.palette.textColor,
+	},
+}));
+
+const SliderItem = ({ element, handleChange, deleteSlider }) => {
+	const classes = useStyles();
+	const valueLabelFormat = value => {
+		if (value === 0) return '<' + (value + 1);
+		else if (value === 5) return '>' + (value + 1);
+		else return value + '-' + (value + 1);
+	};
+
+	return (
+		<div className={classes.sliderItem}>
+			<Text className={classes.text}>{element.name}</Text>
+			<div className={classes.sliderFlex}>
+				<StyledSlider
+					className={classes.sliderSkills}
+					defaultValue={0}
+					step={1}
+					max={5}
+					valueLabelDisplay="on"
+					valueLabelFormat={valueLabelFormat}
+					onChange={handleChange(element.name, element.id)}
+				/>
+				<DeleteOutlineOutlinedIcon
+					className={classes.icon}
+					onClick={() => deleteSlider(element.name)}
+				/>
+			</div>
+		</div>
+	);
+};
+
+export default SliderItem;

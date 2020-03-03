@@ -20,13 +20,22 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-const Button = ({ text, click }) => {
+const Button = ({ children, click }) => {
 	const classes = useStyles();
 	return (
 		<button onClick={click} className={classes.btn}>
-			{text}
+			{children}
 		</button>
 	);
 };
+
+// const Button = ({ text, click }) => {
+// 	const classes = useStyles();
+// 	return (
+// 		<button onClick={click} className={classes.btn}>
+// 			{text}
+// 		</button>
+// 	);
+// };
 
 export default Button;

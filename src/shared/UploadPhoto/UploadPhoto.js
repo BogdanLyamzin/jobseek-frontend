@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
@@ -38,9 +39,18 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-const UploadPhoto = ({ user, getRootProps, getInputProps }) => {
+const UploadPhoto = ({ user, uploadPhoto }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
+
+	const onDrop = useCallback(
+		photo => {
+			uploadPhoto(photo);
+		},
+		[uploadPhoto],
+	);
+
+	const { getRootProps, getInputProps } = useDropzone({ onDrop });
 	return (
 		<>
 			{user && user.avatar && (

@@ -40,7 +40,7 @@ const OneCandidate = ({ match }) => {
 							>
 								Ігнорувати
 							</button>
-							<Button text="Запросити" />
+							<Button>Запросити</Button>
 						</>
 					)}
 					{!user && (
@@ -50,7 +50,7 @@ const OneCandidate = ({ match }) => {
 							>
 								Відмовити
 							</button>
-							<Button text="Прийняти" />
+							<Button>Прийняти</Button>
 						</>
 					)}
 				</div>
