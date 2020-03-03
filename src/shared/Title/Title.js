@@ -23,9 +23,4 @@ const Title = ({ children }) => {
 	return <h1 className={classes.title}>{children}</h1>;
 };
 
-// const Title = ({ text }) => {
-// 	const classes = useStyles();
-// 	return <h1 className={classes.title}>{text}</h1>;
-// };
-
 export default Title;

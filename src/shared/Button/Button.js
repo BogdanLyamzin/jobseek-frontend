@@ -29,13 +29,4 @@ const Button = ({ children, click }) => {
 	);
 };
 
-// const Button = ({ text, click }) => {
-// 	const classes = useStyles();
-// 	return (
-// 		<button onClick={click} className={classes.btn}>
-// 			{text}
-// 		</button>
-// 	);
-// };
-
 export default Button;
