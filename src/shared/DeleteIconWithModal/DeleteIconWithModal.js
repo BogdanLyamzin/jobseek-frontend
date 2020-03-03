@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Modal from '@material-ui/core/Modal';
+import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
+
+import Button from '../Button';
 
 const useStyles = makeStyles(theme => ({
 	paper: {
@@ -28,21 +31,11 @@ const useStyles = makeStyles(theme => ({
 			color: 'black',
 		},
 	},
-	btn: {
-		fontFamily: '"Open Sans", sans-serif',
-		fontSize: '16px',
-		color: '#3D3B69',
-		padding: '5px 20px',
-		background: 'linear-gradient(0.03deg, #00F2C9 0%, #FDFDFD 226.41%)',
-		boxShadow: '0px 4px 10px rgba(0, 242, 201, 0.5)',
-		borderRadius: '28px',
-		border: '0',
-		cursor: 'pointer',
-	},
 }));
 
 const DeleteIconWithModal = ({ handleDelete, text }) => {
 	const classes = useStyles();
+	const { t } = useTranslation();
 	const [open, setOpen] = useState(false);
 
 	const handleOpen = () => {
@@ -67,18 +60,14 @@ const DeleteIconWithModal = ({ handleDelete, text }) => {
 				<div className={classes.paper}>
 					<h4 id="simple-modal-title">{text}</h4>
 					<div className={classes.flex}>
-						<button
-							className={classes.btn}
-							onClick={() => {
+						<Button
+							text={t('DELETE')}
+							click={() => {
 								handleDelete();
 								handleClose();
 							}}
-						>
-							Delete
-						</button>
-						<button onClick={handleClose} className={classes.btn}>
-							Сancel
-						</button>
+						/>
+						<Button click={handleClose} text={t('CANCEL')} />
 					</div>
 				</div>
 			</Modal>

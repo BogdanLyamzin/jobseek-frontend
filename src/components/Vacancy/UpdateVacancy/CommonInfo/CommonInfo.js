@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
+import Text from '../../../../shared/Text';
 import Button from '../../../../shared/Button';
 import useStyles from '../../AddVacancy/CommonInfo/styles';
 import { saveInfo } from '../../../../store/vacancy/actions';
@@ -30,12 +31,6 @@ const CommonInfo = ({ info, saveInfo, oneVacancy }) => {
 			});
 	}, [oneVacancy]);
 
-	useEffect(() => {
-		return () => {
-			saveInfo({ ...values });
-		};
-	}, [values, saveInfo]);
-
 	const handleChange = event => {
 		setValues({ ...values, [event.target.name]: event.target.value });
 	};
@@ -60,7 +55,7 @@ const CommonInfo = ({ info, saveInfo, oneVacancy }) => {
 			<hr className={classes.vacancyLine} />
 
 			<div className={classes.vacancyDescription}>
-				<div className={classes.vacancyKey}>{t('VACANCY_DESCRIPTION')}*</div>
+				<Text className={classes.vacancyKey}>{t('VACANCY_DESCRIPTION')}*</Text>
 				<textarea
 					name="description"
 					className={classes.vacancyDescriptionArea}

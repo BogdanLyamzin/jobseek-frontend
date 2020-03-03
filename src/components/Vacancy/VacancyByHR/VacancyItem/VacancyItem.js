@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import CreateOutlined from '@material-ui/icons/CreateOutlined';
 
 import useStyles from '../styles';
 import Link from '../../../../shared/Link';
+import Text from '../../../../shared/Text';
 import getDate from '../../../../utils/getDate';
 import FormControlLabel from './FormControlLabel';
+import CreateOutlined from '../../../../shared/CreateOutlinedIcon';
 import { deleteVacancy } from '../../../../store/vacancy/actions';
 import DeleteIconWithModal from '../../../../shared/DeleteIconWithModal';
 
@@ -40,18 +41,18 @@ const VacancyItem = ({ elem, deleteVacancy }) => {
 				</div>
 			</div>
 			<div className={classes.vacancyFlex}>
-				<div className={classes.vacancyName}>{elem.vacancyName}</div>
+				<Text className={classes.vacancyName}>{elem.vacancyName}</Text>
 			</div>
-			<div className={`${classes.vacancyDate} ${classes.vacancyFlex}`}>
+			<Text className={`${classes.vacancyDate} ${classes.vacancyFlex}`}>
 				{t('SKILLS')}: {elem.skills.map(s => s.name).join(', ')}
-			</div>
+			</Text>
 			<div className={classes.vacancyFlex}>
-				<div className={classes.vacancyCountry}>
+				<Text className={classes.vacancyCountry}>
 					{elem.city}, {elem.country}
-				</div>
-				<div className={classes.vacancyDate}>
+				</Text>
+				<Text className={classes.vacancyDate}>
 					{t('POSTED')} {getDate(elem.date)}
-				</div>
+				</Text>
 			</div>
 		</div>
 	);

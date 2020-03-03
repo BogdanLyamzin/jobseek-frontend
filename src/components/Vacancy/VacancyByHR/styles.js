@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
 
 	link: {
 		fontFamily: font,
-		color: theme.palette.textColor,
+		color: theme.palette.color,
 		fontWeight: 'bold',
 		fontSize: '16px',
 		textDecoration: 'none',

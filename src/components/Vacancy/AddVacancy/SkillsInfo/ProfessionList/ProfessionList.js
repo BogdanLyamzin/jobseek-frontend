@@ -3,13 +3,15 @@ import { useTranslation } from 'react-i18next';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
+import Text from '../../../../../shared/Text';
+
 const ProfessionList = ({ skill, setSkill, handleClickSkill, classes }) => {
 	const { t } = useTranslation();
 
 	return (
 		<div>
 			<div className={classes.vacancySkillFlex}>
-				<div className={classes.vacancyKey}>{t('PROFESSION')}*</div>
+				<Text className={classes.vacancyKey}>{t('PROFESSION')}*</Text>
 				<Autocomplete
 					options={skill.sphere ? skill.sphere.profession : []}
 					getOptionLabel={option => option}

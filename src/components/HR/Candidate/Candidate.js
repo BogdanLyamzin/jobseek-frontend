@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 
 import useStyles from './styles';
@@ -6,14 +6,20 @@ import Skills from './CandidateSkills';
 import Header from './CandidateHeader';
 import Information from './Information';
 import Summary from './CandidateSummary';
+import Button from '../../../shared/Button';
 import Education from './CandidateEducation';
 import Experience from './CandidateExperience';
 import Achievement from './CandidateAchievement';
 
 const user = null;
 
-const OneCandidate = () => {
+const OneCandidate = ({ match }) => {
 	const classes = useStyles();
+	const { id } = match.params;
+
+	useEffect(() => {
+		//получить резюме и кандидата
+	}, [id]);
 
 	return (
 		<Container>
@@ -34,11 +40,7 @@ const OneCandidate = () => {
 							>
 								Ігнорувати
 							</button>
-							<button
-								className={`${classes.candidateBtn} ${classes.candidateBtnGreen}`}
-							>
-								Запросити
-							</button>
+							<Button text="Запросити" />
 						</>
 					)}
 					{!user && (
@@ -48,11 +50,7 @@ const OneCandidate = () => {
 							>
 								Відмовити
 							</button>
-							<button
-								className={`${classes.candidateBtn} ${classes.candidateBtnGreen}`}
-							>
-								Прийняти
-							</button>
+							<Button text="Прийняти" />
 						</>
 					)}
 				</div>

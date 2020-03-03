@@ -9,7 +9,7 @@ import CommonInfo from './CommonInfo';
 import SkillsInfo from './SkillsInfo';
 import Title from '../../../shared/Title';
 import useStyles from '../AddVacancy/styles';
-import { getOneVacancy } from '../../../store/vacancy/actions';
+import { getOneVacancy, deleteInfo } from '../../../store/vacancy/actions';
 
 const UpdateVacancy = ({ match, getOneVacancy }) => {
 	const classes = useStyles();
@@ -18,6 +18,9 @@ const UpdateVacancy = ({ match, getOneVacancy }) => {
 
 	useEffect(() => {
 		getOneVacancy(id);
+		return () => {
+			deleteInfo();
+		};
 	}, [getOneVacancy, id]);
 
 	return (
@@ -52,6 +55,7 @@ const UpdateVacancy = ({ match, getOneVacancy }) => {
 };
 
 const mapDispatchToProps = {
+	deleteInfo,
 	getOneVacancy,
 };
 

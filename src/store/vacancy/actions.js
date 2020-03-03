@@ -5,6 +5,7 @@ import {
 	SUCCESS_AXIOS,
 	ADD_INFO,
 	ADD_VACANCY,
+	DELETE_INFO,
 	GET_CANDIDATES,
 	SUCCESS_AXIOS_LIST,
 } from './actionNames';
@@ -41,6 +42,12 @@ const addInfo = payload => {
 	return {
 		type: ADD_INFO,
 		payload,
+	};
+};
+
+export const deleteInfo = () => {
+	return {
+		type: DELETE_INFO,
 	};
 };
 

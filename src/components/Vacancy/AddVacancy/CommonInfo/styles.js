@@ -62,15 +62,6 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 
-	vacancyEmploymenttype: {
-		fontFamily: font,
-		fontSize: '16px',
-		lineHeight: '24px',
-		color: '#757575',
-		display: 'block',
-		margin: '10px 0 10px 7px',
-	},
-
 	vacancySalary: {
 		fontFamily: '"Roboto", sans-serif',
 		fontSize: '16px',

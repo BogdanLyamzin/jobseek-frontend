@@ -15,7 +15,8 @@ const useStyles = makeStyles(theme => ({
 		border: '1px solid #6d6d6e',
 		borderRadius: '20px',
 		'&:hover': {
-			border: `1px solid ${theme.palette.color}`,
+			color: '#26a69a',
+			border: `1px solid #26a69a`,
 			textDecoration: 'none',
 		},
 		'&:last-child': {

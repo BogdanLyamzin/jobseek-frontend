@@ -34,7 +34,6 @@ const useStyles = makeStyles(theme => ({
 		color: theme.palette.color,
 		display: 'flex',
 		alignItems: 'center',
-		marginBottom: '15px',
 	},
 
 	addvacancyMenu: {

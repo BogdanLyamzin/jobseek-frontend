@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
 import VacancyItem from './VacancyItem';
+import Text from '../../../shared/Text';
 import { getVacancyByFilter } from '../../../store/vacancy/actions';
 
 const VacancyByHR = ({ vacancy, getVacancyByFilter, user }) => {
@@ -17,7 +18,7 @@ const VacancyByHR = ({ vacancy, getVacancyByFilter, user }) => {
 	return (
 		<div className={classes.vacancyList}>
 			{(vacancy && vacancy.length === 0) || !vacancy ? (
-				<div className={classes.vacancyName}>{t('NO_VACANCY')}</div>
+				<Text className={classes.vacancyName}>{t('NO_VACANCY')}</Text>
 			) : null}
 			{vacancy &&
 				vacancy.length > 0 &&

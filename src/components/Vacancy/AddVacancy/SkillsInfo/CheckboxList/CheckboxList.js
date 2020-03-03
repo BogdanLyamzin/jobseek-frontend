@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
+import Text from '../../../../../shared/Text';
 import Slider from '../../../../../shared/Slider';
 import Checkbox from '../../../../../shared/Checkbox';
 import { skillsList, englishLevel } from '../skillsList';
@@ -29,9 +30,9 @@ const CheckboxList = ({
 
 	return (
 		<>
-			<div className={`${classes.vacancyKey} ${classes.alignCenter}`}>
+			<Text className={`${classes.vacancyKey} ${classes.alignCenter}`}>
 				{t('SKILLS')}*
-			</div>
+			</Text>
 			<hr className={classes.line} />
 			{skill.category && (
 				<div className={classes.vacancySkillListFlex}>
@@ -45,9 +46,6 @@ const CheckboxList = ({
 										name={elem.name}
 										checked={checkbox && checkbox[elem.name] ? true : false}
 									/>
-									<div className={classes.vacancySkillItemText}>
-										{elem.name}
-									</div>
 								</div>
 							);
 						})}
@@ -57,12 +55,12 @@ const CheckboxList = ({
 							<div
 								className={`${classes.vacancySliderFlex} ${classes.marginBottom40}`}
 							>
-								<div className={classes.vacancySkillItemText}>
+								<Text className={classes.vacancySkillItemText}>
 									English level
-								</div>
-								<div className={classes.vacancySkillItemText}>
+								</Text>
+								<Text className={classes.vacancySkillItemText}>
 									{skill.englishLevel}
-								</div>
+								</Text>
 							</div>
 							<div className={classes.vacancySliderFlex}>
 								<Slider

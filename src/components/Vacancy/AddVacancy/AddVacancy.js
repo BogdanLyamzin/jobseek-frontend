@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { useTranslation } from 'react-i18next';
 import Container from '@material-ui/core/Container';
@@ -7,13 +8,21 @@ import { Link, Switch, Route } from 'react-router-dom';
 import useStyles from './styles';
 import CommonInfo from './CommonInfo';
 import SkillsInfo from './SkillsInfo';
+import Text from '../../../shared/Text';
 import Title from '../../../shared/Title';
 import SwitchControl from '../../../shared/Switch';
+import { deleteInfo } from '../../../store/vacancy/actions';
 
-const AddVacancy = () => {
+const AddVacancy = ({ deleteInfo }) => {
 	const { t } = useTranslation();
 	const classes = useStyles();
 	const [isActive, setIsActive] = useState(true);
+
+	useEffect(() => {
+		return () => {
+			deleteInfo();
+		};
+	}, [deleteInfo]);
 
 	return (
 		<Container>
@@ -21,7 +30,7 @@ const AddVacancy = () => {
 			<Paper className={classes.root}>
 				<div className={classes.addvacancyHead}>
 					<div className={classes.addvacancyIsActive}>
-						<div>{t('ACTIVITY_VACANCIES')}</div>
+						<Text>{t('ACTIVITY_VACANCIES')}</Text>
 						<SwitchControl setIsActive={setIsActive} isActive={isActive} />
 					</div>
 				</div>
@@ -52,4 +61,4 @@ const AddVacancy = () => {
 	);
 };
 
-export default AddVacancy;
+export default connect(null, { deleteInfo })(AddVacancy);

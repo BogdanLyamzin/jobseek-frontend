@@ -173,7 +173,16 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	candidateBackgroundFooter: {
-		flexBasis: '45%',
+		flexBasis: '38%',
+		[theme.breakpoints.down(1100)]: {
+			flexBasis: '35%',
+		},
+		[theme.breakpoints.down(920)]: {
+			flexBasis: '33%',
+		},
+		[theme.breakpoints.down(850)]: {
+			flexBasis: '40%',
+		},
 	},
 
 	candidateBtnFlex: {

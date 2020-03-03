@@ -3,6 +3,7 @@ import {
 	ERROR,
 	ADD_INFO,
 	ADD_VACANCY,
+	DELETE_INFO,
 	GET_CANDIDATES,
 	SUCCESS_AXIOS_LIST,
 } from './actionNames';
@@ -34,6 +35,12 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				addVacancy: action.payload,
+			};
+
+		case DELETE_INFO:
+			return {
+				...state,
+				addVacancy: null,
 			};
 
 		case GET_CANDIDATES:

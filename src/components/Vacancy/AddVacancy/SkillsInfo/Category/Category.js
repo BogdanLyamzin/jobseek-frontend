@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
+import Text from '../../../../../shared/Text';
 import { programmLanguageList, vacancyList } from '../skillsList';
 
 const Category = ({ skill, setSkill, classes }) => {
@@ -11,7 +12,7 @@ const Category = ({ skill, setSkill, classes }) => {
 	return (
 		<>
 			<div className={classes.vacancySkillFlex}>
-				<div className={classes.vacancyKey}>{t('VACANCY')}*</div>
+				<Text className={classes.vacancyKey}>{t('VACANCY')}*</Text>
 				<Autocomplete
 					options={vacancyList}
 					getOptionLabel={option => option}
@@ -26,7 +27,7 @@ const Category = ({ skill, setSkill, classes }) => {
 			</div>
 
 			<div className={classes.vacancySkillFlex}>
-				<div className={classes.vacancyKey}>{t('CATEGORY')}*</div>
+				<Text className={classes.vacancyKey}>{t('CATEGORY')}*</Text>
 				<Autocomplete
 					options={programmLanguageList}
 					getOptionLabel={option => option}
