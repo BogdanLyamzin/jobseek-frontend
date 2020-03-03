@@ -27,20 +27,20 @@ const SentOffersList = ({ candidates }) => {
 						>
 							<div className={classes.candidateFlexBetween}>
 								<Text className={classes.candidateVacancyName}>
-									{elem.vacancyName + ' ' + elem.vacancyName}
+									{elem.vacancyName + ' vacancyName'}
 								</Text>
 								<Text className={classes.candidateOfferCheck}>
 									{elem.offer ? 'Прийнято' : 'В очікуванні'}
 								</Text>
 							</div>
 							<Text className={classes.candidateSkills70}>
-								{elem.cvSkill.map(a => a.name).join(', ')}
+								{t('SKILLS')}: {elem.cvSkill.map(a => a.name).join(', ')}
 							</Text>
 							<div className={classes.candidateFlexBetween}>
 								<div className={classes.candidateFlex}>
 									<Avatar className={classes.candidatePhoto} />
 									<Text className={classes.candidateName}>
-										{elem.candidateName + ' ' + elem.candidateLastName}
+										{t('SEE_MORE')}...
 									</Text>
 								</div>
 								<Text className={classes.candidateOfferDate}>

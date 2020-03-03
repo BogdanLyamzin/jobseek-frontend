@@ -31,12 +31,6 @@ const CommonInfo = ({ info, saveInfo, oneVacancy }) => {
 			});
 	}, [oneVacancy]);
 
-	useEffect(() => {
-		return () => {
-			saveInfo({ ...values });
-		};
-	}, [values, saveInfo]);
-
 	const handleChange = event => {
 		setValues({ ...values, [event.target.name]: event.target.value });
 	};

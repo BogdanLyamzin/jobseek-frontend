@@ -97,5 +97,8 @@
   "INCORRECT": "Invalid link path",
   "VALID_SYMBOL_LENGTH_SALARY": "must be greater than 0",
   "ONLY_NUMBER": "should only have numbers",
-  "NO_CANDIDATES": "No candidates"
+  "NO_CANDIDATES": "No candidates",
+  "SEE_MORE": "See more",
+  "CANCEL": "Cancel",
+  "DELETE": "Delete"
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
@@ -19,12 +19,6 @@ const CommonInfo = ({ info, saveInfo }) => {
 		description: info ? info.description : '',
 		employmentType: info ? info.employmentType : 'fullDay',
 	});
-
-	useEffect(() => {
-		return () => {
-			saveInfo({ ...values });
-		};
-	}, [values, saveInfo]);
 
 	const handleChange = event => {
 		setValues({ ...values, [event.target.name]: event.target.value });

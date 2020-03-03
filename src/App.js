@@ -16,7 +16,7 @@ const light = createMuiTheme({
 		type: 'light',
 		color: '#3D3B69',
 		textColor: '#3D3B69',
-		backgroundColor: '#F6F9FF',
+		backgroundColor: '#ecf1fa', //#F6F9FF
 		paper: '#ffffff',
 	},
 	breakpoints: {

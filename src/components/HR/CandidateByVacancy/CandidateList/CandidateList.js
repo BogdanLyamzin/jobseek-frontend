@@ -26,16 +26,16 @@ const CandidateList = ({ candidates }) => {
 							className={classes.candidate}
 						>
 							<Text className={classes.candidateVacancyName}>
-								{elem.vacancyName + ' ' + elem.vacancyName}
+								{elem.vacancyName + ' vacancyName'}
 							</Text>
 							<Text className={classes.candidateSkills}>
-								{elem.cvSkill.map(a => a.name).join(', ')}
+								{t('SKILLS')}: {elem.cvSkill.map(a => a.name).join(', ')}
 							</Text>
 							<div className={classes.candidateFlexBetween}>
 								<div className={classes.candidateFlex}>
 									<Avatar className={classes.candidatePhoto} />
 									<Text className={classes.candidateName}>
-										{elem.candidateName + ' ' + elem.candidateLastName}
+										{t('SEE_MORE')}...
 									</Text>
 								</div>
 								<Text className={classes.candidateOfferDate}>

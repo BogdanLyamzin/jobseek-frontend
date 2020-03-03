@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { useTranslation } from 'react-i18next';
 import Container from '@material-ui/core/Container';
@@ -10,11 +11,18 @@ import SkillsInfo from './SkillsInfo';
 import Text from '../../../shared/Text';
 import Title from '../../../shared/Title';
 import SwitchControl from '../../../shared/Switch';
+import { deleteInfo } from '../../../store/vacancy/actions';
 
-const AddVacancy = () => {
+const AddVacancy = ({ deleteInfo }) => {
 	const { t } = useTranslation();
 	const classes = useStyles();
 	const [isActive, setIsActive] = useState(true);
+
+	useEffect(() => {
+		return () => {
+			deleteInfo();
+		};
+	}, [deleteInfo]);
 
 	return (
 		<Container>
@@ -53,4 +61,4 @@ const AddVacancy = () => {
 	);
 };
 
-export default AddVacancy;
+export default connect(null, { deleteInfo })(AddVacancy);
