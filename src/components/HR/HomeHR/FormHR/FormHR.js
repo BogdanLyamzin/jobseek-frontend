@@ -18,10 +18,10 @@ const FormHR = ({
 
 	const validationStatus = () => {
 		return (
-			validation('name', values.name) &&
-			validation('lastName', values.lastName) &&
-			validation('email', values.email) &&
-			validation('phone', values.phone)
+			validation('name', values.name, t) &&
+			validation('lastName', values.lastName, t) &&
+			validation('email', values.email, t) &&
+			validation('phone', values.phone, t)
 		);
 	};
 

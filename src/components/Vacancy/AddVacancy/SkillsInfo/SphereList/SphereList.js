@@ -1,14 +1,17 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import { sphereList } from '../skillsList';
 
 const SphereList = ({ skill, setSkill, handleClickSkill, classes }) => {
+	const { t } = useTranslation();
+
 	return (
 		<div>
 			<div className={classes.vacancySkillFlex}>
-				<div className={classes.vacancyKey}>Сфера діяльності*</div>
+				<div className={classes.vacancyKey}>{t('SPHERE')}*</div>
 				<Autocomplete
 					options={sphereList}
 					getOptionLabel={option => option.title}

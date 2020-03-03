@@ -1,9 +1,9 @@
-import React from './node_modules/react';
+import React from 'react';
 import { MAIL_SENT, REGISTERED, PASS_CHANGED } from './messageTypes';
 
-import { useTranslation } from './node_modules/react-i18next';
-import { Alert } from './node_modules/@material-ui/lab';
-import { makeStyles } from './node_modules/@material-ui/core/styles';
+import { useTranslation } from 'react-i18next';
+import { Alert } from '@material-ui/lab';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyle = makeStyles(theme => ({
 	alertt: {

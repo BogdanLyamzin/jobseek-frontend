@@ -31,10 +31,10 @@ const CommonInfo = ({ info, saveInfo }) => {
 
 	const validationStatus = () => {
 		return (
-			validation('city', values.city) &&
-			validation('country', values.country) &&
-			validation('salary', values.salary) &&
-			validation('description', values.description)
+			validation('city', values.city, t) &&
+			validation('country', values.country, t) &&
+			validation('salary', values.salary, t) &&
+			validation('description', values.description, t)
 		);
 	};
 

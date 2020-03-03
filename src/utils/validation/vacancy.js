@@ -1,9 +1,9 @@
 import toastr from '../../utils/toastr/toastrValid';
 
-export default (name, value) => {
+export default (name, value, t) => {
 	if (name === 'sphere') {
 		if (!value) {
-			toastr('Заповніть поле сфери');
+			toastr(`${t('ENTER_FIELD')} ${t('SPHERE')}`);
 		} else {
 			return true;
 		}
@@ -11,7 +11,7 @@ export default (name, value) => {
 
 	if (name === 'vacancyName') {
 		if (!value) {
-			toastr('Заповніть поле вакансії');
+			toastr(`${t('ENTER_FIELD')} ${t('VACANCY')}`);
 		} else {
 			return true;
 		}
@@ -19,7 +19,7 @@ export default (name, value) => {
 
 	if (name === 'profession') {
 		if (!value) {
-			toastr('Заповніть поле професії');
+			toastr(`${t('ENTER_FIELD')} ${t('PROFESSION')}`);
 		} else {
 			return true;
 		}
@@ -27,17 +27,15 @@ export default (name, value) => {
 
 	if (name === 'category') {
 		if (!value) {
-			toastr('Заповніть поле категорії');
+			toastr(`${t('ENTER_FIELD')} ${t('CATEGORY')}`);
 		} else {
 			return true;
 		}
 	}
 
 	if (name === 'skills') {
-		if (!value) {
-			toastr('Заповніть поле навиків');
-		} else if (value.length === 0) {
-			toastr('Заповніть поле навиків');
+		if (!value || value.length === 0) {
+			toastr(`${t('ENTER_FIELD')} ${t('SKILLS')}`);
 		} else {
 			return true;
 		}

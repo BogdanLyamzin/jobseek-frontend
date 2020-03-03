@@ -40,6 +40,7 @@ export default function MainPage() {
 					<Route path="/resetpass/:token" component={SetNewPass} />
 					<Route path="/logout" component={LogOut} />
 					<PrivateRoute path="/hr" component={HrPage} />
+					<PrivateRoute path="/company" component={CompanyPage} />
 					<PrivateRoute path="/candidate" component={CandidatePage} />
 					<PrivateRoute path="/company" component={CompanyPage} />
 					<PrivateRoute path="/comments" component={Comments} />

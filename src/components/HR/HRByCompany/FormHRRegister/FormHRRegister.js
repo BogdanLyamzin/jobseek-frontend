@@ -8,9 +8,8 @@ import FormHRInfo from '../FormHRInfo/FormHRInfo';
 import CardHR from '../CardHR';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutlined';
 import { addHr, getHrByFilter } from '../../../../store/hr/actions';
-
+import validation from '../../../../utils/validation/hrCompany';
 const FormHRRegister = ({
-	list,
 	user,
 	hidden,
 	addHr,
@@ -32,7 +31,16 @@ const FormHRRegister = ({
 
 	useEffect(() => {
 		if (user) getHrByFilter(`companyId=${user._id}`);
-	}, [getHrByFilter, user, list]);
+	}, [getHrByFilter, user]);
+
+	const validationStatus = () => {
+		return (
+			validation('name', values.name) &&
+			validation('lastName', values.lastName) &&
+			validation('email', values.email) &&
+			validation('phone', values.phone)
+		);
+	};
 
 	return (
 		<div>
@@ -52,8 +60,12 @@ const FormHRRegister = ({
 				{hidden && (
 					<div className={classes.alignCenter}>
 						<Button
-							click={() => addHr({ ...values, companyId: user._id })}
 							text={t('REGISTER')}
+							click={() => {
+								if (validationStatus()) {
+									addHr({ ...values, companyId: user._id });
+								}
+							}}
 						/>
 					</div>
 				)}
@@ -69,9 +81,8 @@ const mapDispatchToProps = {
 	getHrByFilter,
 };
 
-const mapStateToProps = ({ company, hr }) => {
+const mapStateToProps = ({ company }) => {
 	return {
-		list: hr.hrList,
 		user: company.company,
 	};
 };
