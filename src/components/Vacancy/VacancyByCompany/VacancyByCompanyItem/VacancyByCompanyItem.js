@@ -17,6 +17,10 @@ const useStyles = makeStyles(theme => ({
 		fontSize: 25,
 		fontWeight: 'bold',
 		marginBottom: 30,
+		[theme.breakpoints.down(900)]: {
+			flexDirection: 'column',
+			alignItems: 'center',
+		},
 	},
 
 	info: {
@@ -26,6 +30,10 @@ const useStyles = makeStyles(theme => ({
 		alignItems: 'center',
 		fontSize: 16,
 		fontWeight: 500,
+		[theme.breakpoints.down(900)]: {
+			flexDirection: 'column',
+			alignItems: 'center',
+		},
 	},
 	description: {
 		fontSize: 16,
@@ -73,11 +81,11 @@ const VacancyByCompanyItem = ({
 						<div>{employmentType}</div>
 						<div> {active}</div>
 					</div>
+
 					<div>
-						<div>
-							{t('SALARY')}: {salary}
-						</div>
+						{t('SALARY')}: {salary}
 					</div>
+
 					<div>
 						<div>
 							{country}, {city}

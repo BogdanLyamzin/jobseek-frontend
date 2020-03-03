@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
 
 		case ADD_USER:
 			return {
-				hrList: [...state.hr.hrList, action.payload],
+				hrList: [...state.hrList, action.payload],
 			};
 
 		case ERROR:
