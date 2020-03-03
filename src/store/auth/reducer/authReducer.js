@@ -2,10 +2,8 @@ import { SET_USER, ERROR, LOGOUT, SUCCESS, CLEAR } from '../action/types';
 import { getUser } from '../action/authActions';
 
 const initialState = {
-	//isAuthenticated: localStorage.token ? true : false,
-	//isAdmin: localStorage.adminToken ? true : false,
-	isAuthenticated: true,
-	isAdmin: true,
+	isAuthenticated: localStorage.token ? true : false,
+	isAdmin: localStorage.adminToken ? true : false,
 	user: getUser(localStorage.token),
 	errors: { status: '' },
 	success: { status: '' },

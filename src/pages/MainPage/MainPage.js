@@ -14,6 +14,7 @@ import SetNewPass from '../../components/setNewPass';
 import LogOut from '../../components/LogOut';
 
 const HrPage = lazy(() => import('../hr'));
+const CandidatePage = lazy(() => import('../candidate'));
 const CompanyPage = lazy(() => import('../company'));
 const Comments = lazy(() => import('../comments'));
 
@@ -39,6 +40,8 @@ export default function MainPage() {
 					<Route path="/resetpass/:token" component={SetNewPass} />
 					<Route path="/logout" component={LogOut} />
 					<PrivateRoute path="/hr" component={HrPage} />
+					<PrivateRoute path="/company" component={CompanyPage} />
+					<PrivateRoute path="/candidate" component={CandidatePage} />
 					<PrivateRoute path="/company" component={CompanyPage} />
 					<PrivateRoute path="/comments" component={Comments} />
 				</Suspense>

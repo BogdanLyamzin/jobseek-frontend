@@ -9,6 +9,8 @@ import vacancyReducer from './vacancy/reducer';
 import CommentReducer from './comment/reducer';
 import authReducer from './auth/reducer/authReducer';
 import themeReducer from './theme/reducer/themeReducer';
+import candidateReducer from './candidate/reducer';
+import cvReducer from './cv/reducer';
 
 const rootReducer = combineReducers({
 	hr: hrReducer,
@@ -19,6 +21,8 @@ const rootReducer = combineReducers({
 	admin: adminReducer,
 	theme: themeReducer,
 	auth: authReducer,
+	candidate: candidateReducer,
+	cv: cvReducer,
 });
 
 const enhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

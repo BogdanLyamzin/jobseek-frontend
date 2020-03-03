@@ -19,7 +19,7 @@ import {
 	changeToLight,
 } from '../../store/theme/action/themeActions';
 import CompanyLinks from './CompanyLinks';
-
+import CandidateLinks from './CandidateLinks';
 const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1,
@@ -65,6 +65,7 @@ function ButtonAppBar({ thema, changeToLight, changeToDark, isAuthenticated }) {
 				<img src={thema === 'light' ? logo : darkLogo} alt="pic" />
 				<Route path="/hr" component={HrLinks} />
 				<Route path="/company" component={CompanyLinks} />
+				<Route path="/candidate" component={CandidateLinks} />
 				<Box component="div">
 					<IconButton
 						style={{ marginRight: '10px' }}
