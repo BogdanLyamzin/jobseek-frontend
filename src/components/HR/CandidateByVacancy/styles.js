@@ -3,15 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 const font = '"Open Sans", sans-serif';
 
 const useStyles = makeStyles(theme => ({
-	root: {
-		backgroundColor: theme.palette.paper,
-		padding: '5px 15px',
-		margin: '20px auto',
-		marginBottom: '40px',
-		maxWidth: '980px',
-		boxShadow: '0px 10px 15px rgba(230, 235, 255, 0.5)',
-	},
-
 	hrVacancyRoutes: {
 		padding: '0 50px',
 		[theme.breakpoints.down(900)]: {
@@ -66,6 +57,7 @@ const useStyles = makeStyles(theme => ({
 		textAlign: 'center',
 		maxWidth: '980px',
 		margin: '0 auto',
+		fontWeight: 'bold',
 		color: theme.palette.textColor,
 	},
 }));
