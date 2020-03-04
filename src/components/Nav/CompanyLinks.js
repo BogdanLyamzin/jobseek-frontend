@@ -39,6 +39,9 @@ export default function CompanyLinks() {
 			<Link className={classes.link} to="/company/hrs">
 				HRs
 			</Link>
+			<Link className={classes.link} to="/company/review">
+				{t('REVIEW')}
+			</Link>
 		</div>
 	);
 }
