@@ -1,4 +1,11 @@
-import { SET_USER, ERROR, LOGOUT, SUCCESS, CLEAR } from '../action/types';
+import {
+	SET_USER,
+	ERROR,
+	LOGOUT,
+	SUCCESS,
+	CLEAR,
+	SET_ADMIN,
+} from '../action/types';
 import { getUser } from '../action/authActions';
 
 const initialState = {
@@ -16,6 +23,13 @@ export default function(state = initialState, action) {
 				...state,
 				errors: {},
 				isAuthenticated: true,
+				user: action.payload,
+			};
+		case SET_ADMIN:
+			return {
+				...state,
+				errors: {},
+				isAdmin: true,
 				user: action.payload,
 			};
 		case ERROR:

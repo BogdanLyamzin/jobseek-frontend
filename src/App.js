@@ -67,8 +67,8 @@ function App(props) {
 	);
 }
 
-const mapStateToPtops = state => ({
+const mapStateToProps = state => ({
 	theme: state.theme.theme,
 });
 
-export default connect(mapStateToPtops)(App);
+export default connect(mapStateToProps)(App);

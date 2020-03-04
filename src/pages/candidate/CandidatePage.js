@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import { getOneCandidate } from '../../store/candidate/actions';
 import HomeCandidate from '../../components/Candidate/HomeCandidate/Candidate';
 import CvCandidate from '../../components/Candidate/CvCandidates';
-import OneCandidate from '../../components/OneCandidate';
+// import OneCandidate from '../../components/OneCandidate';
 import AddCv from '../../components/Cv/AddCv';
 import CandidatesList from '../../components/HR/CandidateByVacancy';
 import UpdateCv from '../../components/Cv/UpdateCv/UpdateCv';
@@ -20,7 +20,7 @@ const CandidatePage = ({ getOneCandidate }) => {
 			<Route exact path="/candidate/cv" component={CvCandidate} />
 			<Route path="/hr/vacancy/:id" component={CandidatesList} />
 			<Route path="/candidate/cvAdd" component={AddCv} />
-			<Route path="/hr/candidate/:id" component={OneCandidate} />
+			{/*<Route path="/hr/candidate/:id" component={OneCandidate} />*/}
 			<Route path="/candidate/updateCv/:id" component={UpdateCv} />
 			<Route path="/candidate" component={HomeCandidate} />
 		</Switch>
