@@ -5,6 +5,9 @@ import './index.css';
 import './utils/locales/i18n';
 import store from './store';
 import { Provider } from 'react-redux';
+import onStart from './utils/onStart';
+
+onStart(localStorage);
 
 ReactDOM.render(
 	<Provider store={store}>
