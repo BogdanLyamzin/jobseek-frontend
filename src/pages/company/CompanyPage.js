@@ -3,10 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 
 import { getOneCompany } from '../../store/company/actions';
 import { connect } from 'react-redux';
+import Comments from '../../components/Comments';
 import HRByCompany from '../../components/HR/HRByCompany/RegisterHR';
 import RegisterCompany from '../../components/RegisterCompany/FormRegisterCompany/FormRegisterCompany';
-import CompanyComments from '../../components/Comments/CompanyComments/Comments';
-import CandidateComments from '../../components/Comments/CandidateComments/Comments';
 
 const Page = ({ getOneCompany }) => {
 	React.useEffect(() => {
@@ -17,8 +16,8 @@ const Page = ({ getOneCompany }) => {
 		<Switch>
 			<Route path="/company/hrs" component={HRByCompany} />
 			<Route exact path="/company" component={RegisterCompany} />
-			<Route path="/company/review" component={CompanyComments} />
-			<Route path="/company/candidate/review" component={CandidateComments} />
+			<Route path="/company/review" component={Comments} />
+			<Route path="/company/candidate/review" component={Comments} />
 		</Switch>
 	);
 };
