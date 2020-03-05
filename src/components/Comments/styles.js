@@ -82,6 +82,17 @@ const useStyles = makeStyles(theme => ({
 		resize: 'none',
 		width: '100%',
 	},
+
+	report: {
+		fontFamily: 'Open Sans, sans-serif',
+		fontSize: '14px',
+		color: 'red',
+		textAlign: 'right',
+		border: 0,
+		cursor: 'pointer',
+		backgroundColor: 'transparent',
+		textDecorationLine: 'underline',
+	},
 }));
 
 export default useStyles;

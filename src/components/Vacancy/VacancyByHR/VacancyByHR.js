@@ -13,7 +13,7 @@ const VacancyByHR = ({ vacancy, getVacancyByFilter, user }) => {
 
 	useEffect(() => {
 		if (user) getVacancyByFilter(`hrId=${user._id}`);
-	}, [getVacancyByFilter, user]);
+	});
 
 	return (
 		<div className={classes.vacancyList}>
