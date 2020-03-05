@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import { getOneCandidate } from '../../store/candidate/actions';
 import HomeCandidate from '../../components/Candidate/HomeCandidate/Candidate';
 import CvCandidate from '../../components/Candidate/CvCandidates';
-// import OneCandidate from '../../components/OneCandidate';
+// import OneCandidate from '../../components/Candidate';
 import AddCv from '../../components/Cv/AddCv';
 import CandidatesList from '../../components/HR/CandidateByVacancy';
 import UpdateCv from '../../components/Cv/UpdateCv/UpdateCv';
