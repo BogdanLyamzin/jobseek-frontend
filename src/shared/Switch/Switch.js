@@ -34,10 +34,10 @@ const AntSwitch = withStyles(() => ({
 	checked: {},
 }))(Switch);
 
-const FormControlLable = ({ isActive, setIsActive }) => {
+const FormControlLable = ({ active, onChange }) => {
 	return (
 		<FormGroup style={{ marginLeft: '15px' }}>
-			<AntSwitch checked={isActive} onChange={() => setIsActive(!isActive)} />
+			<AntSwitch checked={active} onChange={onChange} />
 		</FormGroup>
 	);
 };

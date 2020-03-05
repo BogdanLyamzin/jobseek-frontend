@@ -114,7 +114,7 @@ const FormHR = ({
 					</>
 				)}
 			</div>
-			{hidden && <Button text={t('SAVE')} click={e => handleClick(e)} />}
+			{hidden && <Button click={e => handleClick(e)}>{t('SAVE')}</Button>}
 		</div>
 	);
 };

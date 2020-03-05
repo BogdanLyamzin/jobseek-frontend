@@ -20,11 +20,11 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-const Button = ({ text, click }) => {
+const Button = ({ children, click }) => {
 	const classes = useStyles();
 	return (
 		<button onClick={click} className={classes.btn}>
-			{text}
+			{children}
 		</button>
 	);
 };

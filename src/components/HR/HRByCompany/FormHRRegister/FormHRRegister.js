@@ -60,13 +60,14 @@ const FormHRRegister = ({
 				{hidden && (
 					<div className={classes.alignCenter}>
 						<Button
-							text={t('REGISTER')}
 							click={() => {
 								if (validationStatus()) {
 									addHr({ ...values, companyId: user._id });
 								}
 							}}
-						/>
+						>
+							{t('REGISTER')}
+						</Button>
 					</div>
 				)}
 			</div>

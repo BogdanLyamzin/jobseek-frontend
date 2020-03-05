@@ -3,14 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 const font = '"Open Sans", sans-serif';
 
 const useStyles = makeStyles(theme => ({
-	root: {
-		backgroundColor: theme.palette.paper,
-		padding: '15px',
-		margin: '20px auto',
-		marginBottom: '40px',
-		maxWidth: '980px',
-	},
-
 	addCompanyMenu: {
 		display: 'flex',
 	},

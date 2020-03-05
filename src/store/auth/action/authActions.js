@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ERROR, SET_USER, LOGOUT, SUCCESS, CLEAR } from './types';
+import { ERROR, SET_USER, LOGOUT, SUCCESS, CLEAR, SET_ADMIN } from './types';
 import setAuthToken from '../../../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 
@@ -38,6 +38,15 @@ export const setCurrentUser = token => {
 	};
 };
 
+export const setCurrentAdmin = token => {
+	const encryptId = token.slice(7);
+	const id = jwt_decode(encryptId);
+	return {
+		type: SET_ADMIN,
+		payload: id,
+	};
+};
+
 export const getUser = token => {
 	if (token) {
 		const encryptId = token.slice(7);
@@ -46,14 +55,6 @@ export const getUser = token => {
 		return id;
 	} else {
 		return {};
-	}
-};
-
-export const onStart = () => dispatch => {
-	if (localStorage.getItem('token')) {
-		setAuthToken(localStorage.token);
-		dispatch(setCurrentUser(localStorage.token));
-		return;
 	}
 };
 
@@ -91,8 +92,10 @@ export const loginAdmin = (user, history) => dispatch => {
 		.then(res => {
 			if (res.data.token) {
 				const { token } = res.data;
-				localStorage.setItem('AdminToken', token);
-				setAuthToken(token);
+				localStorage.setItem('adminToken', token);
+				setAuthToken(localStorage.adminToken);
+				dispatch(setCurrentAdmin(token));
+
 				history.push('/admin');
 				return;
 			} else {

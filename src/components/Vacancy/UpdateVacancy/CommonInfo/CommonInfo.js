@@ -69,8 +69,9 @@ const CommonInfo = ({ info, saveInfo, oneVacancy }) => {
 								saveInfo({ ...values });
 							}
 						}}
-						text={t('SAVE')}
-					/>
+					>
+						{t('SAVE')}
+					</Button>
 				</div>
 			</div>
 		</div>

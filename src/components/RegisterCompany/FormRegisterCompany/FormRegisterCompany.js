@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import Paper from '@material-ui/core/Paper';
-import Container from '@material-ui/core/Container';
 
 import useStyles from './styles';
-import Title from '../../../shared/Title';
+import PageWrap from '../../../shared/PageWrap';
 import { updateCompany } from '../../../store/company/actions';
 import FormCompanyInfo from '../FormCompanyInfo/FormCompanyInfo';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutlined';
@@ -48,30 +46,27 @@ const FormRegisterCompany = ({ user, updateCompany }) => {
 	};
 
 	return (
-		<Container>
-			<Title text={t('COMPANY_PROFILE')} />
-			<Paper className={classes.root}>
-				<div className={classes.add} onClick={hideCompanyInfo}>
-					<div>{t('UPDATE')}</div>
-					<AddCircleOutlineIcon fontSize="large" />
-				</div>
-				{hidden && (
-					<>
-						<form>
-							<FormCompanyInfo
-								classes={classes}
-								values={values}
-								handleChange={handleChange}
-								uploadPhoto={selectedFile}
-								submitForm={submitForm}
-							/>
-						</form>
-						<hr className={classes.line} />
-					</>
-				)}
-				<CardCompany />
-			</Paper>
-		</Container>
+		<PageWrap title={t('COMPANY_PROFILE')}>
+			<div className={classes.add} onClick={hideCompanyInfo}>
+				<div>{t('UPDATE')}</div>
+				<AddCircleOutlineIcon fontSize="large" />
+			</div>
+			{hidden && (
+				<>
+					<form>
+						<FormCompanyInfo
+							classes={classes}
+							values={values}
+							handleChange={handleChange}
+							uploadPhoto={selectedFile}
+							submitForm={submitForm}
+						/>
+					</form>
+					<hr className={classes.line} />
+				</>
+			)}
+			<CardCompany />
+		</PageWrap>
 	);
 };
 
