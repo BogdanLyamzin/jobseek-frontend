@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import Paper from '@material-ui/core/Paper';
-import Container from '@material-ui/core/Container';
 
 import FormHR from './FormHR';
 import useStyles from './styles';
 import UpdatePhoto from './UpdatePhoto';
-import Title from '../../../shared/Title';
+import PageWrap from '../../../shared/PageWrap';
 import { updateHR } from '../../../store/hr/actions';
 import CreateOutlinedIcon from '../../../shared/CreateOutlinedIcon';
 
@@ -40,28 +38,25 @@ const HR = ({ user, updateHR }) => {
 	};
 
 	return (
-		<Container>
-			<Title text={t('MY_PROFILE')} />
-			<Paper className={classes.root}>
-				<div className={classes.hrInfo}>
-					<form className={classes.hrFlex}>
-						<CreateOutlinedIcon
-							className={`${classes.iconPenSm} ${classes.iconPen}`}
-							click={updateHRinfo}
-						/>
-						<UpdatePhoto uploadPhoto={selectedFile} classes={classes} />
-						<FormHR
-							values={values}
-							classes={classes}
-							submitForm={submitForm}
-							updateHRinfo={updateHRinfo}
-							hidden={hiddenForm}
-							handleChange={handleChange}
-						/>
-					</form>
-				</div>
-			</Paper>
-		</Container>
+		<PageWrap title={t('MY_PROFILE')}>
+			<div className={classes.hrInfo}>
+				<form className={classes.hrFlex}>
+					<CreateOutlinedIcon
+						className={`${classes.iconPenSm} ${classes.iconPen}`}
+						click={updateHRinfo}
+					/>
+					<UpdatePhoto uploadPhoto={selectedFile} classes={classes} />
+					<FormHR
+						values={values}
+						classes={classes}
+						submitForm={submitForm}
+						updateHRinfo={updateHRinfo}
+						hidden={hiddenForm}
+						handleChange={handleChange}
+					/>
+				</form>
+			</div>
+		</PageWrap>
 	);
 };
 

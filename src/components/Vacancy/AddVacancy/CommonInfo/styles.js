@@ -73,7 +73,7 @@ const useStyles = makeStyles(theme => ({
 	vacancySalaryInp: {
 		margin: '10px 0 0 15px',
 		padding: '5px',
-		border: 0,
+		border: `1px solid transparent`,
 		borderBottom: `1px solid ${colorDark}`,
 		outline: 0,
 		width: '50%',
@@ -108,6 +108,12 @@ const useStyles = makeStyles(theme => ({
 		outline: 0,
 		margin: '30px 0',
 		resize: 'none',
+		'&:hover': {
+			border: `1px solid #acadb1`,
+		},
+		'&:focus': {
+			border: `1px solid ${theme.palette.color}`,
+		},
 	},
 
 	alignCenter: {

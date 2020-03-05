@@ -183,6 +183,13 @@ const useStyles = makeStyles(theme => ({
 			color: 'black',
 		},
 	},
+
+	vacancySkillItemText: {
+		fontFamily: font,
+		fontSize: '16px',
+		lineHeight: '19px',
+		color: theme.palette.textColor,
+	},
 }));
 
 export default useStyles;

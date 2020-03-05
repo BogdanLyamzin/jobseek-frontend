@@ -53,13 +53,14 @@ const CommonInfo = ({ info, saveInfo }) => {
 				/>
 				<div className={classes.alignCenter}>
 					<Button
-						text={t('SAVE')}
 						click={() => {
 							if (validationStatus()) {
 								saveInfo({ ...values });
 							}
 						}}
-					/>
+					>
+						{t('SAVE')}
+					</Button>
 				</div>
 			</div>
 		</div>

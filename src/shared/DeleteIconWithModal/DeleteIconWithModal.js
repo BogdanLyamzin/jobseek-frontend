@@ -61,13 +61,14 @@ const DeleteIconWithModal = ({ handleDelete, text }) => {
 					<h4 id="simple-modal-title">{text}</h4>
 					<div className={classes.flex}>
 						<Button
-							text={t('DELETE')}
 							click={() => {
 								handleDelete();
 								handleClose();
 							}}
-						/>
-						<Button click={handleClose} text={t('CANCEL')} />
+						>
+							{t('DELETE')}
+						</Button>
+						<Button click={handleClose}>{t('CANCEL')}</Button>
 					</div>
 				</div>
 			</Modal>

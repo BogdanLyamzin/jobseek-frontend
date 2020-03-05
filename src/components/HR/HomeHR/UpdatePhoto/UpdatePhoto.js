@@ -1,26 +1,10 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { useDropzone } from 'react-dropzone';
 
 import UploadPhoto from '../../../../shared/UploadPhoto';
 
 const UpdatePhoto = ({ user, uploadPhoto }) => {
-	const onDrop = useCallback(
-		photo => {
-			uploadPhoto(photo);
-		},
-		[uploadPhoto],
-	);
-
-	const { getRootProps, getInputProps } = useDropzone({ onDrop });
-
-	return (
-		<UploadPhoto
-			user={user}
-			getRootProps={getRootProps}
-			getInputProps={getInputProps}
-		/>
-	);
+	return <UploadPhoto user={user} uploadPhoto={uploadPhoto} />;
 };
 
 const mapStateToProps = ({ hr }) => {

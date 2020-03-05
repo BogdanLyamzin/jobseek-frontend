@@ -1,11 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
 import Text from '../../../../../shared/Text';
 import Slider from '../../../../../shared/Slider';
 import Checkbox from '../../../../../shared/Checkbox';
 import { skillsList, englishLevel } from '../skillsList';
+import StyledSlider from '../../../../../shared/StyledSlider';
 
 const CheckboxList = ({
 	skill,
@@ -18,14 +18,13 @@ const CheckboxList = ({
 	checkboxHandleChange,
 }) => {
 	const { t } = useTranslation();
-	const valueLabelFormat = value => {
-		if (value === 0) return '<' + (value + 1);
-		else if (value === 5) return '>' + (value + 1);
-		else return value + '-' + (value + 1);
-	};
 
 	const valueLabelFormatEng = value => {
 		return englishLevel[value];
+	};
+
+	const deleteSlider = name => {
+		setCheckbox({ ...checkbox, [name]: null });
 	};
 
 	return (
@@ -44,7 +43,7 @@ const CheckboxList = ({
 										onChange={checkboxHandleChange(elem.name)}
 										value={elem.id}
 										name={elem.name}
-										checked={checkbox && checkbox[elem.name] ? true : false}
+										checked={!!(checkbox && checkbox[elem.name])}
 									/>
 								</div>
 							);
@@ -63,7 +62,7 @@ const CheckboxList = ({
 								</Text>
 							</div>
 							<div className={classes.vacancySliderFlex}>
-								<Slider
+								<StyledSlider
 									className={classes.vacancySliderSkills}
 									valueLabelFormat={valueLabelFormatEng}
 									onChange={handleChangeEng}
@@ -77,31 +76,12 @@ const CheckboxList = ({
 						{checkboxArr
 							? checkboxArr.map(elem => {
 									return (
-										<div className={classes.vacancySliderItem} key={elem.id}>
-											<div
-												style={{ marginBottom: '40px' }}
-												className={classes.vacancySkillItemText}
-											>
-												{elem.name}
-											</div>
-											<div className={classes.vacancySliderFlex}>
-												<Slider
-													className={classes.vacancySliderSkills}
-													defaultValue={0}
-													step={1}
-													max={5}
-													valueLabelDisplay="on"
-													valueLabelFormat={valueLabelFormat}
-													onChange={handleChange(elem.name, elem.id)}
-												/>
-												<DeleteOutlineOutlinedIcon
-													className={classes.vacancyIcon}
-													onClick={() =>
-														setCheckbox({ ...checkbox, [elem.name]: null })
-													}
-												/>
-											</div>
-										</div>
+										<Slider
+											key={elem.id}
+											element={elem}
+											handleChange={handleChange}
+											deleteSlider={deleteSlider}
+										/>
 									);
 							  })
 							: null}
