@@ -5,6 +5,8 @@ import { getOneCompany } from '../../store/company/actions';
 import { connect } from 'react-redux';
 import HRByCompany from '../../components/HR/HRByCompany/RegisterHR';
 import RegisterCompany from '../../components/RegisterCompany/FormRegisterCompany/FormRegisterCompany';
+import CompanyComments from '../../components/Comments/CompanyComments/Comments';
+import CandidateComments from '../../components/Comments/CandidateComments/Comments';
 
 const Page = ({ getOneCompany }) => {
 	React.useEffect(() => {
@@ -14,7 +16,9 @@ const Page = ({ getOneCompany }) => {
 	return (
 		<Switch>
 			<Route path="/company/hrs" component={HRByCompany} />
-			<Route path="/company" component={RegisterCompany} />
+			<Route exact path="/company" component={RegisterCompany} />
+			<Route path="/company/review" component={CompanyComments} />
+			<Route path="/company/candidate/review" component={CandidateComments} />
 		</Switch>
 	);
 };
