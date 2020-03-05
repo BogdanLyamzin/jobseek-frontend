@@ -22,5 +22,7 @@ const Page = ({ getOneCompany }) => {
 		</Switch>
 	);
 };
-
+// const mapStateToProps = state => ({
+// 	userID : state.auth.user._id
+// });
 export default connect(null, { getOneCompany })(Page);

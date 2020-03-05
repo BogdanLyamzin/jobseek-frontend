@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import useStyles from './styles';
@@ -7,15 +7,9 @@ import Button from '../../../../shared/Button/Button';
 import FormHRInfo from '../FormHRInfo/FormHRInfo';
 import CardHR from '../CardHR';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutlined';
-import { addHr, getHrByFilter } from '../../../../store/hr/actions';
+import { addHr } from '../../../../store/hr/actions';
 import validation from '../../../../utils/validation/hrCompany';
-const FormHRRegister = ({
-	user,
-	hidden,
-	addHr,
-	getHrByFilter,
-	updateHRInfo,
-}) => {
+const FormHRRegister = ({ user, hidden, addHr, updateHRInfo }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
 	const [values, setValues] = useState({
@@ -24,21 +18,16 @@ const FormHRRegister = ({
 		phone: '',
 		email: '',
 	});
-
 	const handleChange = event => {
 		setValues({ ...values, [event.target.name]: event.target.value });
 	};
 
-	useEffect(() => {
-		if (user) getHrByFilter(`companyId=${user._id}`);
-	}, [getHrByFilter, user]);
-
 	const validationStatus = () => {
 		return (
-			validation('name', values.name) &&
-			validation('lastName', values.lastName) &&
-			validation('email', values.email) &&
-			validation('phone', values.phone)
+			validation('name', values.name, t) &&
+			validation('lastName', values.lastName, t) &&
+			validation('email', values.email, t) &&
+			validation('phone', values.phone, t)
 		);
 	};
 
@@ -60,14 +49,15 @@ const FormHRRegister = ({
 				{hidden && (
 					<div className={classes.alignCenter}>
 						<Button
-							click={() => {
+							text={t('REGISTER')}
+							click={e => {
 								if (validationStatus()) {
 									addHr({ ...values, companyId: user._id });
+									updateHRInfo(e);
+									setValues('');
 								}
 							}}
-						>
-							{t('REGISTER')}
-						</Button>
+						/>
 					</div>
 				)}
 			</div>
@@ -79,7 +69,6 @@ const FormHRRegister = ({
 
 const mapDispatchToProps = {
 	addHr,
-	getHrByFilter,
 };
 
 const mapStateToProps = ({ company }) => {

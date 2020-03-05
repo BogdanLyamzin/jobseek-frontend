@@ -17,13 +17,13 @@ const FormCompanyInfo = ({
 
 	const validationStatus = () => {
 		return (
-			validation('companyName', values.companyName) &&
-			validation('email', values.email) &&
-			validation('country', values.country) &&
-			validation('city', values.city) &&
-			validation('facebookLink', values.facebookLink) &&
-			validation('website', values.website) &&
-			validation('description', values.description)
+			validation('companyName', values.companyName, t) &&
+			validation('email', values.email, t) &&
+			validation('country', values.country, t) &&
+			validation('city', values.city, t) &&
+			validation('facebookLink', values.facebookLink, t) &&
+			validation('website', values.website, t) &&
+			validation('description', values.description, t)
 		);
 	};
 

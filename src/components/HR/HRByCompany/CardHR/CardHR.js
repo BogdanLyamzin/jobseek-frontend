@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Container from '@material-ui/core/Container';
+import { getHrByFilter } from '../../../../store/hr/actions';
 
 import CardHRItem from '../CardHRItem/CardHRItem';
 
-function CardHR({ hrList }) {
+function CardHR({ hrList, user, getHrByFilter }) {
 	let cardList = [];
+	useEffect(() => {
+		if (user) getHrByFilter(`companyId=${user._id}`);
+	});
 
 	cardList = hrList
 		? hrList.map((elem, index) => {
@@ -22,4 +26,4 @@ const mapStateToProps = ({ company, hr }) => {
 	};
 };
 
-export default connect(mapStateToProps)(CardHR);
+export default connect(mapStateToProps, { getHrByFilter })(CardHR);

@@ -80,7 +80,6 @@ const CardHRItem = ({
 
 	const hrDelete = id => {
 		deleteHR(id);
-		document.getElementById(id).remove();
 	};
 	const { t } = useTranslation();
 
