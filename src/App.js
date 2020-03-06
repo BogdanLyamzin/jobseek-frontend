@@ -16,8 +16,9 @@ const light = createMuiTheme({
 		type: 'light',
 		color: '#3D3B69',
 		textColor: '#3D3B69',
-		backgroundColor: '#ecf1fa', //#F6F9FF
+		backgroundColor: '#ecf1fa',
 		paper: '#ffffff',
+		font: '"Open Sans", sans-serif',
 	},
 	breakpoints: {
 		values: {
@@ -38,6 +39,7 @@ const dark = createMuiTheme({
 		color: '#26a69a',
 		bgLogo: '#22c1c3',
 		paper: '#192c55',
+		font: '"Open Sans", sans-serif',
 	},
 	breakpoints: {
 		values: {

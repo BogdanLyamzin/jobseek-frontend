@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
 
 	reviewListUser: {
 		display: 'flex',
-		fontFamily: 'Open Sans, sans-serif',
+		fontFamily: theme.palette.font,
 		justifyContent: 'space-between',
 		fontSize: '16px',
 		lineHeight: '24px',
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	text: {
-		fontFamily: 'Open Sans, sans-serif',
+		fontFamily: theme.palette.font,
 		fontSize: '14px',
 		lineHeight: '24px',
 		letterSpacing: '0.15px',
@@ -75,7 +75,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	textarea: {
-		fontFamily: 'Open Sans, sans-serif',
+		fontFamily: theme.palette.font,
 		fontSize: '14px',
 		lineHeight: '24px',
 		height: '100px',

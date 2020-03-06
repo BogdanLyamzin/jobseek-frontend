@@ -1,7 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const font = '"Open Sans", sans-serif';
-
 const useStyles = makeStyles(theme => ({
 	addvacancy: {
 		padding: '56px 0 40px 0',
@@ -19,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	addvacancyIsActive: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '10px',
 		lineHeight: '14px',
 		color: theme.palette.color,
@@ -37,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 	addvacancyMenuLink: {
 		display: 'inline-block',
 		textDecoration: 'none',
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontWeight: 'bold',
 		fontSize: '14px',
 		color: theme.palette.color,

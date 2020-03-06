@@ -1,7 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const font = '"Open Sans", sans-serif';
-
 const useStyles = makeStyles(theme => ({
 	hrVacancyRoutes: {
 		padding: '0 50px',
@@ -40,7 +38,7 @@ const useStyles = makeStyles(theme => ({
 		textDecoration: 'none',
 		fontWeight: 'bold',
 		fontSize: '14px',
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		color: theme.palette.color,
 		display: 'inline-block',
 		width: '100%',

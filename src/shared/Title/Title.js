@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
 	title: {
-		fontFamily: '"Open Sans", sans-serif',
+		fontFamily: theme.palette.font,
 		fontSize: '24px',
 		color: theme.palette.textColor,
 		[theme.breakpoints.up('sm')]: {

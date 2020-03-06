@@ -101,5 +101,13 @@
   "SEE_MORE": "See more",
   "CANCEL": "Cancel",
   "DELETE": "Delete",
-  "MY_VACANCY": "My vacancy"
+  "MY_VACANCY": "My vacancy",
+  "PENDING": "Pending",
+  "ACCEPTED": "Accepted",
+  "INVITED": "Invited",
+  "SOCIAL_LINK": "Social link",
+  "CONTACT": "Contacts",
+  "YEARS": "years",
+  "RESPOND": "Respond",
+  "CONFIRM": "Confirm"
 }

@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 
 	addphoto: {
 		marginLeft: '8px',
-		fontFamily: '"Open Sans", sans-serif',
+		fontFamily: theme.palette.font,
 		fontSize: '14px',
 	},
 }));

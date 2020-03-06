@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
 	btn: {
-		fontFamily: '"Open Sans", sans-serif',
+		fontFamily: theme.palette.font,
 		fontSize: '16px',
 		color: '#3D3B69',
 		padding: '13px 40px',
