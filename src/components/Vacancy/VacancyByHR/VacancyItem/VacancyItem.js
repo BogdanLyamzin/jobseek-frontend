@@ -17,7 +17,6 @@ const VacancyItem = ({ elem, deleteVacancy }) => {
 
 	const deleteV = id => {
 		deleteVacancy(id);
-		document.getElementById(id).remove();
 	};
 
 	return (

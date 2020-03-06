@@ -39,6 +39,7 @@ const useStyles = makeStyles(theme => ({
 		fontSize: 16,
 		fontWeight: 500,
 		marginTop: 30,
+		paddingRight: 20,
 	},
 }));
 
@@ -71,21 +72,19 @@ const VacancyByCompanyItem = ({
 							{t('CATEGORY')}: {category}{' '}
 						</div>
 						<div>
+							{t('SKILLS')}: {skills.map(elem => elem.name).join(', ')}
+						</div>
+						<div>
 							{t('ENGLISH_LEVEL')}: {englishLevel}
 						</div>
 						<div>
-							{t('SKILLS')}: {skills.map(elem => elem.name).join(', ')}
+							<div>{employmentType}</div>
+							<div> {active}</div>
+						</div>
+						<div>
+							{t('SALARY')}: {salary}
 						</div>
 					</div>
-					<div>
-						<div>{employmentType}</div>
-						<div> {active}</div>
-					</div>
-
-					<div>
-						{t('SALARY')}: {salary}
-					</div>
-
 					<div>
 						<div>
 							{country}, {city}
@@ -95,10 +94,8 @@ const VacancyByCompanyItem = ({
 						</div>
 					</div>
 				</div>
-				<div>
-					<div className={classes.description}>{t('VACANCY_DESCRIPTION')}:</div>
-					{description}
-				</div>
+				<div className={classes.description}>{t('VACANCY_DESCRIPTION')}:</div>
+				<div>{description}</div>
 			</CardContent>
 		</Card>
 	);
