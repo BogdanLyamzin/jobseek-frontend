@@ -20,6 +20,7 @@ import {
 } from '../../store/theme/action/themeActions';
 import CompanyLinks from './CompanyLinks';
 import CandidateLinks from './CandidateLinks';
+import LogOut from '../LogOut';
 const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1,
@@ -79,12 +80,17 @@ function ButtonAppBar({ thema, changeToLight, changeToDark, isAuthenticated }) {
 							alt="pic"
 						/>
 					</IconButton>
-					<Link
-						to={isAuthenticated ? '/logout' : '/login'}
-						style={{ textDecoration: 'none', color: theme.palette.color }}
-					>
-						{isAuthenticated ? t('EXIT') : t('ENTER')}
-					</Link>
+					{isAuthenticated ? (
+						<LogOut />
+					) : (
+						<Link
+							to="/login"
+							style={{ textDecoration: 'none', color: theme.palette.color }}
+						>
+							{t('ENTER')}
+						</Link>
+					)}
+
 					<Avatar />
 				</Box>
 			</Container>

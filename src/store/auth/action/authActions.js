@@ -115,12 +115,13 @@ export const loginAdmin = (user, history) => dispatch => {
 		});
 };
 
-export const logOut = () => dispatch => {
+export const logOut = history => dispatch => {
 	dispatch({
 		type: LOGOUT,
 	});
 	setAuthToken();
 	localStorage.removeItem('token');
+	history.push('/login');
 };
 
 export const emailConfirm = (data, history) => dispatch => {
