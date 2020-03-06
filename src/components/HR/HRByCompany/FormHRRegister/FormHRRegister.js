@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import useStyles from './styles';
+import useStyles from '../styles';
 import { useTranslation } from 'react-i18next';
 import Button from '../../../../shared/Button/Button';
 import FormHRInfo from '../FormHRInfo/FormHRInfo';
@@ -62,7 +62,6 @@ const FormHRRegister = ({ user, hidden, addHr, updateHRInfo }) => {
 					</div>
 				)}
 			</div>
-
 			<CardHR />
 		</div>
 	);

@@ -6,7 +6,6 @@ import { getOneCompany } from '../../../store/company/actions';
 import getDate from '../../../utils/getDate';
 
 const useStyles = makeStyles(theme => ({
-	root: {},
 	card: {
 		padding: '0 50px',
 		marginBottom: 20,
@@ -73,7 +72,7 @@ function CardCompany({ user, getOneCompany }) {
 						</div>
 					</div>
 					<div className={classes.info}>
-						<div className={classes.contacts}>
+						<div>
 							<div>
 								{t('MAIL')}: {user.email}
 							</div>
