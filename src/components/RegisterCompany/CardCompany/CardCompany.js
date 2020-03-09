@@ -6,7 +6,6 @@ import { getOneCompany } from '../../../store/company/actions';
 import getDate from '../../../utils/getDate';
 
 const useStyles = makeStyles(theme => ({
-	root: {},
 	card: {
 		padding: '0 50px',
 		marginBottom: 20,
@@ -54,13 +53,13 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-function CardCompany({ user, getOneCompany }) {
+function CardCompany({ user, getOneCompany, userId }) {
 	const classes = useStyles();
 	const { t } = useTranslation();
 
 	useEffect(() => {
-		getOneCompany('5e3c343c6f90fc2d0467aef8');
-	}, [getOneCompany]);
+		getOneCompany(userId);
+	}, [getOneCompany, userId]);
 
 	return (
 		<>
@@ -73,7 +72,7 @@ function CardCompany({ user, getOneCompany }) {
 						</div>
 					</div>
 					<div className={classes.info}>
-						<div className={classes.contacts}>
+						<div>
 							<div>
 								{t('MAIL')}: {user.email}
 							</div>
@@ -87,7 +86,7 @@ function CardCompany({ user, getOneCompany }) {
 
 						<div>
 							<div>
-								{user.city}, {user.country}{' '}
+								{user.city}, {user.country}
 							</div>
 							<div>
 								{t('REGISTERED')}: {getDate(user.date)}
@@ -108,9 +107,10 @@ function CardCompany({ user, getOneCompany }) {
 const mapDispatchToProps = {
 	getOneCompany,
 };
-const mapStateToProps = ({ company }) => {
+const mapStateToProps = ({ company, auth }) => {
 	return {
 		user: company.company,
+		userId: auth.user._id,
 	};
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CardCompany);

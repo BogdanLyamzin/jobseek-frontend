@@ -26,7 +26,6 @@ const RegisterHR = () => {
 					{t('HR_MANAGERS')}
 				</Link>
 			</div>
-
 			<div className={classes.addCompanyRoutes}>
 				<Switch>
 					<Route exact path="/company/hrs">
