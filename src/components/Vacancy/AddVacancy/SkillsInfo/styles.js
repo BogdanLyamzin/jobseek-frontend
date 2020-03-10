@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const font = '"Open Sans", sans-serif';
 const colorDark = '#E6EBFF';
 const flexBetween = {
 	display: 'flex',
@@ -13,7 +12,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	vacancyKey: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '14px',
 		lineHeight: '19px',
 		color: '#00B395',
@@ -42,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 
 	vacancySkillItemSelect: {
 		width: '80%',
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '17px',
 		color: 'rgb(48, 46, 80)',
 		[theme.breakpoints.down(830)]: {
@@ -70,7 +69,7 @@ const useStyles = makeStyles(theme => ({
 	vacancySkillItemLink: {
 		padding: '10px',
 		display: 'inline-block',
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		lineHeight: '19px',
 		color: theme.palette.textColor,
 		textDecoration: 'none',
@@ -83,7 +82,7 @@ const useStyles = makeStyles(theme => ({
 		width: '80%',
 		border: 0,
 		outline: 0,
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '17px',
 		lineHeight: '25px',
 		color: 'rgb(48, 46, 80)',
@@ -185,7 +184,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	vacancySkillItemText: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '16px',
 		lineHeight: '19px',
 		color: theme.palette.textColor,

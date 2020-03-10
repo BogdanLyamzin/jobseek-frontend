@@ -44,7 +44,11 @@ const CandidateByVacancy = ({
 			<HRVacancyMenu classes={classes} id={id} />
 			<div className={classes.hrVacancyRoutes}>
 				<Switch>
-					<Route exact path="/hr/vacancy/:id" component={CandidateList} />
+					<Route
+						exact
+						path="/hr/vacancy/:id"
+						render={() => <CandidateList id={id} />}
+					/>
 					<Route path="/hr/vacancy/:id/sent" component={SentOffersList} />
 					<Route
 						path="/hr/vacancy/:id/received"

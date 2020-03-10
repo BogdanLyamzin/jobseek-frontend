@@ -40,7 +40,9 @@ const VacancyItem = ({ elem, deleteVacancy }) => {
 				</div>
 			</div>
 			<div className={classes.vacancyFlex}>
-				<Text className={classes.vacancyName}>{elem.vacancyName}</Text>
+				<Text className={classes.vacancyName}>
+					{elem.vacancyName.vacancyName}
+				</Text>
 			</div>
 			<Text className={`${classes.vacancyDate} ${classes.vacancyFlex}`}>
 				{t('SKILLS')}: {elem.skills.map(s => s.name).join(', ')}

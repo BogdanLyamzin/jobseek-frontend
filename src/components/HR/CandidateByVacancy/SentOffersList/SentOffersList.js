@@ -3,50 +3,33 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+import OneCv from './GetOne';
 import Text from '../../../../shared/Text';
 import useStyles from '../CandidateList/styles';
-import Avatar from '../../../../shared/UserImg';
-import getDate from '../../../../utils/getDate';
 
-const SentOffersList = ({ candidates }) => {
+const SentOffersList = ({ vacancy }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
 
 	return (
 		<>
-			{(candidates && candidates.length === 0) || !candidates ? (
+			{(vacancy && vacancy.sent.length === 0) || !vacancy ? (
 				<Text>{t('NO_CANDIDATES')}</Text>
 			) : null}
-			{candidates &&
-				candidates.map(elem => {
+			{vacancy &&
+				vacancy.sent.map(elem => {
 					return (
 						<Link
-							to={`/hr/candidate/${elem._id}`}
-							key={elem._id}
+							to={`/hr/candidate/sent|${elem.cvId}|${elem.vacancyId}`}
+							key={elem.date}
 							className={classes.candidate}
 						>
-							<div className={classes.candidateFlexBetween}>
-								<Text className={classes.candidateVacancyName}>
-									{elem.vacancyName + ' vacancyName'}
-								</Text>
-								<Text className={classes.candidateOfferCheck}>
-									{elem.offer ? 'Прийнято' : 'В очікуванні'}
-								</Text>
-							</div>
-							<Text className={classes.candidateSkills70}>
-								{t('SKILLS')}: {elem.cvSkill.map(a => a.name).join(', ')}
-							</Text>
-							<div className={classes.candidateFlexBetween}>
-								<div className={classes.candidateFlex}>
-									<Avatar className={classes.candidatePhoto} />
-									<Text className={classes.candidateName}>
-										{t('SEE_MORE')}...
-									</Text>
-								</div>
-								<Text className={classes.candidateOfferDate}>
-									Запрошено {getDate(elem.date)}
-								</Text>
-							</div>
+							<OneCv
+								classes={classes}
+								url={elem.cvId}
+								date={elem.date}
+								status={elem.status}
+							/>
 						</Link>
 					);
 				})}
@@ -56,7 +39,7 @@ const SentOffersList = ({ candidates }) => {
 
 const mapStateToProps = ({ vacancy }) => {
 	return {
-		candidates: vacancy.candidates,
+		vacancy: vacancy.vacancy,
 	};
 };
 

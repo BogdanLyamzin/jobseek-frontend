@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	text: {
-		fontFamily: '"Open Sans", sans-sarif',
+		fontFamily: theme.palette.font,
 		fontSize: '16px',
 		lineHeight: '19px',
 		marginBottom: '40px',

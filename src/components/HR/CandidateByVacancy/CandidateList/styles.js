@@ -1,7 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const font = '"Open Sans", sans-serif';
-
 const useStyles = makeStyles(theme => ({
 	candidate: {
 		borderBottom: '2px solid #E6EBFF',
@@ -21,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '14px',
 		color: theme.palette.textColor,
 		marginBottom: '15px',
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 	},
 
 	candidateSkills: {
@@ -29,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 		lineHeight: '21px',
 		color: theme.palette.textColor,
 		marginBottom: '18px',
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 	},
 
 	candidateFlex: {
@@ -54,7 +52,7 @@ const useStyles = makeStyles(theme => ({
 		lineHeight: '16px',
 		color: theme.palette.color,
 		marginLeft: '10px',
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 	},
 
 	candidateSkills70: {
@@ -63,17 +61,17 @@ const useStyles = makeStyles(theme => ({
 		lineHeight: '21px',
 		color: theme.palette.textColor,
 		marginBottom: '18px',
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 	},
 
 	candidateOfferCheck: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '10px',
 		color: '#00B395',
 	},
 
 	candidateOfferDate: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '12px',
 		fontWeight: 'bold',
 		color: theme.palette.color,

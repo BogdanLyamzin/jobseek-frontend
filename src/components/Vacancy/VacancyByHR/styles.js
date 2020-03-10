@@ -1,7 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const font = '"Open Sans", sans-serif';
-
 const useStyles = makeStyles(theme => ({
 	vacancyList: {
 		width: '100%',
@@ -30,20 +28,20 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	vacancyName: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontWeight: 'bold',
 		fontSize: '14px',
 		lineHeight: '19px',
 	},
 
 	vacancyCountry: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '12px',
 		lineHeight: '16px',
 	},
 
 	vacancyDate: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '12px',
 		lineHeight: '16px',
 	},
@@ -58,7 +56,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	link: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		color: theme.palette.color,
 		fontWeight: 'bold',
 		fontSize: '16px',
@@ -70,6 +68,38 @@ const useStyles = makeStyles(theme => ({
 
 	marginRight: {
 		marginRight: 7,
+	},
+
+	hrVacancy: {
+		padding: '10px 50px',
+		[theme.breakpoints.down(1200)]: {
+			padding: '10px 20px',
+		},
+		[theme.breakpoints.down(900)]: {
+			padding: '0 10px',
+		},
+		[theme.breakpoints.down(550)]: {
+			padding: 0,
+		},
+	},
+
+	linkAddVacancy: {
+		display: 'flex',
+		width: 180,
+		alignItems: 'center',
+		textDecoration: 'none',
+		fontWeight: 'bold',
+		fontSize: '14px',
+		fontFamily: theme.palette.font,
+		color: '#00B395',
+		'&:hover': {
+			color: 'rgb(8, 243, 204)',
+			textDecoration: 'none',
+		},
+	},
+
+	linkAddVacancyDark: {
+		color: theme.palette.textColor,
 	},
 }));
 
