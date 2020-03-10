@@ -1,47 +1,7 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import { makeStyles } from '@material-ui/core/styles';
-import CardContent from '@material-ui/core/CardContent';
+import useStyles from '../styles';
 import { useTranslation } from 'react-i18next';
 import getDate from '../../../../utils/getDate';
-
-const useStyles = makeStyles(theme => ({
-	root: {},
-	card: {
-		width: '100%',
-		marginBottom: 20,
-	},
-	vacancyName: {
-		display: 'flex',
-		justifyContent: 'center',
-		fontSize: 25,
-		fontWeight: 'bold',
-		marginBottom: 30,
-		[theme.breakpoints.down(900)]: {
-			flexDirection: 'column',
-			alignItems: 'center',
-		},
-	},
-
-	info: {
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-		fontSize: 16,
-		fontWeight: 500,
-		[theme.breakpoints.down(900)]: {
-			flexDirection: 'column',
-			alignItems: 'center',
-		},
-	},
-	description: {
-		fontSize: 16,
-		fontWeight: 500,
-		marginTop: 30,
-		paddingRight: 20,
-	},
-}));
 
 const VacancyByCompanyItem = ({
 	_id,
@@ -53,7 +13,6 @@ const VacancyByCompanyItem = ({
 	skills,
 	category,
 	employmentType,
-	description,
 	active,
 	date,
 }) => {
@@ -61,11 +20,9 @@ const VacancyByCompanyItem = ({
 	const { t } = useTranslation();
 
 	return (
-		<Card className={classes.card} id={_id}>
-			<CardContent>
-				<div className={classes.vacancyName}>
-					<div>{vacancyName}</div>
-				</div>
+		<div className={classes.vacancyCard}>
+			<div className={classes.vacancyName}>
+				{vacancyName}
 				<div className={classes.info}>
 					<div>
 						<div>
@@ -94,10 +51,8 @@ const VacancyByCompanyItem = ({
 						</div>
 					</div>
 				</div>
-				<div className={classes.description}>{t('VACANCY_DESCRIPTION')}:</div>
-				<div>{description}</div>
-			</CardContent>
-		</Card>
+			</div>
+		</div>
 	);
 };
 export default VacancyByCompanyItem;

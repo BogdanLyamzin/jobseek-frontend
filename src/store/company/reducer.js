@@ -10,9 +10,7 @@ const initialState = {
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case SUCCESS_AXIOS:
-			return {
-				company: action.payload,
-			};
+			return { ...state, company: action.payload };
 
 		case ERROR:
 			return {

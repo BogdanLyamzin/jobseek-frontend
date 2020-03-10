@@ -1,12 +1,12 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { useTranslation } from 'react-i18next';
-import Input from '../../../shared/Input/Input';
-import UpdatePhotoDropzone from '../UpdatePhotoDropzone/UpdatePhotoDropzone';
-import Button from '../../../shared/Button';
-// import validation from '../../../utils/validation/hrCompany';
+import Input from '../../shared/Input/Input';
+import UpdatePhotoDropzone from '../RegisterCompany/UpdatePhotoDropzone/UpdatePhotoDropzone';
+import Button from '../../shared/Button/Button';
+import validation from '../../utils/validation/hrCompany';
 
-const FormCompanyInfo = ({
+const NewCompanyForm = ({
 	values,
 	classes,
 	handleChange,
@@ -15,17 +15,17 @@ const FormCompanyInfo = ({
 }) => {
 	const { t } = useTranslation();
 
-	// const validationStatus = () => {
-	// 	return (
-	// 		validation('companyName', values.companyName, t) &&
-	// 		validation('email', values.email, t) &&
-	// 		validation('country', values.country, t) &&
-	// 		validation('city', values.city, t) &&
-	// 		validation('facebookLink', values.facebookLink, t) &&
-	// 		validation('website', values.website, t) &&
-	// 		validation('description', values.description, t)
-	// 	);
-	// };
+	const validationStatus = () => {
+		return (
+			validation('companyName', values.companyName, t) &&
+			validation('email', values.email, t) &&
+			validation('country', values.country, t) &&
+			validation('city', values.city, t) &&
+			validation('facebookLink', values.facebookLink, t) &&
+			validation('website', values.website, t) &&
+			validation('description', values.description, t)
+		);
+	};
 
 	return (
 		<Grid container>
@@ -113,11 +113,12 @@ const FormCompanyInfo = ({
 					<Button
 						click={e => {
 							e.preventDefault();
-
-							submitForm();
+							if (validationStatus()) {
+								submitForm();
+							}
 						}}
 					>
-						{t('UPDATE')}
+						{t('REGISTER')}
 					</Button>
 				</div>
 			</div>
@@ -125,4 +126,4 @@ const FormCompanyInfo = ({
 	);
 };
 
-export default FormCompanyInfo;
+export default NewCompanyForm;
