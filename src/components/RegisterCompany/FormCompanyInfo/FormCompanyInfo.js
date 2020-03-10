@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Input from '../../../shared/Input/Input';
 import UpdatePhotoDropzone from '../UpdatePhotoDropzone/UpdatePhotoDropzone';
 import Button from '../../../shared/Button';
-import validation from '../../../utils/validation/hrCompany';
+// import validation from '../../../utils/validation/hrCompany';
 
 const FormCompanyInfo = ({
 	values,
@@ -15,17 +15,17 @@ const FormCompanyInfo = ({
 }) => {
 	const { t } = useTranslation();
 
-	const validationStatus = () => {
-		return (
-			validation('companyName', values.companyName, t) &&
-			validation('email', values.email, t) &&
-			validation('country', values.country, t) &&
-			validation('city', values.city, t) &&
-			validation('facebookLink', values.facebookLink, t) &&
-			validation('website', values.website, t) &&
-			validation('description', values.description, t)
-		);
-	};
+	// const validationStatus = () => {
+	// 	return (
+	// 		validation('companyName', values.companyName, t) &&
+	// 		validation('email', values.email, t) &&
+	// 		validation('country', values.country, t) &&
+	// 		validation('city', values.city, t) &&
+	// 		validation('facebookLink', values.facebookLink, t) &&
+	// 		validation('website', values.website, t) &&
+	// 		validation('description', values.description, t)
+	// 	);
+	// };
 
 	return (
 		<Grid container>
@@ -113,9 +113,8 @@ const FormCompanyInfo = ({
 					<Button
 						click={e => {
 							e.preventDefault();
-							if (validationStatus()) {
-								submitForm();
-							}
+
+							submitForm();
 						}}
 					>
 						{t('UPDATE')}
