@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
 		fontWeight: 'bold',
 		fontSize: '16px',
 		color: theme.palette.color,
-		fontFamily: '"Open Sans", sans-serif',
+		fontFamily: theme.palette.font,
 		border: '1px solid #6d6d6e',
 		borderRadius: '20px',
 		'&:hover': {

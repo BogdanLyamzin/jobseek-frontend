@@ -36,6 +36,7 @@
         "consistent-return":"off",
         "max-len": ["warn", 130],
         "no-array-constructor":"error",
-        "prefer-destructuring":"error"
+        "prefer-destructuring":"error",
+        "react-hooks/exhaustive-deps": "off"
     }
 }

@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
-import { sphereList } from '../skillsList';
 import Text from '../../../../../shared/Text';
+import { getAllSpheres } from '../../../../../store/admin/actions/sphereActions';
 
-const SphereList = ({ skill, setSkill, handleClickSkill, classes }) => {
+const SphereList = ({
+	skill,
+	sphereList,
+	setSkill,
+	handleClickSkill,
+	classes,
+	getAllSpheres,
+}) => {
+	const [spheres, setSphere] = useState(null);
 	const { t } = useTranslation();
+	useEffect(() => {
+		getAllSpheres();
+	}, [getAllSpheres]);
+
+	useEffect(() => {
+		setSphere(sphereList);
+	}, [sphereList]);
 
 	return (
 		<div>
 			<div className={classes.vacancySkillFlex}>
 				<Text className={classes.vacancyKey}>{t('SPHERE')}*</Text>
 				<Autocomplete
-					options={sphereList}
-					getOptionLabel={option => option.title}
+					options={spheres}
+					getOptionLabel={option => option.sphereName}
 					autoComplete
 					renderInput={params => <TextField {...params} fullWidth />}
 					value={skill.sphere}
@@ -26,25 +42,35 @@ const SphereList = ({ skill, setSkill, handleClickSkill, classes }) => {
 				/>
 			</div>
 			<div className={classes.vacancySkillFlex}>
-				{sphereList.map(elem => {
-					return (
-						<div className={classes.vacancySkillItem} key={elem.title}>
-							<a
-								href="nothing"
-								className={classes.vacancySkillItemLink}
-								onClick={e => {
-									e.preventDefault();
-									handleClickSkill('sphere', elem);
-								}}
-							>
-								{elem.title}
-							</a>
-						</div>
-					);
-				})}
+				{spheres &&
+					spheres.map(elem => {
+						return (
+							<div className={classes.vacancySkillItem} key={elem._id}>
+								<a
+									href="nothing"
+									className={classes.vacancySkillItemLink}
+									onClick={e => {
+										e.preventDefault();
+										handleClickSkill('sphere', {
+											_id: elem._id,
+											sphereName: elem.sphereName,
+										});
+									}}
+								>
+									{elem.sphereName}
+								</a>
+							</div>
+						);
+					})}
 			</div>
 		</div>
 	);
 };
 
-export default SphereList;
+const mapStateToProps = ({ admin }) => {
+	return {
+		sphereList: admin.sphere,
+	};
+};
+
+export default connect(mapStateToProps, { getAllSpheres })(SphereList);

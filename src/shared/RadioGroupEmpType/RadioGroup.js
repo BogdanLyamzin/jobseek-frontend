@@ -4,9 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Radio from '../Radio';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
 	label: {
-		fontFamily: '"Open Sans", sans-serif',
+		fontFamily: theme.palette.font,
 		fontSize: '16px',
 		lineHeight: '24px',
 		color: '#757575',

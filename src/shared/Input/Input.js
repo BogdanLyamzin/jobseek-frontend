@@ -5,6 +5,7 @@ const useStyles = makeStyles(theme => ({
 	input: {
 		outline: 'none',
 		boxShadow: 'inset 0 0 0 50px #fff',
+		fontFamily: theme.palette.font,
 		textFillColor: '#000',
 		'&:hover': {
 			border: `1px solid #acadb1`,

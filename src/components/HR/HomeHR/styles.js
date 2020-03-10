@@ -1,7 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const font = '"Open Sans", sans-serif';
-
 const useStyles = makeStyles(theme => ({
 	hrInfo: {
 		padding: '110px 95px 55px 95px',
@@ -43,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	hrName: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontWeight: 'bold',
 		fontSize: '16px',
 		lineHeight: '19px',
@@ -55,7 +53,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	hrProp: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '16px',
 		lineHeight: '19px',
 		color: theme.palette.textColor,
@@ -79,7 +77,6 @@ const useStyles = makeStyles(theme => ({
 		border: '1px solid #E6EBFF',
 		boxSizing: 'border-box',
 		borderRadius: '8px',
-		fontFamily: font,
 		fontSize: '14px',
 		lineHeight: '19px',
 		color: '#3D3B69',
@@ -91,7 +88,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	hrKey: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '14px',
 		lineHeight: '19px',
 		color: '#00B395',
