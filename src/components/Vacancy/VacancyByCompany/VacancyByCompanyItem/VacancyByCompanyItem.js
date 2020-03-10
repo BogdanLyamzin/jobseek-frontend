@@ -1,5 +1,5 @@
 import React from 'react';
-import useStyles from '../../VacancyByHR/styles';
+import useStyles from '../styles';
 import { useTranslation } from 'react-i18next';
 import getDate from '../../../../utils/getDate';
 

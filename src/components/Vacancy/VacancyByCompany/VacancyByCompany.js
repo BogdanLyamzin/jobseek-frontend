@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import VacancyByCompanyItem from './VacancyByCompanyItem/VacancyByCompanyItem';
 import { getVacancyByFilter } from '../../../store/vacancy/actions';
-import useStyles from '../VacancyByHR/styles';
+import useStyles from './styles';
 
 function VacancyByCompany({ vacancy, getVacancyByFilter, user }) {
 	const classes = useStyles();
