@@ -8,7 +8,7 @@ import Text from '../../../../shared/Text';
 import Avatar from '../../../../shared/UserImg';
 import getDate from '../../../../utils/getDate';
 
-const CandidateList = ({ candidates }) => {
+const CandidateList = ({ candidates, id }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
 
@@ -21,12 +21,12 @@ const CandidateList = ({ candidates }) => {
 				candidates.map(elem => {
 					return (
 						<Link
-							to={`/hr/candidate/${elem._id}`}
+							to={`/hr/candidate/common|${elem._id}|${id}`}
 							key={elem._id}
 							className={classes.candidate}
 						>
 							<Text className={classes.candidateVacancyName}>
-								{elem.vacancyName + ' vacancyName'}
+								{t('VACANCY') + ': ' + elem.vacancyName}
 							</Text>
 							<Text className={classes.candidateSkills}>
 								{t('SKILLS')}: {elem.cvSkill.map(a => a.name).join(', ')}

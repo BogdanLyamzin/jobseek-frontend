@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const font = '"Open Sans", sans-serif';
 const colorDark = '#3D3B69';
 const flexBetween = {
 	display: 'flex',
@@ -26,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 		fontWeight: 'bold',
 		fontSize: '16px',
 		color: theme.palette.textColor,
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		[theme.breakpoints.down(450)]: {
 			fontSize: '14px',
 		},
@@ -51,7 +50,7 @@ const useStyles = makeStyles(theme => ({
 	candidateDate: {
 		marginRight: '30px',
 		fontSize: '12px',
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		'&:last-child': {
 			marginRight: 0,
 			textDecoration: 'none',
@@ -99,17 +98,17 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	candidateName: {
-		fontSize: '16px',
+		fontSize: '20px',
 		lineHeight: '22px',
 		color: theme.palette.textColor,
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 	},
 
 	candidateLocation: {
-		fontSize: '10px',
+		fontSize: '12px',
 		lineHeight: '21px',
 		color: theme.palette.textColor,
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 	},
 
 	candidateBackgroundFlex: {
@@ -137,7 +136,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	candidateKey: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '14px',
 		lineHeight: '16px',
 		letterSpacing: '0.4px',
@@ -149,7 +148,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	candidateProperty: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '16px',
 		lineHeight: '24px',
 		letterSpacing: '0.15px',
@@ -157,7 +156,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	candidateField: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '16px',
 		letterSpacing: '0.4px',
 		color: '#6D64FF',
@@ -192,7 +191,7 @@ const useStyles = makeStyles(theme => ({
 
 	candidateBtn: {
 		borderRadius: '28px',
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '16px',
 		color: colorDark,
 		border: 0,

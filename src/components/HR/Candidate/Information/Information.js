@@ -1,36 +1,41 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
-const Information = ({ classes }) => {
+import Text from '../../../../shared/Text';
+
+const Information = ({ classes, candidate }) => {
+	const { t } = useTranslation();
 	return (
 		<div className={classes.candidateBackground}>
-			<div className={classes.candidateField}>Контакти</div>
+			<Text className={classes.candidateField}>{t('CONTACT')}</Text>
 			<div className={classes.candidateBackgroundFlex}>
 				<div className={classes.candidateBackgroundFooter}>
 					<div className={classes.candidateInfoFlex}>
-						<div
+						<Text
 							className={`${classes.candidateKey} ${classes.candidateInfoItem}`}
 						>
-							e-mail:
-						</div>
-						<div
+							{t('MAIL')}:
+						</Text>
+						<Text
 							className={`${classes.candidateProperty} ${classes.candidateInfoItem}`}
 						>
-							i.orlov@gmail.com
-						</div>
+							{candidate ? candidate.email : ''}
+						</Text>
 					</div>
 				</div>
 				<div className={classes.candidateBackgroundFooter}>
 					<div className={classes.candidateInfoFlex}>
-						<div
+						<Text
 							className={`${classes.candidateKey} ${classes.candidateInfoItem}`}
 						>
-							Phone:
-						</div>
-						<div
+							{t('PHONE')}:
+						</Text>
+						<Text
 							className={`${classes.candidateProperty} ${classes.candidateInfoItem}`}
 						>
-							067 25 87 574
-						</div>
+							{candidate ? candidate.phone : ''}
+						</Text>
 					</div>
 				</div>
 			</div>
@@ -38,4 +43,10 @@ const Information = ({ classes }) => {
 	);
 };
 
-export default Information;
+const mapStateToProps = ({ candidate }) => {
+	return {
+		candidate: candidate.user,
+	};
+};
+
+export default connect(mapStateToProps)(Information);

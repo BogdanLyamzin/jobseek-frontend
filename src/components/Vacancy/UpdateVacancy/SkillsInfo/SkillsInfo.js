@@ -12,9 +12,8 @@ import objToArr from '../../../../utils/transformType/objToArr';
 import arrToObj from '../../../../utils/transformType/arrToObj';
 import SphereList from '../../AddVacancy/SkillsInfo/SphereList';
 import { updateVacancy } from '../../../../store/vacancy/actions';
+import VacancyName from '../../AddVacancy/SkillsInfo/VacancyName';
 import ProfessionList from '../../AddVacancy/SkillsInfo/ProfessionList';
-
-import { sphereList } from './skillsList'; //TEST
 
 const SkillsInfo = ({ id, firstForm, oneVacancy, updateVacancy }) => {
 	const classes = useStyles();
@@ -22,20 +21,20 @@ const SkillsInfo = ({ id, firstForm, oneVacancy, updateVacancy }) => {
 	const [skill, setSkill] = useState({
 		sphere: null,
 		profession: null,
-		vacancyName: '',
+		vacancyName: null,
 		englishLevel: 'Нет',
-		category: '',
+		category: null,
 	});
 	const [checkbox, setCheckbox] = useState(null);
 	const [checkboxArr, setCheckboxArr] = useState(null);
 
 	useEffect(() => {
 		setSkill({
-			sphere: oneVacancy ? sphereList[0] : '',
-			category: oneVacancy ? oneVacancy.category : '',
-			profession: oneVacancy ? oneVacancy.profession : '',
-			vacancyName: oneVacancy ? oneVacancy.vacancyName : '',
-			englishLevel: oneVacancy ? oneVacancy.englishLevel : '',
+			sphere: oneVacancy && oneVacancy.sphere,
+			category: oneVacancy && oneVacancy.category,
+			profession: oneVacancy && oneVacancy.profession,
+			vacancyName: oneVacancy && oneVacancy.vacancyName,
+			englishLevel: oneVacancy && oneVacancy.englishLevel,
 		});
 		setCheckbox(oneVacancy ? arrToObj(oneVacancy.skills) : null);
 	}, [oneVacancy]);
@@ -76,7 +75,7 @@ const SkillsInfo = ({ id, firstForm, oneVacancy, updateVacancy }) => {
 	const update = () => {
 		const body = {
 			...firstForm,
-			sphere: skill.sphere.title,
+			sphere: skill.sphere,
 			vacancyName: skill.vacancyName,
 			englishLevel: skill.englishLevel,
 			profession: skill.profession,
@@ -116,6 +115,7 @@ const SkillsInfo = ({ id, firstForm, oneVacancy, updateVacancy }) => {
 				setSkill={setSkill}
 				handleClickSkill={handleClickSkill}
 			/>
+			<VacancyName skill={skill} classes={classes} setSkill={setSkill} />
 			<Category skill={skill} classes={classes} setSkill={setSkill} />
 			<ChackboxList
 				skill={skill}

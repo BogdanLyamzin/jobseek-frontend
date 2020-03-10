@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const font = '"Open Sans", sans-serif';
 const colorDark = '#E6EBFF';
 
 const useStyles = makeStyles(theme => ({
@@ -13,7 +12,7 @@ const useStyles = makeStyles(theme => ({
 
 	vacancyLocation: {
 		display: 'flex',
-		justifyContent: 'space-between',
+		justifyContent: 'space-around',
 		[theme.breakpoints.down(900)]: {
 			justifyContent: 'space-between',
 		},
@@ -24,14 +23,20 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	vacancyLocationItem: {
-		flexBasis: '45%',
+		flexBasis: '35%',
+		[theme.breakpoints.down(1065)]: {
+			flexBasis: '40%',
+		},
+		[theme.breakpoints.down(800)]: {
+			flexBasis: '45%',
+		},
 		[theme.breakpoints.down(600)]: {
 			flexBasis: '100%',
 		},
 	},
 
 	vacancyKey: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '14px',
 		lineHeight: '19px',
 		color: '#00B395',
@@ -39,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	vacancyProperty: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '16px',
 		lineHeight: '24px',
 		color: '#757575',
@@ -55,7 +60,7 @@ const useStyles = makeStyles(theme => ({
 		padding: '8px 15px',
 		outline: 0,
 		marginBottom: '40px',
-		width: '70%',
+		width: '100%',
 		[theme.breakpoints.down(600)]: {
 			width: '100%',
 			marginBottom: '20px',
@@ -76,7 +81,7 @@ const useStyles = makeStyles(theme => ({
 		border: `1px solid transparent`,
 		borderBottom: `1px solid ${colorDark}`,
 		outline: 0,
-		width: '50%',
+		width: '70%',
 		[theme.breakpoints.down(550)]: {
 			width: '80%',
 		},
@@ -85,7 +90,7 @@ const useStyles = makeStyles(theme => ({
 	vacancyDescription: {
 		margin: '0 auto',
 		paddingTop: '55px',
-		width: '70%',
+		width: '80%',
 		[theme.breakpoints.down(850)]: {
 			width: '90%',
 			paddingTop: '35px',
@@ -97,11 +102,11 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	vacancyDescriptionArea: {
-		fontFamily: font,
+		fontFamily: theme.palette.font,
 		fontSize: '14px',
 		color: '#3D3B69',
 		padding: '12px 15px',
-		width: '100%',
+		width: '95%',
 		height: '200px',
 		border: `1px solid ${colorDark}`,
 		borderRadius: '8px',

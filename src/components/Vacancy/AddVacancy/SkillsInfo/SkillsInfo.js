@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import useStyles from './styles';
 import Category from './Category';
 import SphereList from './SphereList';
+import VacancyName from './VacancyName';
 import ChackboxList from './CheckboxList';
 import { englishLevel } from './skillsList';
 import ProfessionList from './ProfessionList';
@@ -105,6 +106,7 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 				setSkill={setSkill}
 				handleClickSkill={handleClickSkill}
 			/>
+			<VacancyName skill={skill} classes={classes} setSkill={setSkill} />
 			<Category skill={skill} classes={classes} setSkill={setSkill} />
 			<ChackboxList
 				skill={skill}
