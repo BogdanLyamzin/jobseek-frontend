@@ -108,4 +108,13 @@ export default (name, value, t) => {
 			return true;
 		}
 	}
+	if (name === 'facebookLink') {
+		if (!value) {
+			toastr(`${t('ENTER_FIELD')} ${t('SOCIAL_LINK')}`);
+		} else if (!websiteRegExp.test(value)) {
+			toastr(`${t('INCORRECT')} ${t('SOCIAL_LINK')}`);
+		} else {
+			return true;
+		}
+	}
 };

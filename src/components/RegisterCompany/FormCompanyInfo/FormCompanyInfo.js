@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Input from '../../../shared/Input/Input';
 import UpdatePhotoDropzone from '../UpdatePhotoDropzone/UpdatePhotoDropzone';
 import Button from '../../../shared/Button';
-// import validation from '../../../utils/validation/hrCompany';
+import validation from '../../../utils/validation/hrCompany';
 
 const FormCompanyInfo = ({
 	values,
@@ -15,17 +15,22 @@ const FormCompanyInfo = ({
 }) => {
 	const { t } = useTranslation();
 
-	// const validationStatus = () => {
-	// 	return (
-	// 		validation('companyName', values.companyName, t) &&
-	// 		validation('email', values.email, t) &&
-	// 		validation('country', values.country, t) &&
-	// 		validation('city', values.city, t) &&
-	// 		validation('facebookLink', values.facebookLink, t) &&
-	// 		validation('website', values.website, t) &&
-	// 		validation('description', values.description, t)
-	// 	);
-	// };
+	const validationStatus = () => {
+		return (
+			validation('email', values.email, t) &&
+			validation('country', values.country, t) &&
+			validation('city', values.city, t) &&
+			validation('facebookLink', values.facebookLink, t) &&
+			validation('website', values.website, t) &&
+			validation('description', values.description, t)
+		);
+	};
+	const handleClick = event => {
+		event.preventDefault();
+		if (validationStatus()) {
+			submitForm();
+		}
+	};
 
 	return (
 		<Grid container>
@@ -79,7 +84,7 @@ const FormCompanyInfo = ({
 				</Grid>
 				<Grid item container md={12}>
 					<Grid item md={6}>
-						<div className={classes.companyKey}>{t('ADD_SOCIAL_NET')}</div>
+						<div className={classes.companyKey}>{t('SOCIAL_LINK')}</div>
 						<Input
 							type="text"
 							name="facebookLink"
@@ -110,15 +115,7 @@ const FormCompanyInfo = ({
 					value={values.description}
 				/>
 				<div className={classes.btnAlignCenter}>
-					<Button
-						click={e => {
-							e.preventDefault();
-
-							submitForm();
-						}}
-					>
-						{t('UPDATE')}
-					</Button>
+					<Button click={e => handleClick(e)}>{t('UPDATE')}</Button>
 				</div>
 			</div>
 		</Grid>

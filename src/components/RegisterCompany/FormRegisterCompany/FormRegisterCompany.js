@@ -41,6 +41,7 @@ const FormRegisterCompany = ({ user, userId, updateCompany, addCompany }) => {
 	const handleChange = event => {
 		setValues({ ...values, [event.target.name]: event.target.value });
 	};
+
 	const submitForm = () => {
 		values.userId = userId;
 		user ? updateCompany(user._id, values) : addCompany(values);
