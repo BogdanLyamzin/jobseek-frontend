@@ -73,7 +73,7 @@
   "EXIT": "Log out",
   "LOOKING_JOB": "Looking for a job",
   "LOOKING_EMPLOYMENT": "Looking for an employee",
-  "ADMIN": "Administartor",
+  "ADMIN": "Administrator",
   "LOGIN": "Login",
   "REGISTERED": "Registered",
   "LINK": "Link",
@@ -111,4 +111,5 @@
   "RESPOND": "Respond",
   "CONFIRM": "Confirm",
   "REPORT": "Report"
+
 }
