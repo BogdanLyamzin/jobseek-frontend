@@ -1,21 +1,6 @@
-import {
-  // getOneSkill,
-  getAllSkills } from './actions/skillActions';
-import {
-  // getOneLanguage,
-  getAllLanguages } from './actions/languageActions';
-import {
-  getAllVacancies,
-  // getOneVacancy
-} from "./vacancyActions";
-import { getAllSpheres} from "./actions/sphereActions";
+import { getAllSkills } from './actions/skillActions';
+import { getAllLanguages } from './actions/languageActions';
+import { getAllVacancies } from './vacancyActions';
+import { getAllSpheres } from './actions/sphereActions';
 
-export {
-    // getOneSkill,
-    getAllSkills,
-    // getOneLanguage,
-    getAllLanguages,
-  // getOneVacancy,
-  getAllVacancies,
-  getAllSpheres
-}
+export { getAllSkills, getAllLanguages, getAllVacancies, getAllSpheres };

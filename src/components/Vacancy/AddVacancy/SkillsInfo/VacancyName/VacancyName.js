@@ -48,7 +48,7 @@ const VacancyName = ({
 
 const mapStateToProps = ({ admin }) => {
 	return {
-		vacancyList: admin.vacancy,
+		vacancyList: admin.vacancyChange,
 	};
 };
 

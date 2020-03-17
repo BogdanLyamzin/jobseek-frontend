@@ -50,9 +50,9 @@ export const updateHR = (id, body) => {
 	};
 };
 
-export const getOneHR = id => {
+export const getOneHR = (id, headers) => {
 	return dispatch => {
-		API.get(`hr/${id}`)
+		API.get(`hr/${id}`, headers)
 			.then(data => {
 				dispatch(successAxios(data.result));
 			})
