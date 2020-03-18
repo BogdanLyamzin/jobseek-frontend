@@ -24,10 +24,13 @@ const addHRUser = payload => {
 	};
 };
 
-export const addHr = body => {
+export const addHr = (body, t) => {
 	return dispatch => {
 		API.post('hr', body)
 			.then(data => {
+				if (data.status === 'Error') {
+					return tostrActions(data);
+				}
 				tostrActions(data, 'HR успішно створено');
 				dispatch(addHRUser(data.result));
 			})
