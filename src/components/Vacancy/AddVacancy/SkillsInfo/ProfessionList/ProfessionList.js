@@ -79,7 +79,7 @@ const ProfessionList = ({
 
 const mapStateToProps = ({ admin }) => {
 	return {
-		professionList: admin.profession,
+		professionList: admin.professionChange,
 	};
 };
 

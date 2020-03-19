@@ -1,78 +1,82 @@
-// import API from '../../../services/api';
-// import errorAxios from '../../../utils/actions/errorAxios';
-// import {
-//   SUCCESS_AXIOS_CATEGORY,
-//   SUCCESS_AXIOS_PROFESSION,
-//   // SUCCESS_AXIOS_SKILL,
-//   SUCCESS_AXIOS_SPHERE,
-//   SUCCESS_AXIOS_VACANCY,
-// } from "./actionsName";
+import {
+	SUCCESS_AXIOS_SPHERE,
+	SUCCESS_AXIOS_SPHERE_CHANGE,
+	SUCCESS_AXIOS_PROFESSION,
+	SUCCESS_AXIOS_PROFESSION_CHANGE,
+	SUCCESS_AXIOS_VACANCYTEMPLATE,
+	SUCCESS_AXIOS_VACANCYTEMPLATE_CHANGE,
+	SUCCESS_AXIOS_CATEGORY,
+	SUCCESS_AXIOS_CATEGORY_CHANGE,
+	SUCCESS_AXIOS_SKILL,
+	SUCCESS_AXIOS_SKILL_CHANGE,
+} from './actionsName';
 
-// const successAxiosSkill = (payload) => {
-//     return {
-//       type: SUCCESS_AXIOS_SKILL,
-//       skill: payload,
-//     };
-// };
-// const errorAxiosSkill = (payload) => {
-//   return {
-//     type: 'ERROR_SKILL',
-//     skillError: payload,
-//   };
-// };
-// const successAxiosCategory = (payload) => {
-//   return {
-//     type: SUCCESS_AXIOS_CATEGORY,
-//     category: payload,
-//   };
-// };
-// const successAxiosProfession = (payload) => {
-//   return {
-//     type: SUCCESS_AXIOS_PROFESSION,
-//     profession: payload,
-//   };
-// };
-//
-// const errorAxiosCategory = (payload) => {
-//     return {
-//       type: 'ERROR_CATEGORY',
-//       categoryError: payload,
-//     };
-// };
-// const successAxiosVacancy = (payload) => {
-//   return {
-//     type: SUCCESS_AXIOS_VACANCY,
-//     vacancy: payload,
-//   };
-// };
-//
-// const errorAxiosVacancy = (payload) => {
-//   return {
-//     type: 'ERROR_VACANCY',
-//     vacancyError: payload,
-//   };
-// };
-// const successAxiosSphere = (payload) => {
-//   return {
-//     type: SUCCESS_AXIOS_SPHERE,
-//     sphere: payload,
-//   };
-// };
-//
-// const errorAxiosSphere = (payload) => {
-//   return {
-//     type: 'ERROR_SPHERE',
-//     sphereError: payload,
-//   };
-// };
-// export {
-//   // successAxiosSkill,
-//   // errorAxiosSkill,
-//   successAxiosCategory,
-//   errorAxiosCategory,
-//   successAxiosVacancy,
-//   errorAxiosVacancy,
-//   successAxiosSphere,
-//   errorAxiosSphere,
-//   successAxiosProfession,
-// };
+export const successAxiosSphere = payload => {
+	return {
+		type: SUCCESS_AXIOS_SPHERE,
+		sphere: payload,
+	};
+};
+
+export const successAxiosChangeSphere = payload => {
+	return {
+		type: SUCCESS_AXIOS_SPHERE_CHANGE,
+		sphereChange: payload,
+	};
+};
+
+export const successAxiosProf = payload => {
+	return {
+		type: SUCCESS_AXIOS_PROFESSION,
+		profession: payload,
+	};
+};
+
+export const successAxiosChangeProf = payload => {
+	return {
+		type: SUCCESS_AXIOS_PROFESSION_CHANGE,
+		professionChange: payload,
+	};
+};
+
+export const successAxiosVacancyTemplate = payload => {
+	return {
+		type: SUCCESS_AXIOS_VACANCYTEMPLATE,
+		vacancy: payload,
+	};
+};
+
+export const successAxiosVacancyTemplateChange = payload => {
+	return {
+		type: SUCCESS_AXIOS_VACANCYTEMPLATE_CHANGE,
+		vacancyChange: payload,
+	};
+};
+
+export const successAxiosCategory = payload => {
+	return {
+		type: SUCCESS_AXIOS_CATEGORY,
+		category: payload,
+	};
+};
+
+export const successAxiosCategoryChange = payload => {
+	return {
+		type: SUCCESS_AXIOS_CATEGORY_CHANGE,
+		categoryChange: payload,
+	};
+};
+
+export const successAxiosSkill = payload => {
+	return {
+		type: SUCCESS_AXIOS_SKILL,
+		skill: payload,
+	};
+};
+
+export const successAxiosSkillChange = payload => {
+	return {
+		type: SUCCESS_AXIOS_SKILL_CHANGE,
+		skillChange: payload,
+	};
+};

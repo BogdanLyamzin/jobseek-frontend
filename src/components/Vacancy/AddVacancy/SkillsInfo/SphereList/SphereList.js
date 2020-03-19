@@ -9,10 +9,10 @@ import { getAllSpheres } from '../../../../../store/admin/actions/sphereActions'
 
 const SphereList = ({
 	skill,
-	sphereList,
-	setSkill,
-	handleClickSkill,
 	classes,
+	setSkill,
+	sphereList,
+	handleClickSkill,
 	getAllSpheres,
 }) => {
 	const [spheres, setSphere] = useState(null);
@@ -69,7 +69,7 @@ const SphereList = ({
 
 const mapStateToProps = ({ admin }) => {
 	return {
-		sphereList: admin.sphere,
+		sphereList: admin.sphereChange,
 	};
 };
 

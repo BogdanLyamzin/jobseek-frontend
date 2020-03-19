@@ -20,7 +20,7 @@ const Category = ({
 	useEffect(() => {
 		if (skill.vacancyName && skill.vacancyName._id) {
 			getCategoryByFilter(`parentId=${skill.vacancyName._id}`);
-			setSkill({ ...skill, category: null });
+			setSkill({ ...skill, category: skill.category });
 		}
 	}, [getCategoryByFilter, skill.vacancyName]);
 
@@ -48,7 +48,7 @@ const Category = ({
 
 const mapStateToProps = ({ admin }) => {
 	return {
-		categoryList: admin.category,
+		categoryList: admin.categoryChange,
 	};
 };
 

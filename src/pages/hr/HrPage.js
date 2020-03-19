@@ -10,10 +10,10 @@ import AddVacancy from '../../components/Vacancy/AddVacancy';
 import CandidatesList from '../../components/HR/CandidateByVacancy';
 import UpdateVacancy from '../../components/Vacancy/UpdateVacancy/UpdateVacancy';
 
-const HrPage = ({ getOneHR }) => {
+const HrPage = ({ getOneHR, userId }) => {
 	useEffect(() => {
-		getOneHR('5e5d40da8f80b4430cbc676c');
-	}, [getOneHR]);
+		getOneHR(userId, { status: true });
+	}, [getOneHR, userId]);
 
 	return (
 		<Switch>
@@ -31,4 +31,8 @@ const mapDispatchToProps = {
 	getOneHR,
 };
 
-export default connect(null, mapDispatchToProps)(HrPage);
+const mapStateToProps = ({ auth }) => ({
+	userId: auth.user._id,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HrPage);
