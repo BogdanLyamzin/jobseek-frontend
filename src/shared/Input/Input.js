@@ -31,4 +31,4 @@ const Input = ({ onChange, type, name, value, step, min, className }) => {
 	);
 };
 
-export default Input;
+export default React.memo(Input);

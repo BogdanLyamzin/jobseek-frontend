@@ -1,38 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import Text from '../../../../../shared/Text';
-import { getCategoryByFilter } from '../../../../../store/admin/actions/categoryActions';
+import withCategory from '../../../../../hoc/withCategory';
 
-const Category = ({
-	skill,
-	classes,
-	setSkill,
-	categoryList,
-	getCategoryByFilter,
-}) => {
+const Category = ({ setId, skill, classes, setSkill, categories }) => {
 	const { t } = useTranslation();
-	const [categories, setCategory] = useState(null);
 
 	useEffect(() => {
 		if (skill.vacancyName && skill.vacancyName._id) {
-			getCategoryByFilter(`parentId=${skill.vacancyName._id}`);
+			setId(skill.vacancyName._id);
 			setSkill({ ...skill, category: skill.category });
 		}
-	}, [getCategoryByFilter, skill.vacancyName]);
-
-	useEffect(() => {
-		setCategory(categoryList);
-	}, [categoryList]);
+	}, [skill.vacancyName]);
 
 	return (
 		<div className={classes.vacancySkillFlex}>
 			<Text className={classes.vacancyKey}>{t('CATEGORY')}*</Text>
 			<Autocomplete
-				options={categories}
+				options={categories ? categories : []}
 				getOptionLabel={option => option.categoryName}
 				autoComplete
 				renderInput={params => <TextField {...params} fullWidth />}
@@ -46,14 +34,4 @@ const Category = ({
 	);
 };
 
-const mapStateToProps = ({ admin }) => {
-	return {
-		categoryList: admin.categoryChange,
-	};
-};
-
-const mapDispatchToProps = {
-	getCategoryByFilter,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Category);
+export default withCategory(Category);

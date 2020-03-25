@@ -1,26 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import Text from '../../../../../shared/Text';
-import { getProfessionsByFilter } from '../../../../../store/admin/actions/professionActions';
+import withProfession from '../../../../../hoc/withProfessions';
 
 const ProfessionList = ({
 	skill,
+	setId,
 	classes,
 	setSkill,
-	professionList,
+	profession,
 	handleClickSkill,
-	getProfessionsByFilter,
 }) => {
 	const { t } = useTranslation();
-	const [prof, setProf] = useState(null);
 
 	useEffect(() => {
 		if (skill.sphere && skill.sphere._id) {
-			getProfessionsByFilter(`sphereId=${skill.sphere._id}`);
+			setId(skill.sphere._id);
 			setSkill({
 				...skill,
 				vacancyName: null,
@@ -28,18 +26,14 @@ const ProfessionList = ({
 				category: null,
 			});
 		}
-	}, [getProfessionsByFilter, skill.sphere]);
-
-	useEffect(() => {
-		setProf(professionList);
-	}, [professionList]);
+	}, [skill.sphere]);
 
 	return (
 		<div>
 			<div className={classes.vacancySkillFlex}>
 				<Text className={classes.vacancyKey}>{t('PROFESSION')}*</Text>
 				<Autocomplete
-					options={prof}
+					options={profession ? profession : []}
 					getOptionLabel={option => option.professionName}
 					autoComplete
 					renderInput={params => <TextField {...params} fullWidth />}
@@ -51,8 +45,8 @@ const ProfessionList = ({
 				/>
 			</div>
 			<div className={classes.vacancySkillFlex}>
-				{prof &&
-					prof.map(elem => {
+				{profession &&
+					profession.map(elem => {
 						return (
 							<div className={classes.vacancySkillItem} key={elem._id}>
 								<a
@@ -77,14 +71,4 @@ const ProfessionList = ({
 	);
 };
 
-const mapStateToProps = ({ admin }) => {
-	return {
-		professionList: admin.professionChange,
-	};
-};
-
-const mapDispatchToProps = {
-	getProfessionsByFilter,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProfessionList);
+export default withProfession(ProfessionList);

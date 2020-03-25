@@ -8,15 +8,22 @@ import Link from '../../../shared/Link';
 import VacancyItem from './VacancyItem';
 import Text from '../../../shared/Text';
 import PageWrap from '../../../shared/PageWrap';
-import { getVacancyByFilter } from '../../../store/vacancy/actions';
+import {
+	deleteVacancy,
+	getVacancyByFilter,
+} from '../../../store/vacancy/actions';
 
-const VacancyByHR = ({ vacancy, getVacancyByFilter, user }) => {
+const VacancyByHR = ({ vacancy, getVacancyByFilter, deleteVacancy, user }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
 
 	useEffect(() => {
 		if (user) getVacancyByFilter(`hrId=${user._id}`);
 	});
+
+	const deleteVacancies = id => {
+		deleteVacancy(id);
+	};
 
 	return (
 		<PageWrap title={t('MY_VACANCIES')}>
@@ -32,7 +39,13 @@ const VacancyByHR = ({ vacancy, getVacancyByFilter, user }) => {
 					{vacancy &&
 						vacancy.length > 0 &&
 						vacancy.map(elem => {
-							return <VacancyItem elem={elem} key={elem._id} />;
+							return (
+								<VacancyItem
+									elem={elem}
+									key={elem._id}
+									deleteVacancies={deleteVacancies}
+								/>
+							);
 						})}
 				</div>
 			</div>
@@ -48,6 +61,7 @@ const mapStateToProps = ({ vacancy, hr }) => {
 };
 
 const mapDispatchToProps = {
+	deleteVacancy,
 	getVacancyByFilter,
 };
 

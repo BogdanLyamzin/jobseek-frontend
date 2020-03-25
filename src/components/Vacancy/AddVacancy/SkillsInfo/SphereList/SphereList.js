@@ -1,36 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import Text from '../../../../../shared/Text';
-import { getAllSpheres } from '../../../../../store/admin/actions/sphereActions';
+import withSpheres from '../../../../../hoc/withSpheres';
 
 const SphereList = ({
 	skill,
+	spheres,
 	classes,
 	setSkill,
-	sphereList,
 	handleClickSkill,
-	getAllSpheres,
 }) => {
-	const [spheres, setSphere] = useState(null);
 	const { t } = useTranslation();
-	useEffect(() => {
-		getAllSpheres();
-	}, [getAllSpheres]);
-
-	useEffect(() => {
-		setSphere(sphereList);
-	}, [sphereList]);
 
 	return (
 		<div>
 			<div className={classes.vacancySkillFlex}>
 				<Text className={classes.vacancyKey}>{t('SPHERE')}*</Text>
 				<Autocomplete
-					options={spheres}
+					options={spheres ? spheres : []}
 					getOptionLabel={option => option.sphereName}
 					autoComplete
 					renderInput={params => <TextField {...params} fullWidth />}
@@ -67,10 +57,4 @@ const SphereList = ({
 	);
 };
 
-const mapStateToProps = ({ admin }) => {
-	return {
-		sphereList: admin.sphereChange,
-	};
-};
-
-export default connect(mapStateToProps, { getAllSpheres })(SphereList);
+export default withSpheres(SphereList);

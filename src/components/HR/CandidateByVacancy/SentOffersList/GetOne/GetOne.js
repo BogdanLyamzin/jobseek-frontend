@@ -40,4 +40,4 @@ const GetOneCv = ({ url, date, status, classes }) => {
 	);
 };
 
-export default GetOneCv;
+export default React.memo(GetOneCv);

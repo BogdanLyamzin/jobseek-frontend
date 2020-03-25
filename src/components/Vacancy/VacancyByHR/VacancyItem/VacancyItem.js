@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import useStyles from '../styles';
@@ -8,16 +7,11 @@ import Text from '../../../../shared/Text';
 import getDate from '../../../../utils/getDate';
 import FormControlLabel from './FormControlLabel';
 import CreateOutlined from '../../../../shared/CreateOutlinedIcon';
-import { deleteVacancy } from '../../../../store/vacancy/actions';
 import DeleteIconWithModal from '../../../../shared/DeleteIconWithModal';
 
-const VacancyItem = ({ elem, deleteVacancy }) => {
+const VacancyItem = ({ elem, deleteVacancies }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
-
-	const deleteV = id => {
-		deleteVacancy(id);
-	};
 
 	return (
 		<div id={elem._id} className={classes.vacancy}>
@@ -35,7 +29,7 @@ const VacancyItem = ({ elem, deleteVacancy }) => {
 					</Link>
 					<DeleteIconWithModal
 						text={`${t('DELETE_MESSAGE')}?`}
-						handleDelete={() => deleteV(elem._id)}
+						handleDelete={() => deleteVacancies(elem._id)}
 					/>
 				</div>
 			</div>
@@ -59,4 +53,4 @@ const VacancyItem = ({ elem, deleteVacancy }) => {
 	);
 };
 
-export default connect(null, { deleteVacancy })(VacancyItem);
+export default React.memo(VacancyItem);

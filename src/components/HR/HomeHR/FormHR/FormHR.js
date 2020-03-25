@@ -5,14 +5,15 @@ import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import Text from '../../../../shared/Text';
 import Input from '../../../../shared/Input';
 import Button from '../../../../shared/Button';
+import withHidden from '../../../../hoc/withHidden';
 import validation from '../../../../utils/validation/hrCompany';
 
 const FormHR = ({
 	values,
 	hidden,
 	classes,
+	setHidden,
 	submitForm,
-	updateHRinfo,
 	handleChange,
 }) => {
 	const { t } = useTranslation();
@@ -30,14 +31,14 @@ const FormHR = ({
 		event.preventDefault();
 		if (validationStatus()) {
 			submitForm();
-			updateHRinfo();
+			setHidden();
 		}
 	};
 
 	return (
 		<div className={classes.hrForm}>
-			<div className={`${classes.hrFlex} ${classes.hrValue}`}>
-				{hidden && (
+			<div className={`${classes.hrFlex} ${classes.hrValue} ${classes.flexSm}`}>
+				{!hidden && (
 					<div className={classes.formItem}>
 						<div>
 							<Text className={classes.hrKey}>{t('FIRST_NAME')}*</Text>
@@ -61,19 +62,16 @@ const FormHR = ({
 						</div>
 					</div>
 				)}
-				{!hidden && (
+				{hidden && (
 					<Text className={classes.hrName}>
 						{values ? values.name : ''} {values ? values.lastName : ''}
 					</Text>
 				)}
-				<CreateOutlinedIcon
-					className={`${classes.iconPenLrg} ${classes.iconPen}`}
-					onClick={updateHRinfo}
-				/>
+				<CreateOutlinedIcon className={classes.iconPen} onClick={setHidden} />
 			</div>
 
 			<div className={`${classes.hrFlex} ${classes.hrValue}`}>
-				{hidden && (
+				{!hidden && (
 					<div className={classes.formItem}>
 						<div>
 							<Text className={classes.hrKey}>{t('PHONE')}*</Text>
@@ -97,7 +95,7 @@ const FormHR = ({
 						</div>
 					</div>
 				)}
-				{!hidden && (
+				{hidden && (
 					<>
 						<div>
 							<Text className={classes.hrKey}>{t('PHONE')}:</Text>
@@ -114,9 +112,9 @@ const FormHR = ({
 					</>
 				)}
 			</div>
-			{hidden && <Button click={e => handleClick(e)}>{t('SAVE')}</Button>}
+			{!hidden && <Button click={e => handleClick(e)}>{t('SAVE')}</Button>}
 		</div>
 	);
 };
 
-export default FormHR;
+export default withHidden(FormHR);

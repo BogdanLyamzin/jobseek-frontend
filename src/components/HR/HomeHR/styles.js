@@ -100,17 +100,9 @@ const useStyles = makeStyles(theme => ({
 		cursor: 'pointer',
 	},
 
-	iconPenLrg: {
+	flexSm: {
 		[theme.breakpoints.down(600)]: {
-			display: 'none',
-		},
-	},
-
-	iconPenSm: {
-		marginBottom: '15px',
-		display: 'none',
-		[theme.breakpoints.down(600)]: {
-			display: 'block',
+			flexDirection: 'column-reverse',
 		},
 	},
 }));
