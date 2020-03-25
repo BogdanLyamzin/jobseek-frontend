@@ -1,6 +1,7 @@
 import API from '../../services/api';
 import errorAxios from '../../utils/actions/errorAxios';
 import tostrActions from '../../utils/toastr/toastrAction';
+import actionConstructor from '../../utils/actions/actionConstructor';
 import {
 	SUCCESS_AXIOS,
 	ADD_INFO,
@@ -10,46 +11,12 @@ import {
 	SUCCESS_AXIOS_LIST,
 } from './actionNames';
 
-const successAxios = payload => {
-	return {
-		type: SUCCESS_AXIOS,
-		payload,
-	};
-};
-
-const successAxiosList = payload => {
-	return {
-		type: SUCCESS_AXIOS_LIST,
-		payload,
-	};
-};
-
-const getCandidates = payload => {
-	return {
-		type: GET_CANDIDATES,
-		payload,
-	};
-};
-
-const addNewVacancy = payload => {
-	return {
-		type: ADD_VACANCY,
-		payload,
-	};
-};
-
-const addInfo = payload => {
-	return {
-		type: ADD_INFO,
-		payload,
-	};
-};
-
-export const deleteInfo = () => {
-	return {
-		type: DELETE_INFO,
-	};
-};
+const addInfo = actionConstructor(ADD_INFO);
+const addNewVacancy = actionConstructor(ADD_VACANCY);
+const successAxios = actionConstructor(SUCCESS_AXIOS);
+const getCandidates = actionConstructor(GET_CANDIDATES);
+const successAxiosList = actionConstructor(SUCCESS_AXIOS_LIST);
+export const deleteInfo = actionConstructor(DELETE_INFO);
 
 export const saveInfo = data => {
 	return dispatch => dispatch(addInfo(data));

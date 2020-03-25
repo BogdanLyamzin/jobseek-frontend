@@ -16,8 +16,8 @@ import {
 } from '../../../store/vacancy/actions';
 
 const CandidateByVacancy = ({
-	getOneVacancy,
 	vacancy,
+	getOneVacancy,
 	getSuitableCandidates,
 }) => {
 	const classes = useStyles();
@@ -34,7 +34,7 @@ const CandidateByVacancy = ({
 			{vacancy && (
 				<div>
 					<Text className={classes.textCenter}>
-						{t('MY_VACANCY')}: {vacancy.vacancyName}
+						{t('MY_VACANCY') + ': ' + vacancy.vacancyName.vacancyName}
 					</Text>
 					<Text className={classes.textCenter}>
 						{vacancy.skills.map(e => e.name).join(', ')}
@@ -60,11 +60,9 @@ const CandidateByVacancy = ({
 	);
 };
 
-const mapStateToProps = ({ vacancy }) => {
-	return {
-		vacancy: vacancy.vacancy,
-	};
-};
+const mapStateToProps = ({ vacancy }) => ({
+	vacancy: vacancy.vacancy,
+});
 
 const mapDispatchToProps = {
 	getOneVacancy,

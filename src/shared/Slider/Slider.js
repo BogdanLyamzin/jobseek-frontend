@@ -71,4 +71,4 @@ const SliderItem = ({ element, handleChange, deleteSlider }) => {
 	);
 };
 
-export default SliderItem;
+export default React.memo(SliderItem);

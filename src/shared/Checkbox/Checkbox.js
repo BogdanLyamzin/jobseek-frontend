@@ -39,4 +39,4 @@ const CheckboxItem = ({ onChange, value, name, checked }) => {
 	);
 };
 
-export default CheckboxItem;
+export default React.memo(CheckboxItem);

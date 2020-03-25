@@ -48,11 +48,9 @@ const HR = ({ user, updateHR }) => {
 	);
 };
 
-const mapStateToProps = ({ hr }) => {
-	return {
-		user: hr.user,
-	};
-};
+const mapStateToProps = ({ hr }) => ({
+	user: hr.user,
+});
 
 const mapDispatchToProps = {
 	updateHR,

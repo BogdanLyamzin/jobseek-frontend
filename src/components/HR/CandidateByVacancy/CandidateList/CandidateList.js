@@ -29,17 +29,17 @@ const CandidateList = ({ candidates, id }) => {
 								{t('VACANCY') + ': ' + elem.vacancyName}
 							</Text>
 							<Text className={classes.candidateSkills}>
-								{t('SKILLS')}: {elem.cvSkill.map(a => a.name).join(', ')}
+								{t('SKILLS') + ': ' + elem.cvSkill.map(a => a.name).join(', ')}
 							</Text>
 							<div className={classes.candidateFlexBetween}>
 								<div className={classes.candidateFlex}>
 									<Avatar className={classes.candidatePhoto} />
 									<Text className={classes.candidateName}>
-										{t('SEE_MORE')}...
+										{t('SEE_MORE') + '...'}
 									</Text>
 								</div>
 								<Text className={classes.candidateOfferDate}>
-									{t('POSTED')} {getDate(elem.date)}
+									{t('POSTED') + ' ' + getDate(elem.date)}
 								</Text>
 							</div>
 						</Link>
@@ -49,10 +49,8 @@ const CandidateList = ({ candidates, id }) => {
 	);
 };
 
-const mapStateToProps = ({ vacancy }) => {
-	return {
-		candidates: vacancy.candidates,
-	};
-};
+const mapStateToProps = ({ vacancy }) => ({
+	candidates: vacancy.candidates,
+});
 
 export default connect(mapStateToProps)(CandidateList);

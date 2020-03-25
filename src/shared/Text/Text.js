@@ -4,4 +4,4 @@ const Text = ({ className, children }) => {
 	return <div className={className}>{children}</div>;
 };
 
-export default React.memo(Text);
+export default Text;

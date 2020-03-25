@@ -8,22 +8,15 @@ import Link from '../../../shared/Link';
 import VacancyItem from './VacancyItem';
 import Text from '../../../shared/Text';
 import PageWrap from '../../../shared/PageWrap';
-import {
-	deleteVacancy,
-	getVacancyByFilter,
-} from '../../../store/vacancy/actions';
+import withVacancies from '../../../hoc/withVacancies';
 
-const VacancyByHR = ({ vacancy, getVacancyByFilter, deleteVacancy, user }) => {
+const VacancyByHR = ({ setId, vacancy, deleteVacancies, user }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
 
 	useEffect(() => {
-		if (user) getVacancyByFilter(`hrId=${user._id}`);
-	});
-
-	const deleteVacancies = id => {
-		deleteVacancy(id);
-	};
+		if (user) setId(user._id);
+	}, [user]);
 
 	return (
 		<PageWrap title={t('MY_VACANCIES')}>
@@ -53,16 +46,8 @@ const VacancyByHR = ({ vacancy, getVacancyByFilter, deleteVacancy, user }) => {
 	);
 };
 
-const mapStateToProps = ({ vacancy, hr }) => {
-	return {
-		user: hr.user,
-		vacancy: vacancy.vacancyList,
-	};
-};
+const mapStateToProps = ({ hr }) => ({
+	user: hr.user,
+});
 
-const mapDispatchToProps = {
-	deleteVacancy,
-	getVacancyByFilter,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(VacancyByHR);
+export default connect(mapStateToProps)(withVacancies(VacancyByHR, 'hrId'));

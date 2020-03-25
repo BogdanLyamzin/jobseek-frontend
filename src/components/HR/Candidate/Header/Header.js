@@ -26,10 +26,8 @@ const Header = ({ classes, cv }) => {
 	);
 };
 
-const mapStateToProps = ({ cv }) => {
-	return {
-		cv: cv.cv,
-	};
-};
+const mapStateToProps = ({ cv }) => ({
+	cv: cv.cv,
+});
 
 export default connect(mapStateToProps)(Header);

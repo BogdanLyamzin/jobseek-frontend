@@ -71,10 +71,8 @@ const mapDispatchToProps = {
 	saveInfo,
 };
 
-const mapStateToProps = ({ vacancy }) => {
-	return {
-		info: vacancy.addVacancy,
-	};
-};
+const mapStateToProps = ({ vacancy }) => ({
+	info: vacancy.addVacancy,
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommonInfo);

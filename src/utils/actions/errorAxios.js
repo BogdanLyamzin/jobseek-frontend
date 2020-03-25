@@ -1,8 +1,6 @@
-const errorAxios = payload => {
-	return {
-		type: 'ERROR',
-		payload,
-	};
-};
+const errorAxios = payload => ({
+	type: 'ERROR',
+	payload,
+});
 
 export default errorAxios;

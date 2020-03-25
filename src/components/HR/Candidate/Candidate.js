@@ -50,11 +50,9 @@ const OneCandidate = ({ cv, match, getOneCv, getOneCandidate }) => {
 	);
 };
 
-const mapStateToProps = ({ cv }) => {
-	return {
-		cv: cv.cv,
-	};
-};
+const mapStateToProps = ({ cv }) => ({
+	cv: cv.cv,
+});
 
 const mapDispatchToProps = {
 	getOneCv,

@@ -32,11 +32,9 @@ const Skills = ({ classes, candidate, cv }) => {
 	);
 };
 
-const mapStateToProps = ({ cv, candidate }) => {
-	return {
-		cv: cv.cv,
-		candidate: candidate.user,
-	};
-};
+const mapStateToProps = ({ cv, candidate }) => ({
+	cv: cv.cv,
+	candidate: candidate.user,
+});
 
 export default connect(mapStateToProps)(Skills);

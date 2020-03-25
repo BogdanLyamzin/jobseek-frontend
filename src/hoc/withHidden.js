@@ -5,10 +5,11 @@ import getDisplayName from '../utils/getDisplayName';
 const withHidden = Component => {
 	return function WithHidden(props) {
 		const [hidden, setHidden] = useState(true);
-		WithHidden.displayName = `WithHidden(${getDisplayName(Component)})`;
 		const updateHRinfo = () => {
 			setHidden(!hidden);
 		};
+
+		WithHidden.displayName = `WithHidden(${getDisplayName(Component)})`;
 
 		return <Component hidden={hidden} setHidden={updateHRinfo} {...props} />;
 	};

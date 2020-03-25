@@ -2,20 +2,10 @@ import API from '../../services/api';
 import errorAxios from '../../utils/actions/errorAxios';
 import tostrActions from '../../utils/toastr/toastrAction';
 import { SUCCESS_AXIOS, ADD_COMMENT } from './actionNames';
+import actionConstructor from '../../utils/actions/actionConstructor';
 
-const successAxios = payload => {
-	return {
-		type: SUCCESS_AXIOS,
-		payload,
-	};
-};
-
-const addComment = payload => {
-	return {
-		type: ADD_COMMENT,
-		payload,
-	};
-};
+const addComment = actionConstructor(ADD_COMMENT);
+const successAxios = actionConstructor(SUCCESS_AXIOS);
 
 export const newComment = body => {
 	return dispatch => {

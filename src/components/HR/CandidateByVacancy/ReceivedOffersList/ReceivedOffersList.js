@@ -37,10 +37,8 @@ const ReceivedOffersList = ({ vacancy }) => {
 	);
 };
 
-const mapStateToProps = ({ vacancy }) => {
-	return {
-		vacancy: vacancy.vacancy,
-	};
-};
+const mapStateToProps = ({ vacancy }) => ({
+	vacancy: vacancy.vacancy,
+});
 
 export default connect(mapStateToProps)(ReceivedOffersList);

@@ -78,12 +78,10 @@ const CommonInfo = ({ info, saveInfo, oneVacancy }) => {
 	);
 };
 
-const mapStateToProps = ({ vacancy }) => {
-	return {
-		info: vacancy.addVacancy,
-		oneVacancy: vacancy.vacancy,
-	};
-};
+const mapStateToProps = ({ vacancy }) => ({
+	info: vacancy.addVacancy,
+	oneVacancy: vacancy.vacancy,
+});
 
 const mapDispatchToProps = {
 	saveInfo,

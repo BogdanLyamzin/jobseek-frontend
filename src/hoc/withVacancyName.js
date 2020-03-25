@@ -1,30 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 
 import getDisplayName from '../utils/getDisplayName';
 import { getVacancyByFilter } from '../store/admin/actions/vacancyTemplateActions';
 
 const withVacancyName = Component => {
-	return function WithVacancyName(props) {
-		const dispatch = useDispatch();
+	const WithVacancyName = ({ vacancyList, getVacancyByFilter, ...props }) => {
 		const [id, setId] = useState(null);
 		const [vacancy, setVacancy] = useState(null);
-		const vacancyList = useSelector(state => state.admin.vacancyChange);
 
 		useEffect(() => {
-			if (id) dispatch(getVacancyByFilter(`professionId=${id}`));
-		}, [dispatch, getVacancyByFilter, id]);
+			if (id) getVacancyByFilter(`professionId=${id}`);
+		}, [getVacancyByFilter, id]);
 
 		useEffect(() => {
 			setVacancy(vacancyList);
 		}, [vacancyList]);
 
-		WithVacancyName.displayName = `WithVacancyName(${getDisplayName(
-			Component,
-		)})`;
-
 		return <Component setId={setId} vacancy={vacancy} {...props} />;
 	};
+
+	WithVacancyName.displayName = `WithVacancyName(${getDisplayName(Component)})`;
+
+	const mapStateToProps = ({ admin }) => ({
+		vacancyList: admin.vacancyChange,
+	});
+
+	return connect(mapStateToProps, { getVacancyByFilter })(WithVacancyName);
 };
 
 export default withVacancyName;

@@ -7,10 +7,8 @@ const UpdatePhoto = ({ user, uploadPhoto }) => {
 	return <UploadPhoto user={user} uploadPhoto={uploadPhoto} />;
 };
 
-const mapStateToProps = ({ hr }) => {
-	return {
-		user: hr.user,
-	};
-};
+const mapStateToProps = ({ hr }) => ({
+	user: hr.user,
+});
 
 export default connect(mapStateToProps)(UpdatePhoto);

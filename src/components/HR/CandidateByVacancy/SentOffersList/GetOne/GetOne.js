@@ -12,7 +12,7 @@ const GetOneCv = ({ url, date, status, classes }) => {
 
 	useEffect(() => {
 		API.get(`cvs/${url}`).then(data => setCv(data.result));
-	});
+	}, [url]);
 
 	return (
 		<>
@@ -33,7 +33,7 @@ const GetOneCv = ({ url, date, status, classes }) => {
 					<Text className={classes.candidateName}>{t('SEE_MORE')}...</Text>
 				</div>
 				<Text className={classes.candidateOfferDate}>
-					{t('INVITED')} {getDate(date)}
+					{t('INVITED') + ' ' + getDate(date)}
 				</Text>
 			</div>
 		</>

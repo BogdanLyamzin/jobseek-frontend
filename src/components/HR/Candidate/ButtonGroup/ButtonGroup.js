@@ -50,10 +50,8 @@ const BtnList = ({ path, cv, cvID, vacancyID }) => {
 	);
 };
 
-const mapStateToProps = ({ cv }) => {
-	return {
-		cv: cv.cv,
-	};
-};
+const mapStateToProps = ({ cv }) => ({
+	cv: cv.cv,
+});
 
 export default connect(mapStateToProps)(BtnList);

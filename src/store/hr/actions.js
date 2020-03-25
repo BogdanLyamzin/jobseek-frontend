@@ -1,28 +1,12 @@
 import API from '../../services/api';
 import errorAxios from '../../utils/actions/errorAxios';
 import tostrActions from '../../utils/toastr/toastrAction';
+import actionConstructor from '../../utils/actions/actionConstructor';
 import { SUCCESS_AXIOS, ADD_USER, SUCCESS_AXIOS_LIST } from './actionNames';
 
-const successAxios = payload => {
-	return {
-		type: SUCCESS_AXIOS,
-		payload,
-	};
-};
-
-const successAxiosHRList = payload => {
-	return {
-		type: SUCCESS_AXIOS_LIST,
-		payload,
-	};
-};
-
-const addHRUser = payload => {
-	return {
-		type: ADD_USER,
-		payload,
-	};
-};
+const addHRUser = actionConstructor(ADD_USER);
+const successAxios = actionConstructor(SUCCESS_AXIOS);
+const successAxiosHRList = actionConstructor(SUCCESS_AXIOS_LIST);
 
 export const addHr = (body, t) => {
 	return dispatch => {

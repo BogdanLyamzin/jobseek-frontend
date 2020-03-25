@@ -16,16 +16,26 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-const Input = ({ onChange, type, name, value, step, min, className }) => {
+const Input = ({
+	min,
+	step,
+	type,
+	name,
+	value,
+	onChange,
+	className,
+	placeholder,
+}) => {
 	const classes = useStyles();
 	return (
 		<input
-			step={step}
 			min={min}
+			step={step}
 			type={type}
 			name={name}
-			defaultValue={value}
 			onChange={onChange}
+			defaultValue={value}
+			placeholder={placeholder}
 			className={`${className} ${classes.input}`}
 		/>
 	);

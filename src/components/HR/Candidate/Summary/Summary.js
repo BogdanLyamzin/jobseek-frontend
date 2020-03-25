@@ -98,10 +98,8 @@ const Summary = ({ cvID, classes, candidate, vacancyID }) => {
 	);
 };
 
-const mapStateToProps = ({ candidate }) => {
-	return {
-		candidate: candidate.user,
-	};
-};
+const mapStateToProps = ({ candidate }) => ({
+	candidate: candidate.user,
+});
 
 export default connect(mapStateToProps)(Summary);

@@ -37,61 +37,61 @@ export default (state = initialValue, action) => {
 		case SUCCESS_AXIOS_SPHERE:
 			return {
 				...state,
-				sphere: action.sphere,
+				sphere: action.payload,
 			};
 
 		case SUCCESS_AXIOS_SPHERE_CHANGE:
 			return {
 				...state,
-				sphereChange: action.sphereChange,
+				sphereChange: action.payload,
 			};
 
 		case SUCCESS_AXIOS_PROFESSION:
 			return {
 				...state,
-				profession: action.profession,
+				profession: action.payload,
 			};
 
 		case SUCCESS_AXIOS_PROFESSION_CHANGE:
 			return {
 				...state,
-				professionChange: action.professionChange,
+				professionChange: action.payload,
 			};
 
 		case SUCCESS_AXIOS_VACANCYTEMPLATE:
 			return {
 				...state,
-				vacancy: action.vacancy,
+				vacancy: action.payload,
 			};
 
 		case SUCCESS_AXIOS_VACANCYTEMPLATE_CHANGE:
 			return {
 				...state,
-				vacancyChange: action.vacancyChange,
+				vacancyChange: action.payload,
 			};
 
 		case SUCCESS_AXIOS_CATEGORY:
 			return {
 				...state,
-				category: action.category,
+				category: action.payload,
 			};
 
 		case SUCCESS_AXIOS_CATEGORY_CHANGE:
 			return {
 				...state,
-				categoryChange: action.categoryChange,
+				categoryChange: action.payload,
 			};
 
 		case SUCCESS_AXIOS_SKILL:
 			return {
 				...state,
-				skill: action.skill,
+				skill: action.payload,
 			};
 
 		case SUCCESS_AXIOS_SKILL_CHANGE:
 			return {
 				...state,
-				skillChange: action.skillChange,
+				skillChange: action.payload,
 			};
 
 		default:

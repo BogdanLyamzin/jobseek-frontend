@@ -136,12 +136,10 @@ const SkillsInfo = ({ id, firstForm, oneVacancy, updateVacancy }) => {
 	);
 };
 
-const mapStateToProps = ({ vacancy }) => {
-	return {
-		firstForm: vacancy.addVacancy,
-		oneVacancy: vacancy.vacancy,
-	};
-};
+const mapStateToProps = ({ vacancy }) => ({
+	firstForm: vacancy.addVacancy,
+	oneVacancy: vacancy.vacancy,
+});
 
 const mapDispatchToProps = {
 	updateVacancy,

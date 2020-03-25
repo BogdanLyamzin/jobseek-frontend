@@ -2,13 +2,9 @@ import API from '../../services/api';
 import { SUCCESS_AXIOS } from './actionNames';
 import errorAxios from '../../utils/actions/errorAxios';
 import tostrActions from '../../utils/toastr/toastrAction';
+import actionConstructor from '../../utils/actions/actionConstructor';
 
-const successAxios = payload => {
-	return {
-		type: SUCCESS_AXIOS,
-		payload,
-	};
-};
+const successAxios = actionConstructor(SUCCESS_AXIOS);
 
 export const addCompany = body => {
 	return dispatch => {

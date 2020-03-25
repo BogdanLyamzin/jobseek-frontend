@@ -64,7 +64,7 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 		const body = {
 			active: isActive,
 			...firstForm,
-			sphere: skill.sphere && skill.sphere.title,
+			sphere: skill.sphere,
 			vacancyName: skill.vacancyName,
 			englishLevel: skill.englishLevel,
 			profession: skill.profession,
@@ -127,11 +127,9 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 	);
 };
 
-const mapStateToProps = ({ hr, vacancy }) => {
-	return {
-		user: hr.user,
-		firstForm: vacancy.addVacancy,
-	};
-};
+const mapStateToProps = ({ hr, vacancy }) => ({
+	user: hr.user,
+	firstForm: vacancy.addVacancy,
+});
 
 export default connect(mapStateToProps, { addVacancy })(SkillsInfo);

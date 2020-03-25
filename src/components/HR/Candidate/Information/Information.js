@@ -43,10 +43,8 @@ const Information = ({ classes, candidate }) => {
 	);
 };
 
-const mapStateToProps = ({ candidate }) => {
-	return {
-		candidate: candidate.user,
-	};
-};
+const mapStateToProps = ({ candidate }) => ({
+	candidate: candidate.user,
+});
 
 export default connect(mapStateToProps)(Information);
