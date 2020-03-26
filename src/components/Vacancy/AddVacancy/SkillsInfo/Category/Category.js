@@ -20,7 +20,7 @@ const Category = ({ setId, skill, classes, setSkill, categories }) => {
 		<div className={classes.vacancySkillFlex}>
 			<Text className={classes.vacancyKey}>{t('CATEGORY')}*</Text>
 			<Autocomplete
-				options={categories ? categories : []}
+				options={categories || []}
 				getOptionLabel={option => option.categoryName}
 				autoComplete
 				renderInput={params => <TextField {...params} fullWidth />}

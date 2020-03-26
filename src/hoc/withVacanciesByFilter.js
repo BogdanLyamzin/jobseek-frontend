@@ -15,7 +15,7 @@ const withVacancies = (Component, user) => {
 
 		useEffect(() => {
 			if (id) getVacancyByFilter(`${user}=${id}`);
-		});
+		}, [id]);
 
 		const deleteVacancies = id => {
 			deleteVacancy(id);

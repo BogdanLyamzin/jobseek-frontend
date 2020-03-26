@@ -14,6 +14,7 @@ import {
 	getOneVacancy,
 	getSuitableCandidates,
 } from '../../../store/vacancy/actions';
+import arrToStringSkill from '../../../utils/transformType/arrToStringSkills';
 
 const CandidateByVacancy = ({
 	vacancy,
@@ -37,7 +38,7 @@ const CandidateByVacancy = ({
 						{t('MY_VACANCY') + ': ' + vacancy.vacancyName.vacancyName}
 					</Text>
 					<Text className={classes.textCenter}>
-						{vacancy.skills.map(e => e.name).join(', ')}
+						{arrToStringSkill(vacancy.skills)}
 					</Text>
 				</div>
 			)}

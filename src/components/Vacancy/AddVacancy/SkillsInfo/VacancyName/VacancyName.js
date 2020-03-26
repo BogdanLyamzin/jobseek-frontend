@@ -20,7 +20,7 @@ const VacancyName = ({ skill, setId, classes, setSkill, vacancy }) => {
 		<div className={classes.vacancySkillFlex}>
 			<Text className={classes.vacancyKey}>{t('VACANCY')}*</Text>
 			<Autocomplete
-				options={vacancy ? vacancy : []}
+				options={vacancy || []}
 				getOptionLabel={option => option.vacancyName}
 				autoComplete
 				renderInput={params => <TextField {...params} fullWidth />}

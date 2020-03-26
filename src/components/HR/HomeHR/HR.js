@@ -10,8 +10,8 @@ import { updateHR } from '../../../store/hr/actions';
 
 const HR = ({ user, updateHR }) => {
 	const classes = useStyles();
-	const [values, setValues] = useState(null);
 	const { t } = useTranslation();
+	const [values, setValues] = useState(null);
 
 	useEffect(() => {
 		if (user) setValues({ ...user });

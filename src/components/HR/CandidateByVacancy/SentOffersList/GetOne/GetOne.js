@@ -5,6 +5,7 @@ import Text from '../../../../../shared/Text';
 import API from '../../../../../services/api';
 import getDate from '../../../../../utils/getDate';
 import Avatar from '../../../../../shared/UserImg';
+import arrToStringSkill from '../../../../../utils/transformType/arrToStringSkills';
 
 const GetOneCv = ({ url, date, status, classes }) => {
 	const [cv, setCv] = useState(null);
@@ -18,14 +19,14 @@ const GetOneCv = ({ url, date, status, classes }) => {
 		<>
 			<div className={classes.candidateFlexBetween}>
 				<Text className={classes.candidateVacancyName}>
-					{t('VACANCY')}: {cv ? cv.vacancyName : ''}
+					{t('VACANCY')}: {cv && cv.vacancyName}
 				</Text>
 				<Text className={classes.candidateOfferCheck}>
 					{status ? t('ACCEPTED') : t('PENDING')}
 				</Text>
 			</div>
 			<Text className={classes.candidateSkills70}>
-				{t('SKILLS')}: {cv ? cv.cvSkill.map(a => a.name).join(', ') : ''}
+				{t('SKILLS')}: {cv ? arrToStringSkill(cv.cvSkill) : ''}
 			</Text>
 			<div className={classes.candidateFlexBetween}>
 				<div className={classes.candidateFlex}>

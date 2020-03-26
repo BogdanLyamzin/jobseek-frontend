@@ -38,7 +38,7 @@ const BtnList = ({ path, cv, cvID, vacancyID }) => {
 					e => e.cvId === cvID && e.vacancyId === vacancyID,
 				) && <Button click={postSent}>{t('RESPOND')}</Button>}
 
-			{path === 'sent' && <Button click={deleteSent}>{t('CENCEL')}</Button>}
+			{path === 'sent' && <Button click={deleteSent}>{t('CANCEL')}</Button>}
 
 			{path === 'received' &&
 				cv &&

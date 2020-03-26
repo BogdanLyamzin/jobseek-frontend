@@ -46,7 +46,7 @@ const FormHR = ({
 								onChange={handleChange}
 								type="text"
 								name="name"
-								value={values ? values.name : ''}
+								value={values && values.name}
 								className={classes.hrFormInput}
 							/>
 						</div>
@@ -56,7 +56,7 @@ const FormHR = ({
 								onChange={handleChange}
 								type="text"
 								name="lastName"
-								value={values ? values.lastName : ''}
+								value={values && values.lastName}
 								className={classes.hrFormInput}
 							/>
 						</div>
@@ -79,7 +79,7 @@ const FormHR = ({
 								onChange={handleChange}
 								type="text"
 								name="phone"
-								value={values ? values.phone : ''}
+								value={values && values.phone}
 								className={classes.hrFormInput}
 							/>
 						</div>
@@ -89,7 +89,7 @@ const FormHR = ({
 								onChange={handleChange}
 								type="email"
 								name="email"
-								value={values ? values.email : ''}
+								value={values && values.email}
 								className={classes.hrFormInput}
 							/>
 						</div>
@@ -112,7 +112,7 @@ const FormHR = ({
 					</>
 				)}
 			</div>
-			{!hidden && <Button click={e => handleClick(e)}>{t('SAVE')}</Button>}
+			{!hidden && <Button click={handleClick}>{t('SAVE')}</Button>}
 		</div>
 	);
 };

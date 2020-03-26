@@ -17,22 +17,20 @@ const SentOffersList = ({ vacancy }) => {
 				<Text>{t('NO_CANDIDATES')}</Text>
 			) : null}
 			{vacancy &&
-				vacancy.sent.map(elem => {
-					return (
-						<Link
-							to={`/hr/candidate/sent|${elem.cvId}|${elem.vacancyId}`}
-							key={elem.date}
-							className={classes.candidate}
-						>
-							<OneCv
-								classes={classes}
-								url={elem.cvId}
-								date={elem.date}
-								status={elem.status}
-							/>
-						</Link>
-					);
-				})}
+				vacancy.sent.map(elem => (
+					<Link
+						to={`/hr/candidate/sent|${elem.cvId}|${elem.vacancyId}`}
+						key={elem.date}
+						className={classes.candidate}
+					>
+						<OneCv
+							classes={classes}
+							url={elem.cvId}
+							date={elem.date}
+							status={elem.status}
+						/>
+					</Link>
+				))}
 		</>
 	);
 };

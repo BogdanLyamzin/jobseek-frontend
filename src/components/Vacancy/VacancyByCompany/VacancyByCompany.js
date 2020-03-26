@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
-import withVacancies from '../../../hoc/withVacancies';
+import withVacancies from '../../../hoc/withVacanciesByFilter';
 import VacancyByCompanyItem from './VacancyByCompanyItem/VacancyByCompanyItem';
 
 function VacancyByCompany({ setId, vacancy, user }) {

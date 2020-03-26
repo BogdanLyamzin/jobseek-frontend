@@ -44,6 +44,12 @@ const CommonInfo = ({ info, saveInfo, oneVacancy }) => {
 		);
 	};
 
+	const saveInfoForm = () => {
+		if (validationStatus()) {
+			saveInfo({ ...values });
+		}
+	};
+
 	return (
 		<div>
 			<FormCommonInfo
@@ -63,15 +69,7 @@ const CommonInfo = ({ info, saveInfo, oneVacancy }) => {
 					value={values.description}
 				/>
 				<div className={classes.alignCenter}>
-					<Button
-						click={() => {
-							if (validationStatus(values)) {
-								saveInfo({ ...values });
-							}
-						}}
-					>
-						{t('SAVE')}
-					</Button>
+					<Button click={saveInfoForm}>{t('SAVE')}</Button>
 				</div>
 			</div>
 		</div>

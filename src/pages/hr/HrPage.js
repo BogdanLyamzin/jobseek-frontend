@@ -4,9 +4,9 @@ import { Switch, Route } from 'react-router-dom';
 
 import { getOneHR } from '../../store/hr/actions';
 import HomeHR from '../../components/HR/HomeHR/HR';
-import VacancyByHR from '../../components/Vacancy/VacancyByHR';
 import Candidate from '../../components/HR/Candidate';
 import AddVacancy from '../../components/Vacancy/AddVacancy';
+import VacancyByHR from '../../components/Vacancy/VacancyByHR';
 import CandidatesList from '../../components/HR/CandidateByVacancy';
 import UpdateVacancy from '../../components/Vacancy/UpdateVacancy/UpdateVacancy';
 

@@ -20,7 +20,7 @@ const SphereList = ({
 			<div className={classes.vacancySkillFlex}>
 				<Text className={classes.vacancyKey}>{t('SPHERE')}*</Text>
 				<Autocomplete
-					options={spheres ? spheres : []}
+					options={spheres || []}
 					getOptionLabel={option => option.sphereName}
 					autoComplete
 					renderInput={params => <TextField {...params} fullWidth />}
@@ -33,25 +33,23 @@ const SphereList = ({
 			</div>
 			<div className={classes.vacancySkillFlex}>
 				{spheres &&
-					spheres.map(elem => {
-						return (
-							<div className={classes.vacancySkillItem} key={elem._id}>
-								<a
-									href="nothing"
-									className={classes.vacancySkillItemLink}
-									onClick={e => {
-										e.preventDefault();
-										handleClickSkill('sphere', {
-											_id: elem._id,
-											sphereName: elem.sphereName,
-										});
-									}}
-								>
-									{elem.sphereName}
-								</a>
-							</div>
-						);
-					})}
+					spheres.map(elem => (
+						<div className={classes.vacancySkillItem} key={elem._id}>
+							<a
+								href="nothing"
+								className={classes.vacancySkillItemLink}
+								onClick={e => {
+									e.preventDefault();
+									handleClickSkill('sphere', {
+										_id: elem._id,
+										sphereName: elem.sphereName,
+									});
+								}}
+							>
+								{elem.sphereName}
+							</a>
+						</div>
+					))}
 			</div>
 		</div>
 	);

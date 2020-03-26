@@ -17,22 +17,20 @@ const ReceivedOffersList = ({ vacancy }) => {
 				<Text>{t('NO_CANDIDATES')}</Text>
 			) : null}
 			{vacancy &&
-				vacancy.received.map(elem => {
-					return (
-						<Link
-							to={`/hr/candidate/received|${elem.cvId}|${elem.vacancyId}`}
-							key={elem.date}
-							className={classes.candidate}
-						>
-							<OneCv
-								classes={classes}
-								url={elem.cvId}
-								date={elem.date}
-								status={elem.status}
-							/>
-						</Link>
-					);
-				})}
+				vacancy.received.map(elem => (
+					<Link
+						to={`/hr/candidate/received|${elem.cvId}|${elem.vacancyId}`}
+						key={elem.date}
+						className={classes.candidate}
+					>
+						<OneCv
+							classes={classes}
+							url={elem.cvId}
+							date={elem.date}
+							status={elem.status}
+						/>
+					</Link>
+				))}
 		</>
 	);
 };

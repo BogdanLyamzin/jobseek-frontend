@@ -8,6 +8,7 @@ import getDate from '../../../../utils/getDate';
 import FormControlLabel from './FormControlLabel';
 import CreateOutlined from '../../../../shared/CreateOutlinedIcon';
 import DeleteIconWithModal from '../../../../shared/DeleteIconWithModal';
+import arrToStringSkill from '../../../../utils/transformType/arrToStringSkills';
 
 const VacancyItem = ({ elem, deleteVacancies }) => {
 	const classes = useStyles();
@@ -39,7 +40,7 @@ const VacancyItem = ({ elem, deleteVacancies }) => {
 				</Text>
 			</div>
 			<Text className={`${classes.vacancyDate} ${classes.vacancyFlex}`}>
-				{t('SKILLS')}: {elem.skills.map(s => s.name).join(', ')}
+				{t('SKILLS')}: {arrToStringSkill(elem.skills)}
 			</Text>
 			<div className={classes.vacancyFlex}>
 				<Text className={classes.vacancyCountry}>

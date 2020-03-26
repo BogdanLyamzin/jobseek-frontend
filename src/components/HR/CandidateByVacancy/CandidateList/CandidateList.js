@@ -7,6 +7,7 @@ import useStyles from './styles';
 import Text from '../../../../shared/Text';
 import Avatar from '../../../../shared/UserImg';
 import getDate from '../../../../utils/getDate';
+import arrToStringSkill from '../../../../utils/transformType/arrToStringSkills';
 
 const CandidateList = ({ candidates, id }) => {
 	const classes = useStyles();
@@ -18,33 +19,31 @@ const CandidateList = ({ candidates, id }) => {
 				<Text>{t('NO_CANDIDATES')}</Text>
 			) : null}
 			{candidates &&
-				candidates.map(elem => {
-					return (
-						<Link
-							to={`/hr/candidate/common|${elem._id}|${id}`}
-							key={elem._id}
-							className={classes.candidate}
-						>
-							<Text className={classes.candidateVacancyName}>
-								{t('VACANCY') + ': ' + elem.vacancyName}
-							</Text>
-							<Text className={classes.candidateSkills}>
-								{t('SKILLS') + ': ' + elem.cvSkill.map(a => a.name).join(', ')}
-							</Text>
-							<div className={classes.candidateFlexBetween}>
-								<div className={classes.candidateFlex}>
-									<Avatar className={classes.candidatePhoto} />
-									<Text className={classes.candidateName}>
-										{t('SEE_MORE') + '...'}
-									</Text>
-								</div>
-								<Text className={classes.candidateOfferDate}>
-									{t('POSTED') + ' ' + getDate(elem.date)}
+				candidates.map(elem => (
+					<Link
+						to={`/hr/candidate/common|${elem._id}|${id}`}
+						key={elem._id}
+						className={classes.candidate}
+					>
+						<Text className={classes.candidateVacancyName}>
+							{t('VACANCY') + ': ' + elem.vacancyName}
+						</Text>
+						<Text className={classes.candidateSkills}>
+							{t('SKILLS') + ': ' + arrToStringSkill(elem.cvSkill)}
+						</Text>
+						<div className={classes.candidateFlexBetween}>
+							<div className={classes.candidateFlex}>
+								<Avatar className={classes.candidatePhoto} />
+								<Text className={classes.candidateName}>
+									{t('SEE_MORE') + '...'}
 								</Text>
 							</div>
-						</Link>
-					);
-				})}
+							<Text className={classes.candidateOfferDate}>
+								{t('POSTED') + ' ' + getDate(elem.date)}
+							</Text>
+						</div>
+					</Link>
+				))}
 		</>
 	);
 };

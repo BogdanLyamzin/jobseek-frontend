@@ -36,18 +36,16 @@ const CheckboxList = ({
 			{skill.category && (
 				<div className={classes.vacancySkillListFlex}>
 					<div className={classes.vacancySkillList}>
-						{skillsList.map(elem => {
-							return (
-								<div className={classes.vacancySkillListItem} key={elem.name}>
-									<Checkbox
-										onChange={checkboxHandleChange(elem.name)}
-										value={elem.id}
-										name={elem.name}
-										checked={!!(checkbox && checkbox[elem.name])}
-									/>
-								</div>
-							);
-						})}
+						{skillsList.map(elem => (
+							<div className={classes.vacancySkillListItem} key={elem.name}>
+								<Checkbox
+									onChange={checkboxHandleChange(elem.name)}
+									value={elem.id}
+									name={elem.name}
+									checked={!!(checkbox && checkbox[elem.name])}
+								/>
+							</div>
+						))}
 					</div>
 					<div className={classes.vacancySkillTime}>
 						<div className={classes.vacancySliderItem}>
@@ -73,18 +71,15 @@ const CheckboxList = ({
 								/>
 							</div>
 						</div>
-						{checkboxArr
-							? checkboxArr.map(elem => {
-									return (
-										<Slider
-											key={elem.id}
-											element={elem}
-											handleChange={handleChange}
-											deleteSlider={deleteSlider}
-										/>
-									);
-							  })
-							: null}
+						{checkboxArr &&
+							checkboxArr.map(elem => (
+								<Slider
+									key={elem.id}
+									element={elem}
+									handleChange={handleChange}
+									deleteSlider={deleteSlider}
+								/>
+							))}
 					</div>
 				</div>
 			)}

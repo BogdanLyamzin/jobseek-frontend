@@ -120,7 +120,7 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 			/>
 			{skill.category && (
 				<div className={classes.alignCenter}>
-					<Button click={() => addNewVacancy()}>{t('POST')}</Button>
+					<Button click={addNewVacancy}>{t('POST')}</Button>
 				</div>
 			)}
 		</>

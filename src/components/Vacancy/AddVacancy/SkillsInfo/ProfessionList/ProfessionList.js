@@ -33,7 +33,7 @@ const ProfessionList = ({
 			<div className={classes.vacancySkillFlex}>
 				<Text className={classes.vacancyKey}>{t('PROFESSION')}*</Text>
 				<Autocomplete
-					options={profession ? profession : []}
+					options={profession || []}
 					getOptionLabel={option => option.professionName}
 					autoComplete
 					renderInput={params => <TextField {...params} fullWidth />}
@@ -46,26 +46,24 @@ const ProfessionList = ({
 			</div>
 			<div className={classes.vacancySkillFlex}>
 				{profession &&
-					profession.map(elem => {
-						return (
-							<div className={classes.vacancySkillItem} key={elem._id}>
-								<a
-									href="nothing"
-									className={classes.vacancySkillItemLink}
-									onClick={e => {
-										e.preventDefault();
-										handleClickSkill('profession', {
-											_id: elem._id,
-											sphereId: elem.sphereId,
-											professionName: elem.professionName,
-										});
-									}}
-								>
-									{elem.professionName}
-								</a>
-							</div>
-						);
-					})}
+					profession.map(elem => (
+						<div className={classes.vacancySkillItem} key={elem._id}>
+							<a
+								href="nothing"
+								className={classes.vacancySkillItemLink}
+								onClick={e => {
+									e.preventDefault();
+									handleClickSkill('profession', {
+										_id: elem._id,
+										sphereId: elem.sphereId,
+										professionName: elem.professionName,
+									});
+								}}
+							>
+								{elem.professionName}
+							</a>
+						</div>
+					))}
 			</div>
 		</div>
 	);
