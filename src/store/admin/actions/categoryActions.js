@@ -77,14 +77,12 @@ export const deleteCategory = id => {
 	};
 };
 
-export const getCategoryByFilter = filter => {
-	return dispatch => {
-		API.get(`categories?${filter}`)
-			.then(data => {
-				dispatch(successAxiosCategoryChange(data.result));
-			})
-			.catch(error => {
-				dispatch(errorAxios(error));
-			});
-	};
+export const getCategoryByFilter = filter => dispatch => {
+	API.get(`categories?${filter}`)
+		.then(data => {
+			dispatch(successAxiosCategoryChange(data.result));
+		})
+		.catch(error => {
+			dispatch(errorAxios(error));
+		});
 };

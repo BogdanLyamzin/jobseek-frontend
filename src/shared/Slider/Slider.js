@@ -55,7 +55,7 @@ const SliderItem = ({ element, handleChange, deleteSlider }) => {
 			<div className={classes.sliderFlex}>
 				<StyledSlider
 					className={classes.sliderSkills}
-					defaultValue={0}
+					defaultValue={element.experience}
 					step={1}
 					max={5}
 					valueLabelDisplay="on"

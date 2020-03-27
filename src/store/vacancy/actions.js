@@ -18,88 +18,72 @@ const getCandidates = actionConstructor(GET_CANDIDATES);
 const successAxiosList = actionConstructor(SUCCESS_AXIOS_LIST);
 export const deleteInfo = actionConstructor(DELETE_INFO);
 
-export const saveInfo = data => {
-	return dispatch => dispatch(addInfo(data));
+export const saveInfo = data => dispatch => dispatch(addInfo(data));
+
+export const updateVacancy = (id, body) => dispatch => {
+	API.put(`vacancies/${id}`, body)
+		.then(data => {
+			tostrActions(data, 'Вакансію оновлено');
+			dispatch(successAxios(data.result));
+		})
+		.catch(error => {
+			dispatch(errorAxios(error));
+		});
 };
 
-export const updateVacancy = (id, body) => {
-	return dispatch => {
-		API.put(`vacancies/${id}`, body)
-			.then(data => {
-				tostrActions(data, 'Вакансію оновлено');
-				dispatch(successAxios(data.result));
-			})
-			.catch(error => {
-				dispatch(errorAxios(error));
-			});
-	};
+export const getOneVacancy = id => dispatch => {
+	API.get(`vacancies/${id}`)
+		.then(data => {
+			dispatch(successAxios(data.result));
+		})
+		.catch(error => {
+			dispatch(errorAxios(error));
+		});
 };
 
-export const getOneVacancy = id => {
-	return dispatch => {
-		API.get(`vacancies/${id}`)
-			.then(data => {
-				dispatch(successAxios(data.result));
-			})
-			.catch(error => {
-				dispatch(errorAxios(error));
-			});
-	};
+export const addVacancy = body => dispatch => {
+	API.post('vacancies', body)
+		.then(data => {
+			tostrActions(data, 'Вакансію успішно створено');
+			dispatch(addNewVacancy(data.result));
+		})
+		.catch(error => {
+			dispatch(errorAxios(error));
+		});
 };
 
-export const addVacancy = body => {
-	return dispatch => {
-		API.post('vacancies', body)
-			.then(data => {
-				tostrActions(data, 'Вакансію успішно створено');
-				dispatch(addNewVacancy(data.result));
-			})
-			.catch(error => {
-				dispatch(errorAxios(error));
-			});
-	};
+export const getVacancyByFilter = filter => dispatch => {
+	API.get(`vacancies?${filter}`)
+		.then(data => {
+			dispatch(successAxiosList(data.result));
+		})
+		.catch(error => {
+			dispatch(errorAxios(error));
+		});
 };
 
-export const getVacancyByFilter = filter => {
-	return dispatch => {
-		API.get(`vacancies?${filter}`)
-			.then(data => {
-				dispatch(successAxiosList(data.result));
-			})
-			.catch(error => {
-				dispatch(errorAxios(error));
-			});
-	};
+export const getAllVacancy = () => dispatch => {
+	API.get('vacancies')
+		.then(({ data }) => {
+			dispatch(successAxiosList(data.result));
+		})
+		.catch(error => {
+			dispatch(errorAxios(error));
+		});
 };
 
-export const getAllVacancy = () => {
-	return dispatch => {
-		API.get('vacancies')
-			.then(({ data }) => {
-				dispatch(successAxiosList(data.result));
-			})
-			.catch(error => {
-				dispatch(errorAxios(error));
-			});
-	};
+export const deleteVacancy = id => () => {
+	API.delete(`vacancies/${id}`).then(data =>
+		tostrActions(data, 'Вакансію видалено'),
+	);
 };
 
-export const deleteVacancy = id => {
-	return () => {
-		API.delete(`vacancies/${id}`).then(data =>
-			tostrActions(data, 'Вакансію видалено'),
-		);
-	};
-};
-
-export const getSuitableCandidates = id => {
-	return dispatch => {
-		API.get(`suitableCandidates/${id}`)
-			.then(data => {
-				dispatch(getCandidates(data.result));
-			})
-			.catch(error => {
-				dispatch(errorAxios(error));
-			});
-	};
+export const getSuitableCandidates = id => dispatch => {
+	API.get(`suitableCandidates/${id}`)
+		.then(data => {
+			dispatch(getCandidates(data.result));
+		})
+		.catch(error => {
+			dispatch(errorAxios(error));
+		});
 };

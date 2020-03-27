@@ -6,13 +6,14 @@ import Slider from '../../../../../shared/Slider';
 import Checkbox from '../../../../../shared/Checkbox';
 import { skillsList, englishLevel } from '../skillsList';
 import StyledSlider from '../../../../../shared/StyledSlider';
+import withSkillState from '../../../../../hoc/withSkillState';
 
 const CheckboxList = ({
 	skill,
 	classes,
 	checkbox,
 	checkboxArr,
-	setCheckbox,
+	deleteSlider,
 	handleChange,
 	handleChangeEng,
 	checkboxHandleChange,
@@ -21,10 +22,6 @@ const CheckboxList = ({
 
 	const valueLabelFormatEng = value => {
 		return englishLevel[value];
-	};
-
-	const deleteSlider = name => {
-		setCheckbox({ ...checkbox, [name]: null });
 	};
 
 	return (
@@ -87,4 +84,4 @@ const CheckboxList = ({
 	);
 };
 
-export default CheckboxList;
+export default withSkillState(CheckboxList);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
@@ -12,7 +12,6 @@ import ProfessionList from './ProfessionList';
 import Button from '../../../../shared/Button';
 import validation from '../../../../utils/validation/vacancy';
 import { addVacancy } from '../../../../store/vacancy/actions';
-import objToArr from '../../../../utils/transformType/objToArr';
 
 const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 	const classes = useStyles();
@@ -24,12 +23,7 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 		profession: null,
 		category: null,
 	});
-	const [checkbox, setCheckbox] = useState(null);
-	const [checkboxArr, setCheckboxArr] = useState(null);
-
-	useEffect(() => {
-		setCheckboxArr([...objToArr(checkbox)]);
-	}, [checkbox]);
+	const [checkboxSkill, setCheckboxSkill] = useState(null);
 
 	const handleClickSkill = (name, newValue) => {
 		setSkill({ ...skill, [name]: newValue });
@@ -39,24 +33,13 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 		setSkill({ ...skill, englishLevel: englishLevel[newValue] });
 	};
 
-	const handleChangeSkillSlider = (name, id) => (event, newValue) => {
-		setCheckbox({
-			...checkbox,
-			[name]: {
-				name,
-				id,
-				experience: newValue,
-			},
-		});
-	};
-
 	const validationStatus = () => {
 		return (
 			validation('sphere', skill.sphere, t) &&
 			validation('vacancyName', skill.vacancyName, t) &&
 			validation('profession', skill.profession, t) &&
 			validation('category', skill.category, t) &&
-			validation('skills', checkboxArr, t)
+			validation('skills', checkboxSkill, t)
 		);
 	};
 
@@ -69,26 +52,12 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 			englishLevel: skill.englishLevel,
 			profession: skill.profession,
 			category: skill.category,
-			skills: [...checkboxArr],
+			skills: [...checkboxSkill],
 			companyId: user.companyId,
 			hrId: user._id,
 		};
 		if (validationStatus()) {
 			addVacancy(body);
-		}
-	};
-
-	const checkboxHandleChange = name => event => {
-		if (event.target.checked) {
-			setCheckbox({
-				...checkbox,
-				[name]: {
-					id: event.target.value,
-					experience: 0,
-				},
-			});
-		} else {
-			setCheckbox({ ...checkbox, [name]: null });
 		}
 	};
 
@@ -111,12 +80,8 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 			<ChackboxList
 				skill={skill}
 				classes={classes}
-				checkbox={checkbox}
-				checkboxArr={checkboxArr}
-				setCheckbox={setCheckbox}
+				setCheckboxSkill={setCheckboxSkill}
 				handleChangeEng={handleChangeEnglish}
-				handleChange={handleChangeSkillSlider}
-				checkboxHandleChange={checkboxHandleChange}
 			/>
 			{skill.category && (
 				<div className={classes.alignCenter}>
