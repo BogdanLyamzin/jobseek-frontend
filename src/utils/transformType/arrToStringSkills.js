@@ -1,3 +1,1 @@
-export default arr => {
-	return arr.map(element => element.name).join(', ');
-};
+export default arr => arr.map(element => element.name).join(', ');

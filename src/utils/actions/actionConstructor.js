@@ -1,6 +1,6 @@
-export default type => {
-	return payload => ({
-		type,
-		payload,
-	});
-};
+const actionConstructor = type => payload => ({
+	type,
+	payload,
+});
+
+export default actionConstructor;
