@@ -30,6 +30,7 @@ const Report = () => {
 							<strong>Список скарг: </strong>
 						</CardHeader>
 						<CardBody>
+							{report && report.length === 0 && <div>Немає скарг</div>}
 							{report &&
 								report.map(elem => {
 									return (
@@ -40,7 +41,7 @@ const Report = () => {
 												className="btn btn-pill btn-success mr-4"
 												onClick={() => deleteComment(elem._id, elem.reviewId)}
 											>
-												Видалити коментар
+												Видалити коментар і скаргу
 											</button>
 											<button
 												className="btn btn-pill btn-success"

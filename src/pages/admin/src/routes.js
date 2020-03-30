@@ -36,7 +36,7 @@ const routes = [
 	{ path: '/professions', name: 'Професії', component: Professions },
 	{ path: '/hr', name: 'Професійні сфери', component: HR },
 	{ path: '/administrators', name: 'Професії', component: Administrators },
-	{ path: '/report', name: 'Скариги', component: Report },
+	{ path: '/report', name: 'Скарги', component: Report },
 	// { path: '/users', exact: true,  name: 'Users', component: Users },
 	// { path: '/users/:id', exact: true, name: 'User Details', component: User },
 ];

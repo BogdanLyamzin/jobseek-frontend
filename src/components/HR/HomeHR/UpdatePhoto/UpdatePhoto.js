@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 import UploadPhoto from '../../../../shared/UploadPhoto';
 
-const UpdatePhoto = ({ user, uploadPhoto }) => {
-	return <UploadPhoto user={user} uploadPhoto={uploadPhoto} />;
-};
+const UpdatePhoto = ({ user, uploadPhoto }) => (
+	<UploadPhoto user={user} uploadPhoto={uploadPhoto} />
+);
 
 const mapStateToProps = ({ hr }) => ({
 	user: hr.user,
