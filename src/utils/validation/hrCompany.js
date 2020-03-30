@@ -7,7 +7,7 @@ const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const websiteRegExp = /(www|http:|https:)+[^\s]+[\w]/;
 
 const validation = (name, value, t) => {
-	switch (name.toLowerCase()) {
+	switch (name) {
 		case 'name':
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('FIRST_NAME')}`);

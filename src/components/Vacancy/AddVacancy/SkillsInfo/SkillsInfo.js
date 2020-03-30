@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
 import Category from './Category';
@@ -10,12 +10,12 @@ import ChackboxList from './CheckboxList';
 import { englishLevel } from './skillsList';
 import ProfessionList from './ProfessionList';
 import Button from '../../../../shared/Button';
+import withLanguage from '../../../../hoc/withLanguage';
 import validation from '../../../../utils/validation/vacancy';
 import { addVacancy } from '../../../../store/vacancy/actions';
 
-const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
+const SkillsInfo = ({ t, isActive, firstForm, user, addVacancy }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
 	const [skill, setSkill] = useState({
 		sphere: null,
 		vacancyName: null,
@@ -69,12 +69,7 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 				setSkill={setSkill}
 				handleClickSkill={handleClickSkill}
 			/>
-			<ProfessionList
-				skill={skill}
-				classes={classes}
-				setSkill={setSkill}
-				handleClickSkill={handleClickSkill}
-			/>
+			<ProfessionList skill={skill} classes={classes} setSkill={setSkill} />
 			<VacancyName skill={skill} classes={classes} setSkill={setSkill} />
 			<Category skill={skill} classes={classes} setSkill={setSkill} />
 			<ChackboxList
@@ -97,4 +92,7 @@ const mapStateToProps = ({ hr, vacancy }) => ({
 	firstForm: vacancy.addVacancy,
 });
 
-export default connect(mapStateToProps, { addVacancy })(SkillsInfo);
+export default compose(
+	connect(mapStateToProps, { addVacancy }),
+	withLanguage,
+)(SkillsInfo);

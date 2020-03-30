@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import { compose } from 'redux';
 
-import Text from '../../../../../shared/Text';
+import withLanguage from '../../../../../hoc/withLanguage';
+import Autocomplete from '../../../../../shared/Autocomplete';
 import withVacancyName from '../../../../../hoc/withVacancyName';
 
-const VacancyName = ({ skill, setId, classes, setSkill, vacancy }) => {
-	const { t } = useTranslation();
-
+const VacancyName = ({ t, skill, setId, classes, setSkill, vacancy }) => {
 	useEffect(() => {
 		if (skill.profession && skill.profession._id) {
 			setId(skill.profession._id);
@@ -18,20 +15,19 @@ const VacancyName = ({ skill, setId, classes, setSkill, vacancy }) => {
 
 	return (
 		<div className={classes.vacancySkillFlex}>
-			<Text className={classes.vacancyKey}>{t('VACANCY')}*</Text>
 			<Autocomplete
-				options={vacancy || []}
-				getOptionLabel={option => option.vacancyName}
-				autoComplete
-				renderInput={params => <TextField {...params} fullWidth />}
+				text={`${t('VACANCY')}*`}
 				value={skill.vacancyName}
+				options={vacancy || []}
 				onChange={(event, newValue) => {
 					setSkill({ ...skill, vacancyName: newValue });
 				}}
+				classNameText={classes.vacancyKey}
 				className={classes.vacancySkillItemSelect}
+				getOptionLabel={option => option.vacancyName}
 			/>
 		</div>
 	);
 };
 
-export default withVacancyName(VacancyName);
+export default compose(withVacancyName, withLanguage)(VacancyName);

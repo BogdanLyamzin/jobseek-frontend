@@ -1,15 +1,15 @@
 import React from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 
 import Text from '../../../../shared/Text';
 import OneCv from '../SentOffersList/GetOne';
 import useStyles from '../CandidateList/styles';
+import withLanguage from '../../../../hoc/withLanguage';
 
-const ReceivedOffersList = ({ vacancy }) => {
+const ReceivedOffersList = ({ t, vacancy }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
 
 	return (
 		<>
@@ -39,4 +39,7 @@ const mapStateToProps = ({ vacancy }) => ({
 	vacancy: vacancy.vacancy,
 });
 
-export default connect(mapStateToProps)(ReceivedOffersList);
+export default compose(
+	connect(mapStateToProps),
+	withLanguage,
+)(ReceivedOffersList);

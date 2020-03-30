@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import getDisplayName from '../utils/getDisplayName';
 import objToArr from '../utils/transformType/objToArr';
+import { englishLevel } from '../components/Vacancy/AddVacancy/SkillsInfo/skillsList';
 
 const withSkillState = Component => {
 	const WithSkillState = ({ setCheckboxSkill, checkboxGet, ...props }) => {
@@ -49,6 +50,10 @@ const withSkillState = Component => {
 			setCheckbox({ ...checkbox, [name]: null });
 		};
 
+		const valueLabelFormatEng = value => {
+			return englishLevel[value];
+		};
+
 		return (
 			<Component
 				{...props}
@@ -56,6 +61,7 @@ const withSkillState = Component => {
 				checkboxArr={checkboxArr}
 				deleteSlider={deleteSlider}
 				handleChange={handleChangeSkillSlider}
+				valueLabelFormatEng={valueLabelFormatEng}
 				checkboxHandleChange={checkboxHandleChange}
 			/>
 		);

@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 
 import FormHR from './FormHR';
 import useStyles from './styles';
 import UpdatePhoto from './UpdatePhoto';
 import PageWrap from '../../../shared/PageWrap';
 import { updateHR } from '../../../store/hr/actions';
+import withLanguage from '../../../hoc/withLanguage';
 
-const HR = ({ user, updateHR }) => {
+const HR = ({ user, updateHR, t }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
 	const [values, setValues] = useState(null);
 
 	useEffect(() => {
@@ -56,4 +56,7 @@ const mapDispatchToProps = {
 	updateHR,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HR);
+export default compose(
+	connect(mapStateToProps, mapDispatchToProps),
+	withLanguage,
+)(HR);

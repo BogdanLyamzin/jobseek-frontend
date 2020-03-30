@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 
 import API from '../../../../services/api';
 import Button from '../../../../shared/Button';
+import withLanguage from '../../../../hoc/withLanguage';
 import toastr from '../../../../utils/toastr/toastrAction';
 
-const BtnList = ({ path, cv, cvID, vacancyID }) => {
-	const { t } = useTranslation();
+const BtnList = ({ t, path, cv, cvID, vacancyID }) => {
 	const postSent = () => {
 		API.post('sentVacancies', {
 			cvId: cvID,
@@ -54,4 +53,4 @@ const mapStateToProps = ({ cv }) => ({
 	cv: cv.cv,
 });
 
-export default connect(mapStateToProps)(BtnList);
+export default connect(mapStateToProps)(withLanguage(BtnList));

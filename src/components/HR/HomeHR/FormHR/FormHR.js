@@ -1,14 +1,16 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { compose } from 'redux';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
 import Text from '../../../../shared/Text';
 import Input from '../../../../shared/Input';
 import Button from '../../../../shared/Button';
 import withHidden from '../../../../hoc/withHidden';
+import withLanguage from '../../../../hoc/withLanguage';
 import validation from '../../../../utils/validation/hrCompany';
 
 const FormHR = ({
+	t,
 	values,
 	hidden,
 	classes,
@@ -16,8 +18,6 @@ const FormHR = ({
 	submitForm,
 	handleChange,
 }) => {
-	const { t } = useTranslation();
-
 	const validationStatus = () => {
 		return (
 			validation('name', values.name, t) &&
@@ -117,4 +117,4 @@ const FormHR = ({
 	);
 };
 
-export default withHidden(FormHR);
+export default compose(withHidden, withLanguage)(FormHR);

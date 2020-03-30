@@ -1,5 +1,7 @@
 import React from 'react';
 
+import withLanguage from '../../../../hoc/withLanguage';
+
 const CandidateEducation = ({ classes }) => {
 	return (
 		<div className={classes.candidateBackground}>
@@ -36,4 +38,4 @@ const CandidateEducation = ({ classes }) => {
 	);
 };
 
-export default CandidateEducation;
+export default withLanguage(CandidateEducation);

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 
 import ChackboxList from './CheckboxList';
 import { englishLevel } from './skillsList';
 import Button from '../../../../shared/Button';
+import withLanguage from '../../../../hoc/withLanguage';
 import useStyles from '../../AddVacancy/SkillsInfo/styles';
 import Category from '../../AddVacancy/SkillsInfo/Category';
 import validation from '../../../../utils/validation/vacancy';
@@ -14,9 +15,8 @@ import { updateVacancy } from '../../../../store/vacancy/actions';
 import VacancyName from '../../AddVacancy/SkillsInfo/VacancyName';
 import ProfessionList from '../../AddVacancy/SkillsInfo/ProfessionList';
 
-const SkillsInfo = ({ id, firstForm, oneVacancy, updateVacancy }) => {
+const SkillsInfo = ({ t, id, firstForm, oneVacancy, updateVacancy }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
 	const [skill, setSkill] = useState({
 		sphere: null,
 		profession: null,
@@ -96,7 +96,7 @@ const SkillsInfo = ({ id, firstForm, oneVacancy, updateVacancy }) => {
 			/>
 			{skill.category && (
 				<div className={classes.alignCenter}>
-					<Button click={update}>{t('UPDATE')}</Button>
+					<Button click={() => update()}>{t('UPDATE')}</Button>
 				</div>
 			)}
 		</>
@@ -112,4 +112,7 @@ const mapDispatchToProps = {
 	updateVacancy,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SkillsInfo);
+export default compose(
+	connect(mapStateToProps, mapDispatchToProps),
+	withLanguage,
+)(SkillsInfo);

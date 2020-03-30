@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 import { Switch, Route } from 'react-router-dom';
 
 import CommonInfo from './CommonInfo';
@@ -8,11 +8,11 @@ import SkillsInfo from './SkillsInfo';
 import Link from '../../../shared/Link';
 import useStyles from '../AddVacancy/styles';
 import PageWrap from '../../../shared/PageWrap';
+import withLanguage from '../../../hoc/withLanguage';
 import { getOneVacancy, deleteInfo } from '../../../store/vacancy/actions';
 
-const UpdateVacancy = ({ match, getOneVacancy }) => {
+const UpdateVacancy = ({ t, match, getOneVacancy }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
 	const { id } = match.params;
 
 	useEffect(() => {
@@ -55,4 +55,7 @@ const mapDispatchToProps = {
 	getOneVacancy,
 };
 
-export default connect(null, mapDispatchToProps)(UpdateVacancy);
+export default compose(
+	connect(null, mapDispatchToProps),
+	withLanguage,
+)(UpdateVacancy);

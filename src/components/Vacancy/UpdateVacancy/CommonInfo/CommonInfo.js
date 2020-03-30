@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 
 import Text from '../../../../shared/Text';
 import Button from '../../../../shared/Button';
+import withLanguage from '../../../../hoc/withLanguage';
 import useStyles from '../../AddVacancy/CommonInfo/styles';
 import { saveInfo } from '../../../../store/vacancy/actions';
 import FormCommonInfo from '../../AddVacancy/FormCommonInfo';
 import validation from '../../../../utils/validation/hrCompany';
 
-const CommonInfo = ({ info, saveInfo, oneVacancy }) => {
+const CommonInfo = ({ t, info, saveInfo, oneVacancy }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
 	const [values, setValues] = useState({
 		city: info ? info.city : '',
 		salary: info ? info.salary : '',
@@ -85,4 +85,7 @@ const mapDispatchToProps = {
 	saveInfo,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommonInfo);
+export default compose(
+	connect(mapStateToProps, mapDispatchToProps),
+	withLanguage,
+)(CommonInfo);

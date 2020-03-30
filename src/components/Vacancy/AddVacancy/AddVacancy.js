@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 import { Switch, Route } from 'react-router-dom';
 
 import useStyles from './styles';
@@ -10,10 +10,10 @@ import Link from '../../../shared/Link';
 import Text from '../../../shared/Text';
 import PageWrap from '../../../shared/PageWrap';
 import SwitchControl from '../../../shared/Switch';
+import withLanguage from '../../../hoc/withLanguage';
 import { deleteInfo } from '../../../store/vacancy/actions';
 
-const AddVacancy = ({ deleteInfo }) => {
-	const { t } = useTranslation();
+const AddVacancy = ({ t, deleteInfo }) => {
 	const classes = useStyles();
 	const [isActive, setIsActive] = useState(true);
 
@@ -57,4 +57,4 @@ const AddVacancy = ({ deleteInfo }) => {
 	);
 };
 
-export default connect(null, { deleteInfo })(AddVacancy);
+export default compose(connect(null, { deleteInfo }), withLanguage)(AddVacancy);

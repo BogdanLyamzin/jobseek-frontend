@@ -1,18 +1,17 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 import useStyles from '../styles';
 import Link from '../../../../shared/Link';
 import Text from '../../../../shared/Text';
 import getDate from '../../../../utils/getDate';
 import FormControlLabel from './FormControlLabel';
+import withLanguage from '../../../../hoc/withLanguage';
 import CreateOutlined from '../../../../shared/CreateOutlinedIcon';
 import DeleteIconWithModal from '../../../../shared/DeleteIconWithModal';
 import arrToStringSkill from '../../../../utils/transformType/arrToStringSkills';
 
-const VacancyItem = ({ elem, deleteVacancies }) => {
+const VacancyItem = ({ t, elem, deleteVacancies }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
 
 	return (
 		<div id={elem._id} className={classes.vacancy}>
@@ -54,4 +53,4 @@ const VacancyItem = ({ elem, deleteVacancies }) => {
 	);
 };
 
-export default React.memo(VacancyItem);
+export default React.memo(withLanguage(VacancyItem));

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 import { Switch, Route, useParams } from 'react-router-dom';
 
 import useStyles from './styles';
@@ -14,15 +14,16 @@ import {
 	getOneVacancy,
 	getSuitableCandidates,
 } from '../../../store/vacancy/actions';
+import withLanguage from '../../../hoc/withLanguage';
 import arrToStringSkill from '../../../utils/transformType/arrToStringSkills';
 
 const CandidateByVacancy = ({
+	t,
 	vacancy,
 	getOneVacancy,
 	getSuitableCandidates,
 }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
 	const { id } = useParams();
 
 	useEffect(() => {
@@ -70,4 +71,7 @@ const mapDispatchToProps = {
 	getSuitableCandidates,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CandidateByVacancy);
+export default compose(
+	connect(mapStateToProps, mapDispatchToProps),
+	withLanguage,
+)(CandidateByVacancy);

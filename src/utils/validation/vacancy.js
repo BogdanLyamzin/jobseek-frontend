@@ -1,7 +1,7 @@
 import toastr from '../../utils/toastr/toastrValid';
 
 const validation = (name, value, t) => {
-	switch (name.toLowerCase()) {
+	switch (name) {
 		case 'sphere':
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('SPHERE')}`);

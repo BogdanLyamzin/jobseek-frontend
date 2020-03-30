@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import { compose } from 'redux';
 
-import Text from '../../../../../shared/Text';
+import withLanguage from '../../../../../hoc/withLanguage';
 import withCategory from '../../../../../hoc/withCategory';
+import Autocomplete from '../../../../../shared/Autocomplete';
 
-const Category = ({ setId, skill, classes, setSkill, categories }) => {
-	const { t } = useTranslation();
-
+const Category = ({ t, setId, skill, classes, setSkill, categories }) => {
 	useEffect(() => {
 		if (skill.vacancyName && skill.vacancyName._id) {
 			setId(skill.vacancyName._id);
@@ -18,20 +15,19 @@ const Category = ({ setId, skill, classes, setSkill, categories }) => {
 
 	return (
 		<div className={classes.vacancySkillFlex}>
-			<Text className={classes.vacancyKey}>{t('CATEGORY')}*</Text>
 			<Autocomplete
-				options={categories || []}
-				getOptionLabel={option => option.categoryName}
-				autoComplete
-				renderInput={params => <TextField {...params} fullWidth />}
+				text={`${t('CATEGORY')}*`}
 				value={skill.category}
+				options={categories || []}
 				onChange={(event, newValue) => {
 					setSkill({ ...skill, category: newValue });
 				}}
+				classNameText={classes.vacancyKey}
 				className={classes.vacancySkillItemSelect}
+				getOptionLabel={option => option.categoryName}
 			/>
 		</div>
 	);
 };
 
-export default withCategory(Category);
+export default compose(withCategory, withLanguage)(Category);

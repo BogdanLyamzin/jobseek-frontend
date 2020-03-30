@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import Text from '../../../../../shared/Text';
 import API from '../../../../../services/api';
 import getDate from '../../../../../utils/getDate';
 import Avatar from '../../../../../shared/UserImg';
+import withLanguage from '../../../../../hoc/withLanguage';
 import arrToStringSkill from '../../../../../utils/transformType/arrToStringSkills';
 
-const GetOneCv = ({ url, date, status, classes }) => {
+const GetOneCv = ({ t, url, date, status, classes }) => {
 	const [cv, setCv] = useState(null);
-	const { t } = useTranslation();
-
 	useEffect(() => {
 		API.get(`cvs/${url}`).then(data => setCv(data.result));
 	}, [url]);
@@ -41,4 +39,4 @@ const GetOneCv = ({ url, date, status, classes }) => {
 	);
 };
 
-export default React.memo(GetOneCv);
+export default React.memo(withLanguage(GetOneCv));

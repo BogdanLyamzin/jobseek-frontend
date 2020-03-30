@@ -1,17 +1,17 @@
 import React from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
 import Text from '../../../../shared/Text';
 import Avatar from '../../../../shared/UserImg';
 import getDate from '../../../../utils/getDate';
+import withLanguage from '../../../../hoc/withLanguage';
 import arrToStringSkill from '../../../../utils/transformType/arrToStringSkills';
 
-const CandidateList = ({ candidates, id }) => {
+const CandidateList = ({ t, candidates, id }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
 
 	return (
 		<>
@@ -52,4 +52,4 @@ const mapStateToProps = ({ vacancy }) => ({
 	candidates: vacancy.candidates,
 });
 
-export default connect(mapStateToProps)(CandidateList);
+export default compose(connect(mapStateToProps), withLanguage)(CandidateList);
