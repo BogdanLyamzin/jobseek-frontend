@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
 import getDisplayName from '../utils/getDisplayName';
+import englishLevel from '../utils/variables/english';
 import objToArr from '../utils/transformType/objToArr';
-import { englishLevel } from '../components/Vacancy/AddVacancy/SkillsInfo/skillsList';
 
 const withSkillState = Component => {
-	const WithSkillState = ({ setCheckboxSkill, checkboxGet, ...props }) => {
+	const WithSkillState = ({
+		setId,
+		checkboxGet,
+		setCheckboxSkill,
+		...props
+	}) => {
 		const [checkbox, setCheckbox] = useState(null);
 		const [checkboxArr, setCheckboxArr] = useState(null);
 
 		useEffect(() => {
 			if (checkboxGet) setCheckbox(checkboxGet);
-		}, [checkboxGet]);
+		}, [checkboxGet, setCheckbox]);
 
 		useEffect(() => {
 			setCheckboxArr([...objToArr(checkbox)]);
@@ -19,7 +24,7 @@ const withSkillState = Component => {
 
 		useEffect(() => {
 			setCheckboxSkill(checkboxArr);
-		}, [checkboxArr]);
+		}, [checkboxArr, setCheckboxSkill]);
 
 		const handleChangeSkillSlider = (name, id) => (event, newValue) => {
 			setCheckbox({
@@ -50,9 +55,7 @@ const withSkillState = Component => {
 			setCheckbox({ ...checkbox, [name]: null });
 		};
 
-		const valueLabelFormatEng = value => {
-			return englishLevel[value];
-		};
+		const valueLabelFormatEng = value => englishLevel[value];
 
 		return (
 			<Component

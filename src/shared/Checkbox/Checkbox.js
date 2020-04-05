@@ -18,7 +18,7 @@ const CheckboxStyled = withStyles(theme => ({
 const useStyle = makeStyles(theme => ({
 	text: {
 		fontFamily: theme.palette.font,
-		fontSize: '14px',
+		fontSize: '16px',
 		lineHeight: '19px',
 		color: theme.palette.textColor,
 	},

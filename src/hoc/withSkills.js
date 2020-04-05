@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import getDisplayName from '../utils/getDisplayName';
-import { getSkillsByFilter } from '../store/admin/actions/categoryActions';
+import { getSkillsByFilter } from '../store/admin/actions/skillActions';
 
 const withSkills = Component => {
 	const WithSkills = ({ skillList, getSkillsByFilter, ...props }) => {
@@ -10,14 +10,14 @@ const withSkills = Component => {
 		const [skills, setSkills] = useState(null);
 
 		useEffect(() => {
-			if (id) getSkillsByFilter(`parentId=${id}`);
+			if (id) getSkillsByFilter(`categoryId=${id}`);
 		}, [getSkillsByFilter, id]);
 
 		useEffect(() => {
 			setSkills(skillList);
 		}, [skillList]);
 
-		return <Component setId={setId} skills={skills} {...props} />;
+		return <Component setId={setId} skillList={skills} {...props} />;
 	};
 
 	WithSkills.displayName = `WithSkills(${getDisplayName(Component)})`;

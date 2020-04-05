@@ -50,7 +50,7 @@ export const getAllSkills = () => {
 };
 
 export const getSkillsByFilter = filter => dispatch => {
-	API.get(`skills?categoryId=${filter}`)
+	API.get(`skills?${filter}`)
 		.then(data => {
 			dispatch(successAxiosSkillChange(data.result));
 		})

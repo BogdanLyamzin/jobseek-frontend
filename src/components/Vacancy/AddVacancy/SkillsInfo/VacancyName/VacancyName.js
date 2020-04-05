@@ -11,7 +11,7 @@ const VacancyName = ({ t, skill, setId, classes, setSkill, vacancy }) => {
 			setId(skill.profession._id);
 			setSkill({ ...skill, vacancyName: null, category: null });
 		}
-	}, [skill.profession]);
+	}, [skill.profession, setId, setSkill]);
 
 	return (
 		<div className={classes.vacancySkillFlex}>

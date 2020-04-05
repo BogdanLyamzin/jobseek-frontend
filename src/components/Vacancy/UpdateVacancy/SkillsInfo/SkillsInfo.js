@@ -3,12 +3,12 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import ChackboxList from './CheckboxList';
-import { englishLevel } from './skillsList';
 import Button from '../../../../shared/Button';
 import withLanguage from '../../../../hoc/withLanguage';
 import useStyles from '../../AddVacancy/SkillsInfo/styles';
 import Category from '../../AddVacancy/SkillsInfo/Category';
 import validation from '../../../../utils/validation/vacancy';
+import englishLevel from '../../../../utils/variables/english';
 import arrToObj from '../../../../utils/transformType/arrToObj';
 import SphereList from '../../AddVacancy/SkillsInfo/SphereList';
 import { updateVacancy } from '../../../../store/vacancy/actions';
@@ -21,7 +21,7 @@ const SkillsInfo = ({ t, id, firstForm, oneVacancy, updateVacancy }) => {
 		sphere: null,
 		profession: null,
 		vacancyName: null,
-		englishLevel: 'Нет',
+		englishLevel: 'A1',
 		category: null,
 	});
 	const [checkbox, setCheckbox] = useState(null);

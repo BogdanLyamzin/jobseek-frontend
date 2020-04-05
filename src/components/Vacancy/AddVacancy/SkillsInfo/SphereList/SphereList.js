@@ -27,7 +27,7 @@ const SphereList = ({
 				getOptionLabel={option => option.sphereName}
 			/>
 		</div>
-		<div className={classes.vacancySkillFlex}>
+		<div className={`${classes.vacancySkillFlex} ${classes.spheres}`}>
 			{spheres &&
 				spheres.map(elem => (
 					<div className={classes.vacancySkillItem} key={elem._id}>

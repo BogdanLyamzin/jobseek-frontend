@@ -16,7 +16,7 @@ const ProfessionList = ({ t, skill, setId, classes, setSkill, profession }) => {
 				category: null,
 			});
 		}
-	}, [skill.sphere]);
+	}, [skill.sphere, setId, setSkill]);
 
 	return (
 		<div>

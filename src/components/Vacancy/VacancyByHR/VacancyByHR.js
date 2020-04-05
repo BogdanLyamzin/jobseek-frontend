@@ -16,7 +16,7 @@ const VacancyByHR = ({ setId, vacancy, deleteVacancies, user }) => {
 
 	useEffect(() => {
 		if (user) setId(user._id);
-	}, [user]);
+	}, [user, setId]);
 
 	return (
 		<PageWrap title={t('MY_VACANCIES')}>

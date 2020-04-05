@@ -12,7 +12,7 @@ function VacancyByCompany({ setId, vacancy, user }) {
 
 	useEffect(() => {
 		if (user) setId(user._id);
-	}, [user]);
+	}, [user, setId]);
 
 	return (
 		<div

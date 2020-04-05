@@ -7,19 +7,19 @@ import Category from './Category';
 import SphereList from './SphereList';
 import VacancyName from './VacancyName';
 import ChackboxList from './CheckboxList';
-import { englishLevel } from './skillsList';
 import ProfessionList from './ProfessionList';
 import Button from '../../../../shared/Button';
 import withLanguage from '../../../../hoc/withLanguage';
 import validation from '../../../../utils/validation/vacancy';
 import { addVacancy } from '../../../../store/vacancy/actions';
+import englishLevel from '../../../../utils/variables/english';
 
 const SkillsInfo = ({ t, isActive, firstForm, user, addVacancy }) => {
 	const classes = useStyles();
 	const [skill, setSkill] = useState({
 		sphere: null,
 		vacancyName: null,
-		englishLevel: 'Нет',
+		englishLevel: 'A1',
 		profession: null,
 		category: null,
 	});
