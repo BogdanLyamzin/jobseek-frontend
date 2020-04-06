@@ -4,11 +4,18 @@ import { connect } from 'react-redux';
 
 import Text from '../../../../shared/Text';
 import Button from '../../../../shared/Button';
+import {
+	CITY,
+	SALARY,
+	COUNTRY,
+	DESCRIPTION,
+} from '../../../../utils/variables/inputName';
 import withLanguage from '../../../../hoc/withLanguage';
 import useStyles from '../../AddVacancy/CommonInfo/styles';
 import { saveInfo } from '../../../../store/vacancy/actions';
 import FormCommonInfo from '../../AddVacancy/FormCommonInfo';
 import validation from '../../../../utils/validation/hrCompany';
+import { FULL } from '../../../../utils/variables/employmentType';
 
 const CommonInfo = ({ t, info, saveInfo, oneVacancy }) => {
 	const classes = useStyles();
@@ -17,7 +24,7 @@ const CommonInfo = ({ t, info, saveInfo, oneVacancy }) => {
 		salary: info ? info.salary : '',
 		country: info ? info.country : '',
 		description: info ? info.description : '',
-		employmentType: info ? info.employmentType : 'fullDay',
+		employmentType: info ? info.employmentType : FULL,
 	});
 
 	useEffect(() => {
@@ -35,14 +42,11 @@ const CommonInfo = ({ t, info, saveInfo, oneVacancy }) => {
 		setValues({ ...values, [event.target.name]: event.target.value });
 	};
 
-	const validationStatus = () => {
-		return (
-			validation('city', values.city, t) &&
-			validation('country', values.country, t) &&
-			validation('salary', values.salary, t) &&
-			validation('description', values.description, t)
-		);
-	};
+	const validationStatus = () =>
+		validation(COUNTRY, values.country, t) &&
+		validation(CITY, values.city, t) &&
+		validation(SALARY, values.salary, t) &&
+		validation(DESCRIPTION, values.description, t);
 
 	const saveInfoForm = () => {
 		if (validationStatus()) {

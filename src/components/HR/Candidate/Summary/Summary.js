@@ -5,19 +5,20 @@ import Status from '../CheckStatus';
 import Text from '../../../../shared/Text';
 import Avatar from '../../../../shared/UserImg';
 import withLanguage from '../../../../hoc/withLanguage';
+import emplText from '../../../../utils/variables/emplTypeText';
 
-const Summary = ({ t, cvID, classes, candidate, vacancyID }) => (
+const Summary = ({ t, cv, cvID, classes, candidate, vacancyID }) => (
 	<div className={classes.candidateBackground}>
 		<div className={classes.candidateImgFlex}>
 			<Avatar className={classes.candidateImg} />
 			<div>
 				<Status cvID={cvID} vacancyID={vacancyID}>
 					<Text className={classes.candidateName}>
-						{candidate ? `${candidate.name} ${candidate.lastName}` : ''}
+						{candidate && `${candidate.name} ${candidate.lastName}`}
 					</Text>
 				</Status>
 				<Text className={classes.candidateLocation}>
-					{candidate ? `${candidate.country}, ${candidate.city}` : ''}
+					{candidate && `${candidate.country}, ${candidate.city}`}
 				</Text>
 			</div>
 		</div>
@@ -32,7 +33,7 @@ const Summary = ({ t, cvID, classes, candidate, vacancyID }) => (
 					<Text
 						className={`${classes.candidateProperty} ${classes.candidateInfoItem}`}
 					>
-						Робота в офісі на повний день???
+						{cv && emplText(cv.employmentType, t)}
 					</Text>
 				</div>
 				<div className={classes.candidateInfoFlex}>
@@ -56,7 +57,7 @@ const Summary = ({ t, cvID, classes, candidate, vacancyID }) => (
 					<Text
 						className={`${classes.candidateProperty} ${classes.candidateInfoItem}`}
 					>
-						1000????? USD
+						{cv && cv.salary} USD
 					</Text>
 				</div>
 			</div>
@@ -95,7 +96,8 @@ const Summary = ({ t, cvID, classes, candidate, vacancyID }) => (
 	</div>
 );
 
-const mapStateToProps = ({ candidate }) => ({
+const mapStateToProps = ({ candidate, cv }) => ({
+	cv: cv.cv,
 	candidate: candidate.user,
 });
 

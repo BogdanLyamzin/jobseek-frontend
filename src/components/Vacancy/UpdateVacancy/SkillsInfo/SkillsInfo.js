@@ -3,6 +3,13 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import ChackboxList from './CheckboxList';
+import {
+	SKILLS,
+	SPHERE,
+	CATEGORY,
+	PROFESSION,
+	VACANCY_NAME,
+} from '../../../../utils/variables/inputName';
 import Button from '../../../../shared/Button';
 import withLanguage from '../../../../hoc/withLanguage';
 import useStyles from '../../AddVacancy/SkillsInfo/styles';
@@ -21,7 +28,7 @@ const SkillsInfo = ({ t, id, firstForm, oneVacancy, updateVacancy }) => {
 		sphere: null,
 		profession: null,
 		vacancyName: null,
-		englishLevel: 'A1',
+		englishLevel: englishLevel[0],
 		category: null,
 	});
 	const [checkbox, setCheckbox] = useState(null);
@@ -46,15 +53,12 @@ const SkillsInfo = ({ t, id, firstForm, oneVacancy, updateVacancy }) => {
 		setSkill({ ...skill, englishLevel: englishLevel[newValue] });
 	};
 
-	const validationStatus = () => {
-		return (
-			validation('sphere', skill.sphere, t) &&
-			validation('vacancyName', skill.vacancyName, t) &&
-			validation('profession', skill.profession, t) &&
-			validation('category', skill.category, t) &&
-			validation('skills', checkboxSkill, t)
-		);
-	};
+	const validationStatus = () =>
+		validation(SPHERE, skill.sphere, t) &&
+		validation(PROFESSION, skill.profession, t) &&
+		validation(VACANCY_NAME, skill.vacancyName, t) &&
+		validation(CATEGORY, skill.category, t) &&
+		validation(SKILLS, checkboxSkill, t);
 
 	const update = () => {
 		const body = {

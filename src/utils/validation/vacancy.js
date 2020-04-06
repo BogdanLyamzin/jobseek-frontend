@@ -1,8 +1,15 @@
 import toastr from '../../utils/toastr/toastrValid';
+import {
+	SKILLS,
+	SPHERE,
+	CATEGORY,
+	PROFESSION,
+	VACANCY_NAME,
+} from '../../utils/variables/inputName';
 
 const validation = (name, value, t) => {
 	switch (name) {
-		case 'sphere':
+		case SPHERE:
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('SPHERE')}`);
 			} else {
@@ -10,7 +17,7 @@ const validation = (name, value, t) => {
 			}
 			break;
 
-		case 'vacancyName':
+		case VACANCY_NAME:
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('VACANCY')}`);
 			} else {
@@ -18,7 +25,7 @@ const validation = (name, value, t) => {
 			}
 			break;
 
-		case 'profession':
+		case PROFESSION:
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('VACANCY')}`);
 			} else {
@@ -26,7 +33,7 @@ const validation = (name, value, t) => {
 			}
 			break;
 
-		case 'category':
+		case CATEGORY:
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('CATEGORY')}`);
 			} else {
@@ -34,7 +41,7 @@ const validation = (name, value, t) => {
 			}
 			break;
 
-		case 'skills':
+		case SKILLS:
 			if (!value || value.length === 0) {
 				toastr(`${t('ENTER_FIELD')} ${t('SKILLS')}`);
 			} else {

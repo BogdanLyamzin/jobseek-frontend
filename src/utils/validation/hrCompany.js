@@ -1,4 +1,16 @@
 import toastr from '../../utils/toastr/toastrValid';
+import {
+	NAME,
+	CITY,
+	EMAIL,
+	PHONE,
+	SALARY,
+	WEBSITE,
+	COUNTRY,
+	FACEBOOK,
+	LAST_NAME,
+	DESCRIPTION,
+} from '../../utils/variables/inputName';
 
 const phoneRegExp = /^\+?3?8?(0\d{9})$/;
 const nameRegExp = /^[A-ZА-ЯЁЇІЄҐ]{1}[a-zа-яёїієґ]+$/u;
@@ -8,7 +20,7 @@ const websiteRegExp = /(www|http:|https:)+[^\s]+[\w]/;
 
 const validation = (name, value, t) => {
 	switch (name) {
-		case 'name':
+		case NAME:
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('FIRST_NAME')}`);
 			} else if (value.length < 2 || value.length > 30) {
@@ -20,7 +32,7 @@ const validation = (name, value, t) => {
 			}
 			break;
 
-		case 'lastName':
+		case LAST_NAME:
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('LAST_NAME')}`);
 			} else if (value.length < 2 || value.length > 30) {
@@ -32,7 +44,7 @@ const validation = (name, value, t) => {
 			}
 			break;
 
-		case 'email':
+		case EMAIL:
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('MAIL')}`);
 			} else if (!value.includes('@')) {
@@ -44,7 +56,7 @@ const validation = (name, value, t) => {
 			}
 			break;
 
-		case 'phone':
+		case PHONE:
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('PHONE')}`);
 			} else if (!phoneRegExp.test(value)) {
@@ -54,7 +66,7 @@ const validation = (name, value, t) => {
 			}
 			break;
 
-		case 'country':
+		case COUNTRY:
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('COUNTRY')}`);
 			} else if (value.length < 2 || value.length > 30) {
@@ -66,7 +78,7 @@ const validation = (name, value, t) => {
 			}
 			break;
 
-		case 'city':
+		case CITY:
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('CITY')}`);
 			} else if (value.length < 2 || value.length > 30) {
@@ -78,7 +90,7 @@ const validation = (name, value, t) => {
 			}
 			break;
 
-		case 'salary':
+		case SALARY:
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('SALARY')}`);
 			} else if (value <= 0) {
@@ -90,7 +102,7 @@ const validation = (name, value, t) => {
 			}
 			break;
 
-		case 'description':
+		case DESCRIPTION:
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('VACANCY_DESCRIPTION')}`);
 			} else if (value.length < 200 || value.length > 3000) {
@@ -100,7 +112,7 @@ const validation = (name, value, t) => {
 			}
 			break;
 
-		case 'website':
+		case WEBSITE:
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('SITE_SOCIAL')}`);
 			} else if (!websiteRegExp.test(value)) {
@@ -110,7 +122,7 @@ const validation = (name, value, t) => {
 			}
 			break;
 
-		case 'facebookLink':
+		case FACEBOOK:
 			if (!value) {
 				toastr(`${t('ENTER_FIELD')} ${t('SOCIAL_LINK')}`);
 			} else if (!websiteRegExp.test(value)) {

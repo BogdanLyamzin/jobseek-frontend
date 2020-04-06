@@ -2,6 +2,12 @@ import React from 'react';
 import { compose } from 'redux';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
+import {
+	NAME,
+	EMAIL,
+	PHONE,
+	LAST_NAME,
+} from '../../../../utils/variables/inputName';
 import Text from '../../../../shared/Text';
 import Input from '../../../../shared/Input';
 import Button from '../../../../shared/Button';
@@ -18,14 +24,11 @@ const FormHR = ({
 	submitForm,
 	handleChange,
 }) => {
-	const validationStatus = () => {
-		return (
-			validation('name', values.name, t) &&
-			validation('lastName', values.lastName, t) &&
-			validation('email', values.email, t) &&
-			validation('phone', values.phone, t)
-		);
-	};
+	const validationStatus = () =>
+		validation(NAME, values.name, t) &&
+		validation(LAST_NAME, values.lastName, t) &&
+		validation(EMAIL, values.email, t) &&
+		validation(PHONE, values.phone, t);
 
 	const handleClick = event => {
 		event.preventDefault();

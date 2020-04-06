@@ -8,6 +8,13 @@ import SphereList from './SphereList';
 import VacancyName from './VacancyName';
 import ChackboxList from './CheckboxList';
 import ProfessionList from './ProfessionList';
+import {
+	SKILLS,
+	SPHERE,
+	CATEGORY,
+	PROFESSION,
+	VACANCY_NAME,
+} from '../../../../utils/variables/inputName';
 import Button from '../../../../shared/Button';
 import withLanguage from '../../../../hoc/withLanguage';
 import validation from '../../../../utils/validation/vacancy';
@@ -19,7 +26,7 @@ const SkillsInfo = ({ t, isActive, firstForm, user, addVacancy }) => {
 	const [skill, setSkill] = useState({
 		sphere: null,
 		vacancyName: null,
-		englishLevel: 'A1',
+		englishLevel: englishLevel[0],
 		profession: null,
 		category: null,
 	});
@@ -33,15 +40,12 @@ const SkillsInfo = ({ t, isActive, firstForm, user, addVacancy }) => {
 		setSkill({ ...skill, englishLevel: englishLevel[newValue] });
 	};
 
-	const validationStatus = () => {
-		return (
-			validation('sphere', skill.sphere, t) &&
-			validation('vacancyName', skill.vacancyName, t) &&
-			validation('profession', skill.profession, t) &&
-			validation('category', skill.category, t) &&
-			validation('skills', checkboxSkill, t)
-		);
-	};
+	const validationStatus = () =>
+		validation(SPHERE, skill.sphere, t) &&
+		validation(PROFESSION, skill.profession, t) &&
+		validation(VACANCY_NAME, skill.vacancyName, t) &&
+		validation(CATEGORY, skill.category, t) &&
+		validation(SKILLS, checkboxSkill, t);
 
 	const addNewVacancy = () => {
 		const body = {

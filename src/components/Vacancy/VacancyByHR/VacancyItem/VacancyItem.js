@@ -53,4 +53,4 @@ const VacancyItem = ({ t, elem, deleteVacancies }) => {
 	);
 };
 
-export default React.memo(withLanguage(VacancyItem));
+export default withLanguage(VacancyItem);
