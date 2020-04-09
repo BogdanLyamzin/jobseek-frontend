@@ -12,15 +12,17 @@ import IconButton from '@material-ui/core/IconButton';
 import dark from './img/dark.png';
 import light from './img/light.png';
 import darkLogo from './img/logo-dark.png';
-import HrLinks from './HrLinks';
 import Avatar from '../../shared/UserImg';
 import {
 	changeToDark,
 	changeToLight,
 } from '../../store/theme/action/themeActions';
-import CompanyLinks from './CompanyLinks';
-import CandidateLinks from './CandidateLinks';
 import LogOut from '../LogOut';
+import Burger from './links/Burger';
+import HrLinks from './links/HrLinks';
+import CompanyLinks from './links/CompanyLinks';
+import CandidateLinks from './links/CandidateLinks';
+
 const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1,
@@ -38,12 +40,19 @@ const useStyles = makeStyles(theme => ({
 		padding: 'none',
 		alignItems: 'center',
 	},
-	ava: {
-		alignSelf: 'center',
-	},
 	themeIcon: {
 		width: '50px',
 		height: '50px',
+	},
+	avatar: {
+		[theme.breakpoints.down(750)]: {
+			display: 'none',
+		},
+	},
+	lgMenu: {
+		[theme.breakpoints.down(670)]: {
+			display: 'none',
+		},
 	},
 }));
 
@@ -64,9 +73,11 @@ function ButtonAppBar({ thema, changeToLight, changeToDark, isAuthenticated }) {
 		<AppBar position="static" className={classes.root}>
 			<Container className={classes.flex}>
 				<img src={thema === 'light' ? logo : darkLogo} alt="pic" />
-				<Route path="/hr" component={HrLinks} />
-				<Route path="/company" component={CompanyLinks} />
-				<Route path="/candidate" component={CandidateLinks} />
+				<div className={classes.lgMenu}>
+					<Route path="/hr" component={HrLinks} />
+					<Route path="/company" component={CompanyLinks} />
+					<Route path="/candidate" component={CandidateLinks} />
+				</div>
 				<Box component="div">
 					<IconButton
 						style={{ marginRight: '10px' }}
@@ -90,8 +101,8 @@ function ButtonAppBar({ thema, changeToLight, changeToDark, isAuthenticated }) {
 							{t('ENTER')}
 						</Link>
 					)}
-
-					<Avatar />
+					<Burger />
+					<Avatar className={classes.avatar} />
 				</Box>
 			</Container>
 		</AppBar>

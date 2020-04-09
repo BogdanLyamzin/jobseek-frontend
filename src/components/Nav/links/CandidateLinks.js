@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from '../../shared/Link';
+import Link from '../../../shared/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 
@@ -15,8 +15,7 @@ const useStyles = makeStyles(theme => ({
 		border: '1px solid #6d6d6e',
 		borderRadius: '20px',
 		'&:hover': {
-			color: '#26a69a',
-			border: `1px solid #26a69a`,
+			border: `1px solid ${theme.palette.color}`,
 			textDecoration: 'none',
 		},
 		'&:last-child': {
@@ -28,19 +27,19 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function CompanyLinks() {
+export default function HrLinks() {
 	const classes = useStyles();
 	const { t } = useTranslation();
 	return (
 		<div>
-			<Link className={classes.link} to="/company">
+			<Link className={classes.link} to="/candidate">
 				{t('MY_PROFILE')}
 			</Link>
-			<Link className={classes.link} to="/company/hrs">
-				HRs
+			<Link className={classes.link} to="/candidate/cv">
+				{t('MY_CV')}
 			</Link>
-			<Link className={classes.link} to="/company/review">
-				{t('REVIEW')}
+			<Link className={classes.link} to="/candidate/cvAdd">
+				{t('ADD_CV')}
 			</Link>
 		</div>
 	);

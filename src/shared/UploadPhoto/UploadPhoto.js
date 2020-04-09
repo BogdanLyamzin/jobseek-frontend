@@ -12,7 +12,6 @@ const useStyles = makeStyles(theme => ({
 		cursor: 'pointer',
 		outline: '0',
 	},
-
 	notimg: {
 		width: '195px',
 		height: '200px',
@@ -22,7 +21,6 @@ const useStyles = makeStyles(theme => ({
 		cursor: 'pointer',
 		outline: '0',
 	},
-
 	addphotoContainer: {
 		position: 'absolute',
 		left: '10px',
@@ -31,7 +29,6 @@ const useStyles = makeStyles(theme => ({
 		alignItems: 'center',
 		color: theme.palette.color,
 	},
-
 	addphoto: {
 		marginLeft: '8px',
 		fontFamily: theme.palette.font,

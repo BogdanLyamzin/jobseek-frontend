@@ -1,7 +1,8 @@
 import React from 'react';
-import Link from '../../shared/Link';
 import { makeStyles } from '@material-ui/core/styles';
-import { useTranslation } from 'react-i18next';
+
+import Link from '../../../shared/Link';
+import withLanguage from '../../../hoc/withLanguage';
 
 const useStyles = makeStyles(theme => ({
 	link: {
@@ -15,7 +16,8 @@ const useStyles = makeStyles(theme => ({
 		border: '1px solid #6d6d6e',
 		borderRadius: '20px',
 		'&:hover': {
-			border: `1px solid ${theme.palette.color}`,
+			color: '#26a69a',
+			border: `1px solid #26a69a`,
 			textDecoration: 'none',
 		},
 		'&:last-child': {
@@ -24,23 +26,31 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.down(820)]: {
 			fontSize: '14px',
 		},
+		[theme.breakpoints.down(670)]: {
+			fontSize: 18,
+			marginRight: 0,
+			borderRadius: 0,
+			padding: '10px 15px',
+			backgroundColor: theme.palette.backgroundColor,
+		},
 	},
 }));
 
-export default function HrLinks() {
+const HrLinks = ({ t, className }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
 	return (
-		<div>
-			<Link className={classes.link} to="/candidate">
+		<div className={className}>
+			<Link className={classes.link} to="/hr">
 				{t('MY_PROFILE')}
 			</Link>
-			<Link className={classes.link} to="/candidate/cv">
-				{t('MY_CV')}
+			<Link className={classes.link} to="/hr/vacancy">
+				{t('MY_VACANCIES')}
 			</Link>
-			<Link className={classes.link} to="/candidate/cvAdd">
-				{t('ADD_CV')}
+			<Link className={classes.link} to="/hr/addVacancy">
+				{t('ADD_VACANCY')}
 			</Link>
 		</div>
 	);
-}
+};
+
+export default withLanguage(HrLinks);

@@ -19,7 +19,7 @@ const HrPage = ({ getOneHR, userId }) => {
 		<Switch>
 			<Route exact path="/hr/vacancy" component={VacancyByHR} />
 			<Route path="/hr/vacancy/:id" component={CandidatesList} />
-			<Route path="/hr/vacancyAdd" component={AddVacancy} />
+			<Route path="/hr/addVacancy" component={AddVacancy} />
 			<Route path="/hr/candidate/:id" component={Candidate} />
 			<Route path="/hr/updateVacancy/:id" component={UpdateVacancy} />
 			<Route path="/hr" component={HomeHR} />

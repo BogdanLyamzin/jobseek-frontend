@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from '../../shared/Link';
+import Link from '../../../shared/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 
@@ -28,19 +28,19 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function HrLinks() {
+export default function CompanyLinks() {
 	const classes = useStyles();
 	const { t } = useTranslation();
 	return (
 		<div>
-			<Link className={classes.link} to="/hr">
+			<Link className={classes.link} to="/company">
 				{t('MY_PROFILE')}
 			</Link>
-			<Link className={classes.link} to="/hr/vacancy">
-				{t('MY_VACANCIES')}
+			<Link className={classes.link} to="/company/hrs">
+				HRs
 			</Link>
-			<Link className={classes.link} to="/hr/vacancyAdd">
-				{t('ADD_VACANCY')}
+			<Link className={classes.link} to="/company/review">
+				{t('REVIEW')}
 			</Link>
 		</div>
 	);

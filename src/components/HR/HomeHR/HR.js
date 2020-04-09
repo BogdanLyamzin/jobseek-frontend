@@ -14,7 +14,7 @@ const HR = ({ user, updateHR, t }) => {
 	const [values, setValues] = useState(null);
 
 	useEffect(() => {
-		if (user) setValues({ ...user });
+		if (user) setValues(user);
 	}, [user]);
 
 	const handleChange = event => {

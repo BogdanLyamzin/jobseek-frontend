@@ -36,19 +36,19 @@ const AddVacancy = ({ t, deleteInfo }) => {
 			</div>
 
 			<div className={classes.addvacancyMenu}>
-				<Link to="/hr/vacancyAdd" className={classes.addvacancyMenuLink}>
+				<Link to="/hr/addVacancy" className={classes.addvacancyMenuLink}>
 					{t('COMMON_INFO')}
 				</Link>
-				<Link to="/hr/vacancyAdd/skills" className={classes.addvacancyMenuLink}>
+				<Link to="/hr/addVacancy/skills" className={classes.addvacancyMenuLink}>
 					{t('SKILLS')}
 				</Link>
 			</div>
 			<div className={classes.addvacancyRoutes}>
 				<Switch>
-					<Route exact path="/hr/vacancyAdd">
+					<Route exact path="/hr/addVacancy">
 						<CommonInfo />
 					</Route>
-					<Route path="/hr/vacancyAdd/skills">
+					<Route path="/hr/addVacancy/skills">
 						<SkillsInfo isActive={isActive} />
 					</Route>
 				</Switch>

@@ -21,7 +21,7 @@ const VacancyByHR = ({ setId, vacancy, deleteVacancies, user }) => {
 	return (
 		<PageWrap title={t('MY_VACANCIES')}>
 			<div className={classes.hrVacancy}>
-				<Link to="/hr/vacancyAdd" className={classes.linkAddVacancy}>
+				<Link to="/hr/addVacancy" className={classes.linkAddVacancy}>
 					<AddCircleOutlineIcon className={classes.linkAddVacancyDark} />
 					{t('ADD_VACANCY')}
 				</Link>
