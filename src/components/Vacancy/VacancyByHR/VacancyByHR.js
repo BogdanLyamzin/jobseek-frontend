@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
+import Link from 'shared/Link';
+import Text from 'shared/Text';
 import useStyles from './styles';
-import Link from '../../../shared/Link';
+import PageWrap from 'shared/PageWrap';
 import VacancyItem from './VacancyItem';
-import Text from '../../../shared/Text';
-import PageWrap from '../../../shared/PageWrap';
-import withVacancies from '../../../hoc/withVacanciesByFilter';
+import withVacancies from 'hoc/withVacanciesByFilter';
 
 const VacancyByHR = ({ setId, vacancy, deleteVacancies, user }) => {
 	const classes = useStyles();

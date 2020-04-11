@@ -3,10 +3,10 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Text from '../../../../shared/Text';
+import Text from 'shared/Text';
+import withLanguage from 'hoc/withLanguage';
 import OneCv from '../SentOffersList/GetOne';
 import useStyles from '../CandidateList/styles';
-import withLanguage from '../../../../hoc/withLanguage';
 
 const ReceivedOffersList = ({ t, vacancy }) => {
 	const classes = useStyles();

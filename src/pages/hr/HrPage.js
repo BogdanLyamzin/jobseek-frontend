@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
-import { getOneHR } from '../../store/hr/actions';
-import HomeHR from '../../components/HR/HomeHR/HR';
-import Candidate from '../../components/HR/Candidate';
-import AddVacancy from '../../components/Vacancy/AddVacancy';
-import VacancyByHR from '../../components/Vacancy/VacancyByHR';
-import CandidatesList from '../../components/HR/CandidateByVacancy';
-import UpdateVacancy from '../../components/Vacancy/UpdateVacancy/UpdateVacancy';
+import { getOneHR } from 'store/hr/actions';
+import HomeHR from 'components/HR/HomeHR/HR';
+import Candidate from 'components/HR/Candidate';
+import AddVacancy from 'components/Vacancy/AddVacancy';
+import VacancyByHR from 'components/Vacancy/VacancyByHR';
+import CandidatesList from 'components/HR/CandidateByVacancy';
+import UpdateVacancy from 'components/Vacancy/UpdateVacancy/UpdateVacancy';
 
 const HrPage = ({ getOneHR, userId }) => {
 	useEffect(() => {

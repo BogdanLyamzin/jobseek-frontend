@@ -1,11 +1,11 @@
-import toastr from '../../utils/toastr/toastrValid';
+import toastr from '../toastr/toastrValid';
 import {
 	SKILLS,
 	SPHERE,
 	CATEGORY,
 	PROFESSION,
 	VACANCY_NAME,
-} from '../../utils/variables/inputName';
+} from '../variables/inputName';
 
 const validation = (name, value, t) => {
 	switch (name) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import UploadPhoto from '../../../../shared/UploadPhoto';
+import UploadPhoto from 'shared/UploadPhoto';
 
 const UpdatePhoto = ({ user, uploadPhoto }) => (
 	<UploadPhoto user={user} uploadPhoto={uploadPhoto} />

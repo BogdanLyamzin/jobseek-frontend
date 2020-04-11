@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import getDisplayName from '../utils/getDisplayName';
-import englishLevel from '../utils/variables/english';
-import objToArr from '../utils/transformType/objToArr';
+import getDisplayName from 'utils/getDisplayName';
+import englishLevel from 'utils/variables/english';
+import objToArr from 'utils/transformType/objToArr';
 
 const withSkillState = Component => {
 	const WithSkillState = ({

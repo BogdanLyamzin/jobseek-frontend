@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import AddReview from './AddReview';
 import ReviewsList from './ReviewList';
-import { getCommentByFilter } from '../../../store/comment/actions';
+import { getCommentByFilter } from 'store/comment/actions';
 
 const CandidateComments = ({ getCommentByFilter }) => {
 	useEffect(() => {

@@ -14,12 +14,12 @@ import {
 	CATEGORY,
 	PROFESSION,
 	VACANCY_NAME,
-} from '../../../../utils/variables/inputName';
-import Button from '../../../../shared/Button';
-import withLanguage from '../../../../hoc/withLanguage';
-import validation from '../../../../utils/validation/vacancy';
-import { addVacancy } from '../../../../store/vacancy/actions';
-import englishLevel from '../../../../utils/variables/english';
+} from 'utils/variables/inputName';
+import Button from 'shared/Button';
+import withLanguage from 'hoc/withLanguage';
+import validation from 'utils/validation/vacancy';
+import { addVacancy } from 'store/vacancy/actions';
+import englishLevel from 'utils/variables/english';
 
 const SkillsInfo = ({ t, isActive, firstForm, user, addVacancy }) => {
 	const classes = useStyles();

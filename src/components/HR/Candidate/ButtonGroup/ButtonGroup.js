@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import API from '../../../../services/api';
-import Button from '../../../../shared/Button';
-import withLanguage from '../../../../hoc/withLanguage';
-import toastr from '../../../../utils/toastr/toastrAction';
+import API from 'services/api';
+import Button from 'shared/Button';
+import withLanguage from 'hoc/withLanguage';
+import toastr from 'utils/toastr/toastrAction';
 
 const BtnList = ({ t, path, cv, cvID, vacancyID }) => {
 	const postSent = () => {

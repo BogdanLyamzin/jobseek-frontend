@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Text from '../../../../shared/Text';
-import Input from '../../../../shared/Input';
-import withLanguage from '../../../../hoc/withLanguage';
-import RadioGroup from '../../../../shared/RadioGroupEmpType';
+import Text from 'shared/Text';
+import Input from 'shared/Input';
+import withLanguage from 'hoc/withLanguage';
+import RadioGroup from 'shared/RadioGroupEmpType';
 
 const FormCommonInfo = ({ t, classes, handleChange, values }) => (
 	<>

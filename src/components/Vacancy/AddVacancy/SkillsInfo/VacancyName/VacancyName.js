@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { compose } from 'redux';
 
-import withLanguage from '../../../../../hoc/withLanguage';
-import Autocomplete from '../../../../../shared/Autocomplete';
-import withVacancyName from '../../../../../hoc/withVacancyName';
+import withLanguage from 'hoc/withLanguage';
+import Autocomplete from 'shared/Autocomplete';
+import withVacancyName from 'hoc/withVacancyName';
 
 const VacancyName = ({ t, skill, setId, classes, setSkill, vacancy }) => {
 	useEffect(() => {

@@ -12,8 +12,8 @@ import BtnGroup from './ButtonGroup';
 import Experience from './Experience';
 import Information from './Information';
 import Achievement from './Achievement';
-import { getOneCv } from '../../../store/cv/actions';
-import { getOneCandidate } from '../../../store/candidate/actions';
+import { getOneCv } from 'store/cv/actions';
+import { getOneCandidate } from 'store/candidate/actions';
 
 const OneCandidate = ({ cv, match, getOneCv, getOneCandidate }) => {
 	const classes = useStyles();

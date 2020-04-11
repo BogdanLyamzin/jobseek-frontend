@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import getDisplayName from '../utils/getDisplayName';
+import getDisplayName from 'utils/getDisplayName';
 
 const withHidden = Component => {
 	return function WithHidden(props) {

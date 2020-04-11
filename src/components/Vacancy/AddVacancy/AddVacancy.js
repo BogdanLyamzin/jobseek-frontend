@@ -6,12 +6,12 @@ import { Switch, Route } from 'react-router-dom';
 import useStyles from './styles';
 import CommonInfo from './CommonInfo';
 import SkillsInfo from './SkillsInfo';
-import Link from '../../../shared/Link';
-import Text from '../../../shared/Text';
-import PageWrap from '../../../shared/PageWrap';
-import SwitchControl from '../../../shared/Switch';
-import withLanguage from '../../../hoc/withLanguage';
-import { deleteInfo } from '../../../store/vacancy/actions';
+import Link from 'shared/Link';
+import Text from 'shared/Text';
+import PageWrap from 'shared/PageWrap';
+import SwitchControl from 'shared/Switch';
+import withLanguage from 'hoc/withLanguage';
+import { deleteInfo } from 'store/vacancy/actions';
 
 const AddVacancy = ({ t, deleteInfo }) => {
 	const classes = useStyles();

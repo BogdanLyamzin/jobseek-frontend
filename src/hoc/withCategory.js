@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import getDisplayName from '../utils/getDisplayName';
-import { getCategoryByFilter } from '../store/admin/actions/categoryActions';
+import getDisplayName from 'utils/getDisplayName';
+import { getCategoryByFilter } from 'store/admin/actions/categoryActions';
 
 const withCategory = Component => {
 	const WithCategory = ({ categoryList, getCategoryByFilter, ...props }) => {

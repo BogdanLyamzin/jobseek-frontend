@@ -3,13 +3,13 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
+import Link from 'shared/Link';
 import CommonInfo from './CommonInfo';
 import SkillsInfo from './SkillsInfo';
-import Link from '../../../shared/Link';
+import PageWrap from 'shared/PageWrap';
+import withLanguage from 'hoc/withLanguage';
 import useStyles from '../AddVacancy/styles';
-import PageWrap from '../../../shared/PageWrap';
-import withLanguage from '../../../hoc/withLanguage';
-import { getOneVacancy, deleteInfo } from '../../../store/vacancy/actions';
+import { getOneVacancy, deleteInfo } from 'store/vacancy/actions';
 
 const UpdateVacancy = ({ t, match, getOneVacancy }) => {
 	const classes = useStyles();

@@ -2,18 +2,13 @@ import React from 'react';
 import { compose } from 'redux';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
-import {
-	NAME,
-	EMAIL,
-	PHONE,
-	LAST_NAME,
-} from '../../../../utils/variables/inputName';
-import Text from '../../../../shared/Text';
-import Input from '../../../../shared/Input';
-import Button from '../../../../shared/Button';
-import withHidden from '../../../../hoc/withHidden';
-import withLanguage from '../../../../hoc/withLanguage';
-import validation from '../../../../utils/validation/hrCompany';
+import Text from 'shared/Text';
+import Input from 'shared/Input';
+import Button from 'shared/Button';
+import withHidden from 'hoc/withHidden';
+import withLanguage from 'hoc/withLanguage';
+import validation from 'utils/validation/hrCompany';
+import { NAME, EMAIL, PHONE, LAST_NAME } from 'utils/variables/inputName';
 
 const FormHR = ({
 	t,

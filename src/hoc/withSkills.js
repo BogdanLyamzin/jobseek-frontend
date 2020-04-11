@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import getDisplayName from '../utils/getDisplayName';
-import { getSkillsByFilter } from '../store/admin/actions/skillActions';
+import getDisplayName from 'utils/getDisplayName';
+import { getSkillsByFilter } from 'store/admin/actions/skillActions';
 
 const withSkills = Component => {
 	const WithSkills = ({ skillList, getSkillsByFilter, ...props }) => {

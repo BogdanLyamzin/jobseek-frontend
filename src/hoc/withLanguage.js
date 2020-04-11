@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import getDisplayName from '../utils/getDisplayName';
+import getDisplayName from 'utils/getDisplayName';
 
 const withLanguage = Component => {
 	return function WithLanguage(props) {

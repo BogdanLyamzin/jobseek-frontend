@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-import getDisplayName from '../utils/getDisplayName';
-import { getAllSpheres } from '../store/admin/actions/sphereActions';
+import getDisplayName from 'utils/getDisplayName';
+import { getAllSpheres } from 'store/admin/actions/sphereActions';
 
 const withSpheres = Component => {
 	const WithSpheres = ({ getAllSpheres, sphereList, ...props }) => {

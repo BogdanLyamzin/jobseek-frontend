@@ -12,16 +12,13 @@ import IconButton from '@material-ui/core/IconButton';
 import dark from './img/dark.png';
 import light from './img/light.png';
 import darkLogo from './img/logo-dark.png';
-import Avatar from '../../shared/UserImg';
-import {
-	changeToDark,
-	changeToLight,
-} from '../../store/theme/action/themeActions';
+import Avatar from 'shared/UserImg';
 import LogOut from '../LogOut';
 import Burger from './links/Burger';
 import HrLinks from './links/HrLinks';
 import CompanyLinks from './links/CompanyLinks';
 import CandidateLinks from './links/CandidateLinks';
+import { changeToDark, changeToLight } from 'store/theme/action/themeActions';
 
 const useStyles = makeStyles(theme => ({
 	root: {

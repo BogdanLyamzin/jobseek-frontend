@@ -1,6 +1,6 @@
 import React from 'react';
 
-import withLanguage from '../../../../hoc/withLanguage';
+import withLanguage from 'hoc/withLanguage';
 
 const CandidateExperience = ({ classes }) => {
 	return (

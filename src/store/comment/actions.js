@@ -1,8 +1,8 @@
-import API from '../../services/api';
-import errorAxios from '../../utils/actions/errorAxios';
-import tostrActions from '../../utils/toastr/toastrAction';
+import API from 'services/api';
+import errorAxios from 'utils/actions/errorAxios';
+import tostrActions from 'utils/toastr/toastrAction';
 import { SUCCESS_AXIOS, ADD_COMMENT } from './actionNames';
-import actionConstructor from '../../utils/actions/actionConstructor';
+import actionConstructor from 'utils/actions/actionConstructor';
 
 const addComment = actionConstructor(ADD_COMMENT);
 const successAxios = actionConstructor(SUCCESS_AXIOS);

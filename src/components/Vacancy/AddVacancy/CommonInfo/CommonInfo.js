@@ -2,20 +2,15 @@ import React, { useState } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
+import Text from 'shared/Text';
 import useStyles from './styles';
-import {
-	CITY,
-	SALARY,
-	COUNTRY,
-	DESCRIPTION,
-} from '../../../../utils/variables/inputName';
-import Text from '../../../../shared/Text';
-import Button from '../../../../shared/Button';
+import Button from 'shared/Button';
+import withLanguage from 'hoc/withLanguage';
 import FormCommonInfo from '../FormCommonInfo';
-import withLanguage from '../../../../hoc/withLanguage';
-import { saveInfo } from '../../../../store/vacancy/actions';
-import validation from '../../../../utils/validation/hrCompany';
-import { FULL } from '../../../../utils/variables/employmentType';
+import { saveInfo } from 'store/vacancy/actions';
+import validation from 'utils/validation/hrCompany';
+import { FULL } from 'utils/variables/employmentType';
+import { CITY, SALARY, COUNTRY, DESCRIPTION } from 'utils/variables/inputName';
 
 const CommonInfo = ({ t, info, saveInfo }) => {
 	const classes = useStyles();

@@ -3,12 +3,12 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import Text from 'shared/Text';
 import useStyles from './styles';
-import Text from '../../../../shared/Text';
-import Avatar from '../../../../shared/UserImg';
-import getDate from '../../../../utils/getDate';
-import withLanguage from '../../../../hoc/withLanguage';
-import arrToStringSkill from '../../../../utils/transformType/arrToStringSkills';
+import Avatar from 'shared/UserImg';
+import getDate from 'utils/getDate';
+import withLanguage from 'hoc/withLanguage';
+import arrToStringSkill from 'utils/transformType/arrToStringSkills';
 
 const CandidateList = ({ t, candidates, id }) => {
 	const classes = useStyles();

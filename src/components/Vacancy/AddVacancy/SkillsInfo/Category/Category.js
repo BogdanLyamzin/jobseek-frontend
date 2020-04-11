@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { compose } from 'redux';
 
-import withLanguage from '../../../../../hoc/withLanguage';
-import withCategory from '../../../../../hoc/withCategory';
-import Autocomplete from '../../../../../shared/Autocomplete';
+import withLanguage from 'hoc/withLanguage';
+import withCategory from 'hoc/withCategory';
+import Autocomplete from 'shared/Autocomplete';
 
 const Category = ({ t, setId, skill, classes, setSkill, categories }) => {
 	useEffect(() => {

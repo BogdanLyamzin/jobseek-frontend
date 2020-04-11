@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Status from '../CheckStatus';
-import Text from '../../../../shared/Text';
-import Avatar from '../../../../shared/UserImg';
-import withLanguage from '../../../../hoc/withLanguage';
-import emplText from '../../../../utils/variables/emplTypeText';
+import Text from 'shared/Text';
+import Avatar from 'shared/UserImg';
+import withLanguage from 'hoc/withLanguage';
+import emplText from 'utils/variables/emplTypeText';
 
 const Summary = ({ t, cv, cvID, classes, candidate, vacancyID }) => (
 	<div className={classes.candidateBackground}>

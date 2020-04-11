@@ -1,9 +1,9 @@
 import React from 'react';
 import { compose } from 'redux';
 
-import withSpheres from '../../../../../hoc/withSpheres';
-import withLanguage from '../../../../../hoc/withLanguage';
-import Autocomplete from '../../../../../shared/Autocomplete';
+import withSpheres from 'hoc/withSpheres';
+import withLanguage from 'hoc/withLanguage';
+import Autocomplete from 'shared/Autocomplete';
 
 const SphereList = ({
 	t,

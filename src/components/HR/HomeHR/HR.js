@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 
 import FormHR from './FormHR';
 import useStyles from './styles';
+import PageWrap from 'shared/PageWrap';
 import UpdatePhoto from './UpdatePhoto';
-import PageWrap from '../../../shared/PageWrap';
-import { updateHR } from '../../../store/hr/actions';
-import withLanguage from '../../../hoc/withLanguage';
+import { updateHR } from 'store/hr/actions';
+import withLanguage from 'hoc/withLanguage';
 
 const HR = ({ user, updateHR, t }) => {
 	const classes = useStyles();

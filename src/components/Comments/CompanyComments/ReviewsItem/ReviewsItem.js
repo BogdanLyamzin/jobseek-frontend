@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
+import API from 'services/api';
+import getDate from 'utils/getDate';
 import useStyles from '../../styles';
-import API from '../../../../services/api';
-import getDate from '../../../../utils/getDate';
-import toastr from '../../../../utils/toastr/toastrAction';
+import toastr from 'utils/toastr/toastrAction';
 
 const ReviewsItem = ({ element, user }) => {
 	const classes = useStyles();

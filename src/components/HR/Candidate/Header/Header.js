@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
-import Text from '../../../../shared/Text';
-import getDate from '../../../../utils/getDate';
-import withLanguage from '../../../../hoc/withLanguage';
+import Text from 'shared/Text';
+import getDate from 'utils/getDate';
+import withLanguage from 'hoc/withLanguage';
 
 const Header = ({ t, classes, cv }) => (
 	<div className={classes.candidateHead}>

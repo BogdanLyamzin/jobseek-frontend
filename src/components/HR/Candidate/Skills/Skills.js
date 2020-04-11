@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Text from '../../../../shared/Text';
-import withLanguage from '../../../../hoc/withLanguage';
+import Text from 'shared/Text';
+import withLanguage from 'hoc/withLanguage';
 
 const Skills = ({ t, classes, candidate, cv }) => (
 	<div className={classes.candidateBackground}>

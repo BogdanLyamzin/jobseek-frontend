@@ -1,4 +1,4 @@
-import toastr from '../../utils/toastr/toastrValid';
+import toastr from '../toastr/toastrValid';
 import {
 	NAME,
 	CITY,
@@ -10,7 +10,7 @@ import {
 	FACEBOOK,
 	LAST_NAME,
 	DESCRIPTION,
-} from '../../utils/variables/inputName';
+} from '../variables/inputName';
 
 const phoneRegExp = /^\+?3?8?(0\d{9})$/;
 const nameRegExp = /^[A-ZА-ЯЁЇІЄҐ]{1}[a-zа-яёїієґ]+$/u;

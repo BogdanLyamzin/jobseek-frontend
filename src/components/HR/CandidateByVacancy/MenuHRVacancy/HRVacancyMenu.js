@@ -2,9 +2,9 @@ import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
-import Link from '../../../../shared/Link';
-import Text from '../../../../shared/Text';
-import withLanguage from '../../../../hoc/withLanguage';
+import Link from 'shared/Link';
+import Text from 'shared/Text';
+import withLanguage from 'hoc/withLanguage';
 
 const HRVacancyMenu = ({ t, classes, id }) => (
 	<nav className={classes.hrMenu}>

@@ -1,12 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 import HrLinks from './HrLinks';
+import withHidden from 'hoc/withHidden';
+import withIsLogin from 'hoc/withIsLogin';
 import CompanyLinks from './CompanyLinks';
 import CandidateLinks from './CandidateLinks';
-import withHidden from '../../../hoc/withHidden';
 
 const useStyles = makeStyles(theme => ({
 	relative: {
@@ -61,7 +61,4 @@ const Burger = ({ isLogin, hidden, setHidden }) => {
 	) : null;
 };
 
-const mapStateToProps = state => ({
-	isLogin: state.auth.isAuthenticated,
-});
-export default connect(mapStateToProps)(withHidden(Burger));
+export default withHidden(withIsLogin(Burger));

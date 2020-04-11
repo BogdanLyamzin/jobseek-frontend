@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import getDisplayName from '../utils/getDisplayName';
-import { getProfessionsByFilter } from '../store/admin/actions/professionActions';
+import getDisplayName from 'utils/getDisplayName';
+import { getProfessionsByFilter } from 'store/admin/actions/professionActions';
 
 const withProfession = Component => {
 	const WithProfession = ({

@@ -2,23 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
-import ChackboxList from './CheckboxList';
 import {
 	SKILLS,
 	SPHERE,
 	CATEGORY,
 	PROFESSION,
 	VACANCY_NAME,
-} from '../../../../utils/variables/inputName';
-import Button from '../../../../shared/Button';
-import withLanguage from '../../../../hoc/withLanguage';
+} from 'utils/variables/inputName';
+import Button from 'shared/Button';
+import ChackboxList from './CheckboxList';
+import withLanguage from 'hoc/withLanguage';
+import validation from 'utils/validation/vacancy';
+import englishLevel from 'utils/variables/english';
+import arrToObj from 'utils/transformType/arrToObj';
+import { updateVacancy } from 'store/vacancy/actions';
 import useStyles from '../../AddVacancy/SkillsInfo/styles';
 import Category from '../../AddVacancy/SkillsInfo/Category';
-import validation from '../../../../utils/validation/vacancy';
-import englishLevel from '../../../../utils/variables/english';
-import arrToObj from '../../../../utils/transformType/arrToObj';
 import SphereList from '../../AddVacancy/SkillsInfo/SphereList';
-import { updateVacancy } from '../../../../store/vacancy/actions';
 import VacancyName from '../../AddVacancy/SkillsInfo/VacancyName';
 import ProfessionList from '../../AddVacancy/SkillsInfo/ProfessionList';
 

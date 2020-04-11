@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { compose } from 'redux';
 
-import withLanguage from '../../../../../hoc/withLanguage';
-import Autocomplete from '../../../../../shared/Autocomplete';
-import withProfession from '../../../../../hoc/withProfessions';
+import withLanguage from 'hoc/withLanguage';
+import Autocomplete from 'shared/Autocomplete';
+import withProfession from 'hoc/withProfessions';
 
 const ProfessionList = ({ t, skill, setId, classes, setSkill, profession }) => {
 	useEffect(() => {

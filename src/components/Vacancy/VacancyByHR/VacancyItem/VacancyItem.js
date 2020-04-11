@@ -1,14 +1,14 @@
 import React from 'react';
 
+import Link from 'shared/Link';
+import Text from 'shared/Text';
 import useStyles from '../styles';
-import Link from '../../../../shared/Link';
-import Text from '../../../../shared/Text';
-import getDate from '../../../../utils/getDate';
+import getDate from 'utils/getDate';
+import withLanguage from 'hoc/withLanguage';
 import FormControlLabel from './FormControlLabel';
-import withLanguage from '../../../../hoc/withLanguage';
-import CreateOutlined from '../../../../shared/CreateOutlinedIcon';
-import DeleteIconWithModal from '../../../../shared/DeleteIconWithModal';
-import arrToStringSkill from '../../../../utils/transformType/arrToStringSkills';
+import CreateOutlined from 'shared/CreateOutlinedIcon';
+import DeleteIconWithModal from 'shared/DeleteIconWithModal';
+import arrToStringSkill from 'utils/transformType/arrToStringSkills';
 
 const VacancyItem = ({ t, elem, deleteVacancies }) => {
 	const classes = useStyles();

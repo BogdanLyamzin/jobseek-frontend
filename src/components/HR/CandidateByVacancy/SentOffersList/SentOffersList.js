@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import OneCv from './GetOne';
-import Text from '../../../../shared/Text';
+import Text from 'shared/Text';
+import withLanguage from 'hoc/withLanguage';
 import useStyles from '../CandidateList/styles';
-import withLanguage from '../../../../hoc/withLanguage';
 
 const SentOffersList = ({ t, vacancy }) => {
 	const classes = useStyles();

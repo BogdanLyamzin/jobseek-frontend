@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-import Text from '../../../../../shared/Text';
-import API from '../../../../../services/api';
-import getDate from '../../../../../utils/getDate';
-import Avatar from '../../../../../shared/UserImg';
-import withLanguage from '../../../../../hoc/withLanguage';
-import arrToStringSkill from '../../../../../utils/transformType/arrToStringSkills';
+import Text from 'shared/Text';
+import API from 'services/api';
+import getDate from 'utils/getDate';
+import Avatar from 'shared/UserImg';
+import withLanguage from 'hoc/withLanguage';
+import arrToStringSkill from 'utils/transformType/arrToStringSkills';
 
 const GetOneCv = ({ t, url, date, status, classes }) => {
 	const [cv, setCv] = useState(null);

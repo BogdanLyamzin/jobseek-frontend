@@ -3,19 +3,16 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Switch, Route, useParams } from 'react-router-dom';
 
+import Text from 'shared/Text';
 import useStyles from './styles';
-import Text from '../../../shared/Text';
+import PageWrap from 'shared/PageWrap';
 import HRVacancyMenu from './MenuHRVacancy';
 import CandidateList from './CandidateList';
+import withLanguage from 'hoc/withLanguage';
 import SentOffersList from './SentOffersList';
-import PageWrap from '../../../shared/PageWrap';
 import ReceivedOffersList from './ReceivedOffersList';
-import {
-	getOneVacancy,
-	getSuitableCandidates,
-} from '../../../store/vacancy/actions';
-import withLanguage from '../../../hoc/withLanguage';
-import arrToStringSkill from '../../../utils/transformType/arrToStringSkills';
+import arrToStringSkill from 'utils/transformType/arrToStringSkills';
+import { getOneVacancy, getSuitableCandidates } from 'store/vacancy/actions';
 
 const CandidateByVacancy = ({
 	t,

@@ -38,5 +38,12 @@
         "no-array-constructor":"error",
         "prefer-destructuring":"error",
         "react-hooks/exhaustive-deps": "off"
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+              "paths": ["src"]
+            }
+        }
     }
 }

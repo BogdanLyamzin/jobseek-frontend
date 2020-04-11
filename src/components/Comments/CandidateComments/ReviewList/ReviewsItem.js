@@ -3,14 +3,11 @@ import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
+import Button from 'shared/Button';
+import getDate from 'utils/getDate';
 import useStyles from '../../styles';
-import Button from '../../../../shared/Button';
-import getDate from '../../../../utils/getDate';
-import DeleteIcon from '../../../../shared/DeleteIconWithModal';
-import {
-	deleteComment,
-	updateComment,
-} from '../../../../store/comment/actions';
+import DeleteIcon from 'shared/DeleteIconWithModal';
+import { deleteComment, updateComment } from 'store/comment/actions';
 
 const userID = '5e3c361c657e122a841e88e4'; //TEST
 

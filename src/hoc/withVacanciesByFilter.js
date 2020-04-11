@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-import getDisplayName from '../utils/getDisplayName';
-import { deleteVacancy, getVacancyByFilter } from '../store/vacancy/actions';
+import getDisplayName from 'utils/getDisplayName';
+import { deleteVacancy, getVacancyByFilter } from 'store/vacancy/actions';
 
 const withVacancies = (Component, user) => {
 	const WithVacancies = ({

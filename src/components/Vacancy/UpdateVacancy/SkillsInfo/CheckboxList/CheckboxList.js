@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { compose } from 'redux';
 
-import Text from '../../../../../shared/Text';
-import Slider from '../../../../../shared/Slider';
-import Checkbox from '../../../../../shared/Checkbox';
-import withSkills from '../../../../../hoc/withSkills';
-import withLanguage from '../../../../../hoc/withLanguage';
-import StyledSlider from '../../../../../shared/StyledSlider';
-import withSkillState from '../../../../../hoc/withSkillState';
-import englishLevel from '../../../../../utils/variables/english';
+import Text from 'shared/Text';
+import Slider from 'shared/Slider';
+import Checkbox from 'shared/Checkbox';
+import withSkills from 'hoc/withSkills';
+import withLanguage from 'hoc/withLanguage';
+import StyledSlider from 'shared/StyledSlider';
+import withSkillState from 'hoc/withSkillState';
+import englishLevel from 'utils/variables/english';
 
 const CheckboxList = ({
 	t,
