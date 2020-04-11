@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const colorDark = '#3D3B69';
 const flexBetween = {
 	display: 'flex',
 	justifyContent: 'space-between',
@@ -193,7 +192,7 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: '28px',
 		fontFamily: theme.palette.font,
 		fontSize: '16px',
-		color: colorDark,
+		color: '#3D3B69',
 		border: 0,
 		outline: 0,
 		cursor: 'pointer',

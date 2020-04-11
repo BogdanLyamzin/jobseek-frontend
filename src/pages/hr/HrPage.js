@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
 import { getOneHR } from 'store/hr/actions';
-import HomeHR from 'components/HR/HomeHR/HR';
 import Candidate from 'components/HR/Candidate';
+import ProfileHR from 'components/HR/ProfileHR/HR';
 import AddVacancy from 'components/Vacancy/AddVacancy';
 import VacancyByHR from 'components/Vacancy/VacancyByHR';
 import CandidatesList from 'components/HR/CandidateByVacancy';
@@ -22,7 +22,7 @@ const HrPage = ({ getOneHR, userId }) => {
 			<Route path="/hr/addVacancy" component={AddVacancy} />
 			<Route path="/hr/candidate/:id" component={Candidate} />
 			<Route path="/hr/updateVacancy/:id" component={UpdateVacancy} />
-			<Route path="/hr" component={HomeHR} />
+			<Route path="/hr" component={ProfileHR} />
 		</Switch>
 	);
 };

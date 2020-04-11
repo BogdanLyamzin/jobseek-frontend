@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
-import FormHR from './FormHR';
+import Form from './Form';
 import useStyles from './styles';
 import PageWrap from 'shared/PageWrap';
+import Information from './Information';
 import UpdatePhoto from './UpdatePhoto';
+import withHidden from 'hoc/withHidden';
 import { updateHR } from 'store/hr/actions';
 import withLanguage from 'hoc/withLanguage';
 
-const HR = ({ user, updateHR, t }) => {
+const HR = ({ user, hidden, setHidden, updateHR, t }) => {
 	const classes = useStyles();
 	const [values, setValues] = useState(null);
 
@@ -33,15 +35,24 @@ const HR = ({ user, updateHR, t }) => {
 
 	return (
 		<PageWrap title={t('MY_PROFILE')}>
-			<div className={classes.hrInfo}>
+			<div className={classes.hr}>
 				<form className={classes.hrFlex}>
 					<UpdatePhoto uploadPhoto={selectedFile} classes={classes} />
-					<FormHR
-						values={values}
-						classes={classes}
-						submitForm={submitForm}
-						handleChange={handleChange}
-					/>
+					{hidden ? (
+						<Information
+							values={values}
+							classes={classes}
+							setHidden={setHidden}
+						/>
+					) : (
+						<Form
+							values={values}
+							classes={classes}
+							setHidden={setHidden}
+							submitForm={submitForm}
+							handleChange={handleChange}
+						/>
+					)}
 				</form>
 			</div>
 		</PageWrap>
@@ -58,5 +69,6 @@ const mapDispatchToProps = {
 
 export default compose(
 	connect(mapStateToProps, mapDispatchToProps),
+	withHidden,
 	withLanguage,
 )(HR);
