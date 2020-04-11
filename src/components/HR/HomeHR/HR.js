@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 
 import FormHR from './FormHR';
 import useStyles from './styles';
+import PageWrap from 'shared/PageWrap';
 import UpdatePhoto from './UpdatePhoto';
-import PageWrap from '../../../shared/PageWrap';
-import { updateHR } from '../../../store/hr/actions';
-import CreateOutlinedIcon from '../../../shared/CreateOutlinedIcon';
+import { updateHR } from 'store/hr/actions';
+import withLanguage from 'hoc/withLanguage';
 
-const HR = ({ user, updateHR }) => {
+const HR = ({ user, updateHR, t }) => {
 	const classes = useStyles();
-	const [hiddenForm, setHiddenForm] = useState(false);
 	const [values, setValues] = useState(null);
-	const { t } = useTranslation();
 
 	useEffect(() => {
-		if (user) setValues({ ...user });
+		if (user) setValues(user);
 	}, [user]);
 
 	const handleChange = event => {
@@ -33,25 +31,15 @@ const HR = ({ user, updateHR }) => {
 		updateHR(user._id, fd);
 	};
 
-	const updateHRinfo = () => {
-		setHiddenForm(!hiddenForm);
-	};
-
 	return (
 		<PageWrap title={t('MY_PROFILE')}>
 			<div className={classes.hrInfo}>
 				<form className={classes.hrFlex}>
-					<CreateOutlinedIcon
-						className={`${classes.iconPenSm} ${classes.iconPen}`}
-						click={updateHRinfo}
-					/>
 					<UpdatePhoto uploadPhoto={selectedFile} classes={classes} />
 					<FormHR
 						values={values}
 						classes={classes}
 						submitForm={submitForm}
-						updateHRinfo={updateHRinfo}
-						hidden={hiddenForm}
 						handleChange={handleChange}
 					/>
 				</form>
@@ -60,14 +48,15 @@ const HR = ({ user, updateHR }) => {
 	);
 };
 
-const mapStateToProps = ({ hr }) => {
-	return {
-		user: hr.user,
-	};
-};
+const mapStateToProps = ({ hr }) => ({
+	user: hr.user,
+});
 
 const mapDispatchToProps = {
 	updateHR,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HR);
+export default compose(
+	connect(mapStateToProps, mapDispatchToProps),
+	withLanguage,
+)(HR);

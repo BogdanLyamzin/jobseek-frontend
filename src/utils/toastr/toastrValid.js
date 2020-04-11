@@ -1,5 +1,7 @@
 import { toastr } from 'react-redux-toastr';
 
-export default msg => {
+const toastrValidation = msg => {
 	toastr.error(msg);
 };
+
+export default toastrValidation;

@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
-import Button from '../../../../shared/Button';
-import { newComment } from '../../../../store/comment/actions';
+import Button from 'shared/Button';
+import { newComment } from 'store/comment/actions';
 
 const Review = ({ newComment, user }) => {
 	const classes = useStyles();

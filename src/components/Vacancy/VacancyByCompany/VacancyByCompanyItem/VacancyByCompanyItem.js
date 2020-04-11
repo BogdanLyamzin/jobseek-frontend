@@ -1,7 +1,9 @@
 import React from 'react';
 import useStyles from '../styles';
 import { useTranslation } from 'react-i18next';
+
 import getDate from '../../../../utils/getDate';
+import arrToStringSkill from '../../../../utils/transformType/arrToStringSkills';
 
 const VacancyByCompanyItem = ({
 	_id,
@@ -29,7 +31,7 @@ const VacancyByCompanyItem = ({
 							{t('CATEGORY')}: {category}{' '}
 						</div>
 						<div>
-							{t('SKILLS')}: {skills.map(elem => elem.name).join(', ')}
+							{t('SKILLS')}: {arrToStringSkill(skills)}
 						</div>
 						<div>
 							{t('ENGLISH_LEVEL')}: {englishLevel}

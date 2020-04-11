@@ -50,8 +50,11 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.down(590)]: {
 			width: '60%',
 		},
-		[theme.breakpoints.down(450)]: {
-			width: '50%',
+	},
+
+	spheres: {
+		[theme.breakpoints.down(600)]: {
+			display: 'none',
 		},
 	},
 
@@ -107,7 +110,7 @@ const useStyles = makeStyles(theme => ({
 	vacancySkillListFlex: {
 		...flexBetween,
 		alignItems: 'flex-start',
-		padding: '30px 0 90px 0',
+		padding: '30px 0 50px 0',
 		[theme.breakpoints.down(800)]: {
 			padding: '20px 0 50px 0',
 		},
@@ -140,9 +143,7 @@ const useStyles = makeStyles(theme => ({
 		},
 		[theme.breakpoints.down(550)]: {
 			flexDirection: 'column',
-			padding: '5px 20px 0 30px',
 			width: '100%',
-			border: 0,
 		},
 	},
 
@@ -188,6 +189,13 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '16px',
 		lineHeight: '19px',
 		color: theme.palette.textColor,
+	},
+
+	level: {
+		fontFamily: theme.palette.font,
+		fontSize: '16px',
+		color: '#26a69a',
+		marginBottom: 20,
 	},
 }));
 

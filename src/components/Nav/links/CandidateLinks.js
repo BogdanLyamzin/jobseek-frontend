@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from '../../shared/Link';
+import Link from '../../../shared/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 

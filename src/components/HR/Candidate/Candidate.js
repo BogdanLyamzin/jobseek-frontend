@@ -12,8 +12,8 @@ import BtnGroup from './ButtonGroup';
 import Experience from './Experience';
 import Information from './Information';
 import Achievement from './Achievement';
-import { getOneCv } from '../../../store/cv/actions';
-import { getOneCandidate } from '../../../store/candidate/actions';
+import { getOneCv } from 'store/cv/actions';
+import { getOneCandidate } from 'store/candidate/actions';
 
 const OneCandidate = ({ cv, match, getOneCv, getOneCandidate }) => {
 	const classes = useStyles();
@@ -50,11 +50,9 @@ const OneCandidate = ({ cv, match, getOneCv, getOneCandidate }) => {
 	);
 };
 
-const mapStateToProps = ({ cv }) => {
-	return {
-		cv: cv.cv,
-	};
-};
+const mapStateToProps = ({ cv }) => ({
+	cv: cv.cv,
+});
 
 const mapDispatchToProps = {
 	getOneCv,

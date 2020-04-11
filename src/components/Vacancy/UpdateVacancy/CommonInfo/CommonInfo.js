@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 
-import Text from '../../../../shared/Text';
-import Button from '../../../../shared/Button';
+import Text from 'shared/Text';
+import Button from 'shared/Button';
+import withLanguage from 'hoc/withLanguage';
+import { saveInfo } from 'store/vacancy/actions';
+import validation from 'utils/validation/hrCompany';
+import { FULL } from 'utils/variables/employmentType';
 import useStyles from '../../AddVacancy/CommonInfo/styles';
-import { saveInfo } from '../../../../store/vacancy/actions';
 import FormCommonInfo from '../../AddVacancy/FormCommonInfo';
-import validation from '../../../../utils/validation/hrCompany';
+import { CITY, SALARY, COUNTRY, DESCRIPTION } from 'utils/variables/inputName';
 
-const CommonInfo = ({ info, saveInfo, oneVacancy }) => {
+const CommonInfo = ({ t, info, saveInfo, oneVacancy }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
 	const [values, setValues] = useState({
 		city: info ? info.city : '',
 		salary: info ? info.salary : '',
 		country: info ? info.country : '',
 		description: info ? info.description : '',
-		employmentType: info ? info.employmentType : 'fullDay',
+		employmentType: info ? info.employmentType : FULL,
 	});
 
 	useEffect(() => {
@@ -35,13 +37,16 @@ const CommonInfo = ({ info, saveInfo, oneVacancy }) => {
 		setValues({ ...values, [event.target.name]: event.target.value });
 	};
 
-	const validationStatus = () => {
-		return (
-			validation('city', values.city, t) &&
-			validation('country', values.country, t) &&
-			validation('salary', values.salary, t) &&
-			validation('description', values.description, t)
-		);
+	const validationStatus = () =>
+		validation(COUNTRY, values.country, t) &&
+		validation(CITY, values.city, t) &&
+		validation(SALARY, values.salary, t) &&
+		validation(DESCRIPTION, values.description, t);
+
+	const saveInfoForm = () => {
+		if (validationStatus()) {
+			saveInfo({ ...values });
+		}
 	};
 
 	return (
@@ -63,30 +68,23 @@ const CommonInfo = ({ info, saveInfo, oneVacancy }) => {
 					value={values.description}
 				/>
 				<div className={classes.alignCenter}>
-					<Button
-						click={() => {
-							if (validationStatus(values)) {
-								saveInfo({ ...values });
-							}
-						}}
-					>
-						{t('SAVE')}
-					</Button>
+					<Button click={saveInfoForm}>{t('SAVE')}</Button>
 				</div>
 			</div>
 		</div>
 	);
 };
 
-const mapStateToProps = ({ vacancy }) => {
-	return {
-		info: vacancy.addVacancy,
-		oneVacancy: vacancy.vacancy,
-	};
-};
+const mapStateToProps = ({ vacancy }) => ({
+	info: vacancy.addVacancy,
+	oneVacancy: vacancy.vacancy,
+});
 
 const mapDispatchToProps = {
 	saveInfo,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommonInfo);
+export default compose(
+	connect(mapStateToProps, mapDispatchToProps),
+	withLanguage,
+)(CommonInfo);

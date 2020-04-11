@@ -3,6 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Radio from '../Radio';
+import {
+	ANY,
+	FULL,
+	DISTANT,
+	NONFULL,
+	FREELANCE,
+} from '../../utils/variables/employmentType';
 
 const useStyles = makeStyles(theme => ({
 	label: {
@@ -24,45 +31,45 @@ const RadioGroup = ({ onChange, values }) => {
 			<label className={classes.label}>
 				<Radio
 					name="employmentType"
-					value="fullDay"
+					value={FULL}
 					onChange={onChange}
-					checked={values === 'fullDay'}
+					checked={values === FULL}
 				/>
 				{t('FULL_DAY')}
 			</label>
 			<label className={classes.label}>
 				<Radio
 					name="employmentType"
-					value="non-fullDay"
+					value={NONFULL}
 					onChange={onChange}
-					checked={values === 'non-fullDay'}
+					checked={values === NONFULL}
 				/>
 				{t('PART_TIME')}
 			</label>
 			<label className={classes.label}>
 				<Radio
 					name="employmentType"
-					value="freelance"
+					value={FREELANCE}
 					onChange={onChange}
-					checked={values === 'freelance'}
+					checked={values === FREELANCE}
 				/>
 				{t('FREELANCE')}
 			</label>
 			<label className={classes.label}>
 				<Radio
 					name="employmentType"
-					value="distantWork"
+					value={DISTANT}
 					onChange={onChange}
-					checked={values === 'distantWork'}
+					checked={values === DISTANT}
 				/>
 				{t('REMOTE')}
 			</label>
 			<label className={classes.label}>
 				<Radio
 					name="employmentType"
-					value="any"
+					value={ANY}
 					onChange={onChange}
-					checked={values === 'any'}
+					checked={values === ANY}
 				/>
 				{t('ANY')}
 			</label>

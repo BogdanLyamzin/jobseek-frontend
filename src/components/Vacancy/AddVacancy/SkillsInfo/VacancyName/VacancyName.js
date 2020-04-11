@@ -1,59 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import React, { useEffect } from 'react';
+import { compose } from 'redux';
 
-import Text from '../../../../../shared/Text';
-import { getVacancyByFilter } from '../../../../../store/admin/actions/vacancyTemplateActions';
+import withLanguage from 'hoc/withLanguage';
+import Autocomplete from 'shared/Autocomplete';
+import withVacancyName from 'hoc/withVacancyName';
 
-const VacancyName = ({
-	skill,
-	classes,
-	setSkill,
-	vacancyList,
-	getVacancyByFilter,
-}) => {
-	const { t } = useTranslation();
-	const [vacancy, setVacancy] = useState(null);
-
+const VacancyName = ({ t, skill, setId, classes, setSkill, vacancy }) => {
 	useEffect(() => {
 		if (skill.profession && skill.profession._id) {
-			getVacancyByFilter(`professionId=${skill.profession._id}`);
+			setId(skill.profession._id);
 			setSkill({ ...skill, vacancyName: null, category: null });
 		}
-	}, [getVacancyByFilter, skill.profession]);
-
-	useEffect(() => {
-		setVacancy(vacancyList);
-	}, [vacancyList]);
+	}, [skill.profession, setId, setSkill]);
 
 	return (
 		<div className={classes.vacancySkillFlex}>
-			<Text className={classes.vacancyKey}>{t('VACANCY')}*</Text>
 			<Autocomplete
-				options={vacancy}
-				getOptionLabel={option => option.vacancyName}
-				autoComplete
-				renderInput={params => <TextField {...params} fullWidth />}
+				text={`${t('VACANCY')}*`}
 				value={skill.vacancyName}
+				options={vacancy || []}
 				onChange={(event, newValue) => {
 					setSkill({ ...skill, vacancyName: newValue });
 				}}
+				classNameText={classes.vacancyKey}
 				className={classes.vacancySkillItemSelect}
+				getOptionLabel={option => option.vacancyName}
 			/>
 		</div>
 	);
 };
 
-const mapStateToProps = ({ admin }) => {
-	return {
-		vacancyList: admin.vacancyChange,
-	};
-};
-
-const mapDispatchToProps = {
-	getVacancyByFilter,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(VacancyName);
+export default compose(withVacancyName, withLanguage)(VacancyName);

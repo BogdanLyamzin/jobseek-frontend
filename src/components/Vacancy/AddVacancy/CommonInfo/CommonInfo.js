@@ -1,36 +1,41 @@
 import React, { useState } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 
+import Text from 'shared/Text';
 import useStyles from './styles';
-import Text from '../../../../shared/Text';
-import Button from '../../../../shared/Button';
+import Button from 'shared/Button';
+import withLanguage from 'hoc/withLanguage';
 import FormCommonInfo from '../FormCommonInfo';
-import { saveInfo } from '../../../../store/vacancy/actions';
-import validation from '../../../../utils/validation/hrCompany';
+import { saveInfo } from 'store/vacancy/actions';
+import validation from 'utils/validation/hrCompany';
+import { FULL } from 'utils/variables/employmentType';
+import { CITY, SALARY, COUNTRY, DESCRIPTION } from 'utils/variables/inputName';
 
-const CommonInfo = ({ info, saveInfo }) => {
+const CommonInfo = ({ t, info, saveInfo }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
 	const [values, setValues] = useState({
 		city: info ? info.city : '',
 		salary: info ? info.salary : '',
 		country: info ? info.country : '',
 		description: info ? info.description : '',
-		employmentType: info ? info.employmentType : 'fullDay',
+		employmentType: info ? info.employmentType : FULL,
 	});
 
 	const handleChange = event => {
 		setValues({ ...values, [event.target.name]: event.target.value });
 	};
 
-	const validationStatus = () => {
-		return (
-			validation('city', values.city, t) &&
-			validation('country', values.country, t) &&
-			validation('salary', values.salary, t) &&
-			validation('description', values.description, t)
-		);
+	const validationStatus = () =>
+		validation(COUNTRY, values.country, t) &&
+		validation(CITY, values.city, t) &&
+		validation(SALARY, values.salary, t) &&
+		validation(DESCRIPTION, values.description, t);
+
+	const saveInfoForm = () => {
+		if (validationStatus()) {
+			saveInfo({ ...values });
+		}
 	};
 
 	return (
@@ -52,15 +57,7 @@ const CommonInfo = ({ info, saveInfo }) => {
 					value={values.description}
 				/>
 				<div className={classes.alignCenter}>
-					<Button
-						click={() => {
-							if (validationStatus()) {
-								saveInfo({ ...values });
-							}
-						}}
-					>
-						{t('SAVE')}
-					</Button>
+					<Button click={saveInfoForm}>{t('SAVE')}</Button>
 				</div>
 			</div>
 		</div>
@@ -71,10 +68,11 @@ const mapDispatchToProps = {
 	saveInfo,
 };
 
-const mapStateToProps = ({ vacancy }) => {
-	return {
-		info: vacancy.addVacancy,
-	};
-};
+const mapStateToProps = ({ vacancy }) => ({
+	info: vacancy.addVacancy,
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommonInfo);
+export default compose(
+	connect(mapStateToProps, mapDispatchToProps),
+	withLanguage,
+)(CommonInfo);

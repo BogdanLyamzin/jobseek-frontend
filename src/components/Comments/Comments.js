@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 
-import Title from '../../shared/Title';
+import Title from 'shared/Title';
 import CompanyComments from './CompanyComments/Comments';
 import CandidateComments from './CandidateComments/Comments';
 

@@ -1,15 +1,15 @@
 import React from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 
-import Text from '../../../../shared/Text';
+import Text from 'shared/Text';
+import withLanguage from 'hoc/withLanguage';
 import OneCv from '../SentOffersList/GetOne';
 import useStyles from '../CandidateList/styles';
 
-const ReceivedOffersList = ({ vacancy }) => {
+const ReceivedOffersList = ({ t, vacancy }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
 
 	return (
 		<>
@@ -17,30 +17,29 @@ const ReceivedOffersList = ({ vacancy }) => {
 				<Text>{t('NO_CANDIDATES')}</Text>
 			) : null}
 			{vacancy &&
-				vacancy.received.map(elem => {
-					return (
-						<Link
-							to={`/hr/candidate/received|${elem.cvId}|${elem.vacancyId}`}
-							key={elem.date}
-							className={classes.candidate}
-						>
-							<OneCv
-								classes={classes}
-								url={elem.cvId}
-								date={elem.date}
-								status={elem.status}
-							/>
-						</Link>
-					);
-				})}
+				vacancy.received.map(elem => (
+					<Link
+						to={`/hr/candidate/received|${elem.cvId}|${elem.vacancyId}`}
+						key={elem.date}
+						className={classes.candidate}
+					>
+						<OneCv
+							classes={classes}
+							url={elem.cvId}
+							date={elem.date}
+							status={elem.status}
+						/>
+					</Link>
+				))}
 		</>
 	);
 };
 
-const mapStateToProps = ({ vacancy }) => {
-	return {
-		vacancy: vacancy.vacancy,
-	};
-};
+const mapStateToProps = ({ vacancy }) => ({
+	vacancy: vacancy.vacancy,
+});
 
-export default connect(mapStateToProps)(ReceivedOffersList);
+export default compose(
+	connect(mapStateToProps),
+	withLanguage,
+)(ReceivedOffersList);

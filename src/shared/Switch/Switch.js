@@ -34,12 +34,11 @@ const AntSwitch = withStyles(() => ({
 	checked: {},
 }))(Switch);
 
-const FormControlLable = ({ active, onChange }) => {
-	return (
-		<FormGroup style={{ marginLeft: '15px' }}>
-			<AntSwitch checked={active} onChange={onChange} />
-		</FormGroup>
-	);
-};
+const margin = { marginLeft: '15px' };
+const FormControlLable = ({ active, onChange }) => (
+	<FormGroup style={margin}>
+		<AntSwitch checked={active} onChange={onChange} />
+	</FormGroup>
+);
 
-export default FormControlLable;
+export default React.memo(FormControlLable);

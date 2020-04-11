@@ -1,31 +1,33 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useEffect } from 'react';
+import { compose } from 'redux';
 
-import Text from '../../../../../shared/Text';
-import Slider from '../../../../../shared/Slider';
-import Checkbox from '../../../../../shared/Checkbox';
-import { skillsList, englishLevel } from '../skillsList';
-import StyledSlider from '../../../../../shared/StyledSlider';
+import Text from 'shared/Text';
+import Slider from 'shared/Slider';
+import Checkbox from 'shared/Checkbox';
+import withSkills from 'hoc/withSkills';
+import withLanguage from 'hoc/withLanguage';
+import StyledSlider from 'shared/StyledSlider';
+import withSkillState from 'hoc/withSkillState';
 
 const CheckboxList = ({
+	t,
+	setId,
 	skill,
 	classes,
 	checkbox,
+	skillList,
 	checkboxArr,
-	setCheckbox,
+	deleteSlider,
 	handleChange,
 	handleChangeEng,
+	valueLabelFormatEng,
 	checkboxHandleChange,
 }) => {
-	const { t } = useTranslation();
-
-	const valueLabelFormatEng = value => {
-		return englishLevel[value];
-	};
-
-	const deleteSlider = name => {
-		setCheckbox({ ...checkbox, [name]: null });
-	};
+	useEffect(() => {
+		if (skill.category && skill.category._id) {
+			setId(skill.category._id);
+		}
+	}, [setId, skill.category]);
 
 	return (
 		<>
@@ -33,23 +35,22 @@ const CheckboxList = ({
 				{t('SKILLS')}*
 			</Text>
 			<hr className={classes.line} />
-			{skill.category && (
+			{skill.category && skillList && (
 				<div className={classes.vacancySkillListFlex}>
 					<div className={classes.vacancySkillList}>
-						{skillsList.map(elem => {
-							return (
-								<div className={classes.vacancySkillListItem} key={elem.name}>
-									<Checkbox
-										onChange={checkboxHandleChange(elem.name)}
-										value={elem.id}
-										name={elem.name}
-										checked={!!(checkbox && checkbox[elem.name])}
-									/>
-								</div>
-							);
-						})}
+						{skillList.map(elem => (
+							<div className={classes.vacancySkillListItem} key={elem._id}>
+								<Checkbox
+									onChange={checkboxHandleChange(elem.skillName)}
+									value={elem._id}
+									name={elem.skillName}
+									checked={!!(checkbox && checkbox[elem.skillName])}
+								/>
+							</div>
+						))}
 					</div>
 					<div className={classes.vacancySkillTime}>
+						<Text className={classes.level}>{t('LEVEL')}</Text>
 						<div className={classes.vacancySliderItem}>
 							<div
 								className={`${classes.vacancySliderFlex} ${classes.marginBottom40}`}
@@ -69,22 +70,19 @@ const CheckboxList = ({
 									valueLabelDisplay="on"
 									defaultValue={0}
 									step={1}
-									max={6}
+									max={5}
 								/>
 							</div>
 						</div>
-						{checkboxArr
-							? checkboxArr.map(elem => {
-									return (
-										<Slider
-											key={elem.id}
-											element={elem}
-											handleChange={handleChange}
-											deleteSlider={deleteSlider}
-										/>
-									);
-							  })
-							: null}
+						{checkboxArr &&
+							checkboxArr.map(elem => (
+								<Slider
+									key={elem.id}
+									element={elem}
+									handleChange={handleChange}
+									deleteSlider={deleteSlider}
+								/>
+							))}
 					</div>
 				</div>
 			)}
@@ -92,4 +90,4 @@ const CheckboxList = ({
 	);
 };
 
-export default CheckboxList;
+export default compose(withSkillState, withSkills, withLanguage)(CheckboxList);

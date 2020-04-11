@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import ReviewsItem from './ReviewsItem';
-import { getCommentByFilter } from '../../../store/comment/actions';
+import { getCommentByFilter } from 'store/comment/actions';
 
 const CompanyComments = ({ user, getCommentByFilter, comments }) => {
 	useEffect(() => {

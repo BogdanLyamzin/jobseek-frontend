@@ -1,5 +1,7 @@
 import React from 'react';
 
+import withLanguage from 'hoc/withLanguage';
+
 const CandidateAchievement = ({ classes }) => {
 	return (
 		<div className={classes.candidateBackgroundFlex}>
@@ -45,4 +47,4 @@ const CandidateAchievement = ({ classes }) => {
 	);
 };
 
-export default CandidateAchievement;
+export default withLanguage(CandidateAchievement);

@@ -1,7 +1,4 @@
-import React from 'react';
-import Link from '../../shared/Link';
 import { makeStyles } from '@material-ui/core/styles';
-import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(theme => ({
 	link: {
@@ -25,23 +22,14 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.down(820)]: {
 			fontSize: '14px',
 		},
+		[theme.breakpoints.down(670)]: {
+			fontSize: 18,
+			marginRight: 0,
+			borderRadius: 0,
+			padding: '10px 15px',
+			backgroundColor: theme.palette.backgroundColor,
+		},
 	},
 }));
 
-export default function CompanyLinks() {
-	const classes = useStyles();
-	const { t } = useTranslation();
-	return (
-		<div>
-			<Link className={classes.link} to="/company">
-				{t('MY_PROFILE')}
-			</Link>
-			<Link className={classes.link} to="/company/hrs">
-				HRs
-			</Link>
-			<Link className={classes.link} to="/company/review">
-				{t('REVIEW')}
-			</Link>
-		</div>
-	);
-}
+export default useStyles;

@@ -1,43 +1,42 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { compose } from 'redux';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
-import Text from '../../../../shared/Text';
-import Input from '../../../../shared/Input';
-import Button from '../../../../shared/Button';
-import validation from '../../../../utils/validation/hrCompany';
+import Text from 'shared/Text';
+import Input from 'shared/Input';
+import Button from 'shared/Button';
+import withHidden from 'hoc/withHidden';
+import withLanguage from 'hoc/withLanguage';
+import validation from 'utils/validation/hrCompany';
+import { NAME, EMAIL, PHONE, LAST_NAME } from 'utils/variables/inputName';
 
 const FormHR = ({
+	t,
 	values,
 	hidden,
 	classes,
+	setHidden,
 	submitForm,
-	updateHRinfo,
 	handleChange,
 }) => {
-	const { t } = useTranslation();
-
-	const validationStatus = () => {
-		return (
-			validation('name', values.name, t) &&
-			validation('lastName', values.lastName, t) &&
-			validation('email', values.email, t) &&
-			validation('phone', values.phone, t)
-		);
-	};
+	const validationStatus = () =>
+		validation(NAME, values.name, t) &&
+		validation(LAST_NAME, values.lastName, t) &&
+		validation(EMAIL, values.email, t) &&
+		validation(PHONE, values.phone, t);
 
 	const handleClick = event => {
 		event.preventDefault();
 		if (validationStatus()) {
 			submitForm();
-			updateHRinfo();
+			setHidden();
 		}
 	};
 
 	return (
 		<div className={classes.hrForm}>
-			<div className={`${classes.hrFlex} ${classes.hrValue}`}>
-				{hidden && (
+			<div className={`${classes.hrFlex} ${classes.hrValue} ${classes.flexSm}`}>
+				{!hidden && (
 					<div className={classes.formItem}>
 						<div>
 							<Text className={classes.hrKey}>{t('FIRST_NAME')}*</Text>
@@ -45,7 +44,7 @@ const FormHR = ({
 								onChange={handleChange}
 								type="text"
 								name="name"
-								value={values ? values.name : ''}
+								value={values && values.name}
 								className={classes.hrFormInput}
 							/>
 						</div>
@@ -55,25 +54,22 @@ const FormHR = ({
 								onChange={handleChange}
 								type="text"
 								name="lastName"
-								value={values ? values.lastName : ''}
+								value={values && values.lastName}
 								className={classes.hrFormInput}
 							/>
 						</div>
 					</div>
 				)}
-				{!hidden && (
+				{hidden && (
 					<Text className={classes.hrName}>
 						{values ? values.name : ''} {values ? values.lastName : ''}
 					</Text>
 				)}
-				<CreateOutlinedIcon
-					className={`${classes.iconPenLrg} ${classes.iconPen}`}
-					onClick={updateHRinfo}
-				/>
+				<CreateOutlinedIcon className={classes.iconPen} onClick={setHidden} />
 			</div>
 
 			<div className={`${classes.hrFlex} ${classes.hrValue}`}>
-				{hidden && (
+				{!hidden && (
 					<div className={classes.formItem}>
 						<div>
 							<Text className={classes.hrKey}>{t('PHONE')}*</Text>
@@ -81,7 +77,7 @@ const FormHR = ({
 								onChange={handleChange}
 								type="text"
 								name="phone"
-								value={values ? values.phone : ''}
+								value={values && values.phone}
 								className={classes.hrFormInput}
 							/>
 						</div>
@@ -91,13 +87,13 @@ const FormHR = ({
 								onChange={handleChange}
 								type="email"
 								name="email"
-								value={values ? values.email : ''}
+								value={values && values.email}
 								className={classes.hrFormInput}
 							/>
 						</div>
 					</div>
 				)}
-				{!hidden && (
+				{hidden && (
 					<>
 						<div>
 							<Text className={classes.hrKey}>{t('PHONE')}:</Text>
@@ -114,9 +110,9 @@ const FormHR = ({
 					</>
 				)}
 			</div>
-			{hidden && <Button click={e => handleClick(e)}>{t('SAVE')}</Button>}
+			{!hidden && <Button click={handleClick}>{t('SAVE')}</Button>}
 		</div>
 	);
 };
 
-export default FormHR;
+export default compose(withHidden, withLanguage)(FormHR);

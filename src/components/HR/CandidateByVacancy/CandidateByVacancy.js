@@ -1,27 +1,26 @@
 import React, { useEffect } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 import { Switch, Route, useParams } from 'react-router-dom';
 
+import Text from 'shared/Text';
 import useStyles from './styles';
-import Text from '../../../shared/Text';
+import PageWrap from 'shared/PageWrap';
 import HRVacancyMenu from './MenuHRVacancy';
 import CandidateList from './CandidateList';
+import withLanguage from 'hoc/withLanguage';
 import SentOffersList from './SentOffersList';
-import PageWrap from '../../../shared/PageWrap';
 import ReceivedOffersList from './ReceivedOffersList';
-import {
-	getOneVacancy,
-	getSuitableCandidates,
-} from '../../../store/vacancy/actions';
+import arrToStringSkill from 'utils/transformType/arrToStringSkills';
+import { getOneVacancy, getSuitableCandidates } from 'store/vacancy/actions';
 
 const CandidateByVacancy = ({
-	getOneVacancy,
+	t,
 	vacancy,
+	getOneVacancy,
 	getSuitableCandidates,
 }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
 	const { id } = useParams();
 
 	useEffect(() => {
@@ -34,10 +33,10 @@ const CandidateByVacancy = ({
 			{vacancy && (
 				<div>
 					<Text className={classes.textCenter}>
-						{t('MY_VACANCY')}: {vacancy.vacancyName}
+						{t('MY_VACANCY') + ': ' + vacancy.vacancyName.vacancyName}
 					</Text>
 					<Text className={classes.textCenter}>
-						{vacancy.skills.map(e => e.name).join(', ')}
+						{arrToStringSkill(vacancy.skills)}
 					</Text>
 				</div>
 			)}
@@ -60,15 +59,16 @@ const CandidateByVacancy = ({
 	);
 };
 
-const mapStateToProps = ({ vacancy }) => {
-	return {
-		vacancy: vacancy.vacancy,
-	};
-};
+const mapStateToProps = ({ vacancy }) => ({
+	vacancy: vacancy.vacancy,
+});
 
 const mapDispatchToProps = {
 	getOneVacancy,
 	getSuitableCandidates,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CandidateByVacancy);
+export default compose(
+	connect(mapStateToProps, mapDispatchToProps),
+	withLanguage,
+)(CandidateByVacancy);

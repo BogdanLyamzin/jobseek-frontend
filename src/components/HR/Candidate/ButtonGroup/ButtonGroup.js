@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 
-import API from '../../../../services/api';
-import Button from '../../../../shared/Button';
-import toastr from '../../../../utils/toastr/toastrAction';
+import API from 'services/api';
+import Button from 'shared/Button';
+import withLanguage from 'hoc/withLanguage';
+import toastr from 'utils/toastr/toastrAction';
 
-const BtnList = ({ path, cv, cvID, vacancyID }) => {
-	const { t } = useTranslation();
+const BtnList = ({ t, path, cv, cvID, vacancyID }) => {
 	const postSent = () => {
 		API.post('sentVacancies', {
 			cvId: cvID,
@@ -38,7 +37,7 @@ const BtnList = ({ path, cv, cvID, vacancyID }) => {
 					e => e.cvId === cvID && e.vacancyId === vacancyID,
 				) && <Button click={postSent}>{t('RESPOND')}</Button>}
 
-			{path === 'sent' && <Button click={deleteSent}>{t('CENCEL')}</Button>}
+			{path === 'sent' && <Button click={deleteSent}>{t('CANCEL')}</Button>}
 
 			{path === 'received' &&
 				cv &&
@@ -50,10 +49,8 @@ const BtnList = ({ path, cv, cvID, vacancyID }) => {
 	);
 };
 
-const mapStateToProps = ({ cv }) => {
-	return {
-		cv: cv.cv,
-	};
-};
+const mapStateToProps = ({ cv }) => ({
+	cv: cv.cv,
+});
 
-export default connect(mapStateToProps)(BtnList);
+export default connect(mapStateToProps)(withLanguage(BtnList));

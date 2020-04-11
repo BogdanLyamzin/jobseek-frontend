@@ -7,7 +7,6 @@
 
 ###### dependencies update
 - update: `@coreui/coreui` to `^2.1.12`
-- update: `@coreui/coreui-plugin-chartjs-custom-tooltips` to `^1.3.1`
 - update: `@coreui/react` to `^2.5.1`
 - update: `core-js` to `^3.1.4`
 - update: `enzyme` to `^3.10.0`

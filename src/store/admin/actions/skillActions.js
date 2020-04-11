@@ -49,6 +49,16 @@ export const getAllSkills = () => {
 	};
 };
 
+export const getSkillsByFilter = filter => dispatch => {
+	API.get(`skills?${filter}`)
+		.then(data => {
+			dispatch(successAxiosSkillChange(data.result));
+		})
+		.catch(error => {
+			dispatch(errorAxios(error));
+		});
+};
+
 export const deleteSkill = id => {
 	return () => {
 		API.delete(`skills/${id}`);

@@ -4,7 +4,7 @@ import Switch from '@material-ui/core/Switch';
 import FormGroup from '@material-ui/core/FormGroup';
 import { withStyles } from '@material-ui/core/styles';
 
-import { updateVacancy } from '../../../../store/vacancy/actions';
+import { updateVacancy } from 'store/vacancy/actions';
 
 const AntSwitch = withStyles(() => ({
 	root: {

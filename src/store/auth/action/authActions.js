@@ -1,31 +1,28 @@
 import axios from 'axios';
-import { ERROR, SET_USER, LOGOUT, SUCCESS, CLEAR, SET_ADMIN } from './types';
-import setAuthToken from '../../../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
+
+import setAuthToken from '../../../utils/setAuthToken';
+import actionConstructor from '../../../utils/actions/actionConstructor';
+import { ERROR, SET_USER, LOGOUT, SUCCESS, CLEAR, SET_ADMIN } from './types';
+
+const error = actionConstructor(ERROR);
+const clearMsg = actionConstructor(CLEAR);
+const success = actionConstructor(SUCCESS);
 
 export const registerUser = (user, history) => dispatch => {
 	axios
 		.post('/register', user)
 		.then(res => {
 			if (res.data.errors) {
-				dispatch({
-					type: ERROR,
-					payload: res.data.errors,
-				});
+				dispatch(error(res.data.errors));
 			} else {
-				dispatch({
-					type: SUCCESS,
-					payload: res.data,
-				});
+				dispatch(success(res.data));
 				history.push('/login');
 			}
 			setTimeout(() => dispatch(clearMsg()), 3000);
 		})
 		.catch(err => {
-			dispatch({
-				type: ERROR,
-				payload: err,
-			});
+			dispatch(error(err));
 		});
 };
 
@@ -70,19 +67,13 @@ export const loginUser = (user, history) => dispatch => {
 				history.push(`/${res.data.type}`);
 				return;
 			} else {
-				dispatch({
-					type: ERROR,
-					payload: res.data.errors,
-				});
+				dispatch(error(res.data.errors));
 			}
 
 			setTimeout(() => dispatch(clearMsg()), 3000);
 		})
 		.catch(err => {
-			dispatch({
-				type: ERROR,
-				payload: err,
-			});
+			dispatch(error(err));
 		});
 };
 
@@ -99,19 +90,13 @@ export const loginAdmin = (user, history) => dispatch => {
 				history.push('/admin');
 				return;
 			} else {
-				dispatch({
-					type: ERROR,
-					payload: res.data.errors,
-				});
+				dispatch(error(res.data.errors));
 			}
 
 			setTimeout(() => dispatch(clearMsg()), 3000);
 		})
 		.catch(err => {
-			dispatch({
-				type: ERROR,
-				payload: err,
-			});
+			dispatch(error(err));
 		});
 };
 
@@ -129,24 +114,15 @@ export const emailConfirm = (data, history) => dispatch => {
 		.post('/mailconfirm', data)
 		.then(res => {
 			if (res.data.status === 'success') {
-				dispatch({
-					type: SUCCESS,
-					payload: res.data,
-				});
+				dispatch(success(res.data));
 				history.push('/login');
 			} else {
-				dispatch({
-					type: ERROR,
-					payload: res.data,
-				});
+				dispatch(error(res.data));
 			}
 			setTimeout(() => dispatch(clearMsg()), 3000);
 		})
-		.catch(error => {
-			dispatch({
-				type: ERROR,
-				payload: error,
-			});
+		.catch(err => {
+			dispatch(error(err));
 		});
 };
 
@@ -155,27 +131,14 @@ export const setPass = (data, history) => dispatch => {
 		.post('/setpassword', data)
 		.then(res => {
 			if (res.data.status === 'success') {
-				dispatch({
-					type: SUCCESS,
-					payload: res.data,
-				});
+				dispatch(success(res.data));
 				history.push('/login');
 			} else {
-				dispatch({
-					type: ERROR,
-					payload: res.data,
-				});
+				dispatch(error(res.data));
 			}
 			setTimeout(() => dispatch(clearMsg()), 3000);
 		})
-		.catch(error => {
-			dispatch({
-				type: ERROR,
-				payload: error,
-			});
+		.catch(err => {
+			dispatch(error(err));
 		});
 };
-
-const clearMsg = () => ({
-	type: CLEAR,
-});

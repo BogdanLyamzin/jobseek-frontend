@@ -1,59 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import React, { useEffect } from 'react';
+import { compose } from 'redux';
 
-import Text from '../../../../../shared/Text';
-import { getCategoryByFilter } from '../../../../../store/admin/actions/categoryActions';
+import withLanguage from 'hoc/withLanguage';
+import withCategory from 'hoc/withCategory';
+import Autocomplete from 'shared/Autocomplete';
 
-const Category = ({
-	skill,
-	classes,
-	setSkill,
-	categoryList,
-	getCategoryByFilter,
-}) => {
-	const { t } = useTranslation();
-	const [categories, setCategory] = useState(null);
-
+const Category = ({ t, setId, skill, classes, setSkill, categories }) => {
 	useEffect(() => {
 		if (skill.vacancyName && skill.vacancyName._id) {
-			getCategoryByFilter(`parentId=${skill.vacancyName._id}`);
+			setId(skill.vacancyName._id);
 			setSkill({ ...skill, category: skill.category });
 		}
-	}, [getCategoryByFilter, skill.vacancyName]);
-
-	useEffect(() => {
-		setCategory(categoryList);
-	}, [categoryList]);
+	}, [skill.vacancyName, setId, setSkill]);
 
 	return (
 		<div className={classes.vacancySkillFlex}>
-			<Text className={classes.vacancyKey}>{t('CATEGORY')}*</Text>
 			<Autocomplete
-				options={categories}
-				getOptionLabel={option => option.categoryName}
-				autoComplete
-				renderInput={params => <TextField {...params} fullWidth />}
+				text={`${t('CATEGORY')}*`}
 				value={skill.category}
+				options={categories || []}
 				onChange={(event, newValue) => {
 					setSkill({ ...skill, category: newValue });
 				}}
+				classNameText={classes.vacancyKey}
 				className={classes.vacancySkillItemSelect}
+				getOptionLabel={option => option.categoryName}
 			/>
 		</div>
 	);
 };
 
-const mapStateToProps = ({ admin }) => {
-	return {
-		categoryList: admin.categoryChange,
-	};
-};
-
-const mapDispatchToProps = {
-	getCategoryByFilter,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Category);
+export default compose(withCategory, withLanguage)(Category);

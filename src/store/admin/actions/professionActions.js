@@ -74,14 +74,12 @@ export const deleteProfession = id => {
 	};
 };
 
-export const getProfessionsByFilter = filter => {
-	return dispatch => {
-		API.get(`professions?${filter}`)
-			.then(data => {
-				dispatch(successAxiosChangeProf(data.result));
-			})
-			.catch(error => {
-				dispatch(errorAxios(error));
-			});
-	};
+export const getProfessionsByFilter = filter => dispatch => {
+	API.get(`professions?${filter}`)
+		.then(data => {
+			dispatch(successAxiosChangeProf(data.result));
+		})
+		.catch(error => {
+			dispatch(errorAxios(error));
+		});
 };

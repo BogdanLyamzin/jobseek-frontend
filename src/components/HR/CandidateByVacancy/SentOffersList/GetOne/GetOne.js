@@ -1,31 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 
-import Text from '../../../../../shared/Text';
-import API from '../../../../../services/api';
-import getDate from '../../../../../utils/getDate';
-import Avatar from '../../../../../shared/UserImg';
+import Text from 'shared/Text';
+import API from 'services/api';
+import getDate from 'utils/getDate';
+import Avatar from 'shared/UserImg';
+import withLanguage from 'hoc/withLanguage';
+import arrToStringSkill from 'utils/transformType/arrToStringSkills';
 
-const GetOneCv = ({ url, date, status, classes }) => {
+const GetOneCv = ({ t, url, date, status, classes }) => {
 	const [cv, setCv] = useState(null);
-	const { t } = useTranslation();
-
 	useEffect(() => {
 		API.get(`cvs/${url}`).then(data => setCv(data.result));
-	});
+	}, [url]);
 
 	return (
 		<>
 			<div className={classes.candidateFlexBetween}>
 				<Text className={classes.candidateVacancyName}>
-					{t('VACANCY')}: {cv ? cv.vacancyName : ''}
+					{t('VACANCY')}: {cv && cv.vacancyName}
 				</Text>
 				<Text className={classes.candidateOfferCheck}>
 					{status ? t('ACCEPTED') : t('PENDING')}
 				</Text>
 			</div>
 			<Text className={classes.candidateSkills70}>
-				{t('SKILLS')}: {cv ? cv.cvSkill.map(a => a.name).join(', ') : ''}
+				{t('SKILLS')}: {cv ? arrToStringSkill(cv.cvSkill) : ''}
 			</Text>
 			<div className={classes.candidateFlexBetween}>
 				<div className={classes.candidateFlex}>
@@ -33,11 +32,11 @@ const GetOneCv = ({ url, date, status, classes }) => {
 					<Text className={classes.candidateName}>{t('SEE_MORE')}...</Text>
 				</div>
 				<Text className={classes.candidateOfferDate}>
-					{t('INVITED')} {getDate(date)}
+					{t('INVITED') + ' ' + getDate(date)}
 				</Text>
 			</div>
 		</>
 	);
 };
 
-export default GetOneCv;
+export default React.memo(withLanguage(GetOneCv));

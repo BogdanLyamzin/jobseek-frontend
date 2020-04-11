@@ -1,23 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 
+import Link from 'shared/Link';
+import Text from 'shared/Text';
 import useStyles from '../styles';
-import Link from '../../../../shared/Link';
-import Text from '../../../../shared/Text';
-import getDate from '../../../../utils/getDate';
+import getDate from 'utils/getDate';
+import withLanguage from 'hoc/withLanguage';
 import FormControlLabel from './FormControlLabel';
-import CreateOutlined from '../../../../shared/CreateOutlinedIcon';
-import { deleteVacancy } from '../../../../store/vacancy/actions';
-import DeleteIconWithModal from '../../../../shared/DeleteIconWithModal';
+import CreateOutlined from 'shared/CreateOutlinedIcon';
+import DeleteIconWithModal from 'shared/DeleteIconWithModal';
+import arrToStringSkill from 'utils/transformType/arrToStringSkills';
 
-const VacancyItem = ({ elem, deleteVacancy }) => {
+const VacancyItem = ({ t, elem, deleteVacancies }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
-
-	const deleteV = id => {
-		deleteVacancy(id);
-	};
 
 	return (
 		<div id={elem._id} className={classes.vacancy}>
@@ -35,7 +29,7 @@ const VacancyItem = ({ elem, deleteVacancy }) => {
 					</Link>
 					<DeleteIconWithModal
 						text={`${t('DELETE_MESSAGE')}?`}
-						handleDelete={() => deleteV(elem._id)}
+						handleDelete={() => deleteVacancies(elem._id)}
 					/>
 				</div>
 			</div>
@@ -45,7 +39,7 @@ const VacancyItem = ({ elem, deleteVacancy }) => {
 				</Text>
 			</div>
 			<Text className={`${classes.vacancyDate} ${classes.vacancyFlex}`}>
-				{t('SKILLS')}: {elem.skills.map(s => s.name).join(', ')}
+				{t('SKILLS')}: {arrToStringSkill(elem.skills)}
 			</Text>
 			<div className={classes.vacancyFlex}>
 				<Text className={classes.vacancyCountry}>
@@ -59,4 +53,4 @@ const VacancyItem = ({ elem, deleteVacancy }) => {
 	);
 };
 
-export default connect(null, { deleteVacancy })(VacancyItem);
+export default withLanguage(VacancyItem);

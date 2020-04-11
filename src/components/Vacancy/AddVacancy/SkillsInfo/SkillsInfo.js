@@ -1,35 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
 import Category from './Category';
 import SphereList from './SphereList';
 import VacancyName from './VacancyName';
 import ChackboxList from './CheckboxList';
-import { englishLevel } from './skillsList';
 import ProfessionList from './ProfessionList';
-import Button from '../../../../shared/Button';
-import validation from '../../../../utils/validation/vacancy';
-import { addVacancy } from '../../../../store/vacancy/actions';
-import objToArr from '../../../../utils/transformType/objToArr';
+import {
+	SKILLS,
+	SPHERE,
+	CATEGORY,
+	PROFESSION,
+	VACANCY_NAME,
+} from 'utils/variables/inputName';
+import Button from 'shared/Button';
+import withLanguage from 'hoc/withLanguage';
+import validation from 'utils/validation/vacancy';
+import { addVacancy } from 'store/vacancy/actions';
+import englishLevel from 'utils/variables/english';
 
-const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
+const SkillsInfo = ({ t, isActive, firstForm, user, addVacancy }) => {
 	const classes = useStyles();
-	const { t } = useTranslation();
 	const [skill, setSkill] = useState({
 		sphere: null,
 		vacancyName: null,
-		englishLevel: 'Нет',
+		englishLevel: englishLevel[0],
 		profession: null,
 		category: null,
 	});
-	const [checkbox, setCheckbox] = useState(null);
-	const [checkboxArr, setCheckboxArr] = useState(null);
-
-	useEffect(() => {
-		setCheckboxArr([...objToArr(checkbox)]);
-	}, [checkbox]);
+	const [checkboxSkill, setCheckboxSkill] = useState(null);
 
 	const handleClickSkill = (name, newValue) => {
 		setSkill({ ...skill, [name]: newValue });
@@ -39,56 +40,28 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 		setSkill({ ...skill, englishLevel: englishLevel[newValue] });
 	};
 
-	const handleChangeSkillSlider = (name, id) => (event, newValue) => {
-		setCheckbox({
-			...checkbox,
-			[name]: {
-				name,
-				id,
-				experience: newValue,
-			},
-		});
-	};
-
-	const validationStatus = () => {
-		return (
-			validation('sphere', skill.sphere, t) &&
-			validation('vacancyName', skill.vacancyName, t) &&
-			validation('profession', skill.profession, t) &&
-			validation('category', skill.category, t) &&
-			validation('skills', checkboxArr, t)
-		);
-	};
+	const validationStatus = () =>
+		validation(SPHERE, skill.sphere, t) &&
+		validation(PROFESSION, skill.profession, t) &&
+		validation(VACANCY_NAME, skill.vacancyName, t) &&
+		validation(CATEGORY, skill.category, t) &&
+		validation(SKILLS, checkboxSkill, t);
 
 	const addNewVacancy = () => {
 		const body = {
 			active: isActive,
 			...firstForm,
-			sphere: skill.sphere && skill.sphere.title,
+			sphere: skill.sphere,
 			vacancyName: skill.vacancyName,
 			englishLevel: skill.englishLevel,
 			profession: skill.profession,
 			category: skill.category,
-			skills: [...checkboxArr],
+			skills: [...checkboxSkill],
 			companyId: user.companyId,
 			hrId: user._id,
 		};
 		if (validationStatus()) {
 			addVacancy(body);
-		}
-	};
-
-	const checkboxHandleChange = name => event => {
-		if (event.target.checked) {
-			setCheckbox({
-				...checkbox,
-				[name]: {
-					id: event.target.value,
-					experience: 0,
-				},
-			});
-		} else {
-			setCheckbox({ ...checkbox, [name]: null });
 		}
 	};
 
@@ -100,38 +73,30 @@ const SkillsInfo = ({ isActive, firstForm, user, addVacancy }) => {
 				setSkill={setSkill}
 				handleClickSkill={handleClickSkill}
 			/>
-			<ProfessionList
-				skill={skill}
-				classes={classes}
-				setSkill={setSkill}
-				handleClickSkill={handleClickSkill}
-			/>
+			<ProfessionList skill={skill} classes={classes} setSkill={setSkill} />
 			<VacancyName skill={skill} classes={classes} setSkill={setSkill} />
 			<Category skill={skill} classes={classes} setSkill={setSkill} />
 			<ChackboxList
 				skill={skill}
 				classes={classes}
-				checkbox={checkbox}
-				checkboxArr={checkboxArr}
-				setCheckbox={setCheckbox}
+				setCheckboxSkill={setCheckboxSkill}
 				handleChangeEng={handleChangeEnglish}
-				handleChange={handleChangeSkillSlider}
-				checkboxHandleChange={checkboxHandleChange}
 			/>
 			{skill.category && (
 				<div className={classes.alignCenter}>
-					<Button click={() => addNewVacancy()}>{t('POST')}</Button>
+					<Button click={addNewVacancy}>{t('POST')}</Button>
 				</div>
 			)}
 		</>
 	);
 };
 
-const mapStateToProps = ({ hr, vacancy }) => {
-	return {
-		user: hr.user,
-		firstForm: vacancy.addVacancy,
-	};
-};
+const mapStateToProps = ({ hr, vacancy }) => ({
+	user: hr.user,
+	firstForm: vacancy.addVacancy,
+});
 
-export default connect(mapStateToProps, { addVacancy })(SkillsInfo);
+export default compose(
+	connect(mapStateToProps, { addVacancy }),
+	withLanguage,
+)(SkillsInfo);

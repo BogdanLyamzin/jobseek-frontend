@@ -59,14 +59,12 @@ export const deleteVacancyTemplate = id => {
 	};
 };
 
-export const getVacancyByFilter = filter => {
-	return dispatch => {
-		API.get(`vacancytemplate?${filter}`)
-			.then(data => {
-				dispatch(successAxiosVacancyTemplateChange(data.result));
-			})
-			.catch(error => {
-				dispatch(errorAxios(error));
-			});
-	};
+export const getVacancyByFilter = filter => dispatch => {
+	API.get(`vacancytemplate?${filter}`)
+		.then(data => {
+			dispatch(successAxiosVacancyTemplateChange(data.result));
+		})
+		.catch(error => {
+			dispatch(errorAxios(error));
+		});
 };

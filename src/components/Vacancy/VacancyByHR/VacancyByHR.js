@@ -3,25 +3,25 @@ import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
+import Link from 'shared/Link';
+import Text from 'shared/Text';
 import useStyles from './styles';
-import Link from '../../../shared/Link';
+import PageWrap from 'shared/PageWrap';
 import VacancyItem from './VacancyItem';
-import Text from '../../../shared/Text';
-import PageWrap from '../../../shared/PageWrap';
-import { getVacancyByFilter } from '../../../store/vacancy/actions';
+import withVacancies from 'hoc/withVacanciesByFilter';
 
-const VacancyByHR = ({ vacancy, getVacancyByFilter, user }) => {
+const VacancyByHR = ({ setId, vacancy, deleteVacancies, user }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
 
 	useEffect(() => {
-		if (user) getVacancyByFilter(`hrId=${user._id}`);
-	});
+		if (user) setId(user._id);
+	}, [user, setId]);
 
 	return (
 		<PageWrap title={t('MY_VACANCIES')}>
 			<div className={classes.hrVacancy}>
-				<Link to="/hr/vacancyAdd" className={classes.linkAddVacancy}>
+				<Link to="/hr/addVacancy" className={classes.linkAddVacancy}>
 					<AddCircleOutlineIcon className={classes.linkAddVacancyDark} />
 					{t('ADD_VACANCY')}
 				</Link>
@@ -31,24 +31,21 @@ const VacancyByHR = ({ vacancy, getVacancyByFilter, user }) => {
 					) : null}
 					{vacancy &&
 						vacancy.length > 0 &&
-						vacancy.map(elem => {
-							return <VacancyItem elem={elem} key={elem._id} />;
-						})}
+						vacancy.map(elem => (
+							<VacancyItem
+								elem={elem}
+								key={elem._id}
+								deleteVacancies={deleteVacancies}
+							/>
+						))}
 				</div>
 			</div>
 		</PageWrap>
 	);
 };
 
-const mapStateToProps = ({ vacancy, hr }) => {
-	return {
-		user: hr.user,
-		vacancy: vacancy.vacancyList,
-	};
-};
+const mapStateToProps = ({ hr }) => ({
+	user: hr.user,
+});
 
-const mapDispatchToProps = {
-	getVacancyByFilter,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(VacancyByHR);
+export default connect(mapStateToProps)(withVacancies(VacancyByHR, 'hrId'));
