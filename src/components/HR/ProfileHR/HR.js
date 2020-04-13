@@ -13,10 +13,21 @@ import withLanguage from 'hoc/withLanguage';
 
 const HR = ({ user, hidden, setHidden, updateHR, t }) => {
 	const classes = useStyles();
-	const [values, setValues] = useState(null);
+	const [values, setValues] = useState({
+		name: '',
+		phone: '',
+		email: '',
+		lastName: '',
+	});
 
 	useEffect(() => {
-		if (user) setValues(user);
+		if (user)
+			setValues({
+				name: user.name,
+				phone: user.phone,
+				email: user.email,
+				lastName: user.lastName,
+			});
 	}, [user]);
 
 	const handleChange = event => {

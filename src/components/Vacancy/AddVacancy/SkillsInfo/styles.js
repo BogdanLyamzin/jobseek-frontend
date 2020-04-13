@@ -147,14 +147,6 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 
-	vacancySkillListItem: {
-		marginBottom: '35px',
-		display: 'flex',
-		alignItems: 'center',
-		flexBasis: '45%',
-		fontSize: '14px',
-	},
-
 	vacancySliderItem: {
 		marginBottom: '25px',
 		[theme.breakpoints.down(720)]: {

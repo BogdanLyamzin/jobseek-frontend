@@ -1,11 +1,11 @@
 import React from 'react';
-import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
-import Text from 'shared/Text';
-import Input from 'shared/Input';
 import Button from 'shared/Button';
 import withLanguage from 'hoc/withLanguage';
+import InputWithLabel from 'shared/InputWithLabel';
+import CreateIcon from 'shared/CreateOutlinedIcon';
 import validation from 'utils/validation/hrCompany';
+import { NAME_LASTNAME, PHONE_EMAIL } from 'utils/variables/inputProps';
 import { NAME, EMAIL, PHONE, LAST_NAME } from 'utils/variables/inputName';
 
 const FormHR = ({
@@ -34,51 +34,33 @@ const FormHR = ({
 		<div className={classes.hrForm}>
 			<div className={`${classes.hrFlex} ${classes.hrValue} ${classes.flexSm}`}>
 				<div className={classes.formItem}>
-					<div>
-						<Text className={classes.hrKey}>{t('FIRST_NAME')}*</Text>
-						<Input
+					{NAME_LASTNAME.map(elem => (
+						<InputWithLabel
+							key={elem.name}
+							text={`${t(elem.text)}*`}
 							onChange={handleChange}
-							type="text"
-							name="name"
-							value={values && values.name}
+							name={elem.name}
+							value={values[elem.name]}
 							className={classes.formInput}
+							classNameText={classes.hrKey}
 						/>
-					</div>
-					<div>
-						<Text className={classes.hrKey}>{t('LAST_NAME')}*</Text>
-						<Input
-							onChange={handleChange}
-							type="text"
-							name="lastName"
-							value={values && values.lastName}
-							className={classes.formInput}
-						/>
-					</div>
+					))}
 				</div>
-				<CreateOutlinedIcon className={classes.iconPen} onClick={setHidden} />
+				<CreateIcon className={classes.iconPen} click={setHidden} />
 			</div>
 			<div className={`${classes.hrFlex} ${classes.hrValue}`}>
 				<div className={classes.formItem}>
-					<div>
-						<Text className={classes.hrKey}>{t('PHONE')}*</Text>
-						<Input
+					{PHONE_EMAIL.map(elem => (
+						<InputWithLabel
+							key={elem.name}
+							text={`${t(elem.text)}*`}
 							onChange={handleChange}
-							type="text"
-							name="phone"
-							value={values && values.phone}
+							name={elem.name}
+							value={values[elem.name]}
 							className={classes.formInput}
+							classNameText={classes.hrKey}
 						/>
-					</div>
-					<div>
-						<Text className={classes.hrKey}>{t('MAIL')}*</Text>
-						<Input
-							onChange={handleChange}
-							type="email"
-							name="email"
-							value={values && values.email}
-							className={classes.formInput}
-						/>
-					</div>
+					))}
 				</div>
 			</div>
 			<Button click={handleClick}>{t('SAVE')}</Button>

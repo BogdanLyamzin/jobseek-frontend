@@ -27,4 +27,4 @@ const StyledAutocomplete = ({
 	</>
 );
 
-export default StyledAutocomplete;
+export default React.memo(StyledAutocomplete);

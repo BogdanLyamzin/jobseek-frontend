@@ -2,16 +2,16 @@ import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
-import Preloader from '../../shared/Preloader';
-import PrivateRoute from '../../components/PrivateRouter';
-import Navbar from '../../components/Nav';
-import Footer from '../../components/Footer';
-import HomePage from '../../components/Content';
-import Login from '../../components/Login';
-import Register from '../../components/Register';
-import ResetPass from '../../components/Login/ResetPass';
-import SetNewPass from '../../components/setNewPass';
-import LogOut from '../../components/LogOut';
+import Navbar from 'components/Nav';
+import Login from 'components/Login';
+import LogOut from 'components/LogOut';
+import Footer from 'components/Footer';
+import Preloader from 'shared/Preloader';
+import HomePage from 'components/Content';
+import Register from 'components/Register';
+import SetNewPass from 'components/setNewPass';
+import ResetPass from 'components/Login/ResetPass';
+import PrivateRoute from 'components/PrivateRouter';
 
 const HrPage = lazy(() => import('../hr'));
 const CandidatePage = lazy(() => import('../candidate'));

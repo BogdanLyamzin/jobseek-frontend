@@ -9,7 +9,7 @@ import {
 	DISTANT,
 	NONFULL,
 	FREELANCE,
-} from '../../utils/variables/employmentType';
+} from 'utils/variables/employmentType';
 
 const useStyles = makeStyles(theme => ({
 	label: {

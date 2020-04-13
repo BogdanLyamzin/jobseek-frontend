@@ -39,14 +39,13 @@ const CheckboxList = ({
 				<div className={classes.vacancySkillListFlex}>
 					<div className={classes.vacancySkillList}>
 						{skillList.map(elem => (
-							<div className={classes.vacancySkillListItem} key={elem._id}>
-								<Checkbox
-									onChange={checkboxHandleChange(elem.skillName)}
-									value={elem._id}
-									name={elem.skillName}
-									checked={!!(checkbox && checkbox[elem.skillName])}
-								/>
-							</div>
+							<Checkbox
+								key={elem._id}
+								value={elem._id}
+								name={elem.skillName}
+								onChange={checkboxHandleChange(elem.skillName)}
+								checked={!!(checkbox && checkbox[elem.skillName])}
+							/>
 						))}
 					</div>
 					<div className={classes.vacancySkillTime}>

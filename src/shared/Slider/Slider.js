@@ -1,45 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
 import Text from '../Text';
+import useStyles from './styles';
 import StyledSlider from '../StyledSlider';
-
-const useStyles = makeStyles(theme => ({
-	sliderItem: {
-		marginBottom: '25px',
-		[theme.breakpoints.down(720)]: {
-			flexBasis: '40%',
-		},
-	},
-
-	sliderFlex: {
-		display: 'flex',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-	},
-
-	sliderSkills: {
-		flexBasis: '90%',
-	},
-
-	icon: {
-		color: theme.palette.textColor,
-		fontSize: '22px',
-		cursor: 'pointer',
-		'&:hover': {
-			color: 'black',
-		},
-	},
-
-	text: {
-		fontFamily: theme.palette.font,
-		fontSize: '16px',
-		lineHeight: '19px',
-		marginBottom: '40px',
-		color: theme.palette.textColor,
-	},
-}));
 
 const SliderItem = ({ element, handleChange, deleteSlider }) => {
 	const classes = useStyles();
