@@ -5,6 +5,7 @@ import Status from '../CheckStatus';
 import Text from 'shared/Text';
 import Avatar from 'shared/UserImg';
 import withLanguage from 'hoc/withLanguage';
+import getUserName from 'utils/getUserName';
 import emplText from 'utils/variables/emplTypeText';
 
 const Summary = ({ t, cv, cvID, classes, candidate, vacancyID }) => (
@@ -14,7 +15,7 @@ const Summary = ({ t, cv, cvID, classes, candidate, vacancyID }) => (
 			<div>
 				<Status cvID={cvID} vacancyID={vacancyID}>
 					<Text className={classes.candidateName}>
-						{candidate && `${candidate.name} ${candidate.lastName}`}
+						{getUserName(candidate)}
 					</Text>
 				</Status>
 				<Text className={classes.candidateLocation}>

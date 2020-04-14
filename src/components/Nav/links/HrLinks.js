@@ -3,20 +3,17 @@ import React from 'react';
 import Link from 'shared/Link';
 import useStyles from './styles';
 import withLanguage from 'hoc/withLanguage';
+import { PROFILE } from 'utils/variables/hrLinks';
 
 const HrLinks = ({ t, className }) => {
 	const classes = useStyles();
 	return (
 		<div className={className}>
-			<Link className={classes.link} to="/hr">
-				{t('MY_PROFILE')}
-			</Link>
-			<Link className={classes.link} to="/hr/vacancy">
-				{t('MY_VACANCIES')}
-			</Link>
-			<Link className={classes.link} to="/hr/addVacancy">
-				{t('ADD_VACANCY')}
-			</Link>
+			{PROFILE.map(e => (
+				<Link key={e.to} to={e.to} className={classes.link}>
+					{t(e.text)}
+				</Link>
+			))}
 		</div>
 	);
 };

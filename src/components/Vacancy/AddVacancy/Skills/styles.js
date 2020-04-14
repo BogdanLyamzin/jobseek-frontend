@@ -59,6 +59,7 @@ const useStyles = makeStyles(theme => ({
 
 	vacancySkillItem: {
 		flexBasis: '30%',
+		textAlign: 'center',
 		[theme.breakpoints.down(800)]: {
 			flexBasis: '48%',
 		},

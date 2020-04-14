@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 		fontFamily: theme.palette.font,
 		fontSize: '10px',
 		lineHeight: '14px',
-		color: theme.palette.color,
+		color: theme.palette.textColor,
 		display: 'flex',
 		alignItems: 'center',
 	},
@@ -42,10 +42,10 @@ const useStyles = makeStyles(theme => ({
 		padding: '17px',
 		flexBasis: '50%',
 		textAlign: 'center',
-		borderBottom: '1px solid #E6EBFF',
+		borderBottom: '2px solid #E6EBFF',
 		'&:hover': {
 			color: '#6D64FF',
-			borderBottom: '1px solid #6D64FF',
+			borderBottom: '2px solid #6D64FF',
 			textDecoration: 'none',
 		},
 		[theme.breakpoints.down(550)]: {

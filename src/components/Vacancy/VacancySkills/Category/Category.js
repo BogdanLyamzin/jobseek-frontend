@@ -11,7 +11,7 @@ const Category = ({ t, setId, skill, classes, setSkill, categories }) => {
 		if (skill.vacancyName && skill.vacancyName._id) {
 			setId(skill.vacancyName._id);
 			setSkill({ ...skill, category: skill.category });
-		}
+		} // eslint-disable-next-line
 	}, [skill.vacancyName, setId, setSkill]);
 
 	return (

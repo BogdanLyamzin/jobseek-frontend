@@ -16,7 +16,7 @@ const ProfessionList = ({ t, skill, setId, classes, setSkill, profession }) => {
 				profession: null,
 				category: null,
 			});
-		}
+		} // eslint-disable-next-line
 	}, [skill.sphere, setId, setSkill]);
 
 	return (

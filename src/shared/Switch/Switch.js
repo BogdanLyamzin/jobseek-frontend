@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Switch from '@material-ui/core/Switch';
-import FormGroup from '@material-ui/core/FormGroup';
 import { withStyles } from '@material-ui/core/styles';
 
 const AntSwitch = withStyles(() => ({
@@ -37,9 +36,9 @@ const AntSwitch = withStyles(() => ({
 
 const margin = { marginLeft: '15px' };
 const FormControlLable = ({ active, onChange }) => (
-	<FormGroup style={margin}>
+	<div style={margin}>
 		<AntSwitch checked={active} onChange={onChange} />
-	</FormGroup>
+	</div>
 );
 
 FormControlLable.propTypes = {

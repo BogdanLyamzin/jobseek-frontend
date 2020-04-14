@@ -9,15 +9,9 @@ import useStyles from './styles';
 const UploadPhoto = ({ user, uploadPhoto }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
-
-	const onDrop = useCallback(
-		photo => {
-			uploadPhoto(photo);
-		},
-		[uploadPhoto],
-	);
-
+	const onDrop = useCallback(photo => uploadPhoto(photo), [uploadPhoto]);
 	const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
 	return (
 		<>
 			{user && user.avatar && (

@@ -12,15 +12,14 @@ import PageWrap from 'shared/PageWrap';
 import SwitchControl from 'shared/Switch';
 import withLanguage from 'hoc/withLanguage';
 import { deleteInfo } from 'store/vacancy/actions';
+import { ADD_LINKS } from 'utils/variables/hrLinks';
 
 const AddVacancy = ({ t, deleteInfo }) => {
 	const classes = useStyles();
 	const [isActive, setIsActive] = useState(true);
 
 	useEffect(() => {
-		return () => {
-			deleteInfo();
-		};
+		return () => deleteInfo();
 	}, [deleteInfo]);
 
 	return (
@@ -36,21 +35,19 @@ const AddVacancy = ({ t, deleteInfo }) => {
 			</div>
 
 			<div className={classes.addvacancyMenu}>
-				<Link to="/hr/addVacancy" className={classes.addvacancyMenuLink}>
-					{t('COMMON_INFO')}
-				</Link>
-				<Link to="/hr/addVacancy/skills" className={classes.addvacancyMenuLink}>
-					{t('SKILLS')}
-				</Link>
+				{ADD_LINKS.map(e => (
+					<Link key={e.to} to={e.to} className={classes.addvacancyMenuLink}>
+						{t(e.text)}
+					</Link>
+				))}
 			</div>
 			<div className={classes.addvacancyRoutes}>
 				<Switch>
-					<Route exact path="/hr/addVacancy">
-						<CommonInfo />
-					</Route>
-					<Route path="/hr/addVacancy/skills">
-						<Skills isActive={isActive} />
-					</Route>
+					<Route exact path="/hr/addVacancy" component={CommonInfo} />
+					<Route
+						path="/hr/addVacancy/skills"
+						render={() => <Skills isActive={isActive} />}
+					/>
 				</Switch>
 			</div>
 		</PageWrap>
