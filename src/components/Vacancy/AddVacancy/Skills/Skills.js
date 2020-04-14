@@ -3,11 +3,6 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import useStyles from './styles';
-import Category from './Category';
-import SphereList from './SphereList';
-import VacancyName from './VacancyName';
-import ChackboxList from './CheckboxList';
-import ProfessionList from './ProfessionList';
 import {
 	SKILLS,
 	SPHERE,
@@ -16,10 +11,15 @@ import {
 	VACANCY_NAME,
 } from 'utils/variables/inputName';
 import Button from 'shared/Button';
+import SkillsList from './SkillsList';
 import withLanguage from 'hoc/withLanguage';
 import validation from 'utils/validation/vacancy';
 import { addVacancy } from 'store/vacancy/actions';
 import englishLevel from 'utils/variables/english';
+import Category from '../../VacancySkills/Category';
+import SphereList from '../../VacancySkills/SphereList';
+import VacancyName from '../../VacancySkills/VacancyName';
+import ProfessionList from '../../VacancySkills/ProfessionList';
 
 const SkillsInfo = ({ t, isActive, firstForm, user, addVacancy }) => {
 	const classes = useStyles();
@@ -76,7 +76,7 @@ const SkillsInfo = ({ t, isActive, firstForm, user, addVacancy }) => {
 			<ProfessionList skill={skill} classes={classes} setSkill={setSkill} />
 			<VacancyName skill={skill} classes={classes} setSkill={setSkill} />
 			<Category skill={skill} classes={classes} setSkill={setSkill} />
-			<ChackboxList
+			<SkillsList
 				skill={skill}
 				classes={classes}
 				setCheckboxSkill={setCheckboxSkill}

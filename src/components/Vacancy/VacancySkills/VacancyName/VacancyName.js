@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { compose } from 'redux';
+import PropTypes from 'prop-types';
 
 import withLanguage from 'hoc/withLanguage';
 import Autocomplete from 'shared/Autocomplete';
@@ -28,6 +29,26 @@ const VacancyName = ({ t, skill, setId, classes, setSkill, vacancy }) => {
 			/>
 		</div>
 	);
+};
+
+VacancyName.propTypes = {
+	skill: PropTypes.shape({
+		vacancyName: PropTypes.oneOfType([
+			PropTypes.shape({
+				_id: PropTypes.string.isRequired,
+				vacancyName: PropTypes.string.isRequired,
+				professionId: PropTypes.string.isRequired,
+			}),
+			PropTypes.oneOf([null]).isRequired,
+		]),
+	}),
+	vacancy: PropTypes.oneOfType([
+		PropTypes.array.isRequired,
+		PropTypes.oneOf([null]).isRequired,
+	]),
+	setId: PropTypes.func.isRequired,
+	setSkill: PropTypes.func.isRequired,
+	classes: PropTypes.object.isRequired,
 };
 
 export default compose(withVacancyName, withLanguage)(VacancyName);

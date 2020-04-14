@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Button from 'shared/Button';
 import withLanguage from 'hoc/withLanguage';
@@ -66,6 +67,19 @@ const FormHR = ({
 			<Button click={handleClick}>{t('SAVE')}</Button>
 		</div>
 	);
+};
+
+FormHR.propTypes = {
+	values: PropTypes.shape({
+		name: PropTypes.string.isRequired,
+		phone: PropTypes.string.isRequired,
+		email: PropTypes.string.isRequired,
+		lastName: PropTypes.string.isRequired,
+	}),
+	classes: PropTypes.object.isRequired,
+	setHidden: PropTypes.func.isRequired,
+	submitForm: PropTypes.func.isRequired,
+	handleChange: PropTypes.func.isRequired,
 };
 
 export default withLanguage(FormHR);

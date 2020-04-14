@@ -16,12 +16,10 @@ const CompanyComments = ({ user, getCommentByFilter, comments }) => {
 		: null;
 };
 
-const mapStateToProps = ({ company, comment }) => {
-	return {
-		user: company.company,
-		comments: comment.comments,
-	};
-};
+const mapStateToProps = ({ company, comment }) => ({
+	user: company.company,
+	comments: comment.comments,
+});
 
 const mapDispatchToProps = {
 	getCommentByFilter,

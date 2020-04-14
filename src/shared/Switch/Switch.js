@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Switch from '@material-ui/core/Switch';
 import FormGroup from '@material-ui/core/FormGroup';
 import { withStyles } from '@material-ui/core/styles';
@@ -40,5 +41,10 @@ const FormControlLable = ({ active, onChange }) => (
 		<AntSwitch checked={active} onChange={onChange} />
 	</FormGroup>
 );
+
+FormControlLable.propTypes = {
+	active: PropTypes.bool.isRequired,
+	onChange: PropTypes.func.isRequired,
+};
 
 export default React.memo(FormControlLable);

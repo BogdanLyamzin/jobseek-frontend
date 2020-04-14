@@ -3,9 +3,9 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
+import Skills from './Skills';
 import Link from 'shared/Link';
 import CommonInfo from './CommonInfo';
-import SkillsInfo from './SkillsInfo';
 import PageWrap from 'shared/PageWrap';
 import withLanguage from 'hoc/withLanguage';
 import useStyles from '../AddVacancy/styles';
@@ -42,7 +42,7 @@ const UpdateVacancy = ({ t, match, getOneVacancy }) => {
 				<Switch>
 					<Route exact path="/hr/updateVacancy/:id" component={CommonInfo} />
 					<Route path="/hr/updateVacancy/:id/skills">
-						<SkillsInfo id={id} />
+						<Skills id={id} />
 					</Route>
 				</Switch>
 			</div>

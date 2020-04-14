@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -39,6 +40,17 @@ const Input = ({
 			className={`${className} ${classes.input}`}
 		/>
 	);
+};
+
+Input.propTypes = {
+	min: PropTypes.number,
+	step: PropTypes.number,
+	placeholder: PropTypes.string,
+	type: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	value: PropTypes.string.isRequired,
+	onChange: PropTypes.func.isRequired,
+	className: PropTypes.string.isRequired,
 };
 
 export default React.memo(Input);

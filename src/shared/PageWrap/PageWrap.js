@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
@@ -24,6 +25,11 @@ const PageWrap = ({ title, children }) => {
 			<Paper className={classes.root}>{children}</Paper>
 		</Container>
 	);
+};
+
+PageWrap.propTypes = {
+	title: PropTypes.string.isRequired,
+	children: PropTypes.node.isRequired,
 };
 
 export default PageWrap;

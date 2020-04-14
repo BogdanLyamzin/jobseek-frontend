@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
 import Text from '../Text';
@@ -33,6 +34,16 @@ const SliderItem = ({ element, handleChange, deleteSlider }) => {
 			</div>
 		</div>
 	);
+};
+
+SliderItem.propTypes = {
+	element: PropTypes.exact({
+		id: PropTypes.string.isRequired,
+		name: PropTypes.string.isRequired,
+		experience: PropTypes.number.isRequired,
+	}),
+	handleChange: PropTypes.func.isRequired,
+	deleteSlider: PropTypes.func.isRequired,
 };
 
 export default React.memo(SliderItem);

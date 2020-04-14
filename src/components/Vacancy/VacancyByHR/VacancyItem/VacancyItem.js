@@ -1,4 +1,5 @@
 import React from 'react';
+import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
 import Link from 'shared/Link';
 import Text from 'shared/Text';
@@ -6,7 +7,6 @@ import useStyles from '../styles';
 import getDate from 'utils/getDate';
 import withLanguage from 'hoc/withLanguage';
 import FormControlLabel from './FormControlLabel';
-import CreateOutlined from 'shared/CreateOutlinedIcon';
 import DeleteIconWithModal from 'shared/DeleteIconWithModal';
 import arrToStringSkill from 'utils/transformType/arrToStringSkills';
 
@@ -25,7 +25,7 @@ const VacancyItem = ({ t, elem, deleteVacancies }) => {
 						to={`/hr/updateVacancy/${elem._id}`}
 						className={classes.marginRight}
 					>
-						<CreateOutlined className={classes.vacancyIcon} />
+						<CreateOutlinedIcon className={classes.vacancyIcon} />
 					</Link>
 					<DeleteIconWithModal
 						text={`${t('DELETE_MESSAGE')}?`}

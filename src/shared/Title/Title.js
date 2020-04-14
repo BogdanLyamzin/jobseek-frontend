@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -21,6 +22,10 @@ const useStyles = makeStyles(theme => ({
 const Title = ({ children }) => {
 	const classes = useStyles();
 	return <h1 className={classes.title}>{children}</h1>;
+};
+
+Title.propTypes = {
+	children: PropTypes.node.isRequired,
 };
 
 export default Title;

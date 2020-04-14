@@ -10,17 +10,17 @@ import {
 	VACANCY_NAME,
 } from 'utils/variables/inputName';
 import Button from 'shared/Button';
-import ChackboxList from './CheckboxList';
+import SkillsList from './SkillsList';
 import withLanguage from 'hoc/withLanguage';
 import validation from 'utils/validation/vacancy';
 import englishLevel from 'utils/variables/english';
 import arrToObj from 'utils/transformType/arrToObj';
+import Category from '../../VacancySkills/Category';
 import { updateVacancy } from 'store/vacancy/actions';
-import useStyles from '../../AddVacancy/SkillsInfo/styles';
-import Category from '../../AddVacancy/SkillsInfo/Category';
-import SphereList from '../../AddVacancy/SkillsInfo/SphereList';
-import VacancyName from '../../AddVacancy/SkillsInfo/VacancyName';
-import ProfessionList from '../../AddVacancy/SkillsInfo/ProfessionList';
+import useStyles from '../../AddVacancy/Skills/styles';
+import SphereList from '../../VacancySkills/SphereList';
+import VacancyName from '../../VacancySkills/VacancyName';
+import ProfessionList from '../../VacancySkills/ProfessionList';
 
 const SkillsInfo = ({ t, id, firstForm, oneVacancy, updateVacancy }) => {
 	const classes = useStyles();
@@ -91,7 +91,7 @@ const SkillsInfo = ({ t, id, firstForm, oneVacancy, updateVacancy }) => {
 			/>
 			<VacancyName skill={skill} classes={classes} setSkill={setSkill} />
 			<Category skill={skill} classes={classes} setSkill={setSkill} />
-			<ChackboxList
+			<SkillsList
 				skill={skill}
 				classes={classes}
 				checkboxGet={checkbox}

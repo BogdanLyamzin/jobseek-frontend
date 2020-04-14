@@ -6,15 +6,21 @@ import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import Button from 'shared/Button';
 import getDate from 'utils/getDate';
 import useStyles from '../../styles';
+import withHidden from 'hoc/withHidden';
 import DeleteIcon from 'shared/DeleteIconWithModal';
 import { deleteComment, updateComment } from 'store/comment/actions';
 
 const userID = '5e3c361c657e122a841e88e4'; //TEST
 
-const ReviewsItem = ({ element, deleteComment, updateComment }) => {
+const ReviewsItem = ({
+	hidden,
+	element,
+	setHidden,
+	deleteComment,
+	updateComment,
+}) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
-	const [hidden, setHidden] = React.useState(true);
 	const [form, setform] = React.useState(element.reviewTxt);
 
 	const removeReview = id => {
@@ -24,7 +30,7 @@ const ReviewsItem = ({ element, deleteComment, updateComment }) => {
 
 	const updateReview = id => {
 		updateComment(id, { reviewTxt: form });
-		setHidden(!hidden);
+		setHidden();
 	};
 
 	return (
@@ -37,7 +43,7 @@ const ReviewsItem = ({ element, deleteComment, updateComment }) => {
 						<>
 							<CreateOutlinedIcon
 								className={classes.icon}
-								onClick={() => setHidden(!hidden)}
+								onClick={setHidden}
 							/>
 							<DeleteIcon
 								handleDelete={() => removeReview(element._id)}
@@ -65,4 +71,6 @@ const ReviewsItem = ({ element, deleteComment, updateComment }) => {
 	);
 };
 
-export default connect(null, { deleteComment, updateComment })(ReviewsItem);
+export default connect(null, { deleteComment, updateComment })(
+	withHidden(ReviewsItem),
+);

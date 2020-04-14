@@ -11,10 +11,8 @@ const ReviewsList = ({ comments }) => {
 		: null;
 };
 
-const mapStateToProps = ({ comment }) => {
-	return {
-		comments: comment.comments,
-	};
-};
+const mapStateToProps = ({ comment }) => ({
+	comments: comment.comments,
+});
 
 export default connect(mapStateToProps)(ReviewsList);

@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const colorDark = '#E6EBFF';
 const flexBetween = {
 	display: 'flex',
 	justifyContent: 'space-between',
@@ -26,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 		width: '100%',
 		height: '2px',
 		border: 0,
-		backgroundColor: colorDark,
+		backgroundColor: '#E6EBFF',
 	},
 
 	vacancySkillFlex: {
@@ -120,13 +119,6 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 
-	vacancySkillList: {
-		flexBasis: '60%',
-		padding: '5px 0 0 25px',
-		...flexBetween,
-		flexWrap: 'wrap',
-	},
-
 	vacancySkillTime: {
 		display: 'flex',
 		flexDirection: 'column',
@@ -147,22 +139,6 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 
-	vacancySliderItem: {
-		marginBottom: '25px',
-		[theme.breakpoints.down(720)]: {
-			flexBasis: '40%',
-		},
-	},
-
-	marginBottom40: {
-		marginBottom: '40px',
-	},
-
-	vacancySliderFlex: {
-		...flexBetween,
-		alignItems: 'center',
-	},
-
 	vacancySliderSkills: {
 		flexBasis: '90%',
 	},
@@ -176,14 +152,8 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 
-	vacancySkillItemText: {
-		fontFamily: theme.palette.font,
-		fontSize: '16px',
-		lineHeight: '19px',
-		color: theme.palette.textColor,
-	},
-
 	level: {
+		flexBasis: '90%',
 		fontFamily: theme.palette.font,
 		fontSize: '16px',
 		color: '#26a69a',

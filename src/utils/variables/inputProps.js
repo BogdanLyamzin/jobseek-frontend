@@ -1,3 +1,4 @@
+import { FULL, NONFULL, FREELANCE, DISTANT, ANY } from './employmentType';
 import { NAME, LAST_NAME, EMAIL, PHONE, COUNTRY, CITY } from './inputName';
 
 export const NAME_LASTNAME = [
@@ -30,5 +31,28 @@ export const COUNTRY_CITY = [
 	{
 		name: CITY,
 		text: 'CITY',
+	},
+];
+
+export const EMPL_TYPE = [
+	{
+		name: FULL,
+		text: 'FULL_DAY',
+	},
+	{
+		name: NONFULL,
+		text: 'PART_TIME',
+	},
+	{
+		name: FREELANCE,
+		text: 'FREELANCE',
+	},
+	{
+		name: DISTANT,
+		text: 'REMOTE',
+	},
+	{
+		name: ANY,
+		text: 'ANY',
 	},
 ];

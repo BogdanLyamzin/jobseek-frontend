@@ -37,10 +37,8 @@ const ReviewsItem = ({ element, user }) => {
 	);
 };
 
-const mapStateToProps = ({ company }) => {
-	return {
-		user: company.company,
-	};
-};
+const mapStateToProps = ({ company }) => ({
+	user: company.company,
+});
 
 export default connect(mapStateToProps)(ReviewsItem);

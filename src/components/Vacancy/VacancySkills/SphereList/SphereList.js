@@ -1,5 +1,6 @@
 import React from 'react';
 import { compose } from 'redux';
+import PropTypes from 'prop-types';
 
 import withSpheres from 'hoc/withSpheres';
 import withLanguage from 'hoc/withLanguage';
@@ -49,5 +50,24 @@ const SphereList = ({
 		</div>
 	</div>
 );
+
+SphereList.propTypes = {
+	skill: PropTypes.shape({
+		sphere: PropTypes.oneOfType([
+			PropTypes.shape({
+				_id: PropTypes.string.isRequired,
+				sphereName: PropTypes.string.isRequired,
+			}),
+			PropTypes.oneOf([null]).isRequired,
+		]),
+	}),
+	spheres: PropTypes.oneOfType([
+		PropTypes.array.isRequired,
+		PropTypes.oneOf([null]).isRequired,
+	]),
+	classes: PropTypes.object.isRequired,
+	setSkill: PropTypes.func.isRequired,
+	handleClickSkill: PropTypes.func.isRequired,
+};
 
 export default compose(withSpheres, withLanguage)(SphereList);

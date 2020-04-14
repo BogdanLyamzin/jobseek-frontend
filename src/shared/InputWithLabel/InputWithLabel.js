@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Text from '../Text';
 import Input from '../Input';
@@ -26,5 +27,17 @@ const InputWithLabel = ({
 		/>
 	</div>
 );
+
+InputWithLabel.propTypes = {
+	type: PropTypes.string,
+	placeholder: PropTypes.string,
+	classNameText: PropTypes.string,
+	classNameWrap: PropTypes.string,
+	text: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	value: PropTypes.string.isRequired,
+	onChange: PropTypes.func.isRequired,
+	className: PropTypes.string.isRequired,
+};
 
 export default InputWithLabel;

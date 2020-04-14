@@ -3,11 +3,11 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
-import useStyles from './styles';
-import CommonInfo from './CommonInfo';
-import SkillsInfo from './SkillsInfo';
+import Skills from './Skills';
 import Link from 'shared/Link';
 import Text from 'shared/Text';
+import useStyles from './styles';
+import CommonInfo from './CommonInfo';
 import PageWrap from 'shared/PageWrap';
 import SwitchControl from 'shared/Switch';
 import withLanguage from 'hoc/withLanguage';
@@ -49,7 +49,7 @@ const AddVacancy = ({ t, deleteInfo }) => {
 						<CommonInfo />
 					</Route>
 					<Route path="/hr/addVacancy/skills">
-						<SkillsInfo isActive={isActive} />
+						<Skills isActive={isActive} />
 					</Route>
 				</Switch>
 			</div>

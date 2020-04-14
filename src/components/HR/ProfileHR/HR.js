@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { compose } from 'redux';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Form from './Form';
@@ -68,6 +69,21 @@ const HR = ({ user, hidden, setHidden, updateHR, t }) => {
 			</div>
 		</PageWrap>
 	);
+};
+
+HR.propTypes = {
+	user: PropTypes.oneOfType([
+		PropTypes.shape({
+			name: PropTypes.string.isRequired,
+			phone: PropTypes.string.isRequired,
+			email: PropTypes.string.isRequired,
+			lastName: PropTypes.string.isRequired,
+		}),
+		PropTypes.oneOf([null]).isRequired,
+	]),
+	hidden: PropTypes.bool.isRequired,
+	setHidden: PropTypes.func.isRequired,
+	updateHR: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ hr }) => ({

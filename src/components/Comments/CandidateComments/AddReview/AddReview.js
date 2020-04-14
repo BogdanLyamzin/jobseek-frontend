@@ -39,11 +39,9 @@ const Review = ({ newComment, user }) => {
 	);
 };
 
-const mapStateToProps = ({ company }) => {
-	return {
-		user: company.company,
-	};
-};
+const mapStateToProps = ({ company }) => ({
+	user: company.company,
+});
 
 const mapDispatchToProps = {
 	newComment,
