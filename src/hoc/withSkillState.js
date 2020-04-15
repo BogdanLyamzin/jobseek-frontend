@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import getDisplayName from 'utils/getDisplayName';
 import objToArr from 'utils/transformType/objToArr';
+import { changeSliderFactory } from 'utils/actions/onChangeFactory';
 
 const withSkillState = Component => {
 	const WithSkillState = ({ checkboxGet, setCheckboxSkill, ...props }) => {
@@ -20,16 +21,7 @@ const withSkillState = Component => {
 			setCheckboxSkill(checkboxArr);
 		}, [checkboxArr, setCheckboxSkill]);
 
-		const handleChangeSkillSlider = (name, id) => (event, newValue) => {
-			setCheckbox({
-				...checkbox,
-				[name]: {
-					name,
-					id,
-					experience: newValue,
-				},
-			});
-		};
+		const handleChangeSkillSlider = changeSliderFactory(checkbox, setCheckbox);
 
 		const checkboxHandleChange = name => event => {
 			if (event.target.checked) {

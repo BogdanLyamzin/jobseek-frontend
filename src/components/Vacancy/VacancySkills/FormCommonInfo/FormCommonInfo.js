@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Text from 'shared/Text';
 import Input from 'shared/Input';
+import useStyles from './styles';
 import Button from 'shared/Button';
 import withLanguage from 'hoc/withLanguage';
 import { saveInfo } from 'store/vacancy/actions';
@@ -12,18 +13,15 @@ import validation from 'utils/validation/hrCompany';
 import { COUNTRY_CITY } from 'utils/variables/inputProps';
 import { CITY, SALARY, COUNTRY, DESCRIPTION } from 'utils/variables/inputName';
 
-const FormCommonInfo = ({ t, classes, saveInfo, handleChange, values }) => {
+const FormCommonInfo = ({ t, saveInfo, handleChange, values }) => {
+	const classes = useStyles();
 	const validationStatus = () =>
 		validation(COUNTRY, values.country, t) &&
 		validation(CITY, values.city, t) &&
 		validation(SALARY, values.salary, t) &&
 		validation(DESCRIPTION, values.description, t);
+	const saveForm = () => validationStatus() && saveInfo({ ...values });
 
-	const saveInfoForm = () => {
-		if (validationStatus()) {
-			saveInfo({ ...values });
-		}
-	};
 	return (
 		<>
 			<div className={classes.vacancyLocation}>
@@ -68,7 +66,7 @@ const FormCommonInfo = ({ t, classes, saveInfo, handleChange, values }) => {
 					value={values.description}
 				/>
 				<div className={classes.alignCenter}>
-					<Button click={saveInfoForm}>{t('SAVE')}</Button>
+					<Button click={saveForm}>{t('SAVE')}</Button>
 				</div>
 			</div>
 		</>

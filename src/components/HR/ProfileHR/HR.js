@@ -11,6 +11,7 @@ import UpdatePhoto from './UpdatePhoto';
 import withHidden from 'hoc/withHidden';
 import { updateHR } from 'store/hr/actions';
 import withLanguage from 'hoc/withLanguage';
+import { onChangeFactory } from 'utils/actions/onChangeFactory';
 
 const HR = ({ user, hidden, setHidden, updateHR, t }) => {
 	const classes = useStyles();
@@ -30,14 +31,8 @@ const HR = ({ user, hidden, setHidden, updateHR, t }) => {
 				lastName: user.lastName,
 			});
 	}, [user]);
-
-	const handleChange = event => {
-		setValues({ ...values, [event.target.name]: event.target.value });
-	};
-
-	const submitForm = () => {
-		updateHR(user._id, values);
-	};
+	const submitForm = () => updateHR(user._id, values);
+	const handleChange = onChangeFactory(values, setValues);
 
 	const selectedFile = photo => {
 		const fd = new FormData();
@@ -49,7 +44,7 @@ const HR = ({ user, hidden, setHidden, updateHR, t }) => {
 		<PageWrap title={t('MY_PROFILE')}>
 			<div className={classes.hr}>
 				<form className={classes.hrFlex}>
-					<UpdatePhoto uploadPhoto={selectedFile} classes={classes} />
+					<UpdatePhoto uploadPhoto={selectedFile} />
 					{hidden ? (
 						<Information
 							values={values}
@@ -59,7 +54,6 @@ const HR = ({ user, hidden, setHidden, updateHR, t }) => {
 					) : (
 						<Form
 							values={values}
-							classes={classes}
 							setHidden={setHidden}
 							submitForm={submitForm}
 							handleChange={handleChange}

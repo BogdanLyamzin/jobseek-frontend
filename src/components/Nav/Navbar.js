@@ -11,14 +11,15 @@ import IconButton from '@material-ui/core/IconButton';
 import LogOut from '../LogOut';
 import Menu from './links/Menu';
 import useStyles from './styles';
+import Links from './links/Links';
 import dark from './img/dark.png';
 import logo from './img/Frame.png';
 import light from './img/light.png';
 import Avatar from 'shared/UserImg';
-import HrLinks from './links/HrLinks';
 import darkLogo from './img/logo-dark.png';
 import CompanyLinks from './links/CompanyLinks';
 import CandidateLinks from './links/CandidateLinks';
+import { PROFILE_HR } from 'utils/variables/hrLinks';
 import { changeToDark, changeToLight } from 'store/theme/action/themeActions';
 
 function ButtonAppBar({ thema, changeToLight, changeToDark, isAuthenticated }) {
@@ -39,7 +40,7 @@ function ButtonAppBar({ thema, changeToLight, changeToDark, isAuthenticated }) {
 			<Container className={classes.flex}>
 				<img src={thema === 'light' ? logo : darkLogo} alt="pic" />
 				<div className={classes.lgMenu}>
-					<Route path="/hr" component={HrLinks} />
+					<Route path="/hr" render={() => <Links links={PROFILE_HR} />} />
 					<Route path="/company" component={CompanyLinks} />
 					<Route path="/candidate" component={CandidateLinks} />
 				</div>

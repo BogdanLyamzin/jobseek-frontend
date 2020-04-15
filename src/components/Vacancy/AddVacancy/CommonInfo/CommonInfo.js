@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import useStyles from './styles';
 import { FULL } from 'utils/variables/employmentType';
+import { onChangeFactory } from 'utils/actions/onChangeFactory';
 import FormCommonInfo from '../../VacancySkills/FormCommonInfo';
 
 const CommonInfo = ({ info }) => {
-	const classes = useStyles();
 	const [values, setValues] = useState({
 		city: info ? info.city : '',
 		salary: info ? info.salary : '',
@@ -14,18 +13,9 @@ const CommonInfo = ({ info }) => {
 		description: info ? info.description : '',
 		employmentType: info ? info.employmentType : FULL,
 	});
+	const handleChange = onChangeFactory(values, setValues);
 
-	const handleChange = event => {
-		setValues({ ...values, [event.target.name]: event.target.value });
-	};
-
-	return (
-		<FormCommonInfo
-			classes={classes}
-			handleChange={handleChange}
-			values={values}
-		/>
-	);
+	return <FormCommonInfo handleChange={handleChange} values={values} />;
 };
 
 const mapStateToProps = ({ vacancy }) => ({

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import useStyles from '../styles';
 import Button from 'shared/Button';
 import withLanguage from 'hoc/withLanguage';
 import InputWithLabel from 'shared/InputWithLabel';
@@ -9,22 +10,15 @@ import validation from 'utils/validation/hrCompany';
 import { NAME_LASTNAME, PHONE_EMAIL } from 'utils/variables/inputProps';
 import { NAME, EMAIL, PHONE, LAST_NAME } from 'utils/variables/inputName';
 
-const FormHR = ({
-	t,
-	values,
-	classes,
-	setHidden,
-	submitForm,
-	handleChange,
-}) => {
+const FormHR = ({ t, values, setHidden, submitForm, handleChange }) => {
+	const classes = useStyles();
 	const validationStatus = () =>
 		validation(NAME, values.name, t) &&
 		validation(LAST_NAME, values.lastName, t) &&
 		validation(EMAIL, values.email, t) &&
 		validation(PHONE, values.phone, t);
 
-	const handleClick = event => {
-		event.preventDefault();
+	const handleClick = () => {
 		if (validationStatus()) {
 			submitForm();
 			setHidden();

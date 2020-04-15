@@ -21,6 +21,7 @@ import useStyles from '../../AddVacancy/Skills/styles';
 import SphereList from '../../VacancySkills/SphereList';
 import VacancyName from '../../VacancySkills/VacancyName';
 import ProfessionList from '../../VacancySkills/ProfessionList';
+import { onChangeNameFactory } from 'utils/actions/onChangeFactory';
 
 const SkillsInfo = ({ t, id, firstForm, oneVacancy, updateVacancy }) => {
 	const classes = useStyles();
@@ -45,9 +46,7 @@ const SkillsInfo = ({ t, id, firstForm, oneVacancy, updateVacancy }) => {
 		setCheckbox(oneVacancy && arrToObj(oneVacancy.skills));
 	}, [oneVacancy]);
 
-	const handleClickSkill = (name, newValue) => {
-		setSkill({ ...skill, [name]: newValue });
-	};
+	const handleClickSkill = onChangeNameFactory(skill, setSkill);
 
 	const handleChangeEnglish = (event, newValue) => {
 		setSkill({ ...skill, englishLevel: englishLevel[newValue] });
@@ -70,9 +69,7 @@ const SkillsInfo = ({ t, id, firstForm, oneVacancy, updateVacancy }) => {
 			category: skill.category,
 			skills: [...checkboxSkill],
 		};
-		if (validationStatus()) {
-			updateVacancy(id, body);
-		}
+		validationStatus() && updateVacancy(id, body);
 	};
 
 	return (
@@ -81,16 +78,26 @@ const SkillsInfo = ({ t, id, firstForm, oneVacancy, updateVacancy }) => {
 				skill={skill}
 				classes={classes}
 				setSkill={setSkill}
-				handleClickSkill={handleClickSkill}
+				onChange={handleClickSkill}
 			/>
 			<ProfessionList
 				skill={skill}
 				classes={classes}
 				setSkill={setSkill}
-				handleClickSkill={handleClickSkill}
+				onChange={handleClickSkill}
 			/>
-			<VacancyName skill={skill} classes={classes} setSkill={setSkill} />
-			<Category skill={skill} classes={classes} setSkill={setSkill} />
+			<VacancyName
+				skill={skill}
+				classes={classes}
+				setSkill={setSkill}
+				onChange={handleClickSkill}
+			/>
+			<Category
+				skill={skill}
+				classes={classes}
+				setSkill={setSkill}
+				onChange={handleClickSkill}
+			/>
 			<SkillsList
 				skill={skill}
 				classes={classes}

@@ -22,7 +22,7 @@ export const UPDATE_LINKS = [
 	},
 ];
 
-export const PROFILE = [
+export const PROFILE_HR = [
 	{
 		to: '/hr',
 		text: 'MY_PROFILE',

@@ -11,9 +11,6 @@ const successAxiosHRList = actionConstructor(SUCCESS_AXIOS_LIST);
 export const addHr = body => dispatch => {
 	API.post('hr', body)
 		.then(data => {
-			if (data.status === 'Error') {
-				return tostrActions(data);
-			}
 			tostrActions(data, 'HR успішно створено');
 			dispatch(addHRUser(data.result));
 		})

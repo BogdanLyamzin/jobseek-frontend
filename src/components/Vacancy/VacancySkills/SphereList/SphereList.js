@@ -6,23 +6,14 @@ import withSpheres from 'hoc/withSpheres';
 import withLanguage from 'hoc/withLanguage';
 import Autocomplete from 'shared/Autocomplete';
 
-const SphereList = ({
-	t,
-	skill,
-	spheres,
-	classes,
-	setSkill,
-	handleClickSkill,
-}) => (
-	<div>
+const SphereList = ({ t, skill, spheres, classes, onChange }) => (
+	<>
 		<div className={classes.vacancySkillFlex}>
 			<Autocomplete
 				text={`${t('SPHERE')}*`}
 				value={skill.sphere}
 				options={spheres || []}
-				onChange={(event, newValue) => {
-					setSkill({ ...skill, sphere: newValue });
-				}}
+				onChange={(event, newValue) => onChange('sphere', newValue)}
 				classNameText={classes.vacancyKey}
 				className={classes.vacancySkillItemSelect}
 				getOptionLabel={option => option.sphereName}
@@ -37,7 +28,7 @@ const SphereList = ({
 							className={classes.vacancySkillItemLink}
 							onClick={e => {
 								e.preventDefault();
-								handleClickSkill('sphere', {
+								onChange('sphere', {
 									_id: elem._id,
 									sphereName: elem.sphereName,
 								});
@@ -48,7 +39,7 @@ const SphereList = ({
 					</div>
 				))}
 		</div>
-	</div>
+	</>
 );
 
 SphereList.propTypes = {

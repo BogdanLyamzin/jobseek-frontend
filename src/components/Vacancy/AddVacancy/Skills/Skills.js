@@ -20,6 +20,7 @@ import Category from '../../VacancySkills/Category';
 import SphereList from '../../VacancySkills/SphereList';
 import VacancyName from '../../VacancySkills/VacancyName';
 import ProfessionList from '../../VacancySkills/ProfessionList';
+import { onChangeNameFactory } from 'utils/actions/onChangeFactory';
 
 const SkillsInfo = ({ t, isActive, firstForm, user, addVacancy }) => {
 	const classes = useStyles();
@@ -31,10 +32,7 @@ const SkillsInfo = ({ t, isActive, firstForm, user, addVacancy }) => {
 		category: null,
 	});
 	const [checkboxSkill, setCheckboxSkill] = useState(null);
-
-	const handleClickSkill = (name, newValue) => {
-		setSkill({ ...skill, [name]: newValue });
-	};
+	const changeSkill = onChangeNameFactory(skill, setSkill);
 
 	const handleChangeEnglish = (event, newValue) => {
 		setSkill({ ...skill, englishLevel: englishLevel[newValue] });
@@ -60,22 +58,30 @@ const SkillsInfo = ({ t, isActive, firstForm, user, addVacancy }) => {
 			companyId: user.companyId,
 			hrId: user._id,
 		};
-		if (validationStatus()) {
-			addVacancy(body);
-		}
+		validationStatus() && addVacancy(body);
 	};
 
 	return (
 		<>
-			<SphereList
+			<SphereList skill={skill} classes={classes} onChange={changeSkill} />
+			<ProfessionList
 				skill={skill}
 				classes={classes}
 				setSkill={setSkill}
-				handleClickSkill={handleClickSkill}
+				onChange={changeSkill}
 			/>
-			<ProfessionList skill={skill} classes={classes} setSkill={setSkill} />
-			<VacancyName skill={skill} classes={classes} setSkill={setSkill} />
-			<Category skill={skill} classes={classes} setSkill={setSkill} />
+			<VacancyName
+				skill={skill}
+				classes={classes}
+				setSkill={setSkill}
+				onChange={changeSkill}
+			/>
+			<Category
+				skill={skill}
+				classes={classes}
+				setSkill={setSkill}
+				onChange={changeSkill}
+			/>
 			<SkillsList
 				skill={skill}
 				classes={classes}

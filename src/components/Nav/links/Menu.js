@@ -1,12 +1,13 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import HrLinks from './HrLinks';
+import Links from './Links';
 import useStyles from './styles';
 import withHidden from 'hoc/withHidden';
 import withIsLogin from 'hoc/withIsLogin';
 import CompanyLinks from './CompanyLinks';
 import CandidateLinks from './CandidateLinks';
+import { PROFILE_HR } from 'utils/variables/hrLinks';
 
 const Menu = ({ isLogin, hidden, setHidden }) => {
 	const classes = useStyles();
@@ -20,7 +21,7 @@ const Menu = ({ isLogin, hidden, setHidden }) => {
 				<div className={classes.absolute} onClick={setHidden}>
 					<Route
 						path="/hr"
-						render={() => <HrLinks className={classes.flex} />}
+						render={() => <Links className={classes.flex} links={PROFILE_HR} />}
 					/>
 					<Route
 						path="/company"
@@ -28,7 +29,6 @@ const Menu = ({ isLogin, hidden, setHidden }) => {
 					/>
 					<Route
 						path="/candidate"
-						component={CandidateLinks}
 						render={() => <CandidateLinks className={classes.flex} />}
 					/>
 				</div>

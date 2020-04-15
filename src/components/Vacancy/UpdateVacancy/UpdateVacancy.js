@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Switch, Route, useParams } from 'react-router-dom';
+import { Route, useParams } from 'react-router-dom';
 
 import Skills from './Skills';
 import Link from 'shared/Link';
@@ -35,13 +35,11 @@ const UpdateVacancy = ({ t, getOneVacancy }) => {
 				))}
 			</div>
 			<div className={classes.addvacancyRoutes}>
-				<Switch>
-					<Route exact path="/hr/updateVacancy/:id" component={CommonInfo} />
-					<Route
-						path="/hr/updateVacancy/:id/skills"
-						render={() => <Skills id={id} />}
-					/>
-				</Switch>
+				<Route exact path="/hr/updateVacancy/:id" component={CommonInfo} />
+				<Route
+					path="/hr/updateVacancy/:id/skills"
+					render={() => <Skills id={id} />}
+				/>
 			</div>
 		</PageWrap>
 	);

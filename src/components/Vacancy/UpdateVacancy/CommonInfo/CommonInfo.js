@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { FULL } from 'utils/variables/employmentType';
-import useStyles from '../../AddVacancy/CommonInfo/styles';
+import { onChangeFactory } from 'utils/actions/onChangeFactory';
 import FormCommonInfo from '../../VacancySkills/FormCommonInfo';
 
-const CommonInfo = ({ info, oneVacancy }) => {
-	const classes = useStyles();
+const CommonInfo = ({ info, vacancy }) => {
 	const [values, setValues] = useState({
 		city: info ? info.city : '',
 		salary: info ? info.salary : '',
@@ -16,32 +15,23 @@ const CommonInfo = ({ info, oneVacancy }) => {
 	});
 
 	useEffect(() => {
-		if (oneVacancy)
+		if (vacancy)
 			setValues({
-				city: oneVacancy.city,
-				salary: oneVacancy.salary,
-				country: oneVacancy.country,
-				description: oneVacancy.description,
-				employmentType: oneVacancy.employmentType,
+				city: vacancy.city,
+				salary: vacancy.salary,
+				country: vacancy.country,
+				description: vacancy.description,
+				employmentType: vacancy.employmentType,
 			});
-	}, [oneVacancy]);
+	}, [vacancy]);
+	const handleChange = onChangeFactory(values, setValues);
 
-	const handleChange = event => {
-		setValues({ ...values, [event.target.name]: event.target.value });
-	};
-
-	return (
-		<FormCommonInfo
-			classes={classes}
-			handleChange={handleChange}
-			values={values}
-		/>
-	);
+	return <FormCommonInfo handleChange={handleChange} values={values} />;
 };
 
 const mapStateToProps = ({ vacancy }) => ({
 	info: vacancy.addVacancy,
-	oneVacancy: vacancy.vacancy,
+	vacancy: vacancy.vacancy,
 });
 
 export default connect(mapStateToProps)(CommonInfo);

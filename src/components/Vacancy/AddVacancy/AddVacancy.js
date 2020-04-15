@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import Skills from './Skills';
 import Link from 'shared/Link';
@@ -33,7 +33,6 @@ const AddVacancy = ({ t, deleteInfo }) => {
 					/>
 				</div>
 			</div>
-
 			<div className={classes.addvacancyMenu}>
 				{ADD_LINKS.map(e => (
 					<Link key={e.to} to={e.to} className={classes.addvacancyMenuLink}>
@@ -42,13 +41,11 @@ const AddVacancy = ({ t, deleteInfo }) => {
 				))}
 			</div>
 			<div className={classes.addvacancyRoutes}>
-				<Switch>
-					<Route exact path="/hr/addVacancy" component={CommonInfo} />
-					<Route
-						path="/hr/addVacancy/skills"
-						render={() => <Skills isActive={isActive} />}
-					/>
-				</Switch>
+				<Route exact path="/hr/addVacancy" component={CommonInfo} />
+				<Route
+					path="/hr/addVacancy/skills"
+					render={() => <Skills isActive={isActive} />}
+				/>
 			</div>
 		</PageWrap>
 	);

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Switch, Route, useParams } from 'react-router-dom';
+import { Route, useParams } from 'react-router-dom';
 
 import Text from 'shared/Text';
 import useStyles from './styles';
@@ -42,18 +42,13 @@ const CandidateByVacancy = ({
 			)}
 			<HRVacancyMenu classes={classes} id={id} />
 			<div className={classes.hrVacancyRoutes}>
-				<Switch>
-					<Route
-						exact
-						path="/hr/vacancy/:id"
-						render={() => <CandidateList id={id} />}
-					/>
-					<Route path="/hr/vacancy/:id/sent" component={SentOffersList} />
-					<Route
-						path="/hr/vacancy/:id/received"
-						component={ReceivedOffersList}
-					/>
-				</Switch>
+				<Route
+					exact
+					path="/hr/vacancy/:id"
+					render={() => <CandidateList id={id} />}
+				/>
+				<Route path="/hr/vacancy/:id/sent" component={SentOffersList} />
+				<Route path="/hr/vacancy/:id/received" component={ReceivedOffersList} />
 			</div>
 		</PageWrap>
 	);
