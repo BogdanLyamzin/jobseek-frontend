@@ -16,6 +16,7 @@ import PrivateRoute from 'components/PrivateRouter';
 const HrPage = lazy(() => import('../hr'));
 const CandidatePage = lazy(() => import('../candidate'));
 const CompanyPage = lazy(() => import('../company'));
+const BlockedMsg = lazy(() => import('components/LogOut/BlockedUser'));
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -38,6 +39,7 @@ export default function MainPage() {
 					<Route path="/mailconfirm" component={ResetPass} />
 					<Route path="/resetpass/:token" component={SetNewPass} />
 					<Route path="/logout" component={LogOut} />
+					<Route path="/blockeduser" component={BlockedMsg} />
 					<PrivateRoute path="/hr" component={HrPage} />
 					<PrivateRoute path="/company" component={CompanyPage} />
 					<PrivateRoute path="/candidate" component={CandidatePage} />
