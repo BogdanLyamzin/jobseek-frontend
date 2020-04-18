@@ -1,38 +1,35 @@
 import axios from 'axios';
 import { toastr } from 'react-redux-toastr';
+import { GET, PUT, POST, DELETE } from 'utils/variables/method';
 
-const METHOD_GET = 'get';
-const METHOD_POST = 'post';
-const METHOD_PUT = 'put';
-const METHOD_DELETE = 'delete';
 const BASE_URL = 'http://localhost:5000/';
 
 class API {
-	get(url, headers) {
-		return this.makeRequest(`${BASE_URL + url}`, METHOD_GET, null, headers);
+	get(url, body, headers) {
+		return this.makeRequest(`${BASE_URL + url}`, GET, body, headers);
 	}
 
 	post(url, body, headers) {
-		return this.makeRequest(`${BASE_URL + url}`, METHOD_POST, body, headers);
+		return this.makeRequest(`${BASE_URL + url}`, POST, body, headers);
 	}
 
 	put(url, body, headers) {
-		return this.makeRequest(`${BASE_URL + url}`, METHOD_PUT, body, headers);
+		return this.makeRequest(`${BASE_URL + url}`, PUT, body, headers);
 	}
 
-	delete(url, headers) {
-		return this.makeRequest(`${BASE_URL + url}`, METHOD_DELETE, null, headers);
+	delete(url, body, headers) {
+		return this.makeRequest(`${BASE_URL + url}`, DELETE, body, headers);
 	}
 
 	makeRequest(url, method, body, headers) {
 		const requestParams = {
-			method: method || METHOD_GET,
+			method: method || GET,
 			data: body,
 			headers: {
 				...(headers || {}),
 			},
 		};
-		if (method === METHOD_POST || method === METHOD_PUT) {
+		if (method === POST || method === PUT) {
 			requestParams.headers['Content-Type'] = 'application/json';
 		}
 		return this.sendRequest(url, requestParams);

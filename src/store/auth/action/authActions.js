@@ -2,12 +2,12 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 
 import setAuthToken from '../../../utils/setAuthToken';
-import actionConstructor from '../../../utils/actions/actionConstructor';
+import actionFactory from '../../../utils/actions/actionFactory';
 import { ERROR, SET_USER, LOGOUT, SUCCESS, CLEAR, SET_ADMIN } from './types';
 
-const error = actionConstructor(ERROR);
-const clearMsg = actionConstructor(CLEAR);
-const success = actionConstructor(SUCCESS);
+const error = actionFactory(ERROR);
+const clearMsg = actionFactory(CLEAR);
+const success = actionFactory(SUCCESS);
 
 export const registerUser = (user, history) => dispatch => {
 	axios

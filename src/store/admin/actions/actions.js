@@ -10,31 +10,21 @@ import {
 	SUCCESS_AXIOS_SKILL,
 	SUCCESS_AXIOS_SKILL_CHANGE,
 } from './actionsName';
-import actionConstructor from '../../../utils/actions/actionConstructor';
+import actionFactory from '../../../utils/actions/actionFactory';
 
-export const successAxiosSphere = actionConstructor(SUCCESS_AXIOS_SPHERE);
-export const successAxiosChangeSphere = actionConstructor(
-	SUCCESS_AXIOS_SPHERE_CHANGE,
-);
+export const successAxiosSphere = actionFactory(SUCCESS_AXIOS_SPHERE);
+export const successAxiosChangeSphere = actionFactory(SUCCESS_AXIOS_SPHERE_CHANGE);
 
-export const successAxiosProf = actionConstructor(SUCCESS_AXIOS_PROFESSION);
-export const successAxiosChangeProf = actionConstructor(
-	SUCCESS_AXIOS_PROFESSION_CHANGE,
-);
+export const successAxiosProf = actionFactory(SUCCESS_AXIOS_PROFESSION);
+export const successAxiosChangeProf = actionFactory(SUCCESS_AXIOS_PROFESSION_CHANGE);
 
-export const successAxiosVacancyTemplate = actionConstructor(
-	SUCCESS_AXIOS_VACANCYTEMPLATE,
-);
-export const successAxiosVacancyTemplateChange = actionConstructor(
+export const successAxiosVacancyTemplate = actionFactory(SUCCESS_AXIOS_VACANCYTEMPLATE);
+export const successAxiosVacancyTemplateChange = actionFactory(
 	SUCCESS_AXIOS_VACANCYTEMPLATE_CHANGE,
 );
 
-export const successAxiosCategory = actionConstructor(SUCCESS_AXIOS_CATEGORY);
-export const successAxiosCategoryChange = actionConstructor(
-	SUCCESS_AXIOS_CATEGORY_CHANGE,
-);
+export const successAxiosCategory = actionFactory(SUCCESS_AXIOS_CATEGORY);
+export const successAxiosCategoryChange = actionFactory(SUCCESS_AXIOS_CATEGORY_CHANGE);
 
-export const successAxiosSkill = actionConstructor(SUCCESS_AXIOS_SKILL);
-export const successAxiosSkillChange = actionConstructor(
-	SUCCESS_AXIOS_SKILL_CHANGE,
-);
+export const successAxiosSkill = actionFactory(SUCCESS_AXIOS_SKILL);
+export const successAxiosSkillChange = actionFactory(SUCCESS_AXIOS_SKILL_CHANGE);

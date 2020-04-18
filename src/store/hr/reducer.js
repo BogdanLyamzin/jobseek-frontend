@@ -1,9 +1,4 @@
-import {
-	SUCCESS_AXIOS,
-	ERROR,
-	ADD_USER,
-	SUCCESS_AXIOS_LIST,
-} from './actionNames';
+import { SUCCESS_AXIOS, ERROR, ADD_USER, SUCCESS_AXIOS_LIST } from './actionNames';
 
 const initialState = {
 	user: null,

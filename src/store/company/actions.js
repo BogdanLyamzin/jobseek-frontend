@@ -2,9 +2,9 @@ import API from '../../services/api';
 import { SUCCESS_AXIOS } from './actionNames';
 import errorAxios from '../../utils/actions/errorAxios';
 import tostrActions from '../../utils/toastr/toastrAction';
-import actionConstructor from '../../utils/actions/actionConstructor';
+import actionFactory from '../../utils/actions/actionFactory';
 
-const successAxios = actionConstructor(SUCCESS_AXIOS);
+const successAxios = actionFactory(SUCCESS_AXIOS);
 
 export const addCompany = body => dispatch => {
 	API.post('companies', body).then(data => {

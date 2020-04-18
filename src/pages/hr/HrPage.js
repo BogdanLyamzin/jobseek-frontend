@@ -13,7 +13,7 @@ import UpdateVacancy from 'components/Vacancy/UpdateVacancy/UpdateVacancy';
 
 const HrPage = ({ getOneHR, userId, hr }) => {
 	useEffect(() => {
-		getOneHR(userId, { status: true });
+		getOneHR(userId, null, { status: true });
 	}, [getOneHR, userId]);
 
 	return (
