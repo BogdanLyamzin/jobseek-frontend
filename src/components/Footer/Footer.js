@@ -2,7 +2,6 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
-import { useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 
@@ -12,24 +11,15 @@ import googImg from './img/google_play.svg';
 import i18n from '../../utils/locales/i18n';
 
 export default function Footer() {
-	const changeLng = lng => {
-		i18n.changeLanguage(lng);
-	};
 	const classes = useStyles();
-	const theme = useTheme();
+	const changeLng = lng => i18n.changeLanguage(lng);
 
 	return (
 		<>
 			<div className={classes.fixHeiht}></div>
 			<footer className={classes.root}>
 				<Container>
-					<Grid
-						container
-						justify="center"
-						alignItems="center"
-						spacing={0}
-						direction="row"
-					>
+					<Grid container justify="center" alignItems="center" spacing={0} direction="row">
 						<Grid item xs={12} lg={6}>
 							<div className={classes.icon}>
 								<Button disabled={true}>
@@ -44,7 +34,7 @@ export default function Footer() {
 							<div className={classes.lang}>
 								<Breadcrumbs aria-label="breadcrumb">
 									<Link
-										style={{ color: theme.palette.color }}
+										className={classes.link}
 										href="#"
 										onClick={e => {
 											e.preventDefault();
@@ -54,7 +44,7 @@ export default function Footer() {
 										English
 									</Link>
 									<Link
-										style={{ color: theme.palette.color }}
+										className={classes.link}
 										href="#"
 										onClick={e => {
 											e.preventDefault();

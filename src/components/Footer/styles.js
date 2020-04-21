@@ -31,6 +31,9 @@ const useStyles = makeStyles(theme => ({
 			justifyContent: 'flex-start',
 		},
 	},
+	link: {
+		color: theme.palette.color,
+	},
 }));
 
 export default useStyles;

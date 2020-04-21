@@ -22,7 +22,7 @@ import CandidateLinks from './links/CandidateLinks';
 import { PROFILE_HR } from 'utils/variables/hrLinks';
 import { changeToDark, changeToLight } from 'store/theme/action/themeActions';
 
-function ButtonAppBar({ thema, changeToLight, changeToDark, isAuthenticated }) {
+function BtnAppBar({ thema, changeToLight, changeToDark, isAuthenticated }) {
 	const theme = useTheme();
 	const classes = useStyles();
 	const { t } = useTranslation();
@@ -51,19 +51,12 @@ function ButtonAppBar({ thema, changeToLight, changeToDark, isAuthenticated }) {
 							thema === 'light' ? darkTheme() : lightTheme();
 						}}
 					>
-						<img
-							src={thema === 'light' ? dark : light}
-							className={classes.themeIcon}
-							alt="pic"
-						/>
+						<img src={thema === 'light' ? dark : light} className={classes.themeIcon} alt="pic" />
 					</IconButton>
 					{isAuthenticated ? (
 						<LogOut />
 					) : (
-						<Link
-							to="/login"
-							style={{ textDecoration: 'none', color: theme.palette.color }}
-						>
+						<Link to="/login" style={{ textDecoration: 'none', color: theme.palette.color }}>
 							{t('ENTER')}
 						</Link>
 					)}
@@ -80,6 +73,4 @@ const mapStateToProps = state => ({
 	isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { changeToLight, changeToDark })(
-	ButtonAppBar,
-);
+export default connect(mapStateToProps, { changeToLight, changeToDark })(BtnAppBar);

@@ -2,13 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
-import {
-	SKILLS,
-	SPHERE,
-	CATEGORY,
-	PROFESSION,
-	VACANCY_NAME,
-} from 'utils/variables/inputName';
 import Button from 'shared/Button';
 import SkillsList from './SkillsList';
 import withLanguage from 'hoc/withLanguage';
@@ -22,6 +15,7 @@ import SphereList from '../../VacancySkills/SphereList';
 import VacancyName from '../../VacancySkills/VacancyName';
 import ProfessionList from '../../VacancySkills/ProfessionList';
 import { onChangeNameFactory } from 'utils/actions/onChangeFactory';
+import { SKILLS, SPHERE, CATEGORY, PROFESSION, VACANCY_NAME } from 'utils/variables/inputName';
 
 const SkillsInfo = ({ t, id, firstForm, oneVacancy, updateVacancy }) => {
 	const classes = useStyles();
@@ -46,8 +40,7 @@ const SkillsInfo = ({ t, id, firstForm, oneVacancy, updateVacancy }) => {
 		setCheckbox(oneVacancy && arrToObj(oneVacancy.skills));
 	}, [oneVacancy]);
 
-	const handleClickSkill = onChangeNameFactory(skill, setSkill);
-
+	const changeSkill = onChangeNameFactory(skill, setSkill);
 	const handleChangeEnglish = (event, newValue) => {
 		setSkill({ ...skill, englishLevel: englishLevel[newValue] });
 	};
@@ -74,30 +67,10 @@ const SkillsInfo = ({ t, id, firstForm, oneVacancy, updateVacancy }) => {
 
 	return (
 		<>
-			<SphereList
-				skill={skill}
-				classes={classes}
-				setSkill={setSkill}
-				onChange={handleClickSkill}
-			/>
-			<ProfessionList
-				skill={skill}
-				classes={classes}
-				setSkill={setSkill}
-				onChange={handleClickSkill}
-			/>
-			<VacancyName
-				skill={skill}
-				classes={classes}
-				setSkill={setSkill}
-				onChange={handleClickSkill}
-			/>
-			<Category
-				skill={skill}
-				classes={classes}
-				setSkill={setSkill}
-				onChange={handleClickSkill}
-			/>
+			<SphereList skill={skill} classes={classes} setSkill={setSkill} onChange={changeSkill} />
+			<ProfessionList skill={skill} classes={classes} setSkill={setSkill} onChange={changeSkill} />
+			<VacancyName skill={skill} classes={classes} setSkill={setSkill} onChange={changeSkill} />
+			<Category skill={skill} classes={classes} setSkill={setSkill} onChange={changeSkill} />
 			<SkillsList
 				skill={skill}
 				classes={classes}
@@ -107,7 +80,7 @@ const SkillsInfo = ({ t, id, firstForm, oneVacancy, updateVacancy }) => {
 			/>
 			{skill.category && (
 				<div className={classes.alignCenter}>
-					<Button click={() => update()}>{t('UPDATE')}</Button>
+					<Button click={update}>{t('UPDATE')}</Button>
 				</div>
 			)}
 		</>
@@ -123,7 +96,4 @@ const mapDispatchToProps = {
 	updateVacancy,
 };
 
-export default compose(
-	connect(mapStateToProps, mapDispatchToProps),
-	withLanguage,
-)(SkillsInfo);
+export default compose(connect(mapStateToProps, mapDispatchToProps), withLanguage)(SkillsInfo);

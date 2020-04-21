@@ -12,25 +12,13 @@ const DeleteIconWithModal = ({ handleDelete, text }) => {
 	const { t } = useTranslation();
 	const [open, setOpen] = useState(false);
 
-	const handleOpen = () => {
-		setOpen(true);
-	};
-
-	const handleClose = () => {
-		setOpen(false);
-	};
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
 
 	return (
 		<>
-			<DeleteForeverOutlinedIcon
-				className={classes.deleteIcon}
-				onClick={handleOpen}
-			/>
-			<Modal
-				aria-labelledby="simple-modal-title"
-				open={open}
-				onClose={handleClose}
-			>
+			<DeleteForeverOutlinedIcon className={classes.deleteIcon} onClick={handleOpen} />
+			<Modal aria-labelledby="simple-modal-title" open={open} onClose={handleClose}>
 				<div className={classes.paper}>
 					<h4 id="simple-modal-title">{text}</h4>
 					<div className={classes.flex}>

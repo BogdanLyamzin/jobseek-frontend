@@ -33,7 +33,7 @@ const Review = ({ newComment, user }) => {
 				rows="10"
 			></textarea>
 			<div className={classes.reviewFooter}>
-				<Button text={t('POST')} click={() => addReview()} />
+				<Button text={t('POST')} click={addReview} />
 			</div>
 		</div>
 	);

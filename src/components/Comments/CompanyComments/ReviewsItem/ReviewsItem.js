@@ -11,11 +11,11 @@ const ReviewsItem = ({ element, user }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
 
-	const addReport = (id, text) => {
+	const addReport = () => {
 		API.post('reports', {
 			name: user.companyName,
-			reviewId: id,
-			reviewText: text,
+			reviewId: element._id,
+			reviewText: element.reviewTxt,
 		}).then(data => toastr(data, 'Жалоба успішна'));
 	};
 
@@ -23,10 +23,7 @@ const ReviewsItem = ({ element, user }) => {
 		<div className={classes.reviewItem}>
 			<div className={classes.reviewListUser}>
 				<div className={classes.reviewListName}>{element.candidateName}</div>
-				<button
-					className={classes.report}
-					onClick={() => addReport(element._id, element.reviewTxt)}
-				>
+				<button className={classes.report} onClick={addReport}>
 					{t('REPORT')}
 				</button>
 			</div>

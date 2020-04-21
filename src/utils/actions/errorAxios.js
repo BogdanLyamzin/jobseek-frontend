@@ -1,5 +1,7 @@
+export const ERROR = 'ERROR';
+
 const errorAxios = payload => ({
-	type: 'ERROR',
+	type: ERROR,
 	payload,
 });
 

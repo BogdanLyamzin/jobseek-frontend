@@ -3,13 +3,6 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import useStyles from './styles';
-import {
-	SKILLS,
-	SPHERE,
-	CATEGORY,
-	PROFESSION,
-	VACANCY_NAME,
-} from 'utils/variables/inputName';
 import Button from 'shared/Button';
 import SkillsList from './SkillsList';
 import withLanguage from 'hoc/withLanguage';
@@ -21,6 +14,7 @@ import SphereList from '../../VacancySkills/SphereList';
 import VacancyName from '../../VacancySkills/VacancyName';
 import ProfessionList from '../../VacancySkills/ProfessionList';
 import { onChangeNameFactory } from 'utils/actions/onChangeFactory';
+import { SKILLS, SPHERE, CATEGORY, PROFESSION, VACANCY_NAME } from 'utils/variables/inputName';
 
 const SkillsInfo = ({ t, isActive, firstForm, user, addVacancy }) => {
 	const classes = useStyles();
@@ -64,24 +58,9 @@ const SkillsInfo = ({ t, isActive, firstForm, user, addVacancy }) => {
 	return (
 		<>
 			<SphereList skill={skill} classes={classes} onChange={changeSkill} />
-			<ProfessionList
-				skill={skill}
-				classes={classes}
-				setSkill={setSkill}
-				onChange={changeSkill}
-			/>
-			<VacancyName
-				skill={skill}
-				classes={classes}
-				setSkill={setSkill}
-				onChange={changeSkill}
-			/>
-			<Category
-				skill={skill}
-				classes={classes}
-				setSkill={setSkill}
-				onChange={changeSkill}
-			/>
+			<ProfessionList skill={skill} classes={classes} setSkill={setSkill} onChange={changeSkill} />
+			<VacancyName skill={skill} classes={classes} setSkill={setSkill} onChange={changeSkill} />
+			<Category skill={skill} classes={classes} setSkill={setSkill} onChange={changeSkill} />
 			<SkillsList
 				skill={skill}
 				classes={classes}
@@ -102,7 +81,4 @@ const mapStateToProps = ({ hr, vacancy }) => ({
 	firstForm: vacancy.addVacancy,
 });
 
-export default compose(
-	connect(mapStateToProps, { addVacancy }),
-	withLanguage,
-)(SkillsInfo);
+export default compose(connect(mapStateToProps, { addVacancy }), withLanguage)(SkillsInfo);
