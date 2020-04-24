@@ -77,7 +77,6 @@ const useStyles = makeStyles(theme => ({
 
 	formItem: {
 		display: 'flex',
-		justifyContent: 'space-between',
 		[theme.breakpoints.down(940)]: {
 			display: 'flex',
 			flexDirection: 'column',

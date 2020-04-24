@@ -14,15 +14,11 @@ const useStyles = makeStyles(theme => ({
 	addvacancyHead: {
 		display: 'flex',
 		justifyContent: 'flex-end',
-	},
-
-	addvacancyIsActive: {
+		alignItems: 'center',
 		fontFamily: theme.palette.font,
 		fontSize: '10px',
 		lineHeight: '14px',
 		color: theme.palette.textColor,
-		display: 'flex',
-		alignItems: 'center',
 	},
 
 	addvacancyMenu: {

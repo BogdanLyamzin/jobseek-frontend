@@ -12,7 +12,6 @@ import arrToStringSkill from 'utils/transformType/arrToStringSkills';
 
 const VacancyItem = ({ t, elem, deleteVacancies }) => {
 	const classes = useStyles();
-
 	return (
 		<div id={elem._id} className={classes.vacancy}>
 			<div className={classes.vacancyFlex}>
@@ -21,10 +20,7 @@ const VacancyItem = ({ t, elem, deleteVacancies }) => {
 				</Link>
 				<div className={classes.vacancyFlex}>
 					<FormControlLabel isActive={elem.active} id={elem._id} />
-					<Link
-						to={`/hr/updateVacancy/${elem._id}`}
-						className={classes.marginRight}
-					>
+					<Link to={`/hr/updateVacancy/${elem._id}`} className={classes.marginRight}>
 						<CreateOutlinedIcon className={classes.vacancyIcon} />
 					</Link>
 					<DeleteIconWithModal
@@ -33,11 +29,7 @@ const VacancyItem = ({ t, elem, deleteVacancies }) => {
 					/>
 				</div>
 			</div>
-			<div className={classes.vacancyFlex}>
-				<Text className={classes.vacancyName}>
-					{elem.vacancyName.vacancyName}
-				</Text>
-			</div>
+			<Text className={classes.vacancyName}>{elem.vacancyName.vacancyName}</Text>
 			<Text className={`${classes.vacancyDate} ${classes.vacancyFlex}`}>
 				{t('SKILLS')}: {arrToStringSkill(elem.skills)}
 			</Text>

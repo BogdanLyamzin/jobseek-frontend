@@ -25,13 +25,8 @@ const AddVacancy = ({ t, deleteInfo }) => {
 	return (
 		<PageWrap title={t('CREATE_VACANCY')}>
 			<div className={classes.addvacancyHead}>
-				<div className={classes.addvacancyIsActive}>
-					<Text>{t('ACTIVITY_VACANCIES')}</Text>
-					<SwitchControl
-						onChange={() => setIsActive(!isActive)}
-						active={isActive}
-					/>
-				</div>
+				<Text>{t('ACTIVITY_VACANCIES')}</Text>
+				<SwitchControl onChange={() => setIsActive(!isActive)} active={isActive} />
 			</div>
 			<div className={classes.addvacancyMenu}>
 				{ADD_LINKS.map(e => (
@@ -42,10 +37,7 @@ const AddVacancy = ({ t, deleteInfo }) => {
 			</div>
 			<div className={classes.addvacancyRoutes}>
 				<Route exact path="/hr/addVacancy" component={CommonInfo} />
-				<Route
-					path="/hr/addVacancy/skills"
-					render={() => <Skills isActive={isActive} />}
-				/>
+				<Route path="/hr/addVacancy/skills" render={() => <Skills isActive={isActive} />} />
 			</div>
 		</PageWrap>
 	);

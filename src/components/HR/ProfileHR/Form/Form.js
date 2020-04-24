@@ -10,7 +10,7 @@ import validation from 'utils/validation/hrCompany';
 import { NAME_LASTNAME, PHONE_EMAIL } from 'utils/variables/inputProps';
 import { NAME, EMAIL, PHONE, LAST_NAME } from 'utils/variables/inputName';
 
-const FormHR = ({ t, values, setHidden, submitForm, handleChange }) => {
+const Form = ({ t, values, setHidden, submitForm, handleChange }) => {
 	const classes = useStyles();
 	const validationStatus = () =>
 		validation(NAME, values.name, t) &&
@@ -32,9 +32,9 @@ const FormHR = ({ t, values, setHidden, submitForm, handleChange }) => {
 					{NAME_LASTNAME.map(elem => (
 						<InputWithLabel
 							key={elem.name}
-							text={`${t(elem.text)}*`}
-							onChange={handleChange}
 							name={elem.name}
+							onChange={handleChange}
+							text={`${t(elem.text)}*`}
 							value={values[elem.name]}
 							className={classes.formInput}
 							classNameText={classes.hrKey}
@@ -43,37 +43,34 @@ const FormHR = ({ t, values, setHidden, submitForm, handleChange }) => {
 				</div>
 				<CreateIcon className={classes.iconPen} click={setHidden} />
 			</div>
-			<div className={`${classes.hrFlex} ${classes.hrValue}`}>
-				<div className={classes.formItem}>
-					{PHONE_EMAIL.map(elem => (
-						<InputWithLabel
-							key={elem.name}
-							text={`${t(elem.text)}*`}
-							onChange={handleChange}
-							name={elem.name}
-							value={values[elem.name]}
-							className={classes.formInput}
-							classNameText={classes.hrKey}
-						/>
-					))}
-				</div>
+			<div className={`${classes.formItem} ${classes.hrValue}`}>
+				{PHONE_EMAIL.map(elem => (
+					<InputWithLabel
+						key={elem.name}
+						name={elem.name}
+						onChange={handleChange}
+						text={`${t(elem.text)}*`}
+						value={values[elem.name]}
+						className={classes.formInput}
+						classNameText={classes.hrKey}
+					/>
+				))}
 			</div>
 			<Button click={handleClick}>{t('SAVE')}</Button>
 		</div>
 	);
 };
 
-FormHR.propTypes = {
+Form.propTypes = {
 	values: PropTypes.shape({
 		name: PropTypes.string.isRequired,
 		phone: PropTypes.string.isRequired,
 		email: PropTypes.string.isRequired,
 		lastName: PropTypes.string.isRequired,
 	}),
-	classes: PropTypes.object.isRequired,
 	setHidden: PropTypes.func.isRequired,
 	submitForm: PropTypes.func.isRequired,
 	handleChange: PropTypes.func.isRequired,
 };
 
-export default withLanguage(FormHR);
+export default withLanguage(Form);

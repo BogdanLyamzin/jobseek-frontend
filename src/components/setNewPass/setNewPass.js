@@ -178,18 +178,11 @@ function SetNewPass(props) {
 								<span className={classes.error}>{t('INCORRECT_LENGTH')}</span>
 							)}
 							{errors.password2 === DO_NOT_MATCH && (
-								<span className={classes.error}>
-									{t('PASSWORDS_DO_NOT_MATCH')}
-								</span>
+								<span className={classes.error}>{t('PASSWORDS_DO_NOT_MATCH')}</span>
 							)}
 							<input type="hidden" value={id} />
 
-							<Button
-								className={classes.btn}
-								size="large"
-								name={t('CONTINUE')}
-								type="submit"
-							/>
+							<Button className={classes.btn} size="large" name={t('CONTINUE')} type="submit" />
 						</form>
 					</div>
 				</Paper>

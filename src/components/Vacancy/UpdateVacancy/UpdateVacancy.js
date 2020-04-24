@@ -25,21 +25,14 @@ const UpdateVacancy = ({ t, getOneVacancy }) => {
 		<PageWrap title={t('CHANGE_VACANCY')}>
 			<div className={classes.addvacancyMenu}>
 				{UPDATE_LINKS.map(e => (
-					<Link
-						key={e.to}
-						to={`${e.to}${id}${e.to_f}`}
-						className={classes.addvacancyMenuLink}
-					>
+					<Link key={e.to} to={`${e.to}${id}${e.to_f}`} className={classes.addvacancyMenuLink}>
 						{t(e.text)}
 					</Link>
 				))}
 			</div>
 			<div className={classes.addvacancyRoutes}>
 				<Route exact path="/hr/updateVacancy/:id" component={CommonInfo} />
-				<Route
-					path="/hr/updateVacancy/:id/skills"
-					render={() => <Skills id={id} />}
-				/>
+				<Route path="/hr/updateVacancy/:id/skills" render={() => <Skills id={id} />} />
 			</div>
 		</PageWrap>
 	);
@@ -50,7 +43,4 @@ const mapDispatchToProps = {
 	getOneVacancy,
 };
 
-export default compose(
-	connect(null, mapDispatchToProps),
-	withLanguage,
-)(UpdateVacancy);
+export default compose(connect(null, mapDispatchToProps), withLanguage)(UpdateVacancy);

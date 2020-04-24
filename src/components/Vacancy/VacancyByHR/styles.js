@@ -32,6 +32,7 @@ const useStyles = makeStyles(theme => ({
 		fontWeight: 'bold',
 		fontSize: '14px',
 		lineHeight: '19px',
+		marginBottom: '8px',
 	},
 
 	vacancyCountry: {

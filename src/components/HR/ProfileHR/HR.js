@@ -42,24 +42,18 @@ const HR = ({ user, hidden, setHidden, updateHR, t }) => {
 
 	return (
 		<PageWrap title={t('MY_PROFILE')}>
-			<div className={classes.hr}>
-				<form className={classes.hrFlex}>
-					<UpdatePhoto uploadPhoto={selectedFile} />
-					{hidden ? (
-						<Information
-							values={values}
-							classes={classes}
-							setHidden={setHidden}
-						/>
-					) : (
-						<Form
-							values={values}
-							setHidden={setHidden}
-							submitForm={submitForm}
-							handleChange={handleChange}
-						/>
-					)}
-				</form>
+			<div className={`${classes.hr} ${classes.hrFlex}`}>
+				<UpdatePhoto uploadPhoto={selectedFile} />
+				{hidden ? (
+					<Information values={values} classes={classes} setHidden={setHidden} />
+				) : (
+					<Form
+						values={values}
+						setHidden={setHidden}
+						submitForm={submitForm}
+						handleChange={handleChange}
+					/>
+				)}
 			</div>
 		</PageWrap>
 	);
@@ -88,8 +82,4 @@ const mapDispatchToProps = {
 	updateHR,
 };
 
-export default compose(
-	connect(mapStateToProps, mapDispatchToProps),
-	withHidden,
-	withLanguage,
-)(HR);
+export default compose(connect(mapStateToProps, mapDispatchToProps), withHidden, withLanguage)(HR);

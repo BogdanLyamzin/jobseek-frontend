@@ -5,27 +5,16 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import Link from 'shared/Link';
 import Text from 'shared/Text';
 import withLanguage from 'hoc/withLanguage';
+import { CAND_BY_VACANCY } from 'utils/variables/hrLinks';
 
 const HRVacancyMenu = ({ t, classes, id }) => (
 	<nav className={classes.hrMenu}>
-		<div className={classes.menuItem}>
-			<Link to={`/hr/vacancy/${id}`} className={classes.menuLink}>
-				<SearchIcon />
-				<Text>{t('CANDIDATES_LIST')}</Text>
+		{CAND_BY_VACANCY.map((e, index) => (
+			<Link key={e.text} to={`${e.to}${id}${e.to_f}`} className={classes.menuLink}>
+				{index === 0 ? <SearchIcon /> : <MailOutlineIcon />}
+				<Text>{t(e.text)}</Text>
 			</Link>
-		</div>
-		<div className={classes.menuItem}>
-			<Link to={`/hr/vacancy/${id}/sent`} className={classes.menuLink}>
-				<MailOutlineIcon />
-				<Text>{t('SENT_OFFERS')}</Text>
-			</Link>
-		</div>
-		<div className={classes.menuItem}>
-			<Link to={`/hr/vacancy/${id}/received`} className={classes.menuLink}>
-				<MailOutlineIcon />
-				<Text>{t('RECEIVED_OFFERS')}</Text>
-			</Link>
-		</div>
+		))}
 	</nav>
 );
 

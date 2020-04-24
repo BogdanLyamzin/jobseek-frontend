@@ -36,3 +36,21 @@ export const PROFILE_HR = [
 		text: 'ADD_VACANCY',
 	},
 ];
+
+export const CAND_BY_VACANCY = [
+	{
+		to: '/hr/vacancy/',
+		to_f: '',
+		text: 'CANDIDATES_LIST',
+	},
+	{
+		to: '/hr/vacancy/',
+		to_f: '/sent',
+		text: 'SENT_OFFERS',
+	},
+	{
+		to: '/hr/vacancy/',
+		to_f: '/received',
+		text: 'RECEIVED_OFFERS',
+	},
+];
