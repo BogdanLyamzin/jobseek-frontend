@@ -54,6 +54,7 @@ const useStyles = makeStyles(theme => ({
 			marginRight: 0,
 			textDecoration: 'none',
 			display: 'flex',
+			color: theme.palette.color,
 			flexDirection: 'column',
 			alignItems: 'center',
 			'&:hover': {

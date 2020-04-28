@@ -10,9 +10,7 @@ const Skills = ({ t, classes, candidate, cv }) => (
 		<div className={classes.candidateBackgroundFlexSkill}>
 			<div className={classes.candidateInfoItem}>
 				<Text className={classes.candidateKey}>English level</Text>
-				<Text className={classes.candidateProperty}>
-					{candidate ? candidate.levelEng : ''}
-				</Text>
+				<Text className={classes.candidateProperty}>{candidate ? candidate.levelEng : ''}</Text>
 			</div>
 			{cv &&
 				cv.cvSkill.map(elem => {

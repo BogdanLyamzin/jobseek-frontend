@@ -1,7 +1,7 @@
 import { toastr } from 'react-redux-toastr';
 
 const toastrValidation = msg => {
-	toastr.error(msg);
+	toastr.error('Error', msg);
 };
 
 export default toastrValidation;

@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { toastr } from 'react-redux-toastr';
+
+import toastr from 'utils/toastr/toastrValid';
 import { GET, PUT, POST, DELETE } from 'utils/variables/method';
 
 const BASE_URL = 'http://localhost:5000/';
@@ -48,9 +49,9 @@ class API {
 
 	requestFailed(reason) {
 		if (reason && reason.message) {
-			toastr.error('Error', reason.message);
+			toastr(reason.message);
 		} else {
-			toastr.error('Error', 'An error has occurred');
+			toastr('An error has occurred');
 		}
 	}
 }
