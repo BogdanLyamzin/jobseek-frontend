@@ -6,19 +6,19 @@ const BASE_URL = 'http://localhost:5000/';
 
 class API {
 	get(url, body, headers) {
-		return this.makeRequest(`${BASE_URL + url}`, GET, body, headers);
+		return this.makeRequest(url, GET, body, headers);
 	}
 
 	post(url, body, headers) {
-		return this.makeRequest(`${BASE_URL + url}`, POST, body, headers);
+		return this.makeRequest(url, POST, body, headers);
 	}
 
 	put(url, body, headers) {
-		return this.makeRequest(`${BASE_URL + url}`, PUT, body, headers);
+		return this.makeRequest(url, PUT, body, headers);
 	}
 
 	delete(url, body, headers) {
-		return this.makeRequest(`${BASE_URL + url}`, DELETE, body, headers);
+		return this.makeRequest(url, DELETE, body, headers);
 	}
 
 	makeRequest(url, method, body, headers) {
@@ -37,7 +37,7 @@ class API {
 
 	sendRequest(url, requestParams) {
 		return new Promise((resolve, reject) => {
-			axios(url, requestParams)
+			axios(`${BASE_URL + url}`, requestParams)
 				.then(result => resolve(result.data))
 				.catch(reason => {
 					this.requestFailed(reason);
