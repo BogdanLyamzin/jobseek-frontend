@@ -17,6 +17,7 @@ const HrPage = lazy(() => import('../hr'));
 const CandidatePage = lazy(() => import('../candidate'));
 const CompanyPage = lazy(() => import('../company'));
 const BlockedMsg = lazy(() => import('components/LogOut/BlockedUser'));
+const NotFound = lazy(() => import('pages/admin/src/views/Pages/Page404'));
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -31,8 +32,8 @@ export default function MainPage() {
 	return (
 		<div className={classes.root}>
 			<Navbar />
-			<Switch>
-				<Suspense fallback={<Preloader />}>
+			<Suspense fallback={<Preloader />}>
+				<Switch>
 					<Route exact path="/" component={HomePage} />
 					<Route path="/login" component={Login} />
 					<Route path="/register" component={Register} />
@@ -43,8 +44,9 @@ export default function MainPage() {
 					<PrivateRoute path="/hr" component={HrPage} />
 					<PrivateRoute path="/company" component={CompanyPage} />
 					<PrivateRoute path="/candidate" component={CandidatePage} />
-				</Suspense>
-			</Switch>
+					<Route component={NotFound} />
+				</Switch>
+			</Suspense>
 			<Footer />
 		</div>
 	);

@@ -11,11 +11,11 @@ import AdminRoute from 'components/Admin/AdminRoute';
 const MainPage = lazy(() => import('./pages/MainPage'));
 const AdminPage = lazy(() => import('./pages/admin/src'));
 
-const App = props => {
-	const theme = props.theme === 'light' ? LIGHT : DARK;
+const App = ({ theme }) => {
+	const type = theme === 'light' ? LIGHT : DARK;
 	return (
 		<BrowserRouter>
-			<ThemeProvider theme={theme}>
+			<ThemeProvider theme={type}>
 				<Suspense fallback={<Preloader />}>
 					<Switch>
 						<AdminRoute path="/admin" component={AdminPage} />
