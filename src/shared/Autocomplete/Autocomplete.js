@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
@@ -27,4 +28,17 @@ const StyledAutocomplete = ({
 	</>
 );
 
-export default StyledAutocomplete;
+StyledAutocomplete.propTypes = {
+	className: PropTypes.string,
+	getOptionLabel: PropTypes.func,
+	classNameText: PropTypes.string,
+	text: PropTypes.string.isRequired,
+	options: PropTypes.array.isRequired,
+	onChange: PropTypes.func.isRequired,
+	value: PropTypes.oneOfType([
+		PropTypes.object.isRequired,
+		PropTypes.oneOf([null]).isRequired,
+	]),
+};
+
+export default React.memo(StyledAutocomplete);

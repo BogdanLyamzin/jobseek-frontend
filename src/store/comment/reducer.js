@@ -1,4 +1,5 @@
-import { SUCCESS_AXIOS, ADD_COMMENT, ERROR } from './actionNames';
+import { ERROR } from 'utils/actions/errorAxios';
+import { SUCCESS_AXIOS, ADD_COMMENT } from './actionNames';
 
 const initialState = {
 	comments: null,

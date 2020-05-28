@@ -1,19 +1,9 @@
 import React from 'react';
-import Checkbox from '@material-ui/core/Checkbox';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { withStyles } from '@material-ui/core/styles';
 
 import Text from '../Text';
-
-const CheckboxStyled = withStyles(theme => ({
-	root: {
-		color: theme.palette.textColor,
-		'&$checked': {
-			color: '#00F2C9',
-		},
-	},
-	checked: {},
-}))(props => <Checkbox color="default" {...props} />);
+import Checkbox from '../StyledCheckbox';
 
 const useStyle = makeStyles(theme => ({
 	text: {
@@ -22,21 +12,35 @@ const useStyle = makeStyles(theme => ({
 		lineHeight: '19px',
 		color: theme.palette.textColor,
 	},
+	root: {
+		marginBottom: '35px',
+		display: 'flex',
+		alignItems: 'center',
+		flexBasis: '45%',
+		fontSize: '14px',
+	},
 }));
 
 const CheckboxItem = ({ onChange, value, name, checked }) => {
 	const classes = useStyle();
 	return (
-		<>
-			<CheckboxStyled
+		<div className={classes.root}>
+			<Checkbox
 				onChange={onChange}
 				value={value}
 				name={name}
 				checked={checked}
 			/>
 			<Text className={classes.text}>{name}</Text>
-		</>
+		</div>
 	);
+};
+
+CheckboxItem.propTypes = {
+	name: PropTypes.string.isRequired,
+	value: PropTypes.string.isRequired,
+	checked: PropTypes.bool.isRequired,
+	onChange: PropTypes.func.isRequired,
 };
 
 export default React.memo(CheckboxItem);

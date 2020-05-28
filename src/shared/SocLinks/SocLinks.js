@@ -8,9 +8,6 @@ const useStyle = makeStyles(theme => ({
 	soclink: {
 		marginTop: '10px',
 		minWidth: '40%',
-		// [theme.breakpoints.up('sm')]: {
-		// 	width: '40%',
-		// },
 	},
 }));
 

@@ -21,34 +21,28 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 
-	menuItem: {
-		textAlign: 'center',
-		flexBasis: '33%',
-		borderBottom: '2px solid #E6EBFF',
-		'&:hover': {
-			borderBottom: '2px solid #6D64FF',
-		},
-		[theme.breakpoints.down(600)]: {
-			margin: 5,
-			flexBasis: '100%',
-		},
-	},
-
 	menuLink: {
 		textDecoration: 'none',
 		fontWeight: 'bold',
 		fontSize: '14px',
+		flexBasis: '33%',
 		fontFamily: theme.palette.font,
 		color: theme.palette.color,
 		display: 'inline-block',
 		width: '100%',
 		padding: '10px 0',
 		textAlign: 'center',
+		borderBottom: '2px solid #E6EBFF',
 		'&:hover': {
 			textDecoration: 'none',
+			borderBottom: '2px solid #6D64FF',
 		},
 		[theme.breakpoints.down(820)]: {
 			padding: '5px 0 0 0',
+		},
+		[theme.breakpoints.down(600)]: {
+			margin: 5,
+			flexBasis: '100%',
 		},
 	},
 	textCenter: {

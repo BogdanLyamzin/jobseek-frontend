@@ -1,65 +1,18 @@
-import API from 'services/api';
-import errorAxios from 'utils/actions/errorAxios';
-import tostrActions from 'utils/toastr/toastrAction';
+import actionFactory from 'utils/actions/actionFactory';
 import { SUCCESS_AXIOS, ADD_COMMENT } from './actionNames';
-import actionConstructor from 'utils/actions/actionConstructor';
+import { GET, PUT, POST, DELETE } from 'utils/variables/method';
+import actionApiFactory from 'utils/actions/actionWithApiFactory';
 
-const addComment = actionConstructor(ADD_COMMENT);
-const successAxios = actionConstructor(SUCCESS_AXIOS);
+const addComment = actionFactory(ADD_COMMENT);
+const successAxios = actionFactory(SUCCESS_AXIOS);
 
-export const newComment = body => dispatch => {
-	API.post('reviews', body)
-		.then(data => {
-			tostrActions(data, 'Коментар успішно створено');
-			dispatch(addComment(data.result));
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
+const updateMsg = 'Коментар оновлено';
+const deleteMsg = 'Коментар видалено';
+const addMsg = 'Коментар успішно створено';
 
-export const updateComment = (id, body) => dispatch => {
-	API.put(`reviews/${id}`, body)
-		.then(data => {
-			tostrActions(data, 'Коментар оновлено');
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
-
-export const getOneComment = id => dispatch => {
-	API.get(`reviews/${id}`)
-		.then(data => {
-			dispatch(successAxios(data.result));
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
-
-export const getCommentByFilter = filter => dispatch => {
-	API.get(`reviews?${filter}`)
-		.then(data => {
-			dispatch(successAxios(data.result));
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
-
-export const getAllComment = () => dispatch => {
-	API.get('reviews')
-		.then(data => {
-			dispatch(successAxios(data.result));
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
-
-export const deleteComment = id => () => {
-	API.delete(`reviews/${id}`).then(data =>
-		tostrActions(data, 'Коментар видалено'),
-	);
-};
+export const getAllComment = actionApiFactory('reviews', GET, successAxios);
+export const getOneComment = actionApiFactory('reviews/', GET, successAxios);
+export const newComment = actionApiFactory('reviews', POST, addComment, addMsg);
+export const updateComment = actionApiFactory('reviews/', PUT, null, updateMsg);
+export const getCommentByFilter = actionApiFactory('reviews?', GET, successAxios);
+export const deleteComment = actionApiFactory('reviews/', DELETE, null, deleteMsg);

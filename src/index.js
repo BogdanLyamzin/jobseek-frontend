@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
-import './utils/locales/i18n';
-import store from './store';
 import { Provider } from 'react-redux';
-import onStart from './utils/onStart';
+
+import './index.css';
+import App from './App';
+import store from './store';
+import 'utils/locales/i18n';
+import onStart from 'utils/onStart';
 
 onStart(localStorage);
 

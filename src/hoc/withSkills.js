@@ -5,19 +5,18 @@ import getDisplayName from 'utils/getDisplayName';
 import { getSkillsByFilter } from 'store/admin/actions/skillActions';
 
 const withSkills = Component => {
-	const WithSkills = ({ skillList, getSkillsByFilter, ...props }) => {
-		const [id, setId] = useState(null);
+	const WithSkills = ({ skill, skillList, getSkillsByFilter, ...props }) => {
 		const [skills, setSkills] = useState(null);
 
 		useEffect(() => {
-			if (id) getSkillsByFilter(`categoryId=${id}`);
-		}, [getSkillsByFilter, id]);
+			if (skill.category) getSkillsByFilter(`categoryId=${skill.category._id}`);
+		}, [getSkillsByFilter, skill.category]);
 
 		useEffect(() => {
 			setSkills(skillList);
 		}, [skillList]);
 
-		return <Component setId={setId} skillList={skills} {...props} />;
+		return <Component skillList={skills} {...props} />;
 	};
 
 	WithSkills.displayName = `WithSkills(${getDisplayName(Component)})`;

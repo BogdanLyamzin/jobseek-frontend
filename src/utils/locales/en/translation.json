@@ -108,8 +108,19 @@
   "SOCIAL_LINK": "Social link",
   "CONTACT": "Contacts",
   "YEARS": "years",
+  "DOWNLOAD": "Download",
+  "EXPERIENCE": "Experience",
   "RESPOND": "Respond",
   "CONFIRM": "Confirm",
   "REPORT": "Report",
-  "LEVEL": "Level of knowledge"
+  "LEVEL": "Level of knowledge",
+  "PERIOD": "Period",
+  "DEGREE": "Degree",
+  "SPECIALITY": "Specialty",
+  "EDUCATION": "Education",
+  "ACHIEVEMENT": "Achievement",
+  "EDUCAT_INSTITU": "Educational institution",
+  "EXPECTATIONS": "Expectations from work",
+  "BLOCKED_MSG": "Your account has been blocked due to a violation of the rules of the site",
+  "MORE_INFO": "For more explanation, please contact"
 }

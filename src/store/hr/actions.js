@@ -1,68 +1,15 @@
-import API from 'services/api';
-import errorAxios from 'utils/actions/errorAxios';
-import tostrActions from 'utils/toastr/toastrAction';
-import actionConstructor from 'utils/actions/actionConstructor';
+import actionFactory from 'utils/actions/actionFactory';
+import { GET, PUT, POST, DELETE } from 'utils/variables/method';
+import actionApiFactory from 'utils/actions/actionWithApiFactory';
 import { SUCCESS_AXIOS, ADD_USER, SUCCESS_AXIOS_LIST } from './actionNames';
 
-const addHRUser = actionConstructor(ADD_USER);
-const successAxios = actionConstructor(SUCCESS_AXIOS);
-const successAxiosHRList = actionConstructor(SUCCESS_AXIOS_LIST);
+const addUser = actionFactory(ADD_USER);
+const successAxios = actionFactory(SUCCESS_AXIOS);
+const successAxiosHRList = actionFactory(SUCCESS_AXIOS_LIST);
 
-export const addHr = body => dispatch => {
-	API.post('hr', body)
-		.then(data => {
-			if (data.status === 'Error') {
-				return tostrActions(data);
-			}
-			tostrActions(data, 'HR успішно створено');
-			dispatch(addHRUser(data.result));
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
-
-export const updateHR = (id, body) => dispatch => {
-	API.put(`hr/${id}`, body)
-		.then(data => {
-			tostrActions(data, 'Інформацію оновлено');
-			dispatch(successAxios(data.result));
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
-
-export const getOneHR = (id, headers) => dispatch => {
-	API.get(`hr/${id}`, headers)
-		.then(data => {
-			dispatch(successAxios(data.result));
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
-
-export const getHrByFilter = filter => dispatch => {
-	API.get(`hr?${filter}`)
-		.then(data => {
-			dispatch(successAxiosHRList(data.result));
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
-
-export const getAllHR = () => dispatch => {
-	API.get('hr')
-		.then(data => {
-			dispatch(successAxiosHRList(data.result));
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
-
-export const deleteHR = id => () => {
-	API.delete(`hr/${id}`).then(data => tostrActions(data, 'HR видалено'));
-};
+export const getOneHR = actionApiFactory('hr/', GET, successAxios);
+export const getAllHR = actionApiFactory('hr', GET, successAxiosHRList);
+export const deleteHR = actionApiFactory('hr/', DELETE, null, 'HR видалено');
+export const getHrByFilter = actionApiFactory('hr?', GET, successAxiosHRList);
+export const addHr = actionApiFactory('hr', POST, addUser, 'HR успішно створено');
+export const updateHR = actionApiFactory('hr/', PUT, successAxios, 'Інформацію оновлено');

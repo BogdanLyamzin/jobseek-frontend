@@ -1,61 +1,30 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
+import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
-import Container from '@material-ui/core/Container';
-import logo from './img/Frame.png';
 import { useTranslation } from 'react-i18next';
 import { Link, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
+import Container from '@material-ui/core/Container';
 import { useTheme } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
-import dark from './img/dark.png';
-import light from './img/light.png';
-import darkLogo from './img/logo-dark.png';
-import Avatar from 'shared/UserImg';
+
 import LogOut from '../LogOut';
-import Burger from './links/Burger';
-import HrLinks from './links/HrLinks';
+import Menu from './links/Menu';
+import useStyles from './styles';
+import Links from './links/Links';
+import dark from './img/dark.png';
+import logo from './img/Frame.png';
+import light from './img/light.png';
+import Avatar from 'shared/UserImg';
+import darkLogo from './img/logo-dark.png';
 import CompanyLinks from './links/CompanyLinks';
 import CandidateLinks from './links/CandidateLinks';
+import { PROFILE_HR } from 'utils/variables/hrLinks';
 import { changeToDark, changeToLight } from 'store/theme/action/themeActions';
 
-const useStyles = makeStyles(theme => ({
-	root: {
-		flexGrow: 1,
-		backgroundColor: theme.palette.backgroundColor,
-		color: theme.palette.color,
-		boxShadow: 'none',
-		padding: '10px 0',
-	},
-	title: {
-		flexGrow: 1,
-	},
-	flex: {
-		display: 'flex',
-		justifyContent: 'space-between',
-		padding: 'none',
-		alignItems: 'center',
-	},
-	themeIcon: {
-		width: '50px',
-		height: '50px',
-	},
-	avatar: {
-		[theme.breakpoints.down(750)]: {
-			display: 'none',
-		},
-	},
-	lgMenu: {
-		[theme.breakpoints.down(670)]: {
-			display: 'none',
-		},
-	},
-}));
-
-function ButtonAppBar({ thema, changeToLight, changeToDark, isAuthenticated }) {
-	const classes = useStyles();
+function BtnAppBar({ thema, changeToLight, changeToDark, isAuthenticated }) {
 	const theme = useTheme();
+	const classes = useStyles();
 	const { t } = useTranslation();
 	const darkTheme = () => {
 		changeToDark();
@@ -71,7 +40,7 @@ function ButtonAppBar({ thema, changeToLight, changeToDark, isAuthenticated }) {
 			<Container className={classes.flex}>
 				<img src={thema === 'light' ? logo : darkLogo} alt="pic" />
 				<div className={classes.lgMenu}>
-					<Route path="/hr" component={HrLinks} />
+					<Route path="/hr" render={() => <Links links={PROFILE_HR} />} />
 					<Route path="/company" component={CompanyLinks} />
 					<Route path="/candidate" component={CandidateLinks} />
 				</div>
@@ -82,23 +51,16 @@ function ButtonAppBar({ thema, changeToLight, changeToDark, isAuthenticated }) {
 							thema === 'light' ? darkTheme() : lightTheme();
 						}}
 					>
-						<img
-							src={thema === 'light' ? dark : light}
-							className={classes.themeIcon}
-							alt="pic"
-						/>
+						<img src={thema === 'light' ? dark : light} className={classes.themeIcon} alt="pic" />
 					</IconButton>
 					{isAuthenticated ? (
 						<LogOut />
 					) : (
-						<Link
-							to="/login"
-							style={{ textDecoration: 'none', color: theme.palette.color }}
-						>
+						<Link to="/login" style={{ textDecoration: 'none', color: theme.palette.color }}>
 							{t('ENTER')}
 						</Link>
 					)}
-					<Burger />
+					<Menu />
 					<Avatar className={classes.avatar} />
 				</Box>
 			</Container>
@@ -111,6 +73,4 @@ const mapStateToProps = state => ({
 	isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { changeToLight, changeToDark })(
-	ButtonAppBar,
-);
+export default connect(mapStateToProps, { changeToLight, changeToDark })(BtnAppBar);

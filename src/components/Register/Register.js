@@ -1,86 +1,19 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import { withRouter } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import TextField from '@material-ui/core/TextField';
-import Button from '../../shared/Buttonn';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { registerUser } from '../../store/auth/action/authActions';
-import Validator from '../../shared/Validator';
-import Radio from '../../shared/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import SocLinks from '../../shared/SocLinks';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-const useStyle = makeStyles(theme => ({
-	root: {
-		backgroundColor: theme.palette.paper,
-		padding: '15px',
-		marginTop: '20px',
-		margin: '0 auto',
-		marginBottom: '40px',
-		maxWidth: '980px',
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'center',
-		[theme.breakpoints.up('sm')]: {
-			flexDirection: 'row',
-			justifyContent: 'space-around',
-		},
-	},
-
-	btn: {
-		margin: '20px 0',
-	},
-	alertt: {
-		maxWidth: '980px',
-		margin: '0 auto',
-	},
-	error: {
-		color: 'red',
-	},
-	link: {
-		color: theme.palette.textColor,
-		display: 'block',
-		textAlign: ' right',
-		textDecoration: 'none',
-	},
-	linkSign: {
-		color: '#1DF2C2',
-		textDecoration: 'none',
-	},
-	title: {
-		textAlign: 'center',
-		color: theme.palette.textColor,
-		[theme.breakpoints.up('sm')]: {
-			marginTop: '80px',
-		},
-	},
-	flex: {
-		display: 'flex',
-		justifyContent: 'space-between',
-	},
-	fields: {
-		[theme.breakpoints.up('sm')]: {
-			width: '40%',
-			marginRight: '25px',
-		},
-		'& label.Mui-focused': {
-			color: theme.palette.color,
-		},
-		'& .MuiOutlinedInput-root': {
-			'& fieldset': {
-				borderColor: theme.palette.color,
-			},
-			'&.Mui-focused fieldset': {
-				borderColor: theme.palette.color,
-			},
-		},
-	},
-}));
+import useStyle from './styles';
+import Radio from 'shared/Radio';
+import Button from 'shared/Buttonn';
+import PageWrap from 'shared/PageWrap';
+import SocLinks from 'shared/SocLinks';
+import Validator from 'shared/Validator';
+import { registerUser } from 'store/auth/action/authActions';
 
 function handleSubmit(email, password, password2, type, props) {
 	const user = {
@@ -105,10 +38,9 @@ function Register(props) {
 		return <Redirect to="/" />;
 	}
 	return (
-		<Container>
-			<h1 className={classes.title}>{t('MAKE_PROFILE')}</h1>
+		<PageWrap title={t('MAKE_PROFILE')}>
 			<Validator type={errors} />
-			<Paper className={classes.root}>
+			<div className={classes.root}>
 				<form
 					className={classes.fields}
 					onSubmit={e => {
@@ -166,11 +98,7 @@ function Register(props) {
 						}}
 					>
 						<div className={classes.flex}>
-							<FormControlLabel
-								value="user"
-								control={<Radio />}
-								label={t('LOOKING_JOB')}
-							/>
+							<FormControlLabel value="user" control={<Radio />} label={t('LOOKING_JOB')} />
 							<FormControlLabel
 								value="company"
 								control={<Radio />}
@@ -178,16 +106,11 @@ function Register(props) {
 							/>
 						</div>
 					</RadioGroup>
-					<Button
-						className={classes.btn}
-						size="large"
-						name={t('CONTINUE')}
-						type="submit"
-					/>
+					<Button className={classes.btn} size="large" name={t('CONTINUE')} type="submit" />
 				</form>
 				{type === 'user' && <SocLinks />}
-			</Paper>
-		</Container>
+			</div>
+		</PageWrap>
 	);
 }
 

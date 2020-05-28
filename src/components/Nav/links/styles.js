@@ -30,6 +30,27 @@ const useStyles = makeStyles(theme => ({
 			backgroundColor: theme.palette.backgroundColor,
 		},
 	},
+	relative: {
+		position: 'relative',
+		display: 'inline-block',
+		[theme.breakpoints.up(670)]: {
+			display: 'none',
+		},
+	},
+	absolute: {
+		position: 'absolute',
+		top: 33,
+		right: 0,
+	},
+	flex: {
+		display: 'flex',
+		flexDirection: 'column',
+		width: 250,
+	},
+	menu: {
+		padding: '5px',
+		border: `1px solid ${theme.palette.color}`,
+	},
 }));
 
 export default useStyles;

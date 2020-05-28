@@ -1,53 +1,17 @@
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { useDropzone } from 'react-dropzone';
 import { useTranslation } from 'react-i18next';
-import { makeStyles } from '@material-ui/core/styles';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
-const useStyles = makeStyles(theme => ({
-	img: {
-		minHeight: '190px',
-		maxHeight: '200px',
-		borderRadius: '8px',
-		cursor: 'pointer',
-		outline: '0',
-	},
-	notimg: {
-		width: '195px',
-		height: '200px',
-		borderRadius: '8px',
-		background: theme.palette.backgroundColor,
-		position: 'relative',
-		cursor: 'pointer',
-		outline: '0',
-	},
-	addphotoContainer: {
-		position: 'absolute',
-		left: '10px',
-		bottom: '10px',
-		display: 'flex',
-		alignItems: 'center',
-		color: theme.palette.color,
-	},
-	addphoto: {
-		marginLeft: '8px',
-		fontFamily: theme.palette.font,
-		fontSize: '14px',
-	},
-}));
+import useStyles from './styles';
 
 const UploadPhoto = ({ user, uploadPhoto }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
-
-	const onDrop = useCallback(
-		photo => {
-			uploadPhoto(photo);
-		},
-		[uploadPhoto],
-	);
-
+	const onDrop = useCallback(photo => uploadPhoto(photo), [uploadPhoto]);
 	const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
 	return (
 		<>
 			{user && user.avatar && (
@@ -69,6 +33,16 @@ const UploadPhoto = ({ user, uploadPhoto }) => {
 			<input {...getInputProps()} />
 		</>
 	);
+};
+
+UploadPhoto.propTypes = {
+	user: PropTypes.oneOfType([
+		PropTypes.shape({
+			avatar: PropTypes.string,
+		}),
+		PropTypes.oneOf([null]).isRequired,
+	]),
+	uploadPhoto: PropTypes.func.isRequired,
 };
 
 export default UploadPhoto;

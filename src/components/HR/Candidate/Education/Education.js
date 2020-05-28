@@ -1,38 +1,42 @@
 import React from 'react';
 
+import Text from 'shared/Text';
 import withLanguage from 'hoc/withLanguage';
 
-const CandidateEducation = ({ classes }) => {
+const TEST = [
+	{
+		institution: 'National Technical University of Ukraine',
+		speciality: 'Applied mathematics',
+		degree: 'Бакалавр',
+		experience: 'Вересень 2011 - Травень 2016',
+	},
+];
+
+const CandidateEducation = ({ t, classes }) => {
 	return (
 		<div className={classes.candidateBackground}>
-			<div className={classes.candidateField}>Освіта</div>
+			<Text className={classes.candidateField}>{t('EDUCATION')}</Text>
 			<div className={classes.candidateBackgroundFlexSkill}>
-				<div className={classes.candidateInfoItem}>
-					<div className={classes.candidateKey}>Учбовий заклад</div>
-					<div
-						className={`${classes.candidateProperty} ${classes.marginBottom30}`}
-					>
-						National Technical University of Ukraine
+				{TEST.map(e => (
+					<div key={e.institution} className={classes.candidateInfoItem}>
+						<Text className={classes.candidateKey}>{t('EDUCAT_INSTITU')}</Text>
+						<Text className={`${classes.candidateProperty} ${classes.marginBottom30}`}>
+							{e.institution}
+						</Text>
+						<Text className={classes.candidateKey}>{t('SPECIALITY')}</Text>
+						<Text className={`${classes.candidateProperty} ${classes.marginBottom30}`}>
+							{e.speciality}
+						</Text>
+						<Text className={classes.candidateKey}>{t('DEGREE')}</Text>
+						<Text className={`${classes.candidateProperty} ${classes.marginBottom30}`}>
+							{e.degree}
+						</Text>
+						<Text className={classes.candidateKey}>{t('PERIOD')}</Text>
+						<Text className={`${classes.candidateProperty} ${classes.marginBottom30}`}>
+							{e.experience}
+						</Text>
 					</div>
-					<div className={classes.candidateKey}>Спеціальність</div>
-					<div
-						className={`${classes.candidateProperty} ${classes.marginBottom30}`}
-					>
-						Applied mathematics
-					</div>
-					<div className={classes.candidateKey}>Ступінь</div>
-					<div
-						className={`${classes.candidateProperty} ${classes.marginBottom30}`}
-					>
-						Бакалавр
-					</div>
-					<div className={classes.candidateKey}>Період навчання</div>
-					<div
-						className={`${classes.candidateProperty} ${classes.marginBottom30}`}
-					>
-						Вересень 2011 - Травень 2016
-					</div>
-				</div>
+				))}
 			</div>
 		</div>
 	);

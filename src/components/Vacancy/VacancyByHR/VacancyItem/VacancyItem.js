@@ -1,4 +1,5 @@
 import React from 'react';
+import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
 import Link from 'shared/Link';
 import Text from 'shared/Text';
@@ -6,13 +7,11 @@ import useStyles from '../styles';
 import getDate from 'utils/getDate';
 import withLanguage from 'hoc/withLanguage';
 import FormControlLabel from './FormControlLabel';
-import CreateOutlined from 'shared/CreateOutlinedIcon';
 import DeleteIconWithModal from 'shared/DeleteIconWithModal';
 import arrToStringSkill from 'utils/transformType/arrToStringSkills';
 
 const VacancyItem = ({ t, elem, deleteVacancies }) => {
 	const classes = useStyles();
-
 	return (
 		<div id={elem._id} className={classes.vacancy}>
 			<div className={classes.vacancyFlex}>
@@ -21,11 +20,8 @@ const VacancyItem = ({ t, elem, deleteVacancies }) => {
 				</Link>
 				<div className={classes.vacancyFlex}>
 					<FormControlLabel isActive={elem.active} id={elem._id} />
-					<Link
-						to={`/hr/updateVacancy/${elem._id}`}
-						className={classes.marginRight}
-					>
-						<CreateOutlined className={classes.vacancyIcon} />
+					<Link to={`/hr/updateVacancy/${elem._id}`} className={classes.marginRight}>
+						<CreateOutlinedIcon className={classes.vacancyIcon} />
 					</Link>
 					<DeleteIconWithModal
 						text={`${t('DELETE_MESSAGE')}?`}
@@ -33,11 +29,7 @@ const VacancyItem = ({ t, elem, deleteVacancies }) => {
 					/>
 				</div>
 			</div>
-			<div className={classes.vacancyFlex}>
-				<Text className={classes.vacancyName}>
-					{elem.vacancyName.vacancyName}
-				</Text>
-			</div>
+			<Text className={classes.vacancyName}>{elem.vacancyName.vacancyName}</Text>
 			<Text className={`${classes.vacancyDate} ${classes.vacancyFlex}`}>
 				{t('SKILLS')}: {arrToStringSkill(elem.skills)}
 			</Text>

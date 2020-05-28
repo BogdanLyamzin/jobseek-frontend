@@ -1,50 +1,38 @@
 import React, { useEffect } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Route, useParams } from 'react-router-dom';
 
+import Skills from './Skills';
 import Link from 'shared/Link';
 import CommonInfo from './CommonInfo';
-import SkillsInfo from './SkillsInfo';
 import PageWrap from 'shared/PageWrap';
 import withLanguage from 'hoc/withLanguage';
 import useStyles from '../AddVacancy/styles';
+import { UPDATE_LINKS } from 'utils/variables/hrLinks';
 import { getOneVacancy, deleteInfo } from 'store/vacancy/actions';
 
-const UpdateVacancy = ({ t, match, getOneVacancy }) => {
+const UpdateVacancy = ({ t, getOneVacancy }) => {
 	const classes = useStyles();
-	const { id } = match.params;
+	const { id } = useParams();
 
 	useEffect(() => {
 		getOneVacancy(id);
-		return () => {
-			deleteInfo();
-		};
+		return () => deleteInfo();
 	}, [getOneVacancy, id]);
 
 	return (
 		<PageWrap title={t('CHANGE_VACANCY')}>
 			<div className={classes.addvacancyMenu}>
-				<Link
-					to={`/hr/updateVacancy/${id}`}
-					className={classes.addvacancyMenuLink}
-				>
-					{t('COMMON_INFO')}
-				</Link>
-				<Link
-					to={`/hr/updateVacancy/${id}/skills`}
-					className={classes.addvacancyMenuLink}
-				>
-					{t('SKILLS')}
-				</Link>
+				{UPDATE_LINKS.map(e => (
+					<Link key={e.to} to={`${e.to}${id}${e.to_f}`} className={classes.addvacancyMenuLink}>
+						{t(e.text)}
+					</Link>
+				))}
 			</div>
 			<div className={classes.addvacancyRoutes}>
-				<Switch>
-					<Route exact path="/hr/updateVacancy/:id" component={CommonInfo} />
-					<Route path="/hr/updateVacancy/:id/skills">
-						<SkillsInfo id={id} />
-					</Route>
-				</Switch>
+				<Route exact path="/hr/updateVacancy/:id" component={CommonInfo} />
+				<Route path="/hr/updateVacancy/:id/skills" render={() => <Skills id={id} />} />
 			</div>
 		</PageWrap>
 	);
@@ -55,7 +43,4 @@ const mapDispatchToProps = {
 	getOneVacancy,
 };
 
-export default compose(
-	connect(null, mapDispatchToProps),
-	withLanguage,
-)(UpdateVacancy);
+export default compose(connect(null, mapDispatchToProps), withLanguage)(UpdateVacancy);

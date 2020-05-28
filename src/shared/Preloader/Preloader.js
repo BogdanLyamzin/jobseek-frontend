@@ -4,12 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import style from './style.module.css';
 
 const useStyle = makeStyles(theme => ({
-	preload: {
-		position: 'fixed',
-		top: 0,
-		left: 0,
-		width: '100%',
-		height: '100%',
+	root: {
 		backgroundColor: theme.palette.backgroundColor,
 	},
 }));
@@ -17,7 +12,7 @@ const useStyle = makeStyles(theme => ({
 export default function Preloader() {
 	const classes = useStyle();
 	return (
-		<div className={classes.preload}>
+		<div className={`${style.preload} ${classes.root}`}>
 			<div className={style.loader}></div>
 		</div>
 	);

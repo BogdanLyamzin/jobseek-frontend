@@ -1,80 +1,37 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { makeStyles } from '@material-ui/core/styles';
 
+import Text from '../Text';
 import Radio from '../Radio';
-import {
-	ANY,
-	FULL,
-	DISTANT,
-	NONFULL,
-	FREELANCE,
-} from '../../utils/variables/employmentType';
-
-const useStyles = makeStyles(theme => ({
-	label: {
-		fontFamily: theme.palette.font,
-		fontSize: '16px',
-		lineHeight: '24px',
-		color: '#757575',
-		display: 'block',
-		margin: '10px 0 10px 7px',
-	},
-}));
+import useStyles from './styles';
+import { EMPL_TYPE } from 'utils/variables/inputProps';
 
 const RadioGroup = ({ onChange, values }) => {
 	const classes = useStyles();
 	const { t } = useTranslation();
 
 	return (
-		<>
-			<label className={classes.label}>
-				<Radio
-					name="employmentType"
-					value={FULL}
-					onChange={onChange}
-					checked={values === FULL}
-				/>
-				{t('FULL_DAY')}
-			</label>
-			<label className={classes.label}>
-				<Radio
-					name="employmentType"
-					value={NONFULL}
-					onChange={onChange}
-					checked={values === NONFULL}
-				/>
-				{t('PART_TIME')}
-			</label>
-			<label className={classes.label}>
-				<Radio
-					name="employmentType"
-					value={FREELANCE}
-					onChange={onChange}
-					checked={values === FREELANCE}
-				/>
-				{t('FREELANCE')}
-			</label>
-			<label className={classes.label}>
-				<Radio
-					name="employmentType"
-					value={DISTANT}
-					onChange={onChange}
-					checked={values === DISTANT}
-				/>
-				{t('REMOTE')}
-			</label>
-			<label className={classes.label}>
-				<Radio
-					name="employmentType"
-					value={ANY}
-					onChange={onChange}
-					checked={values === ANY}
-				/>
-				{t('ANY')}
-			</label>
-		</>
+		<div className={classes.item}>
+			<Text className={classes.key}>{t('EMPLOYMENT_TYPE')}*</Text>
+			{EMPL_TYPE.map(elem => (
+				<label key={elem.name} className={classes.label}>
+					<Radio
+						name="employmentType"
+						value={elem.name}
+						onChange={onChange}
+						checked={values === elem.name}
+					/>
+					{t(elem.text)}
+				</label>
+			))}
+		</div>
 	);
+};
+
+RadioGroup.propTypes = {
+	values: PropTypes.string.isRequired,
+	onChange: PropTypes.func.isRequired,
 };
 
 export default RadioGroup;

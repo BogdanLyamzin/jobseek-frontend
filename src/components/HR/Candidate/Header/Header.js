@@ -8,16 +8,14 @@ import withLanguage from 'hoc/withLanguage';
 
 const Header = ({ t, classes, cv }) => (
 	<div className={classes.candidateHead}>
-		<Text className={classes.candidateVacancyNames}>
-			{cv ? cv.vacancyName : ''}
-		</Text>
+		<Text className={classes.candidateVacancyNames}>{cv ? cv.vacancyName : ''}</Text>
 		<div className={classes.candidateDates}>
 			<Text className={classes.candidateDate}>
 				{t('POSTED')} {cv ? getDate(cv.date) : ''}
 			</Text>
 			<a href="nothing" className={classes.candidateDate}>
 				<GetAppIcon />
-				Завантажити
+				{t('DOWNLOAD')}
 			</a>
 		</div>
 	</div>

@@ -1,7 +1,3 @@
-import API from 'services/api';
-import errorAxios from 'utils/actions/errorAxios';
-import tostrActions from 'utils/toastr/toastrAction';
-import actionConstructor from 'utils/actions/actionConstructor';
 import {
 	SUCCESS_AXIOS,
 	ADD_INFO,
@@ -10,80 +6,26 @@ import {
 	GET_CANDIDATES,
 	SUCCESS_AXIOS_LIST,
 } from './actionNames';
+import actionFactory from 'utils/actions/actionFactory';
+import { GET, PUT, POST, DELETE } from 'utils/variables/method';
+import actionApiFactory from 'utils/actions/actionWithApiFactory';
 
-const addInfo = actionConstructor(ADD_INFO);
-const addNewVacancy = actionConstructor(ADD_VACANCY);
-const successAxios = actionConstructor(SUCCESS_AXIOS);
-const getCandidates = actionConstructor(GET_CANDIDATES);
-const successAxiosList = actionConstructor(SUCCESS_AXIOS_LIST);
-export const deleteInfo = actionConstructor(DELETE_INFO);
-
+const addInfo = actionFactory(ADD_INFO);
+const addNewVacancy = actionFactory(ADD_VACANCY);
+const successAxios = actionFactory(SUCCESS_AXIOS);
+const getCandidates = actionFactory(GET_CANDIDATES);
+export const deleteInfo = actionFactory(DELETE_INFO);
+const successAxiosList = actionFactory(SUCCESS_AXIOS_LIST);
 export const saveInfo = data => dispatch => dispatch(addInfo(data));
 
-export const updateVacancy = (id, body) => dispatch => {
-	API.put(`vacancies/${id}`, body)
-		.then(data => {
-			tostrActions(data, 'Вакансію оновлено');
-			dispatch(successAxios(data.result));
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
+const deleteMsg = 'Вакансію видалено';
+const updateMsg = 'Вакансію оновлено';
+const addMsg = 'Вакансію успішно створено';
 
-export const getOneVacancy = id => dispatch => {
-	API.get(`vacancies/${id}`)
-		.then(data => {
-			dispatch(successAxios(data.result));
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
-
-export const addVacancy = body => dispatch => {
-	API.post('vacancies', body)
-		.then(data => {
-			tostrActions(data, 'Вакансію успішно створено');
-			dispatch(addNewVacancy(data.result));
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
-
-export const getVacancyByFilter = filter => dispatch => {
-	API.get(`vacancies?${filter}`)
-		.then(data => {
-			dispatch(successAxiosList(data.result));
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
-
-export const getAllVacancy = () => dispatch => {
-	API.get('vacancies')
-		.then(({ data }) => {
-			dispatch(successAxiosList(data.result));
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
-
-export const deleteVacancy = id => () => {
-	API.delete(`vacancies/${id}`).then(data =>
-		tostrActions(data, 'Вакансію видалено'),
-	);
-};
-
-export const getSuitableCandidates = id => dispatch => {
-	API.get(`suitableCandidates/${id}`)
-		.then(data => {
-			dispatch(getCandidates(data.result));
-		})
-		.catch(error => {
-			dispatch(errorAxios(error));
-		});
-};
+export const getOneVacancy = actionApiFactory('vacancies/', GET, successAxios);
+export const getAllVacancy = actionApiFactory('vacancies', GET, successAxiosList);
+export const addVacancy = actionApiFactory('vacancies', POST, addNewVacancy, addMsg);
+export const deleteVacancy = actionApiFactory('vacancies/', DELETE, null, deleteMsg);
+export const getVacancyByFilter = actionApiFactory('vacancies?', GET, successAxiosList);
+export const updateVacancy = actionApiFactory('vacancies/', PUT, successAxios, updateMsg);
+export const getSuitableCandidates = actionApiFactory('suitableCandidates/', GET, getCandidates);

@@ -1,22 +1,21 @@
-import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 
-import setAuthToken from '../../../utils/setAuthToken';
-import actionConstructor from '../../../utils/actions/actionConstructor';
+import API from 'services/api';
+import setAuthToken from 'utils/setAuthToken';
+import actionFactory from 'utils/actions/actionFactory';
 import { ERROR, SET_USER, LOGOUT, SUCCESS, CLEAR, SET_ADMIN } from './types';
 
-const error = actionConstructor(ERROR);
-const clearMsg = actionConstructor(CLEAR);
-const success = actionConstructor(SUCCESS);
+const error = actionFactory(ERROR);
+const clearMsg = actionFactory(CLEAR);
+const success = actionFactory(SUCCESS);
 
 export const registerUser = (user, history) => dispatch => {
-	axios
-		.post('/register', user)
-		.then(res => {
-			if (res.data.errors) {
-				dispatch(error(res.data.errors));
+	API.post('register', user)
+		.then(data => {
+			if (data.errors) {
+				dispatch(error(data.errors));
 			} else {
-				dispatch(success(res.data));
+				dispatch(success(data));
 				history.push('/login');
 			}
 			setTimeout(() => dispatch(clearMsg()), 3000);
@@ -56,20 +55,18 @@ export const getUser = token => {
 };
 
 export const loginUser = (user, history) => dispatch => {
-	axios
-		.post('/login', user)
-		.then(res => {
-			if (res.data.token) {
-				const { token } = res.data;
+	API.post('login', user)
+		.then(data => {
+			if (data.token) {
+				const { token } = data;
 				localStorage.setItem('token', token);
 				setAuthToken(token);
 				dispatch(setCurrentUser(token));
-				history.push(`/${res.data.type}`);
+				history.push(`/${data.type}`);
 				return;
 			} else {
-				dispatch(error(res.data.errors));
+				dispatch(error(data.errors));
 			}
-
 			setTimeout(() => dispatch(clearMsg()), 3000);
 		})
 		.catch(err => {
@@ -78,11 +75,10 @@ export const loginUser = (user, history) => dispatch => {
 };
 
 export const loginAdmin = (user, history) => dispatch => {
-	axios
-		.post('/admin', user)
-		.then(res => {
-			if (res.data.token) {
-				const { token } = res.data;
+	API.post('admin', user)
+		.then(data => {
+			if (data.token) {
+				const { token } = data;
 				localStorage.setItem('adminToken', token);
 				setAuthToken(localStorage.adminToken);
 				dispatch(setCurrentAdmin(token));
@@ -90,9 +86,8 @@ export const loginAdmin = (user, history) => dispatch => {
 				history.push('/admin');
 				return;
 			} else {
-				dispatch(error(res.data.errors));
+				dispatch(error(data.errors));
 			}
-
 			setTimeout(() => dispatch(clearMsg()), 3000);
 		})
 		.catch(err => {
@@ -110,14 +105,13 @@ export const logOut = history => dispatch => {
 };
 
 export const emailConfirm = (data, history) => dispatch => {
-	axios
-		.post('/mailconfirm', data)
-		.then(res => {
-			if (res.data.status === 'success') {
-				dispatch(success(res.data));
+	API.post('mailconfirm', data)
+		.then(data => {
+			if (data.status === 'success') {
+				dispatch(success(data));
 				history.push('/login');
 			} else {
-				dispatch(error(res.data));
+				dispatch(error(data));
 			}
 			setTimeout(() => dispatch(clearMsg()), 3000);
 		})
@@ -127,14 +121,13 @@ export const emailConfirm = (data, history) => dispatch => {
 };
 
 export const setPass = (data, history) => dispatch => {
-	axios
-		.post('/setpassword', data)
-		.then(res => {
-			if (res.data.status === 'success') {
-				dispatch(success(res.data));
+	API.post('setpassword', data)
+		.then(data => {
+			if (data.status === 'success') {
+				dispatch(success(data));
 				history.push('/login');
 			} else {
-				dispatch(error(res.data));
+				dispatch(error(data));
 			}
 			setTimeout(() => dispatch(clearMsg()), 3000);
 		})

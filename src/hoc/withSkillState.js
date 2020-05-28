@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 import getDisplayName from 'utils/getDisplayName';
-import englishLevel from 'utils/variables/english';
 import objToArr from 'utils/transformType/objToArr';
+import { changeSliderFactory } from 'utils/actions/onChangeFactory';
 
 const withSkillState = Component => {
-	const WithSkillState = ({
-		setId,
-		checkboxGet,
-		setCheckboxSkill,
-		...props
-	}) => {
+	const WithSkillState = ({ checkboxGet, setCheckboxSkill, ...props }) => {
 		const [checkbox, setCheckbox] = useState(null);
 		const [checkboxArr, setCheckboxArr] = useState(null);
 
@@ -26,16 +21,7 @@ const withSkillState = Component => {
 			setCheckboxSkill(checkboxArr);
 		}, [checkboxArr, setCheckboxSkill]);
 
-		const handleChangeSkillSlider = (name, id) => (event, newValue) => {
-			setCheckbox({
-				...checkbox,
-				[name]: {
-					name,
-					id,
-					experience: newValue,
-				},
-			});
-		};
+		const handleChangeSkillSlider = changeSliderFactory(checkbox, setCheckbox);
 
 		const checkboxHandleChange = name => event => {
 			if (event.target.checked) {
@@ -55,8 +41,6 @@ const withSkillState = Component => {
 			setCheckbox({ ...checkbox, [name]: null });
 		};
 
-		const valueLabelFormatEng = value => englishLevel[value];
-
 		return (
 			<Component
 				{...props}
@@ -64,7 +48,6 @@ const withSkillState = Component => {
 				checkboxArr={checkboxArr}
 				deleteSlider={deleteSlider}
 				handleChange={handleChangeSkillSlider}
-				valueLabelFormatEng={valueLabelFormatEng}
 				checkboxHandleChange={checkboxHandleChange}
 			/>
 		);

@@ -1,12 +1,12 @@
 import {
-	SUCCESS_AXIOS,
-	ERROR,
 	ADD_INFO,
 	ADD_VACANCY,
 	DELETE_INFO,
+	SUCCESS_AXIOS,
 	GET_CANDIDATES,
 	SUCCESS_AXIOS_LIST,
 } from './actionNames';
+import { ERROR } from 'utils/actions/errorAxios';
 
 const initialState = {
 	vacancy: null,

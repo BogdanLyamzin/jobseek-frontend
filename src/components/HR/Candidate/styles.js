@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const colorDark = '#3D3B69';
 const flexBetween = {
 	display: 'flex',
 	justifyContent: 'space-between',
@@ -55,6 +54,7 @@ const useStyles = makeStyles(theme => ({
 			marginRight: 0,
 			textDecoration: 'none',
 			display: 'flex',
+			color: theme.palette.color,
 			flexDirection: 'column',
 			alignItems: 'center',
 			'&:hover': {
@@ -193,7 +193,7 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: '28px',
 		fontFamily: theme.palette.font,
 		fontSize: '16px',
-		color: colorDark,
+		color: '#3D3B69',
 		border: 0,
 		outline: 0,
 		cursor: 'pointer',
