@@ -5,29 +5,17 @@ import getDisplayName from 'utils/getDisplayName';
 import { deleteVacancy, getVacancyByFilter } from 'store/vacancy/actions';
 
 const withVacancies = (Component, user) => {
-	const WithVacancies = ({
-		vacancy,
-		deleteVacancy,
-		getVacancyByFilter,
-		...props
-	}) => {
+	const WithVacancies = ({ vacancy, deleteVacancy, getVacancyByFilter, ...props }) => {
 		const [id, setId] = useState(null);
 
 		useEffect(() => {
 			if (id) getVacancyByFilter(`${user}=${id}`);
 		}, [id, getVacancyByFilter]);
 
-		const deleteVacancies = id => {
-			deleteVacancy(id);
-		};
+		const deleteVacancies = id => deleteVacancy(id, vacancy);
 
 		return (
-			<Component
-				{...props}
-				setId={setId}
-				vacancy={vacancy}
-				deleteVacancies={deleteVacancies}
-			/>
+			<Component {...props} setId={setId} vacancy={vacancy} deleteVacancies={deleteVacancies} />
 		);
 	};
 

@@ -13,7 +13,7 @@ function CardHR({ hrList, user, getHrByFilter }) {
 
 	cardList = hrList
 		? hrList.map((elem, index) => {
-				return <CardHRItem elem={elem} key={elem._id} index={index} />;
+				return <CardHRItem elem={elem} list={hrList} key={elem._id} index={index} />;
 		  })
 		: null;
 	return <Container>{cardList}</Container>;

@@ -1,24 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import EditIcon from '@material-ui/core/SvgIcon/SvgIcon';
 import { useTranslation } from 'react-i18next';
+import EditIcon from '@material-ui/core/SvgIcon/SvgIcon';
 
-import getDate from '../../../../utils/getDate';
-import { deleteHR } from '../../../../store/hr/actions';
-import DeleteIconWithModal from '../../../../shared/DeleteIconWithModal';
 import useStyles from './styles';
+import getDate from 'utils/getDate';
+import { deleteHR } from 'store/hr/actions';
+import DeleteIconWithModal from 'shared/DeleteIconWithModal';
 
 const CardHRItem = ({
+	list,
 	elem: { _id, name, lastName, phone, email, date },
 	index,
 	deleteHR,
 }) => {
 	const classes = useStyles();
-
-	const hrDelete = id => {
-		deleteHR(id);
-	};
 	const { t } = useTranslation();
+
+	const hrDelete = () => deleteHR(_id, list);
 
 	return (
 		<div className={classes.hrCard}>
@@ -31,10 +30,7 @@ const CardHRItem = ({
 				</div>
 				<div className={classes.edit}>
 					<EditIcon className={classes.icon} />
-					<DeleteIconWithModal
-						text="Are you sure?"
-						handleDelete={() => hrDelete(_id)}
-					/>
+					<DeleteIconWithModal text="Are you sure?" handleDelete={hrDelete} />
 				</div>
 			</div>
 			<div className={classes.info}>

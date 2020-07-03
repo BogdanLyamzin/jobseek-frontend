@@ -52,7 +52,7 @@ const SkillsInfo = ({ t, isActive, firstForm, user, addVacancy }) => {
 			companyId: user.companyId,
 			hrId: user._id,
 		};
-		validationStatus() && addVacancy(body);
+		validationStatus() && addVacancy(null, body);
 	};
 
 	return (
