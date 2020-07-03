@@ -72,7 +72,8 @@
   "lint-staged": {
     "src/**/*.{js, jsx}": [
       "node_modules/.bin/eslint --fix --max-warnings=0",
-      "prettier --write"
+      "prettier --write",
+      "git add ."
     ]
   },
   "proxy": "http://localhost:5000"
